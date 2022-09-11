@@ -1,0 +1,15 @@
+For Property GET:
+
+*[_type == "property"] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    homeowner-> {
+      name,
+      image
+    },
+    description,
+    mainImage,
+    slug
+  }
+
