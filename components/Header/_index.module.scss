@@ -1,0 +1,6 @@
+@use "../../styles/text" as text;
+
+.header {
+    @include text.BANNER_HEADER;
+    color: blue;
+}
