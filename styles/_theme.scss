@@ -1,0 +1,5 @@
+@use "./constants" as constants;
+
+@mixin SET_BACKGROUND($color, $alpha) {
+    background-color: rgba($color, $alpha);
+}

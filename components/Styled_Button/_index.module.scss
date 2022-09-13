@@ -1,0 +1,31 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+.sign-in{
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+    border-radius: 10px;
+    color: constant.$COLOR_SECONDARY;
+    padding: 5px 10px;
+
+    h1{
+        @include text.BUTTON_TEXT_SMALL;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+}
+
+.register{
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+    border-radius: 10px;
+    color: constant.$COLOR_SECONDARY_DARK;
+    padding: 5px 10px;
+
+    h1{
+        @include text.BUTTON_TEXT_SMALL;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+}
