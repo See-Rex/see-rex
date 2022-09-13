@@ -1,0 +1,42 @@
+@use "../../styles/text" as text;
+
+.header {
+    @include text.BANNER_HEADER;
+    color: blue;
+}
+
+// Mantine Header
+
+.inner {
+    height: 56px;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+}
+
+// .links {
+//     display: none;
+// }
+
+.burger {
+    display: none;
+}
+
+.link {
+    display: block;
+    line-height: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+
+    &::hover {
+    background-color: black;
+    }
+}
+
+.linkLabel {
+    margin-right: 5px;
+}
