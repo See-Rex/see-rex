@@ -4,12 +4,38 @@ For Property GET:
     _id,
     title,
     dateRegistered,
+    slug,
     homeowner-> {
       name,
-      image
+      image,
+      contactDetails,
+      dateRegistered
     },
+    categories,
+    vehicles,
     description,
-    mainImage,
-    slug
+    mainImage
   }
 
+For Homeowner GET:
+
+*[_type == "homeowner"] | order(dateRegistered desc) {
+    _id,
+    name,
+    slug,
+    dateRegistered,
+    contactDetails,
+    bio,
+    mainImage
+  }
+
+For vehicle GET:
+
+*[_type == "vehicle"] | order(dateRegistered desc) {
+    _id,
+    name,
+    slug,
+    dateRegistered,
+    proofOfOwnership,
+    mainImage
+  }
