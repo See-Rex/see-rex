@@ -17,7 +17,7 @@ const Home: NextPage = () => {
             <Basic_Header/>
             <Text_Field label={'Email'} placeholder={'lezzml.now@gmail.com'} />
             <Pass_Field placeholder={'Your password'} />
-            <Button onClick={()=>setIsFooterLight(!isFooterLight)} >Change Footer Theme</Button>
+            <Button onClick={()=>setIsFooterLight(!isFooterLight)} mt={120}>Change Footer Theme</Button>
             <Basic_Footer type={isFooterLight ? 'light' : 'dark'} />
         </MantineProvider>
     );
