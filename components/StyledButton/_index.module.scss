@@ -4,7 +4,7 @@
 
 .sign-in{
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
-    border-radius: 10px;
+    border-radius: 5px;
     color: constant.$COLOR_SECONDARY;
     padding: 5px 10px;
 
@@ -14,11 +14,15 @@
         font-style: normal;
         font-weight: 600;
     }
+
+    &:hover {
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 40%);
+    }
 }
 
 .register{
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
-    border-radius: 10px;
+    border-radius: 5px;
     color: constant.$COLOR_SECONDARY_DARK;
     padding: 5px 10px;
 
@@ -27,5 +31,9 @@
         font-family: constant.$FONT_MAIN;
         font-style: normal;
         font-weight: 600;
+    }
+
+    &:hover {
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 40%);
     }
 }

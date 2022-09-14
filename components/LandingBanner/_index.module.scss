@@ -1,0 +1,27 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+
+.container {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../public/background1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 610px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header2 {
+  @include text.BANNER_HEADER_2;
+  font-weight: 700;
+  span {
+    color: constant.$COLOR_PRIMARY;
+  }
+}
+
+.headings {
+  @include text.BANNER_HEADINGS_1;
+  font-weight: 300;
+}

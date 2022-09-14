@@ -5,19 +5,24 @@
     line-height: constants.$BANNER_HEADER_LINE_HEIGHT;
 }
 
+@mixin BANNER_HEADER_2 {
+    font-size: constants.$BANNER_HEADER_2_FONT_SIZE;
+    line-height: constants.$BANNER_HEADER_2_LINE_HEIGHT;
+}
+
 @mixin BANNER_HEADINGS_1 {
     font-size: constants.$BANNER_HEADINGS_1_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_1_LINE_HEIGHT;
+    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADINGS_2 {
     font-size: constants.$BANNER_HEADINGS_2_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_2_LINE_HEIGHT;
+    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADINGS_3 {
     font-size: constants.$BANNER_HEADINGS_3_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_3_LINE_HEIGHT;
+    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BUTTON_TEXT {
