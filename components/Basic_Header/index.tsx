@@ -1,23 +1,37 @@
 import { Header, Group, Burger, Container } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
 import Styled_Button from '../Styled_Button';
-import Icon from '../Icon';
+import SeeRexIcon from '../Icon';
 import style from "./_index.module.scss";
 
-const Basic_Header = () => {
-  return (
-    <Header height={56} mb={120}>
-      <Container>
-        <div className={style.inner}>
-          <Icon/>
-          <Group spacing={5} className={style.links}>
-            <Styled_Button types='sign-in'>Sign-in</Styled_Button>
-            <Styled_Button types='register'>Register</Styled_Button>
-          </Group>
-        </div>
-      </Container>
-    </Header>
-  );
+type Props = {
+  type: 'withButtons' | 'desktop' | 'mobile';
+  theme: 'light' | 'dark';
+}
+
+const Basic_Header = (props: Props) => {
+  const { type, theme } = props;
+
+  //seerex logo needs to be changed when in dark mode
+  if (type === 'withButtons') {
+    return <Header height={56} mb={20} className={style[theme]}>
+    <Container>
+      <div className={`${style.inner}`}>
+        <SeeRexIcon/>
+        <Group spacing={5} className={style.links}>
+          <Styled_Button types='sign-in' theme={theme}>SIGN-IN</Styled_Button>
+          <Styled_Button types='register' theme={theme}>REGISTER</Styled_Button>
+        </Group>
+      </div>
+    </Container>
+  </Header>;
+  } else if (type === 'desktop') {
+    return <Header height={56} mb={20} className={`${style.inner} ${style[theme]}`}> <SeeRexIcon/></Header>;
+  }
+
+  return <Header height={56} mb={20} className={`${style.inner} ${style[theme]}`}>
+      <SeeRexIcon/>
+      <Burger opened={false} color={theme === 'light'? 'black':'white'} />
+    </Header>;
 }
 
 export default Basic_Header;
