@@ -1,0 +1,24 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+// Icon Button
+.inner {
+    @include text.BUTTON_TEXT_SMALL;
+    padding: 10px 25px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;    
+    color: constant.$COLOR_SECONDARY_DARK;
+    filter: grayscale(100%);
+
+    &:hover {
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 25%);
+        color: constant.$COLOR_ACCENT;
+        filter: grayscale(0%);
+    }
+}
