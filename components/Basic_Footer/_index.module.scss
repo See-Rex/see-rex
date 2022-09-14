@@ -1,0 +1,27 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+
+// Mantine Footer
+.basic_footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    font-family: constant.$FONT_SANS1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: constant.$HEADER_3_FONT_SIZE;
+    line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+}
+
+.light {
+    background-color: constant.$COLOR_WHITE;
+    color: constant.$COLOR_ACCENT;
+}
+
+.dark {
+    background-color: constant.$COLOR_PRIMARY_DARK;
+    color: constant.$COLOR_WHITE_DARK;
+}
+
