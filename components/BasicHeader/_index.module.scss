@@ -1,19 +1,21 @@
 @use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
 
 // Mantine Header
 .inner {
     height: 56px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-// .links {
-//     display: none;
-// }
+.light {
+    background-color: constant.$COLOR_WHITE;
+}
 
-.burger {
-    display: none;
+.dark {
+    background-color: constant.$COLOR_PRIMARY_DARK;
 }
 
 .link {
