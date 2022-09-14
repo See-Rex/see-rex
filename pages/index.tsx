@@ -7,7 +7,6 @@ import Basic_Footer from "../components/Basic_Footer";
 import Icon_Button from "../components/Icon_Button";
 import ResidentialIcon from "../public/residential.svg";
 
-
 const Home: NextPage = () => {
     const [isLightTheme, setIsLightTheme] = useState(true);
 
