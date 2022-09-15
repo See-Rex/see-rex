@@ -5,7 +5,7 @@ type Props = {
   type: string;
 }
 
-const Basic_Footer = (props: Props) => {
+const BasicFooter = (props: Props) => {
   const { type } = props;
 
   return (
@@ -13,4 +13,4 @@ const Basic_Footer = (props: Props) => {
   );
 }
 
-export default Basic_Footer;
+export default BasicFooter;

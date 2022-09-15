@@ -17,6 +17,7 @@
 
     &:hover {
         @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 40%);
+        color: constant.$COLOR_WHITE;
     }
 }
 
@@ -40,6 +41,100 @@
 
 .dark {
     h1 {
+        color: constant.$COLOR_WHITE;
+    }
+}
+
+.sign-up{
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+    border-radius: 10px;
+    color: constant.$COLOR_SECONDARY;
+    padding: 5px 10px;
+    width: 230px;
+
+    h1{
+        @include text.BUTTON_TEXT_SMALL;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    &:hover {
+        color: constant.$COLOR_WHITE;
+    }
+}
+
+.banner{
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    border-radius: 10px;
+    color: constant.$COLOR_SECONDARY;
+    height: 50px;
+    width: 180px;
+
+    h1{
+        @include text.BUTTON_TEXT;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    &:hover {
+        color: constant.$COLOR_WHITE;
+    }
+}
+
+.banner2{
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 50%);
+    border-radius: 10px;
+    color: constant.$COLOR_WHITE;
+    height: 50px;
+    width: 180px;
+
+    h1{
+        @include text.BUTTON_TEXT;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    &:hover {
+        color: constant.$COLOR_WHITE;
+    }
+}
+
+.submit{
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
+    border-radius: 10px;
+    color: constant.$COLOR_PRIMARY;
+    padding: 5px 10px;
+
+    h1{
+        @include text.BUTTON_TEXT_SMALL;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    &:hover {
+        color: constant.$COLOR_WHITE;
+    }
+}
+
+.card{
+    @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
+    border-radius: 10px;
+    color: constant.$COLOR_ACCENT;
+    padding: 5px 10px;
+    width: 300px;
+
+    h1{
+        @include text.BUTTON_TEXT_SMALL;
+        font-family: constant.$FONT_MAIN;
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    &:hover {
         color: constant.$COLOR_WHITE;
     }
 }
