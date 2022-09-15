@@ -1,0 +1,100 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+
+.wrapper {
+  position: relative;
+  padding-top: 180px;
+  padding-bottom: 130px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../public/background1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @media only screen and (max-width: 520px) {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  @include text.BANNER_HEADER_2;
+  font-weight: 700;
+  letter-spacing: -1;
+  padding: 0 14px;
+  color: white;
+  margin-bottom: 10px;
+  text-align: center;
+
+  @media only screen and (max-width: 520px) {
+    font-size: 28px; 
+    text-align: left;
+  }
+}
+
+.highlight {
+  color: constant.$COLOR_PRIMARY;
+}
+
+.description {
+  color: white;
+  text-align: center;
+
+  @media only screen and (max-width: 520px) {
+    font-size: 14px;
+    text-align: left;
+  }
+}
+
+.controls {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+  }
+}
+
+.control {
+  height: 42;
+  font-size: 14px;
+
+  &:not(:first-of-type) {
+    margin-left: 14px;
+  }
+
+  @media (max-width: 520px) {
+    &:not(:first-of-type) {
+      margin-top: 14px;
+      margin-left: 0;
+    }
+  }
+}
+
+.secondaryControl {
+  color: white;
+  background-color: rgba(255, 255, 255, .4);
+
+  &:hover {
+    background-color: 'rgba(255, 255, 255, .45) !important';
+  }
+}
+
+.header2 {
+  @include text.BANNER_HEADER_2;
+  font-weight: 700;
+  span {
+    color: constant.$COLOR_PRIMARY;
+  }
+}
+
+.headings {
+  @include text.BANNER_HEADINGS_1;
+  font-weight: 300;
+}
