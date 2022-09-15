@@ -11,8 +11,8 @@ const Basic_Header = () => {
         <div className={style.inner}>
           <Icon/>
           <Group spacing={5} className={style.links}>
-            <Styled_Button types='sign-in'>Sign-in</Styled_Button>
-            <Styled_Button types='register'>Register</Styled_Button>
+            <Styled_Button type='sign-in'>Sign-in</Styled_Button>
+            <Styled_Button type='register'>Register</Styled_Button>
           </Group>
         </div>
       </Container>
