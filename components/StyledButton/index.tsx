@@ -1,17 +1,17 @@
 import { Button } from '@mantine/core';
-import React from 'react'
-import style from "./_index.module.scss"
+import React from 'react';
+import style from "./_index.module.scss";
 
-type Props = {
+type Button_Params = {
   children: React.ReactNode;
-  type?: "sign-in" | "register" | "sign-up" | "banner" | "submit" | "card";
+  types: "sign-in" | "register" | "sign-up" | "banner" | "submit" | "card";
+  theme: "light" | "dark";
 } 
 
-const StyledButton = (props: Props) => {
-  const {children, type} = props;
-  
+const StyledButton = (params: Button_Params) => {
+  const {children, types, theme} = params;
   return (
-    <Button className={style[type!]}><h1>{children}</h1></Button>
+    <Button className={`${style[types]} ${style[theme]}`}><h1>{children}</h1></Button>
   )
 }
 

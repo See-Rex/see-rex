@@ -37,3 +37,9 @@
         @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 40%);
     }
 }
+
+.dark {
+    h1 {
+        color: constant.$COLOR_WHITE;
+    }
+}
