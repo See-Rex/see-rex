@@ -4,14 +4,14 @@ import style from "./_index.module.scss";
 
 type Button_Params = {
   children: React.ReactNode;
-  types: "sign-in" | "register" | "sign-up" | "banner" | "submit" | "card";
+  type: "sign-in" | "register" | "sign-up" | "banner" | "banner2" | "submit" | "card";
   theme: "light" | "dark";
 } 
 
 const StyledButton = (params: Button_Params) => {
-  const {children, types, theme} = params;
+  const {children, type, theme} = params;
   return (
-    <Button className={`${style[types]} ${style[theme]}`}><h1>{children}</h1></Button>
+    <Button className={`${style[type]} ${style[theme]}`}><h1>{children}</h1></Button>
   )
 }
 

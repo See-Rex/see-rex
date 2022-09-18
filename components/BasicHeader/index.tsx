@@ -18,8 +18,8 @@ const BasicHeader = (props: Props) => {
       <div className={`${style.inner}`}>
         <SeeRexIcon/>
         <Group spacing={5} className={style.links}>
-          <StyledButton types='sign-in' theme={theme}>SIGN-IN</StyledButton>
-          <StyledButton types='register' theme={theme}>REGISTER</StyledButton>
+          <StyledButton type='sign-in' theme={theme}>SIGN-IN</StyledButton>
+          <StyledButton type='register' theme={theme}>REGISTER</StyledButton>
         </Group>
       </div>
     </Container>

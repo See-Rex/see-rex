@@ -8,7 +8,7 @@ type Props = {
     label: string;
 }
 
-const Icon_Button = (props: Props) => {
+const IconButton = (props: Props) => {
   const { iconSrc, label } = props;
 
   return <Button 
@@ -26,4 +26,4 @@ const Icon_Button = (props: Props) => {
     </Button>;
 }
 
-export default Icon_Button;
+export default IconButton;
