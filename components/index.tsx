@@ -1,15 +1,15 @@
 import BasicHeader from "./BasicHeader";
-import Icon from "../public/Icon";
-import TextField from "./TextField";
-import PassField from "./PassField";
+import InputField from "./InputField";
 import StyledButton from "./StyledButton";
 import LandingBanner from "./LandingBanner";
+import BasicFooter from "./BasicFooter/index";
+import IconButton from "./IconButton/index";
 
 export {
     BasicHeader,
-    Icon,
+    BasicFooter,
+    IconButton,
+    InputField,
     LandingBanner,
-    TextField,
-    PassField,
-    StyledButton
+    StyledButton,
 };
