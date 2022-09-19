@@ -2,13 +2,13 @@
 @use "../../styles/constants" as constant;
 @use "../../styles/theme" as theme;
 
-.sign-in{
+.sign-in {
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
     border-radius: 5px;
     color: constant.$COLOR_SECONDARY;
     padding: 5px 10px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT_SMALL;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -16,18 +16,17 @@
     }
 
     &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 40%);
-        color: constant.$COLOR_WHITE;
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 50%);
     }
 }
 
-.register{
+.register {
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
     border-radius: 5px;
     color: constant.$COLOR_SECONDARY_DARK;
     padding: 5px 10px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT_SMALL;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -35,7 +34,7 @@
     }
 
     &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 40%);
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 50%);
     }
 }
 
@@ -45,14 +44,14 @@
     }
 }
 
-.sign-up{
+.sign-up {
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
     border-radius: 10px;
     color: constant.$COLOR_SECONDARY;
     padding: 5px 10px;
     width: 230px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT_SMALL;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -64,14 +63,14 @@
     }
 }
 
-.banner{
+.banner {
     @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
     border-radius: 10px;
     color: constant.$COLOR_SECONDARY;
     height: 50px;
     width: 180px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -83,14 +82,14 @@
     }
 }
 
-.banner2{
+.banner2 {
     @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 50%);
     border-radius: 10px;
     color: constant.$COLOR_WHITE;
     height: 50px;
     width: 180px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -102,13 +101,13 @@
     }
 }
 
-.submit{
+.submit {
     @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
     border-radius: 10px;
     color: constant.$COLOR_PRIMARY;
     padding: 5px 10px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT_SMALL;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
@@ -120,14 +119,14 @@
     }
 }
 
-.card{
+.card {
     @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
     border-radius: 10px;
     color: constant.$COLOR_ACCENT;
     padding: 5px 10px;
     width: 300px;
 
-    h1{
+    h1 {
         @include text.BUTTON_TEXT_SMALL;
         font-family: constant.$FONT_MAIN;
         font-style: normal;
