@@ -1,8 +1,7 @@
 import { GetStaticProps } from 'next';
 import React from 'react'
 import { sanityClient } from '../../sanity';
-import { homeowners } from "../../typings"; // Will be resolved once typings file gets merged to main
-
+import { Homeowner } from '../../typings.d';
 interface Props {
   homeowner: Homeowner; // Will be resolved once typings file gets merged to main
 }
@@ -11,7 +10,7 @@ function Homeowner({ homeowner }: Props) {
   return (
     // `homeowner` is the props (array of returned data in json)
     // `homeowner`will be used when referencing the data from the CMS 
-    <div><h1>Homeowner</h1></div>
+    <div><h1>homeowner.name</h1></div>
   )
 }
 
