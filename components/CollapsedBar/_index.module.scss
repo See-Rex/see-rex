@@ -1,0 +1,14 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+
+.header {
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(constant.$COLOR_GREY_DARK, 40%);
+}
+
+.footer {
+    padding-top: 12px;
+    margin-top: 18px;
+    border-top: 1px solid rgba(constant.$COLOR_GREY_DARK, 40%);
+}
