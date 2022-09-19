@@ -2,13 +2,13 @@ import { Code, Group, Navbar } from "@mantine/core";
 import style from "./_index.module.scss";
 import React from "react";
 import Logo from "../../public/Logo";
-import {
-    IconLogout,
-    IconLayoutDashboard,
-    IconAddressBook,
-    IconBuildingCommunity,
-} from "@tabler/icons";
 import IconButton from "../IconButton";
+import {
+    IconContacts,
+    IconHolidayVillage,
+    IconLogout,
+    IconSpaceDashboard,
+} from "./../../public/Icons";
 
 function CollapsedBar() {
     return (
@@ -20,17 +20,17 @@ function CollapsedBar() {
                 </Group>
                 <IconButton
                     className="active"
-                    icon={<IconLayoutDashboard />}
+                    icon={<IconSpaceDashboard />}
                     label={"Dashboard"}
                 />
                 <IconButton
                     className="link"
-                    icon={<IconAddressBook />}
+                    icon={<IconContacts />}
                     label={"Contacts"}
                 />
                 <IconButton
                     className="link"
-                    icon={<IconBuildingCommunity />}
+                    icon={<IconHolidayVillage />}
                     label={"Residential Properties"}
                 />
             </Navbar.Section>
