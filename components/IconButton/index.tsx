@@ -7,7 +7,7 @@ import style from "./_index.module.scss";
 type Props = Omit<LinkProps, "href"> & {
     icon: React.ReactNode;
     label: string;
-    className?: "link" | "active";
+    className?: "link" | "active" | "backToLogin";
     onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 

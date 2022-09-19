@@ -49,7 +49,7 @@ const AuthLayout = (props: Props) => {
 
   const renderForgotPasswordForm = isForgotPass && <Group position="apart" mt="md">
     <IconButton 
-      iconSrc={'/../../public/Icons/ArrowBack.svg'} 
+      icon={'/../../public/Icons/ArrowBack.svg'} 
       label={'Back to login page'} 
       className={'backToLogin'}
       onClick={() => setIsForgotPass(false)}
