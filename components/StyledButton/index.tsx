@@ -11,7 +11,9 @@ type Button_Params = {
 const StyledButton = (params: Button_Params) => {
   const {children, type, theme} = params;
   return (
-    <Button className={`${style[type]} ${style[theme]}`}><h1>{children}</h1></Button>
+    <Button className={`${style[type]} ${style[theme]}`} size="md" mb="md" mt="md" >
+      <h1>{children}</h1>
+    </Button>
   )
 }
 

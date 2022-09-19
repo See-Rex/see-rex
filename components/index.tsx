@@ -4,8 +4,10 @@ import TextField from "./TextField";
 import PassField from "./PassField";
 import StyledButton from "./StyledButton";
 import LandingBanner from "./LandingBanner";
+import AuthLayout from "./AuthLayout";
 
 export {
+    AuthLayout,
     BasicHeader,
     Icon,
     LandingBanner,

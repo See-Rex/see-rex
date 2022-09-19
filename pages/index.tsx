@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { NextPage } from "next";
-import { MantineProvider, Button } from '@mantine/core';
+import { MantineProvider, Button, Group } from '@mantine/core';
 
-import {BasicHeader, TextField, PassField, LandingBanner} from "../components";
+import {BasicHeader, TextField, PassField, LandingBanner, AuthLayout} from "../components";
 import BasicFooter from "../components/BasicFooter";
 import IconButton from "../components/IconButton";
 import ResidentialIcon from "../public/residential.svg";
@@ -28,6 +28,8 @@ const Home: NextPage = () => {
             <StyledButton type='banner2' theme={isLightTheme? 'light':'dark'}>Sign-in</StyledButton>
             <IconButton iconSrc={ResidentialIcon} label={"Residential Properties"} />
             <BasicFooter type={isLightTheme ? 'light' : 'dark'} />
+
+            <AuthLayout theme={isLightTheme ? 'light' : 'dark'}  />
         </MantineProvider>
     );
 };

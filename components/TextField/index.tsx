@@ -9,7 +9,7 @@ type Props = {
 const TextField = (props: Props) => {
   const { label, placeholder } = props;
 
-  return <TextInput label={label} placeholder={placeholder} size="md" />;
+  return <TextInput label={label} placeholder={placeholder} size="md" mb="md" mt="md" />;
 }
 
 export default TextField;
