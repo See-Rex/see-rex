@@ -1,0 +1,23 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+
+// Auth
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.authForm {
+    margin: 10vh 0;
+    width: 371px;
+    height: 539px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.forgotPass {
+    align-self: flex-end;
+}
