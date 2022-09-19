@@ -9,8 +9,8 @@ import {
     LandingBanner,
     StyledButton,
 } from "../components";
-import ResidentialIcon from "../public/residential.svg";
 import CollapsedBar from "../components/CollapsedBar";
+import { IconHolidayVillage } from "./../public/Icons";
 
 const Home: NextPage = () => {
     const [isLightTheme, setIsLightTheme] = useState(true);
@@ -43,12 +43,12 @@ const Home: NextPage = () => {
             <BasicFooter type={isLightTheme ? "light" : "dark"} />
             <IconButton
                 className="link"
-                iconSrc={ResidentialIcon}
+                icon={<IconHolidayVillage />}
                 label={"Link Inactive"}
             />
             <IconButton
-                className="linkActive"
-                iconSrc={ResidentialIcon}
+                className="active"
+                icon={<IconHolidayVillage />}
                 label={"Link Active"}
             />
             <CollapsedBar />

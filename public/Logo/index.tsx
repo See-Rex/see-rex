@@ -5,20 +5,20 @@ import style from "./_index.module.scss";
 
 type Props = { theme: "light" | "dark"; size?: MantineSize };
 
-const Icon = (props: Props) => {
+const Logo = (props: Props) => {
     const { theme, size } = props;
     return theme == "light" ? (
         <div className={style[size || "xl"]}>
-            <IconLight />
+            <LogoLight />
         </div>
     ) : (
         <div className={style[size || "xl"]}>
-            <IconDark />
+            <LogoDark />
         </div>
     );
 };
 
-export const IconLight = () => {
+export const LogoLight = () => {
     return (
         <svg
             width="171"
@@ -163,7 +163,7 @@ export const IconLight = () => {
     );
 };
 
-export const IconDark = () => {
+export const LogoDark = () => {
     return (
         <svg
             width="171"
@@ -308,4 +308,4 @@ export const IconDark = () => {
     );
 };
 
-export default Icon;
+export default Logo;

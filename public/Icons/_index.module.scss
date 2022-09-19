@@ -1,4 +1,8 @@
+@use "../../styles/constants" as constant;
+
 .sm {
+    display: flex;
+    justify-content: center;
     svg {
         transform: scale(0.3);
     }
@@ -34,4 +38,8 @@
     svg {
         transform: scale(1);
     }
+}
+
+.color {
+    fill: constant.$COLOR_PRIMARY;
 }
