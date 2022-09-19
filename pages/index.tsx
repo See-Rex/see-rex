@@ -10,7 +10,7 @@ import {
     StyledButton,
 } from "../components";
 import ResidentialIcon from "../public/residential.svg";
-import Link from "next/link";
+import CollapsedBar from "../components/CollapsedBar";
 
 const Home: NextPage = () => {
     const [isLightTheme, setIsLightTheme] = useState(true);
@@ -28,8 +28,12 @@ const Home: NextPage = () => {
                 </StyledButton>
             </BasicHeader>
             <BasicHeader theme={theme}>
-                <Link href="/"> Hello </Link>
-                <Link href="/"> World </Link>
+                <StyledButton types="navigation" theme={theme}>
+                    Sign-in
+                </StyledButton>
+                <StyledButton types="navigation" theme={theme}>
+                    Register
+                </StyledButton>
             </BasicHeader>
             <Button mb={50} onClick={() => setIsLightTheme(!isLightTheme)}>
                 Change Theme
@@ -38,9 +42,16 @@ const Home: NextPage = () => {
             <InputField placeholder={"Your password"} type="password" />
             <BasicFooter type={isLightTheme ? "light" : "dark"} />
             <IconButton
+                className="link"
                 iconSrc={ResidentialIcon}
-                label={"Residential Properties"}
+                label={"Link Inactive"}
             />
+            <IconButton
+                className="linkActive"
+                iconSrc={ResidentialIcon}
+                label={"Link Active"}
+            />
+            <CollapsedBar />
         </MantineProvider>
     );
 };
