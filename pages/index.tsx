@@ -8,9 +8,9 @@ import {
     InputField,
     LandingBanner,
     StyledButton,
+    AuthLayout,
 } from "../components";
 import CollapsedBar from "../components/CollapsedBar";
-import { IconHolidayVillage } from "./../public/Icons";
 
 const Home: NextPage = () => {
     const [isLightTheme, setIsLightTheme] = useState(true);
@@ -43,15 +43,17 @@ const Home: NextPage = () => {
             <BasicFooter type={isLightTheme ? "light" : "dark"} />
             <IconButton
                 className="link"
-                icon={<IconHolidayVillage />}
+                iconSrc={'/./../public/Icons'}
                 label={"Link Inactive"}
             />
             <IconButton
                 className="active"
-                icon={<IconHolidayVillage />}
+                iconSrc={'/./../public/Icons'}
                 label={"Link Active"}
             />
             <CollapsedBar />
+            
+            <AuthLayout theme={isLightTheme ? 'light' : 'dark'}  />
         </MantineProvider>
     );
 };

@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import style from "./_index.module.scss";
 
 type Button_Params = {
@@ -13,6 +13,7 @@ type Button_Params = {
         | "card"
         | "navigation";
     theme: "light" | "dark";
+    onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const StyledButton = (params: Button_Params) => {
