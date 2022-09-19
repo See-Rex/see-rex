@@ -15,7 +15,7 @@ const BasicHeader = (props: Props) => {
         <Header height={56} mb={50} className={style[theme]}>
             <Container>
                 <div className={style.inner}>
-                    <Icon theme={theme} />
+                    <Icon size="lg" theme={theme} />
                     <Group spacing={20} className={style.links}>
                         {children}
                     </Group>

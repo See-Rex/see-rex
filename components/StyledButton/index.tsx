@@ -4,7 +4,14 @@ import style from "./_index.module.scss";
 
 type Button_Params = {
     children: React.ReactNode;
-    types: "sign-in" | "register" | "sign-up" | "banner" | "submit" | "card";
+    types:
+        | "sign-in"
+        | "register"
+        | "sign-up"
+        | "banner"
+        | "submit"
+        | "card"
+        | "navigation";
     theme: "light" | "dark";
 };
 

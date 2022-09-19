@@ -1,29 +1,36 @@
-import { Button } from '@mantine/core';
-import Image from 'next/image';
+import { Button } from "@mantine/core";
+import Image from "next/image";
 
 import style from "./_index.module.scss";
 
 type Props = {
     iconSrc: string;
     label: string;
-}
+    className: string;
+};
 
 const IconButton = (props: Props) => {
-  const { iconSrc, label } = props;
+    const { iconSrc, label, className } = props;
 
-  return <Button 
-    className={style.inner} 
-    variant="white"
-    leftIcon={
-        <Image
-            src={iconSrc}
-            alt={label}
-            width={30}
-            height={30}
-        />
-    }>  
-        {label}
-    </Button>;
-}
+    return (
+        <Button
+            className={style[className]}
+            variant="subtle"
+            leftIcon={
+                <Image
+                    objectFit="contain"
+                    height={30}
+                    width={30}
+                    src={iconSrc}
+                    alt={label}
+                />
+            }
+            fullWidth
+            size="sm"
+        >
+            <h1>{label}</h1>
+        </Button>
+    );
+};
 
 export default IconButton;

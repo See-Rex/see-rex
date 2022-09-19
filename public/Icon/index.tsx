@@ -1,9 +1,21 @@
+import { MantineSize } from "@mantine/core";
 import React from "react";
 
-type theme = { theme: "light" | "dark" };
+import style from "./_index.module.scss";
 
-const Icon = ({ theme }: theme) => {
-    return theme == "light" ? <IconLight /> : <IconDark />;
+type Props = { theme: "light" | "dark"; size?: MantineSize };
+
+const Icon = (props: Props) => {
+    const { theme, size } = props;
+    return theme == "light" ? (
+        <div className={style[size || "xl"]}>
+            <IconLight />
+        </div>
+    ) : (
+        <div className={style[size || "xl"]}>
+            <IconDark />
+        </div>
+    );
 };
 
 export const IconLight = () => {
