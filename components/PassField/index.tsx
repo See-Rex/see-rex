@@ -1,14 +1,14 @@
 import { PasswordInput } from '@mantine/core';
-import style from "./_index.module.scss";
 
 type Props = {
+  label: string;
   placeholder: string;
 }
 
 const PassField = (props: Props) => {
-  const { placeholder } = props;
+  const { label, placeholder } = props;
 
-  return <PasswordInput label="Password" placeholder={placeholder} size="md" />;
+  return <PasswordInput label={label} placeholder={placeholder} size="md" mt="md"  />;
 }
 
 export default PassField;

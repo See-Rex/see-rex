@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.formContainer {
+    width: 371px;
+}
+
 .authForm {
     margin: 10vh 0;
     width: 371px;
@@ -20,4 +24,26 @@
 
 .forgotPass {
     align-self: flex-end;
+    color: constant.$COLOR_PRIMARY;
+    font-family: constant.$FONT_SANS2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: constant.$CAPTION_2_FONT_SIZE;
+    line-height: constant.$CAPTION_2_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+}
+
+.text{
+    font-family: constant.$FONT_SANS2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: constant.$CAPTION_2_FONT_SIZE;
+    line-height: constant.$CAPTION_2_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+    color: constant.$COLOR_SECONDARY_DARK;
+}
+
+.google{
+    background-color: constant.$COLOR_ACCENT;
+    color: constant.$COLOR_SECONDARY;
 }

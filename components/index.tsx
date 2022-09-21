@@ -1,4 +1,5 @@
 import BasicHeader from "./BasicHeader";
+import GoogleButton from "./GoogleButton";
 import Icon from "../public/Icon";
 import TextField from "./TextField";
 import PassField from "./PassField";
@@ -9,9 +10,10 @@ import AuthLayout from "./AuthLayout";
 export {
     AuthLayout,
     BasicHeader,
+    GoogleButton,
     Icon,
     LandingBanner,
     TextField,
     PassField,
-    StyledButton
+    StyledButton,
 };

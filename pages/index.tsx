@@ -1,6 +1,9 @@
 import { useState } from "react";
 import type { NextPage } from "next";
-import { MantineProvider, Button, Group } from '@mantine/core';
+import { 
+    MantineProvider, 
+    Button
+} from '@mantine/core';
 
 import {BasicHeader, TextField, PassField, LandingBanner, AuthLayout} from "../components";
 import BasicFooter from "../components/BasicFooter";
@@ -20,7 +23,7 @@ const Home: NextPage = () => {
             <Button mb={50} onClick={()=>setIsLightTheme(!isLightTheme)}>Change Theme</Button>
             
             <TextField label={'Email'} placeholder={'lezzml.now@gmail.com'} />
-            <PassField placeholder={'Your password'} />
+            <PassField label={'Password'} placeholder={'Your password'} />
             <StyledButton type='sign-up' theme={isLightTheme? 'light':'dark'}>SIGN-UP</StyledButton>
             <StyledButton type='submit' theme={isLightTheme? 'light':'dark'}>RESET PASSWORD</StyledButton>
             <StyledButton type='card' theme={isLightTheme? 'light':'dark'}>Show Details</StyledButton>
