@@ -18,6 +18,7 @@ const Home: NextPage = () => {
 
     return (
         <MantineProvider>
+            <AuthLayout theme={theme}  />
             <LandingBanner />
             <BasicHeader theme={theme}>
                 <StyledButton types="sign-in" theme={theme}>
@@ -43,17 +44,16 @@ const Home: NextPage = () => {
             <BasicFooter type={isLightTheme ? "light" : "dark"} />
             <IconButton
                 className="link"
-                iconSrc={'/./../public/Icons'}
+                icon={'/./../public/Icons'}
                 label={"Link Inactive"}
             />
             <IconButton
                 className="active"
-                iconSrc={'/./../public/Icons'}
+                icon={'/./../public/Icons'}
                 label={"Link Active"}
             />
             <CollapsedBar />
-            
-            <AuthLayout theme={isLightTheme ? 'light' : 'dark'}  />
+            <BasicFooter type={theme} />
         </MantineProvider>
     );
 };

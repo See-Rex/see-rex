@@ -48,3 +48,13 @@
         @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
     }
 }
+
+.backToLogin {
+    color: constant.$COLOR_GREY_DARK;
+    font-family: constant.$FONT_SANS3;
+    font-style: normal;
+    font-weight: 500;
+    font-size: constant.$BUTTON_TEXT_SMALL_FONT_SIZE;
+    line-height: constant.$BUTTON_TEXT_SMALL_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+}

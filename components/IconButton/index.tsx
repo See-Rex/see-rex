@@ -1,5 +1,6 @@
 import { Button } from "@mantine/core";
 import { LinkProps } from "next/link";
+import React, { MouseEventHandler } from "react";
 
 import style from "./_index.module.scss";
 
@@ -7,6 +8,7 @@ type Props = Omit<LinkProps, "href"> & {
     icon: React.ReactNode;
     label: string;
     className?: "link" | "active";
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const IconButton = (props: Props) => {
@@ -21,7 +23,7 @@ const IconButton = (props: Props) => {
             size="sm"
             onClick={onClick}
         >
-            <h1>{label}</h1>
+            {label}
         </Button>
     );
 };
