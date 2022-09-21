@@ -1,5 +1,6 @@
 import { Button } from "@mantine/core";
 import Image from "next/image";
+import React, { MouseEventHandler } from "react";
 
 import style from "./_index.module.scss";
 
@@ -7,10 +8,11 @@ type Props = {
     iconSrc: string;
     label: string;
     className: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const IconButton = (props: Props) => {
-    const { iconSrc, label, className } = props;
+    const { iconSrc, label, className, onClick } = props;
 
     return (
         <Button
@@ -25,10 +27,10 @@ const IconButton = (props: Props) => {
                     alt={label}
                 />
             }
-            fullWidth
             size="sm"
+            onClick={onClick}
         >
-            <h1>{label}</h1>
+            {label}
         </Button>
     );
 };

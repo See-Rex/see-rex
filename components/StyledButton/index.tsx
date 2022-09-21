@@ -13,16 +13,16 @@ type Button_Params = {
         | "card"
         | "navigation";
     theme: "light" | "dark";
-    onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const StyledButton = (params: Button_Params) => {
-    const { children, types, theme } = params;
-    return (
-        <Button className={`${style[types]} ${style[theme]}`}>
-            <h1>{children}</h1>
-        </Button>
-    );
-};
+  const {children, types, theme, onClick} = params;
+  return (
+    <Button className={`${style[types]} ${style[theme]}`} onClick={onClick} size="sm" mb="md" mt="md" >
+      <h1>{children}</h1>
+    </Button>
+  )
+}
 
 export default StyledButton;
