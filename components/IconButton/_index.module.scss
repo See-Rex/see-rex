@@ -3,29 +3,6 @@
 @use "../../styles/theme" as theme;
 
 // Icon Button
-.inner {
-    padding: 10px 25px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: grayscale(80%);
-
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-        color: constant.$COLOR_PRIMARY;
-    }
-
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 25%);
-        color: constant.$COLOR_ACCENT;
-        filter: grayscale(0%);
-    }
-}
-
 .link {
     padding: 5px 25px;
     height: auto;
@@ -34,21 +11,22 @@
     align-items: center;
     text-decoration: none;
     font-size: 10px;
+    filter: grayscale(100%);
 
     h1 {
         @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
+        font-family: constant.$FONT_SANS3;
         font-style: normal;
         font-weight: 600;
         color: constant.$COLOR_PRIMARY;
     }
 
     &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 10%);
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
     }
 }
 
-.linkActive {
+.active {
     padding: 5px 25px;
     height: auto;
     display: flex;
@@ -60,13 +38,13 @@
 
     h1 {
         @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
+        font-family: constant.$FONT_SANS3;
         font-style: normal;
         font-weight: 600;
         color: constant.$COLOR_PRIMARY;
     }
 
     &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 10%);
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
     }
 }
