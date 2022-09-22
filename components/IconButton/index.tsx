@@ -1,32 +1,25 @@
 import { Button } from "@mantine/core";
-import Image from "next/image";
+import { LinkProps } from "next/link";
 
 import style from "./_index.module.scss";
 
-type Props = {
-    iconSrc: string;
+type Props = Omit<LinkProps, "href"> & {
+    icon: React.ReactNode;
     label: string;
-    className: string;
+    className?: "link" | "active";
 };
 
 const IconButton = (props: Props) => {
-    const { iconSrc, label, className } = props;
+    const { icon, label, className, onClick } = props;
 
     return (
         <Button
-            className={style[className]}
+            className={style[className || "link"]}
             variant="subtle"
-            leftIcon={
-                <Image
-                    objectFit="contain"
-                    height={30}
-                    width={30}
-                    src={iconSrc}
-                    alt={label}
-                />
-            }
+            leftIcon={icon}
             fullWidth
             size="sm"
+            onClick={onClick}
         >
             <h1>{label}</h1>
         </Button>
