@@ -38,12 +38,6 @@
     }
 }
 
-.dark {
-    h1 {
-        color: constant.$COLOR_WHITE;
-    }
-}
-
 .sign-up {
     @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
     border-radius: 10px;

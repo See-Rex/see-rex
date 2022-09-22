@@ -1,5 +1,6 @@
 @use "../../styles/text" as text;
 @use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
 
 // Mantine Footer
 .basic_footer {
@@ -16,13 +17,13 @@
 }
 
 .light {
-    background-color: constant.$COLOR_WHITE;
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
     color: constant.$COLOR_ACCENT;
     transition: all 0.2s ease-in;
 }
 
 .dark {
-    background-color: constant.$COLOR_PRIMARY_DARK;
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
     color: constant.$COLOR_WHITE_DARK;
     transition: all 0.2s ease-in;
 }
