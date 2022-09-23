@@ -1,13 +1,14 @@
-import { MantineSize } from "@mantine/core";
+import { MantineSize, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 
 import style from "./_index.module.scss";
 
-type Props = { theme: "light" | "dark"; size?: MantineSize };
+type Props = { size?: MantineSize };
 
 const Logo = (props: Props) => {
-    const { theme, size } = props;
-    return theme == "light" ? (
+    const { colorScheme } = useMantineColorScheme();
+    const { size } = props;
+    return colorScheme == "light" ? (
         <div className={style[size || "xl"]}>
             <LogoLight />
         </div>
