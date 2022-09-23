@@ -7,24 +7,31 @@ import style from "./_index.module.scss";
 type Props = Omit<LinkProps, "href"> & {
     icon: React.ReactNode;
     label: string;
-    className?: "link" | "active" | "backToLogin";
+    className?: "link" | "active" | "back";
     onClick?: MouseEventHandler<HTMLButtonElement>;
+    isFullWidth?: boolean;
 };
 
 const IconButton = (props: Props) => {
     const { colorScheme } = useMantineColorScheme();
-    const { icon, label, className, onClick } = props;
+    const { icon, label, className, onClick, isFullWidth } = props;
+    const isIconArrowBack = className?.includes('back');
+
+    const classWithColorScheme = style[colorScheme + '-' + className ?? 'link'];
+    const isIconNavButton = !isIconArrowBack && style.iconButton;
+    
+    const renderButtonContent = isIconArrowBack? label : <h1>{label}</h1>;
 
     return (
         <Button
-            className={`${style[`${colorScheme}-${className || "link"}`]}`}
+            className={`${isIconNavButton} ${classWithColorScheme} ${isIconArrowBack && style.back}`}
             variant="subtle"
             leftIcon={icon}
-            fullWidth={className === "backToLogin" ? true: false}
+            fullWidth={isFullWidth}
             size="sm"
             onClick={onClick}
         >
-            {label}
+            {renderButtonContent}
         </Button>
     );
 };
