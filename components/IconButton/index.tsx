@@ -19,7 +19,7 @@ const IconButton = (props: Props) => {
             className={style[className || "link"]}
             variant="subtle"
             leftIcon={icon}
-            fullWidth
+            fullWidth={className === "backToLogin" ? true: false}
             size="sm"
             onClick={onClick}
         >

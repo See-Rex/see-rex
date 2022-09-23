@@ -17,6 +17,7 @@ import SeeRexIcon from '../../public/Logo';
 import BasicHeader from '../BasicHeader';
 import { useState } from 'react';
 import IconButton from '../IconButton';
+import ArrowBack from '../../public/Icons/ArrowBack';
 
 type Props = {
   theme: 'light' | 'dark';
@@ -28,10 +29,10 @@ const AuthLayout = (props: Props) => {
   const [isForgotPass, setIsForgotPass] = useState(false);
 
   const renderForgotPasswordTitle = isForgotPass && <Group position='center'> 
-    <Title size={20} align="center">
+    <Title size={20} align="center" className={style.forgotPassTitle}>
       Forgot your password?
     </Title>
-    <Text color="dimmed" size="sm" align="center" mt={5}>
+    <Text color="dimmed" size="sm" align="center" mt={-10}>
       Enter your email address to get a reset password link.
     </Text>
   </Group>
@@ -40,7 +41,7 @@ const AuthLayout = (props: Props) => {
     <Anchor<'a'> 
       onClick={() => setIsForgotPass(true)}
       size="sm"
-      className={"forgotPass"}
+      className={style.forgotPass}
       type="button"
     >
       Forgot password?
@@ -49,9 +50,9 @@ const AuthLayout = (props: Props) => {
 
   const renderForgotPasswordForm = isForgotPass && <Group position="apart" mt="md">
     <IconButton 
-      icon={'/../../public/Icons/ArrowBack.svg'} 
+      icon={<ArrowBack />} 
       label={'Back to login page'} 
-      className={'backToLogin'}
+      className={"backToLogin"}
       onClick={() => setIsForgotPass(false)}
     />
     <StyledButton types='submit' theme={theme}>RESET PASSWORD</StyledButton>
@@ -86,7 +87,7 @@ const AuthLayout = (props: Props) => {
             onClick={() => toggle()}
             href="#" 
             size="sm"
-            className={"forgotPass"}
+            className={style.forgotPass}
             type="button"
           >
             {type === 'register' && "Login"}

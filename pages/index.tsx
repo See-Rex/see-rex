@@ -10,6 +10,7 @@ import {
     StyledButton,
     AuthLayout,
 } from "../components";
+import IconHolidayVillage from "./../public/Icons/IconHolidayVillage";
 import CollapsedBar from "../components/CollapsedBar";
 
 const Home: NextPage = () => {
@@ -44,12 +45,12 @@ const Home: NextPage = () => {
             <BasicFooter type={isLightTheme ? "light" : "dark"} />
             <IconButton
                 className="link"
-                icon={'/./../public/Icons'}
+                icon={<IconHolidayVillage />}
                 label={"Link Inactive"}
             />
             <IconButton
                 className="active"
-                icon={'/./../public/Icons'}
+                icon={<IconHolidayVillage />}
                 label={"Link Active"}
             />
             <CollapsedBar />
