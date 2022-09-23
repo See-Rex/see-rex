@@ -1,5 +1,5 @@
 import { AppShell, BurgerProps } from "@mantine/core";
-import React, { useState } from "react";
+import React from "react";
 import { BasicHeader } from "../../components";
 import CollapsedBar from "../../components/CollapsedBar";
 

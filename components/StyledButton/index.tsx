@@ -17,9 +17,9 @@ type Button_Params = {
 
 const StyledButton = (params: Button_Params) => {
     const { colorScheme } = useMantineColorScheme();
-    const { children, types } = params;
+    const { children, onClick, types } = params;
     return (
-        <Button className={`${style[types]} ${style[colorScheme]}`}>
+        <Button className={`${style[types]} ${style[colorScheme]}`} onClick={onClick}>
             <h1>{children}</h1>
         </Button>
     );

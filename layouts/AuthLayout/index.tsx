@@ -5,28 +5,28 @@ import {
   Paper, 
   Text,
   Divider,
-  Title,
+  Title
 } from '@mantine/core';
+
+import {
+  BasicHeader,
+  BasicFooter,
+  GoogleButton,
+  IconButton,
+  InputField,
+  StyledButton
+} from "../../components";
 import { useToggle } from "@mantine/hooks";
-import BasicFooter from "../BasicFooter";
-import StyledButton from "../StyledButton";
+
 import style from "./_index.module.scss";
-import InputField from '../InputField';
-import GoogleButton from '../GoogleButton';
 import SeeRexIcon from '../../public/Logo';
-import BasicHeader from '../BasicHeader';
 import { useState } from 'react';
-import IconButton from '../IconButton';
 import ArrowBack from '../../public/Icons/ArrowBack';
 
-type Props = {
-  theme: 'light' | 'dark';
-}
-
-const AuthLayout = (props: Props) => {
-  const { theme } = props;
+const AuthLayout = () => {
   const [type, toggle] = useToggle(['login', 'register']);
   const [isForgotPass, setIsForgotPass] = useState(false);
+  console.log(type);
 
   const renderForgotPasswordTitle = isForgotPass && <Group position='center'> 
     <Title size={20} align="center" className={style.forgotPassTitle}>
@@ -50,21 +50,22 @@ const AuthLayout = (props: Props) => {
 
   const renderForgotPasswordForm = isForgotPass && <Group position="apart" mt="md">
     <IconButton 
-      icon={<ArrowBack />} 
+      className={'back'}
+      icon={<ArrowBack />}
+      isFullWidth={false}
       label={'Back to login page'} 
-      className={"backToLogin"}
       onClick={() => setIsForgotPass(false)}
     />
-    <StyledButton types='submit' theme={theme}>RESET PASSWORD</StyledButton>
+    <StyledButton types='submit'>RESET PASSWORD</StyledButton>
   </Group>;
 
   const renderSignInButtons =  type === 'login' && <Group position='center'>
-    <StyledButton types='sign-in' theme={theme}>SIGN-IN</StyledButton>
-    <StyledButton types='register' theme={theme} onClick={() => toggle()}>REGISTER</StyledButton>
+    <StyledButton types='sign-in'>SIGN-IN</StyledButton>
+    <StyledButton types='register' onClick={() => toggle()}>REGISTER</StyledButton>
   </Group>;
   
   const renderSignUpButton =  type === 'register' && 
-    <StyledButton types='sign-up' theme={theme} onClick={() => toggle()}>SIGN-UP</StyledButton>;
+    <StyledButton types='sign-up' onClick={() => toggle()}>SIGN-UP</StyledButton>;
   
   const renderConfirmPasswordField =  type === 'register' && 
     <InputField label={'Confirm Password'} placeholder={'Re-enter password'} />;
@@ -97,11 +98,11 @@ const AuthLayout = (props: Props) => {
 
   return (
     <Paper className={style.container}>
-      <BasicHeader theme={theme}> </BasicHeader>
+      <BasicHeader opened={false} />
       <Container my={50}>
-        <Paper withBorder shadow="md" p={35} mt={30} radius="md" className={style.formContainer}>
+        <Paper withBorder shadow="md" p={35} mt={20} mb={30} radius="md" className={style.formContainer}>
           <Group position="center" mt="md" mb="xl">
-            <SeeRexIcon theme={theme} />
+            <SeeRexIcon />
           </Group>
           {renderForgotPasswordTitle}
           <InputField label={'Email'} placeholder={'lezzml.now@gmail.com'} />
@@ -109,7 +110,7 @@ const AuthLayout = (props: Props) => {
           {renderForgotPasswordForm}
         </Paper>
       </Container>
-      <BasicFooter type={theme} />
+      <BasicFooter height={56} />
     </Paper>
   );
 }
