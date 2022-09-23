@@ -3,49 +3,99 @@
 @use "../../styles/theme" as theme;
 
 // Icon Button
-.link {
-    padding: 5px 25px;
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    font-size: 10px;
-    filter: grayscale(100%);
+.light {
+    &-link {
+        padding: 5px 25px;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        font-size: 10px;
+        filter: grayscale(100%);
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_SANS3;
-        font-style: normal;
-        font-weight: 600;
-        color: constant.$COLOR_PRIMARY;
+        h1 {
+            @include text.BUTTON_TEXT_SMALL;
+            font-family: constant.$FONT_SANS3;
+            font-style: normal;
+            font-weight: 600;
+            color: constant.$COLOR_PRIMARY;
+        }
+
+        &:hover {
+            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
+        }
     }
 
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
+    &-active {
+        padding: 5px 25px;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        font-size: 10px;
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+
+        h1 {
+            @include text.BUTTON_TEXT_SMALL;
+            font-family: constant.$FONT_SANS3;
+            font-style: normal;
+            font-weight: 600;
+            color: constant.$COLOR_PRIMARY;
+        }
+
+        &:hover {
+            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+        }
     }
 }
 
-.active {
-    padding: 5px 25px;
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    font-size: 10px;
-    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+.dark {
+    &-link {
+        padding: 5px 25px;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        font-size: 10px;
+        filter: grayscale(100%);
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_SANS3;
-        font-style: normal;
-        font-weight: 600;
-        color: constant.$COLOR_PRIMARY;
+        h1 {
+            @include text.BUTTON_TEXT_SMALL;
+            font-family: constant.$FONT_SANS3;
+            font-style: normal;
+            font-weight: 600;
+            color: constant.$COLOR_WHITE_DARK;
+        }
+
+        &:hover {
+            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
+        }
     }
 
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+    &-active {
+        padding: 5px 25px;
+        height: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        text-decoration: none;
+        font-size: 10px;
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
+
+        h1 {
+            @include text.BUTTON_TEXT_SMALL;
+            font-family: constant.$FONT_SANS3;
+            font-style: normal;
+            font-weight: 600;
+            color: constant.$COLOR_WHITE_DARK;
+        }
+
+        &:hover {
+            @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
+        }
     }
 }
 

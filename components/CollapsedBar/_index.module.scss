@@ -1,5 +1,6 @@
 @use "../../styles/text" as text;
 @use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
 
 .header {
     padding-bottom: 12px;
@@ -11,4 +12,14 @@
     padding-top: 12px;
     margin-top: 18px;
     border-top: 1px solid rgba(constant.$COLOR_GREY_DARK, 40%);
+}
+
+.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+}
+
+.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    transition: all 0.2s ease-in;
 }

@@ -1,28 +1,52 @@
-import { Header, Group, Burger, Container } from "@mantine/core";
+import {
+    Header,
+    Group,
+    Burger,
+    Container,
+    MediaQuery,
+    BurgerProps,
+    useMantineColorScheme,
+    Code,
+} from "@mantine/core";
 import style from "./_index.module.scss";
 import Logo from "../../public/Logo";
 
 type Props = {
-    children: React.ReactNode;
-    theme: "light" | "dark";
+    children?: React.ReactNode;
+    burger?: boolean;
 };
 
-const BasicHeader = (props: Props) => {
-    const { children, theme } = props;
+const BasicHeader = (props: BurgerProps & Props) => {
+    const { colorScheme } = useMantineColorScheme();
+    const { burger, children, opened, onClick } = props;
 
     return (
-        <Header height={56} mb={50} className={style[theme]}>
-            <Container>
+        <Header height={56} mb={50} className={style[colorScheme]}>
+            <Container fluid={!children}>
                 <div className={style.inner}>
-                    <Logo size="lg" theme={theme} />
-                    <Group spacing={20} className={style.links}>
-                        {children}
-                    </Group>
-                    <Burger
-                        opened={false}
-                        color={theme === "light" ? "black" : "white"}
-                        className={style.autohide}
-                    />
+                    <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                        <Burger
+                            hidden={!burger}
+                            opened={opened}
+                            onClick={onClick}
+                            size="sm"
+                            mr="xl"
+                        />
+                    </MediaQuery>
+                    <Logo size="lg" />
+                    <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
+                        <Group spacing={20} className={style.links}>
+                            {children}
+                        </Group>
+                    </MediaQuery>
+                    <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                        <Code
+                            className={style[`${colorScheme}-code`]}
+                            sx={{ fontWeight: 700 }}
+                        >
+                            v1.0.1
+                        </Code>
+                    </MediaQuery>
                 </div>
             </Container>
         </Header>

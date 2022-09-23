@@ -40,6 +40,10 @@
     }
 }
 
-.color {
+.light {
     fill: constant.$COLOR_PRIMARY;
+}
+
+.dark {
+    fill: constant.$COLOR_WHITE_DARK;
 }

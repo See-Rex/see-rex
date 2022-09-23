@@ -6,12 +6,14 @@ import LandingBanner from "./LandingBanner";
 import BasicFooter from "./BasicFooter/index";
 import IconButton from "./IconButton/index";
 import AuthLayout from "./AuthLayout";
+import CollapsedBar from "./CollapsedBar/index";
 
 export {
     AuthLayout,
     BasicHeader,
     BasicFooter,
     GoogleButton,
+    CollapsedBar,
     IconButton,
     InputField,
     LandingBanner,

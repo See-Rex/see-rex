@@ -1,4 +1,4 @@
-import { Button } from "@mantine/core";
+import { Button, useMantineColorScheme } from "@mantine/core";
 import { LinkProps } from "next/link";
 import React, { MouseEventHandler } from "react";
 
@@ -12,11 +12,12 @@ type Props = Omit<LinkProps, "href"> & {
 };
 
 const IconButton = (props: Props) => {
+    const { colorScheme } = useMantineColorScheme();
     const { icon, label, className, onClick } = props;
 
     return (
         <Button
-            className={style[className || "link"]}
+            className={`${style[`${colorScheme}-${className || "link"}`]}`}
             variant="subtle"
             leftIcon={icon}
             fullWidth={className === "backToLogin" ? true: false}

@@ -1,5 +1,5 @@
-import { Button } from "@mantine/core";
 import React, { MouseEventHandler } from "react";
+import { Button, useMantineColorScheme } from "@mantine/core";
 import style from "./_index.module.scss";
 
 type Button_Params = {
@@ -12,17 +12,17 @@ type Button_Params = {
         | "submit"
         | "card"
         | "navigation";
-    theme: "light" | "dark";
     onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const StyledButton = (params: Button_Params) => {
-  const {children, types, theme, onClick} = params;
-  return (
-    <Button className={`${style[types]} ${style[theme]}`} onClick={onClick} size="sm" mb="md" mt="md" >
-      <h1>{children}</h1>
-    </Button>
-  )
-}
+    const { colorScheme } = useMantineColorScheme();
+    const { children, types } = params;
+    return (
+        <Button className={`${style[types]} ${style[colorScheme]}`}>
+            <h1>{children}</h1>
+        </Button>
+    );
+};
 
 export default StyledButton;
