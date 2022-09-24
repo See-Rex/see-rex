@@ -1,4 +1,4 @@
-import { Container, Divider, Group, RingProgress, Stack, Text } from '@mantine/core'
+import { Container, Group, RingProgress, Stack, Text } from '@mantine/core'
 import React from 'react'
 import style from "./_index.module.scss"
 
