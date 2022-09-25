@@ -23,10 +23,13 @@ import SeeRexIcon from '../../public/Logo';
 import { useState } from 'react';
 import ArrowBack from '../../public/Icons/ArrowBack';
 
-const AuthLayout = () => {
+export type AuthType = {
+    type: 'login' | 'sign-up' | 'reset';
+}
+
+const AuthLayout = (props: AuthType) => {
   const [type, toggle] = useToggle(['login', 'register']);
   const [isForgotPass, setIsForgotPass] = useState(false);
-  console.log(type);
 
   const renderForgotPasswordTitle = isForgotPass && <Group position='center'> 
     <Title size={20} align="center" className={style.forgotPassTitle}>

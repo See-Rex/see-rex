@@ -4,7 +4,7 @@ import AuthLayout from "../../layouts/AuthLayout";
 function Auth() {
 
     return (
-        <AuthLayout />
+        <AuthLayout type="login"/>
     );
 }
 
