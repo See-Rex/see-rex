@@ -10,14 +10,16 @@ import style from "./_index.module.scss";
 import { BasicHeader, InputField, StyledButton, GoogleButton, BasicFooter } from '../../components';
 import SeeRexIcon from '../../public/Logo';
 import Link from 'next/link';
+import { useAuth } from '../../context/AuthContext';
+import { useRouter } from 'next/router';
 
 export function Login() {
+  const { user, login } = useAuth();
+  const router = useRouter();
   const form = useForm({
     initialValues: {
       email: '',
-      name: '',
-      password: '',
-      terms: true,
+      password: ''
     },
 
     validate: {
@@ -25,6 +27,20 @@ export function Login() {
       password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
     },
   });
+
+  const handleLogin = async () => {
+    try {
+      await login(form.values.email, form.values.password);
+      alert('You have successfully logged in!');
+      router.push('/dashboard');
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  if (user) {
+    router.push('/dashboard');
+  }
 
   return (
     <Paper className={style.container}>
@@ -34,7 +50,7 @@ export function Login() {
           <Group position="center" mt="md" mb="xl">
             <SeeRexIcon />
           </Group>
-          <form onSubmit={form.onSubmit(() => {})}>
+          <form onSubmit={form.onSubmit(handleLogin)}>
             <InputField 
               required
               label={'Email'} 

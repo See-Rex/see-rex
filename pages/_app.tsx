@@ -6,21 +6,35 @@ import {
     MantineProvider,
 } from "@mantine/core";
 import { useState } from "react";
+import { AuthContextProvider } from "../context/AuthContext";
+import { useRouter } from "next/router";
+import ProtectedRoute from "../components/ProtectedRoute";
+
+const noAuthRequired = ['/', '/auth/login', '/auth/register', '/auth/resetpassword'];
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
     const toggleColorScheme = (value?: ColorScheme) =>
         setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    const router = useRouter();
 
     return (
-        <ColorSchemeProvider
-            colorScheme={colorScheme}
-            toggleColorScheme={toggleColorScheme}
-        >
-            <MantineProvider>
-                <Component {...pageProps} />
-            </MantineProvider>
-        </ColorSchemeProvider>
+        <AuthContextProvider>
+            <ColorSchemeProvider
+                colorScheme={colorScheme}
+                toggleColorScheme={toggleColorScheme}
+                >
+                <MantineProvider>
+                    {noAuthRequired.includes(router.pathname) ? (
+                        <Component {...pageProps} />
+                    ) : (
+                        <ProtectedRoute>
+                            <Component {...pageProps} />
+                        </ProtectedRoute>
+                    )}
+                </MantineProvider>
+            </ColorSchemeProvider>
+        </AuthContextProvider>
     );
 }
 

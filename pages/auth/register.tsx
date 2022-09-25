@@ -11,21 +11,42 @@ import style from "./_index.module.scss";
 import { BasicHeader, InputField, StyledButton, GoogleButton, BasicFooter } from '../../components';
 import SeeRexIcon from '../../public/Logo';
 import Link from 'next/link';
+import { useAuth } from '../../context/AuthContext';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 function Register() {
+  const { user, register } = useAuth();
+  const router = useRouter();
+  const [password, setPassword] = useState('');
+
   const form = useForm({
     initialValues: {
       email: '',
-      name: '',
       password: '',
-      terms: true,
+      cpassword: ''
     },
 
     validate: {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
       password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
+      cpassword: (val) => (val !== password? 'Please re-enter the correct password' : null),
     },
   });
+
+  const handleRegister = async () => {
+      try {
+        await register(form.values.email, form.values.password);
+        alert('You have successfully signed up!');
+        router.push('/dashboard');
+      } catch (err) {
+        alert(err);
+      }
+  }
+
+  if (user) {
+    router.push('/dashboard');
+  }
 
   return (
     <Paper className={style.container}>
@@ -35,7 +56,7 @@ function Register() {
           <Group position="center" mt="md" mb="xl">
             <SeeRexIcon />
           </Group>
-          <form onSubmit={form.onSubmit(() => {})}>
+          <form onSubmit={form.onSubmit(handleRegister)}>
             <InputField 
               required
               label={'Email'} 
@@ -49,19 +70,22 @@ function Register() {
               label={'Password'} 
               placeholder={'Your password'}
               value={form.values.password}
-              onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
+              onChange={(event) => {
+                form.setFieldValue('password', event.currentTarget.value);
+                setPassword(event.currentTarget.value);
+              }}
               error={form.errors.password && 'Password should include at least 6 characters'}
             />
             <InputField 
               required 
               label={'Confirm Password'}
               placeholder={'Re-enter password'}
-              value={form.values.password}
-              onChange={(event) => form.setFieldValue('password', event.currentTarget.value)}
-              error={form.errors.password && 'Password should include at least 6 characters'}
+              value={form.values.cpassword}
+              onChange={(event) => form.setFieldValue('cpassword', event.currentTarget.value)}
+              error={form.errors.cpassword}
             />
               <Group position='center' mb="md" mt="md">
-                <StyledButton types='sign-up' onClick={() => {}}>SIGN-UP</StyledButton>
+                <StyledButton types='sign-up'>SIGN-UP</StyledButton>
               </Group>
               <Divider label="OR" labelPosition="center" my="lg" />
               <Group grow mb="md" mt="md">
