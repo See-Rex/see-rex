@@ -34,35 +34,35 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
                     icon={<IconSpaceDashboard />}
                     label={"Dashboard"}
                     onClick={() => setPage(1)}
-                    isFullWidth={true}
+                    isFullWidth
                 />
                 <IconButton
                     className={page == 2 ? "active" : "link"}
                     icon={<IconContacts />}
                     label={"Contacts"}
                     onClick={() => setPage(2)}
-                    isFullWidth={true}
+                    isFullWidth
                 />
                 <IconButton
                     className={page == 3 ? "active" : "link"}
                     icon={<IconHolidayVillage />}
                     label={"Residential Properties"}
                     onClick={() => setPage(3)}
-                    isFullWidth={true}
+                    isFullWidth
                 />
                 <IconButton
                     className={page == 4 ? "active" : "link"}
                     icon={<IconLandscape />}
                     label={"Land Properties"}
                     onClick={() => setPage(4)}
-                    isFullWidth={true}
+                    isFullWidth
                 />
                 <IconButton
                     className={page == 5 ? "active" : "link"}
                     icon={<IconLocationCity />}
                     label={"Non-Residential Properties"}
                     onClick={() => setPage(5)}
-                    isFullWidth={true}
+                    isFullWidth
                 />
             </Navbar.Section>
             <Navbar.Section className={style.footer}>

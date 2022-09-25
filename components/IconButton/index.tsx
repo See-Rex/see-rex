@@ -1,18 +1,17 @@
 import { Button, useMantineColorScheme } from "@mantine/core";
 import { LinkProps } from "next/link";
-import React, { MouseEventHandler } from "react";
+import React from "react";
 
 import style from "./_index.module.scss";
 
-type Props = Omit<LinkProps, "href"> & {
+type Props = {
     icon: React.ReactNode;
     label: string;
     className?: "link" | "active" | "back";
-    onClick?: MouseEventHandler<HTMLButtonElement>;
     isFullWidth?: boolean;
 };
 
-const IconButton = (props: Props) => {
+const IconButton = (props: Omit<LinkProps, "href"> & Props) => {
     const { colorScheme } = useMantineColorScheme();
     const { icon, label, className, onClick, isFullWidth } = props;
     const isIconArrowBack = className?.includes('back');

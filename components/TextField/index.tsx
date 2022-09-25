@@ -1,12 +1,6 @@
-import { TextInput } from '@mantine/core';
-import style from "./_index.module.scss";
+import {TextInput, TextInputProps } from '@mantine/core';
 
-type Props = {
-  label: string;
-  placeholder: string;
-}
-
-const TextField = (props: Props) => {
+const TextField = (props:  Omit<TextInputProps, "input">) => {
   const { label, placeholder } = props;
 
   return <TextInput label={label} placeholder={placeholder} size="md" mb="md" mt="md" />;

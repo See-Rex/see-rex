@@ -35,13 +35,13 @@ function StoryPage() {
                 className="link"
                 icon={<IconHolidayVillage />}
                 label={"Link Inactive"}
-                isFullWidth={true}
+                isFullWidth
             />
             <IconButton
                 className="active"
                 icon={<IconHolidayVillage />}
                 label={"Link Active"}
-                isFullWidth={true}
+                isFullWidth
             />
             <CollapsedBar page={0} setPage={()=>{}} />
         </>

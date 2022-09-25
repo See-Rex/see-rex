@@ -1,6 +1,7 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { Button, useMantineColorScheme } from "@mantine/core";
 import style from "./_index.module.scss";
+import { LinkProps } from "next/link";
 
 type Button_Params = {
     children: React.ReactNode;
@@ -12,10 +13,9 @@ type Button_Params = {
         | "submit"
         | "card"
         | "navigation";
-    onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const StyledButton = (params: Button_Params) => {
+const StyledButton = (params: Omit<LinkProps, "href"> & Button_Params) => {
     const { colorScheme } = useMantineColorScheme();
     const { children, onClick, types } = params;
     return (
