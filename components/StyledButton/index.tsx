@@ -1,6 +1,7 @@
-import { Button, useMantineColorScheme } from "@mantine/core";
 import React from "react";
+import { Button, useMantineColorScheme } from "@mantine/core";
 import style from "./_index.module.scss";
+import { LinkProps } from "next/link";
 
 type Button_Params = {
     children: React.ReactNode;
@@ -14,11 +15,11 @@ type Button_Params = {
         | "navigation";
 };
 
-const StyledButton = (params: Button_Params) => {
+const StyledButton = (params: Omit<LinkProps, "href"> & Button_Params) => {
     const { colorScheme } = useMantineColorScheme();
-    const { children, types } = params;
+    const { children, onClick, types } = params;
     return (
-        <Button className={`${style[types]} ${style[colorScheme]}`}>
+        <Button className={`${style[types]} ${style[colorScheme]}`} onClick={onClick}>
             <h1>{children}</h1>
         </Button>
     );

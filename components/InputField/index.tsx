@@ -14,9 +14,11 @@ const InputField = (props: Props) => {
                 label="Password"
                 placeholder={placeholder}
                 size="md"
+                mb="md" 
+                mt="md"
             />
         ) : (
-            <TextInput label={label} placeholder={placeholder} size="md" />
+            <TextInput label={label} placeholder={placeholder} size="md" mb="md" mt="md" />
         );
 
     return Field;

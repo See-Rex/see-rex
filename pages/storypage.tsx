@@ -7,12 +7,13 @@ import {
     IconButton,
     InputField,
     LandingBanner,
-    StyledButton,
+    StyledButton
 } from "../components";
 import { IconHolidayVillage } from "../public/Icons";
 
 function StoryPage() {
     const { toggleColorScheme } = useMantineColorScheme();
+
     return (
         <>
             <LandingBanner />
@@ -34,13 +35,15 @@ function StoryPage() {
                 className="link"
                 icon={<IconHolidayVillage />}
                 label={"Link Inactive"}
+                isFullWidth
             />
             <IconButton
                 className="active"
                 icon={<IconHolidayVillage />}
                 label={"Link Active"}
+                isFullWidth
             />
-            <CollapsedBar />
+            <CollapsedBar page={0} setPage={()=>{}} />
         </>
     );
 }

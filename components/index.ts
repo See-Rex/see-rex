@@ -1,5 +1,6 @@
 import BasicHeader from "./BasicHeader";
 import InputField from "./InputField";
+import GoogleButton from "./GoogleButton";
 import StyledButton from "./StyledButton";
 import LandingBanner from "./LandingBanner";
 import BasicFooter from "./BasicFooter/index";
@@ -9,6 +10,7 @@ import CollapsedBar from "./CollapsedBar/index";
 export {
     BasicHeader,
     BasicFooter,
+    GoogleButton,
     CollapsedBar,
     IconButton,
     InputField,
