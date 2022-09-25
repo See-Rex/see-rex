@@ -1,5 +1,10 @@
 @use "../../styles/constants" as constant;
 
+.container {
+    border-radius: 10px;
+    max-width: 410px;
+}
+
 .category {
     font-family: constant.$FONT_MAIN;
     font-style: normal;
@@ -18,4 +23,14 @@
     line-height: constant.$BANNER_HEADER_3_LINE_HEIGHT;
     letter-spacing: 0.03em;
     color: constant.$COLOR_BLACK;
+}
+
+.description {
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 700;
+    font-size: constant.$EXTRA_3_FONT_SIZE;
+    line-height: constant.$EXTRA_3_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+    color: constant.$COLOR_SECONDARY_DARK;
 }
