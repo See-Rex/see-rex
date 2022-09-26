@@ -10,7 +10,7 @@ import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../components/ProtectedRoute";
 
-const noAuthRequired = ['/', '/auth/login', '/auth/register', '/auth/resetpassword'];
+const noAuthRequired = ['/', '/auth/login', '/auth/register', '/auth/resetpassword', '/test'];
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
