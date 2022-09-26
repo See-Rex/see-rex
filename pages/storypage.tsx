@@ -7,10 +7,10 @@ import {
     IconButton,
     InputField,
     LandingBanner,
-    StyledButton
+    StyledButton,
 } from "../components";
 import { IconHolidayVillage } from "../public/Icons";
-import Link from 'next/link'
+import Link from "next/link";
 
 function StoryPage() {
     const { toggleColorScheme } = useMantineColorScheme();
@@ -18,7 +18,8 @@ function StoryPage() {
     return (
         <>
             <LandingBanner />
-            <BasicHeader opened={false}>.
+            <BasicHeader opened={false}>
+                .
                 <Link href="/auth/login">
                     <StyledButton types="sign-in">SIGN-IN</StyledButton>
                 </Link>
@@ -34,7 +35,11 @@ function StoryPage() {
                 Change Theme
             </Button>
             <InputField label={"Email"} placeholder={"lezzml.now@gmail.com"} />
-            <InputField placeholder={"Your password"} type="password" />
+            <InputField
+                label={"Password"}
+                placeholder={"Your password"}
+                type="password"
+            />
             <BasicFooter height={56} />
             <IconButton
                 className="link"
@@ -48,7 +53,7 @@ function StoryPage() {
                 label={"Link Active"}
                 isFullWidth
             />
-            <CollapsedBar page={0} setPage={()=>{}} />
+            <CollapsedBar page={0} setPage={() => {}} />
         </>
     );
 }

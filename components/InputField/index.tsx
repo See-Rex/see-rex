@@ -1,32 +1,68 @@
-import { PasswordInput, TextInputProps } from "@mantine/core";
-import TextField from "../TextField";
+import {
+    PasswordInput,
+    TextInput,
+    PasswordInputProps,
+    TextInputProps,
+} from "@mantine/core";
 
-const InputField = (props: Omit<TextInputProps, "input">) => {
+type Props = {
+    type?: "password" | "text";
+};
+
+const TextField = (props: TextInputProps) => {
     const { error, label, onChange, placeholder, required, value } = props;
+    return (
+        <TextInput
+            error={error}
+            label={label}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={required}
+            value={value}
+        />
+    );
+};
+
+const PassField = (props: PasswordInputProps) => {
+    const { error, label, onChange, placeholder, required, value } = props;
+    return (
+        <PasswordInput
+            error={error}
+            label={label}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={required}
+            value={value}
+            size="md"
+            mb="md"
+            mt="md"
+        />
+    );
+};
+
+const InputField = (props: Props & (TextInputProps | PasswordInputProps)) => {
+    const { error, label, onChange, placeholder, required, type, value } =
+        props;
     const Field =
-        label == "Password" || label == "Confirm Password" ? (
-            <PasswordInput
+        type == "password" ? (
+            <PassField
                 error={error}
                 label={label}
                 onChange={onChange}
                 placeholder={placeholder}
                 required={required}
                 value={value}
-                size="md"
-                mb="md" 
-                mt="md"
             />
         ) : (
-            <TextField 
+            <TextField
                 error={error}
-                label={label} 
+                label={label}
                 onChange={onChange}
-                placeholder={placeholder} 
+                placeholder={placeholder}
                 required={required}
                 value={value}
             />
         );
-
     return Field;
 };
 
