@@ -1,24 +1,30 @@
-import { PasswordInput, TextInput } from "@mantine/core";
+import { PasswordInput, TextInputProps } from "@mantine/core";
+import TextField from "../TextField";
 
-type Props = {
-    label?: string;
-    placeholder: string;
-    type?: "password" | "text";
-};
-
-const InputField = (props: Props) => {
-    const { label, placeholder, type } = props;
+const InputField = (props: Omit<TextInputProps, "input">) => {
+    const { error, label, onChange, placeholder, required, value } = props;
     const Field =
-        type == "password" ? (
+        label == "Password" || label == "Confirm Password" ? (
             <PasswordInput
-                label="Password"
+                error={error}
+                label={label}
+                onChange={onChange}
                 placeholder={placeholder}
+                required={required}
+                value={value}
                 size="md"
                 mb="md" 
                 mt="md"
             />
         ) : (
-            <TextInput label={label} placeholder={placeholder} size="md" mb="md" mt="md" />
+            <TextField 
+                error={error}
+                label={label} 
+                onChange={onChange}
+                placeholder={placeholder} 
+                required={required}
+                value={value}
+            />
         );
 
     return Field;

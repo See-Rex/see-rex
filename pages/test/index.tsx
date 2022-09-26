@@ -18,6 +18,15 @@ function TestPage() {
                 icon={<IconLocationCity size='lg' />}
                 type={'grid'} 
             />
+            <StatisticCard 
+                amount={500} 
+                amount2={500} 
+                amount3={500} 
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." 
+                description2="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." 
+                description3="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." 
+                type={'group'} 
+            />
         </>
     );
 }

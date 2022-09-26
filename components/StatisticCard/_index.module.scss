@@ -34,3 +34,37 @@
     letter-spacing: 0.03em;
     color: constant.$COLOR_SECONDARY_DARK;
 }
+
+.groupContainer {
+    border-radius: 15px;
+    max-width: 675px;
+    background: radial-gradient(
+        110.83% 137.19% at 85.44% 134.56%, 
+        rgba(53, 192, 237, 0.1) 0%, 
+        rgba(47, 144, 176, 0.5) 100%
+    );
+}
+
+.groupStack {
+    max-width: 170px;
+}
+
+.groupAmount {
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 700;
+    font-size: constant.$BANNER_HEADER_2_FONT_SIZE;
+    line-height: constant.$BANNER_HEADER_2_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+    color: constant.$COLOR_GREY;
+}
+
+.groupDescription {
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 700;
+    font-size: constant.$EXTRA_3_FONT_SIZE;
+    line-height: constant.$EXTRA_3_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+    color: constant.$COLOR_GREY;
+}
