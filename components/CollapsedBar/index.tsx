@@ -1,4 +1,9 @@
-import { Navbar, NavbarProps, useMantineColorScheme } from "@mantine/core";
+import {
+    Navbar,
+    NavbarProps,
+    ScrollArea,
+    useMantineColorScheme,
+} from "@mantine/core";
 import style from "./_index.module.scss";
 import React from "react";
 import IconButton from "../IconButton";
@@ -28,7 +33,7 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
             p="md"
             className={style[colorScheme]}
         >
-            <Navbar.Section grow>
+            <Navbar.Section grow component={ScrollArea}>
                 <IconButton
                     className={page == 1 ? "active" : "link"}
                     icon={<IconSpaceDashboard />}
@@ -66,7 +71,12 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
                 />
             </Navbar.Section>
             <Navbar.Section className={style.footer}>
-                <IconButton icon={<IconLogout />} label={"Logout"}  />
+                <IconButton
+                    className="link"
+                    icon={<IconLogout />}
+                    label={"Logout"}
+                    isFullWidth
+                />
             </Navbar.Section>
         </Navbar>
     );
