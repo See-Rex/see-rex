@@ -10,6 +10,7 @@ import {
     StyledButton
 } from "../components";
 import { IconHolidayVillage } from "../public/Icons";
+import Link from 'next/link'
 
 function StoryPage() {
     const { toggleColorScheme } = useMantineColorScheme();
@@ -17,9 +18,13 @@ function StoryPage() {
     return (
         <>
             <LandingBanner />
-            <BasicHeader opened={false}>
-                <StyledButton types="sign-in">SIGN-IN</StyledButton>
-                <StyledButton types="register">REGISTER</StyledButton>
+            <BasicHeader opened={false}>.
+                <Link href="/auth/login">
+                    <StyledButton types="sign-in">SIGN-IN</StyledButton>
+                </Link>
+                <Link href="/auth/register">
+                    <StyledButton types="register">REGISTER</StyledButton>
+                </Link>
             </BasicHeader>
             <BasicHeader opened={false}>
                 <StyledButton types="navigation">Sign-in</StyledButton>

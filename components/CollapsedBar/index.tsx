@@ -15,6 +15,8 @@ import {
     IconLogout,
     IconSpaceDashboard,
 } from "./../../public/Icons";
+import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/router";
 
 type Props = {
     page: number;
@@ -22,6 +24,8 @@ type Props = {
 };
 
 function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
+    const { logout } = useAuth();
+    const router = useRouter();
     const { colorScheme } = useMantineColorScheme();
 
     const { hidden, page, setPage } = props;
@@ -71,11 +75,14 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
                 />
             </Navbar.Section>
             <Navbar.Section className={style.footer}>
-                <IconButton
-                    className="link"
-                    icon={<IconLogout />}
-                    label={"Logout"}
-                    isFullWidth
+                <IconButton 
+                    icon={<IconLogout />} 
+                    label={"Logout"} 
+                    onClick={() => {
+                        logout();
+                        router.push('/auth/login');
+                        alert('Farewell! See you next time.');
+                    }} 
                 />
             </Navbar.Section>
         </Navbar>

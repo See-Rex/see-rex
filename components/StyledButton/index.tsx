@@ -18,8 +18,9 @@ type Button_Params = {
 const StyledButton = (params: Omit<LinkProps, "href"> & Button_Params) => {
     const { colorScheme } = useMantineColorScheme();
     const { children, onClick, types } = params;
+    
     return (
-        <Button className={`${style[types]} ${style[colorScheme]}`} onClick={onClick}>
+        <Button className={`${style[types]} ${style[colorScheme]}`} onClick={onClick} type="submit">
             <h1>{children}</h1>
         </Button>
     );
