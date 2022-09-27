@@ -1,4 +1,4 @@
-import { Container, Footer, FooterProps, Group, useMantineColorScheme } from "@mantine/core";
+import { Footer, FooterProps,useMantineColorScheme } from "@mantine/core";
 import Logo from "../../public/Logo";
 import style from "./_index.module.scss";
 
@@ -8,14 +8,14 @@ const MainFooter = (props: Omit<FooterProps, "children">) => {
 
     return (
         <Footer
-            className={`${style[colorScheme]} ${style["main_footer"]}`}
+            className={`${style["main_footer"]}`}
             height={height}
             p={p}
             mt={50}
         >
-            <div className={style.circle} />
+            <div className={`${style[colorScheme]} ${style.circle}`} />
             <Logo size="lg" />
-            <p>All right reserved Ⓒ SeeRex Inc. 2022</p>
+            <p className={`${style[colorScheme]}`}>All right reserved Ⓒ SeeRex Inc. 2022</p>
         </Footer>
     );
 };
