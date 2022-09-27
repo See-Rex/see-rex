@@ -1,111 +1,116 @@
 @use "./constants" as constants;
 
 @mixin BANNER_HEADER {
-    font-size: constants.$BANNER_HEADER_FONT_SIZE;
-    line-height: constants.$BANNER_HEADER_LINE_HEIGHT;
+  font-size: constants.$BANNER_HEADER_FONT_SIZE;
+  line-height: constants.$BANNER_HEADER_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADER_2 {
-    font-size: constants.$BANNER_HEADER_2_FONT_SIZE;
-    line-height: constants.$BANNER_HEADER_2_LINE_HEIGHT;
+  font-size: constants.$BANNER_HEADER_2_FONT_SIZE;
+  line-height: constants.$BANNER_HEADER_2_LINE_HEIGHT;
+}
+
+@mixin BANNER_HEADER_3 {
+  font-size: constants.$BANNER_HEADER_3_FONT_SIZE;
+  line-height: constants.$BANNER_HEADER_3_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADINGS_1 {
-    font-size: constants.$BANNER_HEADINGS_1_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
+  font-size: constants.$BANNER_HEADINGS_1_FONT_SIZE;
+  line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADINGS_2 {
-    font-size: constants.$BANNER_HEADINGS_2_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
+  font-size: constants.$BANNER_HEADINGS_2_FONT_SIZE;
+  line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BANNER_HEADINGS_3 {
-    font-size: constants.$BANNER_HEADINGS_3_FONT_SIZE;
-    line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
+  font-size: constants.$BANNER_HEADINGS_3_FONT_SIZE;
+  line-height: constants.$BANNER_HEADINGS_LINE_HEIGHT;
 }
 
 @mixin BUTTON_TEXT {
-    font-size: constants.$BUTTON_TEXT_FONT_SIZE;
-    line-height: constants.$BUTTON_TEXT_LINE_HEIGHT;
+  font-size: constants.$BUTTON_TEXT_FONT_SIZE;
+  line-height: constants.$BUTTON_TEXT_LINE_HEIGHT;
 }
 
 @mixin BUTTON_TEXT_SMALL {
-    font-size: constants.$BUTTON_TEXT_SMALL_FONT_SIZE;
-    line-height: constants.$BUTTON_TEXT_SMALL_LINE_HEIGHT;
+  font-size: constants.$BUTTON_TEXT_SMALL_FONT_SIZE;
+  line-height: constants.$BUTTON_TEXT_SMALL_LINE_HEIGHT;
 }
 
 @mixin BODY_SANS_1 {
-    font-size: constants.$BODY_SANS_1_FONT_SIZE;
-    line-height: constants.$BODY_SANS_1_LINE_HEIGHT;
+  font-size: constants.$BODY_SANS_1_FONT_SIZE;
+  line-height: constants.$BODY_SANS_1_LINE_HEIGHT;
 }
 
 @mixin BODY_SANS_2 {
-    font-size: constants.$BODY_SANS_2_FONT_SIZE;
-    line-height: constants.$BODY_SANS_2_LINE_HEIGHT;
+  font-size: constants.$BODY_SANS_2_FONT_SIZE;
+  line-height: constants.$BODY_SANS_2_LINE_HEIGHT;
 }
 
 @mixin BODY_SANS_3 {
-    font-size: constants.$BODY_SANS_3_FONT_SIZE;
-    line-height: constants.$BODY_SANS_3_LINE_HEIGHT;
+  font-size: constants.$BODY_SANS_3_FONT_SIZE;
+  line-height: constants.$BODY_SANS_3_LINE_HEIGHT;
 }
 
 @mixin CAPTION_1 {
-    font-size: constants.$CAPTION_1_FONT_SIZE;
-    line-height: constants.$CAPTION_1_LINE_HEIGHT;
+  font-size: constants.$CAPTION_1_FONT_SIZE;
+  line-height: constants.$CAPTION_1_LINE_HEIGHT;
 }
 
 @mixin CAPTION_2 {
-    font-size: constants.$CAPTION_2_FONT_SIZE;
-    line-height: constants.$CAPTION_2_LINE_HEIGHT;
+  font-size: constants.$CAPTION_2_FONT_SIZE;
+  line-height: constants.$CAPTION_2_LINE_HEIGHT;
 }
 
 @mixin CAPTION_3 {
-    font-size: constants.$CAPTION_3_FONT_SIZE;
-    line-height: constants.$CAPTION_3_LINE_HEIGHT;
+  font-size: constants.$CAPTION_3_FONT_SIZE;
+  line-height: constants.$CAPTION_3_LINE_HEIGHT;
 }
 
 @mixin EXTRA_1 {
-    font-size: constants.$EXTRA_1_FONT_SIZE;
-    line-height: constants.$EXTRA_1_LINE_HEIGHT;
+  font-size: constants.$EXTRA_1_FONT_SIZE;
+  line-height: constants.$EXTRA_1_LINE_HEIGHT;
 }
 
 @mixin EXTRA_2 {
-    font-size: constants.$EXTRA_2_FONT_SIZE;
-    line-height: constants.$EXTRA_2_LINE_HEIGHT;
+  font-size: constants.$EXTRA_2_FONT_SIZE;
+  line-height: constants.$EXTRA_2_LINE_HEIGHT;
 }
 
 @mixin EXTRA_3 {
-    font-size: constants.$EXTRA_3_FONT_SIZE;
-    line-height: constants.$EXTRA_3_LINE_HEIGHT;
+  font-size: constants.$EXTRA_3_FONT_SIZE;
+  line-height: constants.$EXTRA_3_LINE_HEIGHT;
 }
 
 @mixin HEADER_1 {
-    font-size: constants.$HEADER_1_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_1_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
 
 @mixin HEADER_2 {
-    font-size: constants.$HEADER_2_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_2_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
 
 @mixin HEADER_3 {
-    font-size: constants.$HEADER_3_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_3_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
 
 @mixin HEADER_4 {
-    font-size: constants.$HEADER_4_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_4_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
 
 @mixin HEADER_5 {
-    font-size: constants.$HEADER_5_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_5_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
 
 @mixin HEADER_TINY {
-    font-size: constants.$HEADER_TINY_FONT_SIZE;
-    line-height: constants.$HEADER_LINE_HEIGHT;
+  font-size: constants.$HEADER_TINY_FONT_SIZE;
+  line-height: constants.$HEADER_LINE_HEIGHT;
 }
