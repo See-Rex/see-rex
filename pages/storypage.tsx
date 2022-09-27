@@ -1,4 +1,4 @@
-import { Button, useMantineColorScheme } from "@mantine/core";
+import { Button, Image, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import {
   BasicFooter,
@@ -17,6 +17,7 @@ import StatisticCard from "../components/StatisticCard";
 import FeatureCard from "../components/FeatureCard";
 import FeatureHero from "../components/FeatureHero";
 import MainFooter from "../components/MainFooter";
+import AppCard from "../components/AppCard";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
@@ -99,6 +100,15 @@ function StoryPage() {
         description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "
         icon={undefined}
         title="Centralized Database"
+      />
+      <AppCard
+        image={<Image src={"background2.png"} alt={"homePic"} height={180} />}
+        title={"Home Property #1"}
+        type={"Residential"}
+        description={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+        values={["100", "200", "300", "400"]}
       />
     </>
   );
