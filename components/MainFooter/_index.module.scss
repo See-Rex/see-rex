@@ -8,6 +8,8 @@
     height: 500px;
     width: 100%;
     padding: 200px 50px 50px 50px;
+    background-color: transparent;
+    border: none;
     justify-content: space-between;
     align-items: center;
     font-family: constant.$FONT_SANS1;
@@ -26,19 +28,17 @@
     height: 400px;
     left: -50px;
     top: 10px;
-    box-shadow: 0px -4px 4px rgba(184, 184, 184, 0.25);
     border-radius: 50%;
     z-index: -1;
+    transition: all 0.2s ease-in;
+    box-shadow: 0px -4px 4px rgba(184, 184, 184, 0.25);
 }
 
 .light {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
     color: constant.$COLOR_ACCENT;
-    transition: all 0.2s ease-in;
 }
 
 .dark {
     @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
     color: constant.$COLOR_WHITE_DARK;
-    transition: all 0.2s ease-in;
 }
