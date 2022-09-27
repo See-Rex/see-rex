@@ -70,6 +70,16 @@ export function Login() {
                         }
                         type="password"
                     />
+                    <Group position="right">
+                        <Anchor<"a">
+                            href="/auth/resetpassword"
+                            size="sm"
+                            className={style.forgotPass}
+                            type="button"
+                        >
+                            Forgot password?
+                        </Anchor>
+                    </Group>
                     <Group position="center">
                         <Group position="center">
                             <StyledButton types="sign-in">
@@ -81,16 +91,6 @@ export function Login() {
                                 </StyledButton>
                             </Link>
                         </Group>
-                    </Group>
-                    <Group position="right">
-                        <Anchor<"a">
-                            href="/auth/resetpassword"
-                            size="sm"
-                            className={style.forgotPass}
-                            type="button"
-                        >
-                            Forgot password?
-                        </Anchor>
                     </Group>
                     <Divider label="OR" labelPosition="center" />
                     <Group grow>

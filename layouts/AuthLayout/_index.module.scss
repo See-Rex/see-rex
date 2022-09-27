@@ -1,12 +1,33 @@
 @use "../../styles/text" as text;
 @use "../../styles/constants" as constant;
 
+.pageContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .formContainer {
-  max-width: 370px;
+  width: 370px;
   margin: 0 auto;
+  transition: all 0.2s ease-in;
+
+  @media screen and (max-width: 400px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 385px) {
+    width: 320px;
+  }
+  @media screen and (max-width: 360px) {
+    width: 280px;
+  }
+  @media screen and (max-width: 330px) {
+    width: 260px;
+  }
 }
 
 .forgotContainer {
-  max-width: 450px;
   margin: 0 auto;
+  max-width: 450px;
 }
