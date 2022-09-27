@@ -1,4 +1,5 @@
 import { Button, ButtonProps } from '@mantine/core';
+import { useAuth } from '../../context/AuthContext';
 
 function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     return (
@@ -31,7 +32,18 @@ function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   }
 
 const GoogleButton = (props: ButtonProps) => {
-    return <Button leftIcon={<GoogleIcon />} variant="default" color="gray" {...props} />;
+  const { loginWithGoogle } = useAuth();
+  const googleSignIn = async () => {
+    await loginWithGoogle();
+  };
+
+    return <Button 
+      leftIcon={<GoogleIcon />} 
+      variant="default"
+      color="gray" 
+      onClick={googleSignIn}
+      {...props}
+    />;
 }
 
 export default GoogleButton
