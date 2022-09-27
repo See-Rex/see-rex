@@ -1,0 +1,17 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+.light {
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+}
+
+.dark {
+  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+}
+
+.label {
+  @include text.EXTRA_3;
+  font-family: constant.$FONT_MAIN;
+  font-weight: 600;
+}
