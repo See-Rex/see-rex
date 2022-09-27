@@ -1,16 +1,15 @@
 import { useForm } from '@mantine/form';
 import {
-  Paper,
   Group,
-  Container,
   Text,
-  Title
+  Title,
+  Stack
 } from '@mantine/core';
 import style from "./_index.module.scss";
-import { BasicHeader, InputField, StyledButton, IconButton, BasicFooter } from '../../components';
-import SeeRexIcon from '../../public/Logo';
+import {  InputField, StyledButton, IconButton } from '../../components';
 import Link from 'next/link';
 import { ArrowBack } from '../../public/Icons';
+import AuthLayout from '../../layouts/AuthLayout';
 
 export function ResetPassword() {
   const form = useForm({
@@ -24,47 +23,42 @@ export function ResetPassword() {
   });
 
   return (
-    <Paper className={style.container}>
-      <BasicHeader opened={false} />
-      <Container my={50}>
-        <Paper withBorder shadow="md" p={35} mt={20} mb={30} radius="md" className={style.formContainer}>
-          <Group position="center" mt="md" mb="xl">
-            <SeeRexIcon />
+    <AuthLayout isForgotPassword>
+      <Group position='center' mb='md'> 
+        <Stack>
+          <Title size={20} align="center" className={style.forgotPassTitle}>
+            Forgot your password?
+          </Title>
+          <Text color="dimmed" size="sm" align="center" mt={-10}>
+            Enter your email address to get a reset password link.
+          </Text>
+        </Stack>
+      </Group>
+      <form onSubmit={form.onSubmit(() => {})}>
+        <Stack spacing='md'>
+          <InputField 
+            required
+            label={'Email'} 
+            placeholder={'lezzml.now@gmail.com'}
+            error={form.errors.email && 'Invalid email'}
+            value={form.values.email}
+            onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
+          />
+          <Group position="apart" className={style.resetButtonGroup}>
+            <Link href="/auth/login">
+              <IconButton 
+                className={'back'}
+                icon={<ArrowBack />}
+                isFullWidth={false}
+                label={'Back to login page'}
+              />
+            </Link>
+            <StyledButton types='submit'>RESET PASSWORD</StyledButton>
           </Group>
-          <Group position='center'> 
-            <Title size={20} align="center" className={style.forgotPassTitle}>
-              Forgot your password?
-            </Title>
-            <Text color="dimmed" size="sm" align="center" mt={-10}>
-              Enter your email address to get a reset password link.
-            </Text>
-          </Group>
-          <form onSubmit={form.onSubmit(() => {})}>
-            <InputField 
-              required
-              label={'Email'} 
-              placeholder={'lezzml.now@gmail.com'}
-              error={form.errors.email && 'Invalid email'}
-              value={form.values.email}
-              onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
-            />
-            <Group position="apart" mt="md">
-              <Link href="/auth/login">
-                <IconButton 
-                  className={'back'}
-                  icon={<ArrowBack />}
-                  isFullWidth={false}
-                  label={'Back to login page'}
-                />
-              </Link>
-              <StyledButton types='submit'>RESET PASSWORD</StyledButton>
-            </Group>
-          </form>
-        </Paper>
-      </Container>
-      <BasicFooter height={56} />
-    </Paper>
+        </Stack>
+      </form>
+    </AuthLayout>
   );
 }
 
-export default ResetPassword
+export default ResetPassword;

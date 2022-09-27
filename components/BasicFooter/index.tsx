@@ -10,6 +10,7 @@ const BasicFooter = (props: Omit<FooterProps, "children">) => {
             className={`${style[colorScheme]} ${style["basic_footer"]}`}
             height={height}
             p={p}
+            mt={50}
         >
             All right reserved Ⓒ SeeRex Inc. 2022
         </Footer>

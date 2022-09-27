@@ -33,9 +33,6 @@ const PassField = (props: PasswordInputProps) => {
             placeholder={placeholder}
             required={required}
             value={value}
-            size="md"
-            mb="md"
-            mt="md"
         />
     );
 };
