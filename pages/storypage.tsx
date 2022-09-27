@@ -13,6 +13,7 @@ import { IconHolidayVillage } from "../public/Icons";
 import Link from "next/link";
 import ProgressCard from "../components/ProgressCard";
 import GroupCard from "./../components/GroupCard/index";
+import StatisticCard from "../components/StatisticCard";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
@@ -76,6 +77,11 @@ function StoryPage() {
         isFullWidth
       />
       <CollapsedBar page={0} setPage={() => {}} />
+      <StatisticCard
+        amount={100}
+        category="Testing"
+        description="This how your statistics are shown"
+      />
       <ProgressCard
         label="Test"
         stats="3,450"
