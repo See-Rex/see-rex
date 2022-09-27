@@ -16,6 +16,7 @@ import GroupCard from "./../components/GroupCard/index";
 import StatisticCard from "../components/StatisticCard";
 import FeatureCard from "../components/FeatureCard";
 import FeatureHero from "../components/FeatureHero";
+import MainFooter from "../components/MainFooter";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
@@ -67,6 +68,7 @@ function StoryPage() {
         type="password"
       />
       <BasicFooter height={56} />
+      <MainFooter height={56} />
       <IconButton
         className="link"
         icon={<IconHolidayVillage />}
