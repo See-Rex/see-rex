@@ -14,6 +14,7 @@ import Link from "next/link";
 import ProgressCard from "../components/ProgressCard";
 import GroupCard from "./../components/GroupCard/index";
 import StatisticCard from "../components/StatisticCard";
+import FeatureCard from "../components/FeatureCard";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
@@ -90,6 +91,11 @@ function StoryPage() {
         icon="up"
       />
       <GroupCard data={data} />
+      <FeatureCard
+        description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "
+        icon={undefined}
+        title="Centralized Database"
+      />
     </>
   );
 }
