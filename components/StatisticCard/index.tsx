@@ -3,7 +3,6 @@ import {
   Divider,
   Group,
   MediaQuery,
-  RingProgress,
   Stack,
   Text,
 } from "@mantine/core";
