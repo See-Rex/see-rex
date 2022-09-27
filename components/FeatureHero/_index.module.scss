@@ -1,0 +1,71 @@
+@use "../../styles/constants" as constant;
+@use "../../styles/text" as text;
+@use "../../styles/theme" as theme;
+
+.wrapper {
+  position: relative;
+  padding: min(15vw, 130px) min(15vw, 112px);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../public/background2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  @media only screen and (max-width: 520px) {
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+}
+
+.title {
+  @include text.BANNER_HEADER;
+  font-family: constant.$FONT_MAIN;
+  font-weight: 700;
+  letter-spacing: -1;
+  color: white;
+  margin-bottom: 10px;
+
+  @media only screen and (max-width: 520px) {
+    @include text.BANNER_HEADER_3;
+  }
+}
+
+.highlight {
+  color: constant.$COLOR_PRIMARY;
+}
+
+.description {
+  @include text.BANNER_HEADINGS_2;
+  font-family: constant.$FONT_MAIN;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: white;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 520px) {
+    @include text.HEADER_5;
+  }
+}
+
+.control {
+  border-radius: 10px;
+  height: 45px;
+
+  &:not(:first-of-type) {
+    margin-left: 14px;
+  }
+
+  @media (max-width: 520px) {
+    &:not(:first-of-type) {
+      margin-top: 14px;
+      margin-left: 0;
+    }
+  }
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 95%);
+  }
+}
+
+.features {
+  justify-content: center;
+  align-items: center;
+}
