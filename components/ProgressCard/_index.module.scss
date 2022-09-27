@@ -1,4 +1,5 @@
 @use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
 
 .category {
   font-family: constant.$FONT_MAIN;
@@ -7,7 +8,15 @@
   font-size: constant.$EXTRA_1_FONT_SIZE;
   line-height: constant.$EXTRA_1_LINE_HEIGHT;
   letter-spacing: 0.03em;
-  color: constant.$COLOR_PRIMARY;
+  &.light {
+    color: constant.$COLOR_PRIMARY;
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    color: constant.$COLOR_SECONDARY_DARK;
+    transition: all 0.2s ease-in;
+  }
 }
 
 .amount {
@@ -17,5 +26,27 @@
   font-size: constant.$BANNER_HEADER_3_FONT_SIZE;
   line-height: constant.$BANNER_HEADER_3_LINE_HEIGHT;
   letter-spacing: 0.03em;
-  color: constant.$COLOR_BLACK;
+  &.light {
+    color: constant.$COLOR_BLACK;
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.light {
+  $COLOR_RING: constant.$COLOR_PRIMARY;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  color: constant.$COLOR_PRIMARY;
+  transition: all 0.2s ease-in;
+}
+
+.dark {
+  $COLOR_RING: constant.$COLOR_WHITE_DARK;
+  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+  color: constant.$COLOR_SECONDARY_DARK;
+  transition: all 0.2s ease-in;
 }

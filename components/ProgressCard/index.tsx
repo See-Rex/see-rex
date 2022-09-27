@@ -1,4 +1,11 @@
-import { Center, Group, Paper, RingProgress, Text } from "@mantine/core";
+import {
+  Center,
+  Group,
+  Paper,
+  RingProgress,
+  Text,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { IconArrowDownRight, IconArrowUpRight } from "@tabler/icons";
 import React from "react";
 
@@ -17,27 +24,41 @@ const icons = {
 };
 
 function ProgressCard(props: Props) {
+  const { colorScheme } = useMantineColorScheme();
   const { label, stats, progress, color, icon } = props;
   const Icon = icons[icon];
+  const colorRing = colorScheme === "light" ? color : "white";
   return (
-    <Paper withBorder radius="md" p="xs" key={label}>
+    <Paper
+      withBorder
+      radius="md"
+      p="xs"
+      key={label}
+      className={style[colorScheme]}
+    >
       <Group>
         <RingProgress
           size={110}
           roundCaps
           thickness={3}
-          sections={[{ value: progress, color: color }]}
+          sections={[{ value: progress, color: colorRing }]}
           label={
             <Center>
-              <Icon size={22} stroke={1.5} />
+              <Icon size={25} stroke={2} className={style[colorScheme]} />
             </Center>
           }
+          mr={20}
         />
         <div>
-          <Text className={style.category} transform="uppercase">
+          <Text
+            className={`${style.category} ${style[colorScheme]}`}
+            transform="uppercase"
+          >
             {label}
           </Text>
-          <Text className={style.amount}>{stats}</Text>
+          <Text className={`${style.amount} ${style[colorScheme]}`}>
+            {stats}
+          </Text>
         </div>
       </Group>
     </Paper>
