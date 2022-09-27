@@ -1,0 +1,42 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+// Mantine Footer
+.main_footer {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    padding-top: 350px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: constant.$FONT_SANS1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: constant.$HEADER_3_FONT_SIZE;
+    line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
+    letter-spacing: 0.03em;
+    overflow-y: hidden;
+}
+
+.circle {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 100%);
+    position: absolute;
+    width: 100vw;
+    height: 800px;
+    left: 0px;
+    top: 10px;
+    border-radius: 45%;
+}
+
+.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.2s ease-in;
+}
+
+.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.2s ease-in;
+}
