@@ -1,0 +1,55 @@
+@use "../../styles/constants" as constant;
+
+.root {
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 30px;
+  row-gap: 30px;
+  justify-content: space-evenly;
+  padding: 26px 30px;
+  border-radius: 15px;
+  background: radial-gradient(
+    110% 135% at 85% 135%,
+    rgba(53, 192, 237, 0.1) 0%,
+    rgba(47, 144, 176, 0.5) 100%
+  );
+}
+
+.stat {
+  max-width: 250px;
+  flex-grow: 1;
+  word-wrap: normal;
+}
+
+.count {
+  font-family: constant.$FONT_MAIN;
+  font-style: normal;
+  font-weight: 700;
+  font-size: constant.$BANNER_HEADER_2_FONT_SIZE;
+  line-height: constant.$BANNER_HEADER_2_LINE_HEIGHT;
+  letter-spacing: 0.03em;
+  color: constant.$COLOR_GREY;
+  text-shadow: 1px 2px 2px rgba(constant.$COLOR_BLACK, 30%);
+}
+
+.description {
+  font-family: constant.$FONT_MAIN;
+  font-style: normal;
+  font-weight: 700;
+  font-size: constant.$EXTRA_3_FONT_SIZE;
+  line-height: constant.$EXTRA_3_LINE_HEIGHT;
+  letter-spacing: 0.03em;
+  color: constant.$COLOR_GREY;
+  text-shadow: 1px 2px 2px rgba(constant.$COLOR_BLACK, 15%);
+}
+
+.title {
+  font-family: constant.$FONT_MAIN;
+  font-style: normal;
+  font-weight: 700;
+  font-size: constant.$HEADER_5_FONT_SIZE;
+  line-height: constant.$BANNER_HEADINGS_LINE_HEIGHT;
+  color: constant.$COLOR_WHITE;
+  text-transform: uppercase;
+  text-shadow: 1px 2px 2px rgba(constant.$COLOR_BLACK, 15%);
+}
