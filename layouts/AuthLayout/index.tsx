@@ -1,4 +1,4 @@
-import { Paper, Group, Container } from "@mantine/core";
+import { Paper, Group, Container, Stack } from "@mantine/core";
 import style from "./_index.module.scss";
 import {
     BasicHeader,
@@ -24,7 +24,7 @@ export function AuthLayout(props: Props) {
     }
 
     return (
-        <>
+        <div className={style.pageContainer}>
             <BasicHeader opened={false} />
             <Container>
                 <Paper
@@ -42,7 +42,7 @@ export function AuthLayout(props: Props) {
                 </Paper>
             </Container>
             <BasicFooter height={56} />
-        </>
+        </div>
     );
 }
 
