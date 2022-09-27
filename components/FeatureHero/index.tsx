@@ -1,5 +1,10 @@
 import { Button, Col, Grid, SimpleGrid, Text, Title } from "@mantine/core";
-import { IconSearch } from "@tabler/icons";
+import {
+  IconActivity,
+  IconAdjustments,
+  IconBackpack,
+  IconSearch,
+} from "@tabler/icons";
 import React from "react";
 import FeatureCard from "../FeatureCard";
 
@@ -40,17 +45,17 @@ function FeatureHero() {
             />
             <FeatureCard
               description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "
-              icon={<IconSearch stroke={2} />}
+              icon={<IconActivity stroke={2} />}
               title="Centralized Database"
             />
             <FeatureCard
               description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "
-              icon={<IconSearch stroke={2} />}
+              icon={<IconAdjustments stroke={2} />}
               title="Centralized Database"
             />
             <FeatureCard
               description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "
-              icon={<IconSearch stroke={2} />}
+              icon={<IconBackpack stroke={2} />}
               title="Centralized Database"
             />
           </SimpleGrid>
