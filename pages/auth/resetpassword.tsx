@@ -10,8 +10,11 @@ import {  InputField, StyledButton, IconButton } from '../../components';
 import Link from 'next/link';
 import { ArrowBack } from '../../public/Icons';
 import AuthLayout from '../../layouts/AuthLayout';
+import { useAuth } from '../../context/AuthContext';
 
 export function ResetPassword() {
+  const { reset } = useAuth();
+
   const form = useForm({
     initialValues: {
       email: '',
@@ -21,6 +24,15 @@ export function ResetPassword() {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
     },
   });
+
+  const handleReset = async () => {
+    try {
+        await reset(form.values.email);
+        alert("A password reset email has been sent to your email address!");
+    } catch (err) {
+        alert(err);
+    }
+  };
 
   return (
     <AuthLayout isForgotPassword>
@@ -34,7 +46,7 @@ export function ResetPassword() {
           </Text>
         </Stack>
       </Group>
-      <form onSubmit={form.onSubmit(() => {})}>
+      <form onSubmit={form.onSubmit(handleReset)}>
         <Stack spacing='md'>
           <InputField 
             required
