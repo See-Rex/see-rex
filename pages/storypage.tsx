@@ -15,6 +15,7 @@ import ProgressCard from "../components/ProgressCard";
 import GroupCard from "./../components/GroupCard/index";
 import StatisticCard from "../components/StatisticCard";
 import FeatureCard from "../components/FeatureCard";
+import FeatureHero from "../components/FeatureHero";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
@@ -41,6 +42,7 @@ function StoryPage() {
 
   return (
     <>
+      <FeatureHero />
       <LandingBanner />
       <BasicHeader opened={false}>
         .
