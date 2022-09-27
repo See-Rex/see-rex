@@ -1,7 +1,8 @@
-import { Center, Group, Paper, RingProgress } from "@mantine/core";
+import { Center, Group, Paper, RingProgress, Text } from "@mantine/core";
 import { IconArrowDownRight, IconArrowUpRight } from "@tabler/icons";
 import React from "react";
 
+import style from "./_index.module.scss";
 interface Props {
   label: string;
   stats: string;
@@ -9,33 +10,34 @@ interface Props {
   color: string;
   icon: "up" | "down";
 }
+
 const icons = {
   up: IconArrowUpRight,
   down: IconArrowDownRight,
 };
+
 function ProgressCard(props: Props) {
+  const { label, stats, progress, color, icon } = props;
+  const Icon = icons[icon];
   return (
-    <Paper withBorder radius="md" p="xs" key={stat.label}>
+    <Paper withBorder radius="md" p="xs" key={label}>
       <Group>
         <RingProgress
-          size={80}
+          size={110}
           roundCaps
-          thickness={8}
-          sections={[{ value: stat.progress, color: stat.color }]}
+          thickness={3}
+          sections={[{ value: progress, color: color }]}
           label={
             <Center>
               <Icon size={22} stroke={1.5} />
             </Center>
           }
         />
-
         <div>
-          <Text color="dimmed" size="xs" transform="uppercase" weight={700}>
-            {stat.label}
+          <Text className={style.category} transform="uppercase">
+            {label}
           </Text>
-          <Text weight={700} size="xl">
-            {stat.stats}
-          </Text>
+          <Text className={style.amount}>{stats}</Text>
         </div>
       </Group>
     </Paper>
