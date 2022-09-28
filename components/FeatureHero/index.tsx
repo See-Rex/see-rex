@@ -6,7 +6,7 @@ import {
   IconSearch,
 } from "@tabler/icons";
 import React from "react";
-import FeatureCard from "../FeatureCard";
+import { FeatureCard } from "..";
 
 import style from "./_index.module.scss";
 

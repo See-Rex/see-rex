@@ -1,23 +1,23 @@
 import { Button, Image, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import {
+  AppCard,
   BasicFooter,
   BasicHeader,
   CollapsedBar,
+  FeatureCard,
+  FeatureHero,
+  GroupCard,
   IconButton,
   InputField,
   LandingBanner,
+  MainFooter,
+  ProgressCard,
+  StatisticCard,
   StyledButton,
 } from "../components";
 import { IconHolidayVillage } from "../public/Icons";
 import Link from "next/link";
-import ProgressCard from "../components/ProgressCard";
-import GroupCard from "./../components/GroupCard/index";
-import StatisticCard from "../components/StatisticCard";
-import FeatureCard from "../components/FeatureCard";
-import FeatureHero from "../components/FeatureHero";
-import MainFooter from "../components/MainFooter";
-import AppCard from "../components/AppCard";
 
 function StoryPage() {
   const { toggleColorScheme } = useMantineColorScheme();
