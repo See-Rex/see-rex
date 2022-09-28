@@ -3,42 +3,45 @@
 @use "../../styles/theme" as theme;
 
 .main_footer {
-    display: flex;
-    position: relative;
-    height: 500px;
-    width: 100%;
-    padding: 200px 50px 50px 50px;
-    background-color: transparent;
-    border: none;
-    justify-content: space-between;
-    align-items: center;
-    font-family: constant.$FONT_SANS1;
-    font-style: normal;
-    font-weight: 400;
-    font-size: constant.$HEADER_3_FONT_SIZE;
-    line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
-    letter-spacing: 0.03em;
-    overflow: hidden;
+  display: flex;
+  position: relative;
+  height: 500px;
+  width: 100%;
+  padding: 200px 50px 50px 50px;
+  background-color: transparent;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  font-family: constant.$FONT_SANS1;
+  font-style: normal;
+  font-weight: 400;
+  font-size: constant.$HEADER_3_FONT_SIZE;
+  line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
+  letter-spacing: 0.03em;
+  overflow: hidden;
 }
 
 .circle {
-    @include theme.SET_BACKGROUND(constant.$COLOR_GREY, 100%);
-    position: absolute;
-    width: 110%;
-    height: 400px;
-    left: -50px;
-    top: 10px;
-    border-radius: 50%;
-    z-index: -1;
-    transition: all 0.2s ease-in;
-    box-shadow: 0px -4px 4px rgba(184, 184, 184, 0.25);
+  @include theme.SET_BACKGROUND(constant.$COLOR_GREY, 100%);
+  position: absolute;
+  width: 110%;
+  height: 400px;
+  left: -50px;
+  top: 10px;
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px -4px 4px rgba(184, 184, 184, 0.25);
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+  }
 }
 
 .light {
-    color: constant.$COLOR_ACCENT;
+  color: constant.$COLOR_ACCENT;
 }
 
 .dark {
-    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
-    color: constant.$COLOR_WHITE_DARK;
+  color: constant.$COLOR_WHITE_DARK;
 }

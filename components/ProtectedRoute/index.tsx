@@ -7,13 +7,18 @@ function ProtectedRoute({children}: {children: React.ReactNode}) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (user && user.emailVerified === false) {
+      alert('Your account has not been verified yet. Please check your email.');
       router.push('/auth/login');
+    } else if (user && user.emailVerified) {
+      alert("You have logged in successfully. Welcome to SeeRex!");
+    } else {
+      alert('Please login first.');
     }
   }, [router, user])
   
 
-  return <>{user ? children : null}</>;
+  return <>{user && user.emailVerified? children : null}</>;
 }
 
 export default ProtectedRoute

@@ -13,7 +13,7 @@ import { useState } from "react";
 import AuthLayout from "../../layouts/AuthLayout";
 
 function Register() {
-    const { register } = useAuth();
+    const { register, verify } = useAuth();
     const router = useRouter();
     const [password, setPassword] = useState("");
 
@@ -39,8 +39,9 @@ function Register() {
 
     const handleRegister = async () => {
         try {
-            await register(form.values.email, form.values.password);
-            alert("You have successfully signed up!");
+            const userCredentials = await register(form.values.email, form.values.password);
+            verify(userCredentials.user);
+            alert("We have sent a verification link to your email! Please open it to verify your account.");
             router.push("/auth/login");
         } catch (err) {
             alert(err);
