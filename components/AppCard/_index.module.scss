@@ -2,16 +2,103 @@
 @use "../../styles/constants" as constant;
 @use "../../styles/theme" as theme;
 
-.light {
-  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+.card {
+  max-width: 380px;
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+  }
 }
 
-.dark {
-  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+.badge {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+  border-radius: 15px;
+  height: 25px;
+  &.light {
+    color: constant.$COLOR_BLACK;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  &.light {
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
 }
 
 .label {
-  @include text.EXTRA_3;
+  @include text.HEADER_5;
   font-family: constant.$FONT_MAIN;
   font-weight: 600;
+  &.light {
+    color: constant.$COLOR_SECONDARY_DARK;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.section {
+  padding: 15px 20px;
+}
+
+.title {
+  @include text.HEADER_3;
+  font-family: constant.$FONT_MAIN;
+  font-weight: 600;
+  &.light {
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.description {
+  @include text.HEADER_5;
+  font-family: constant.$FONT_SANS1;
+  font-weight: 400;
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_BLACK, 60%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.type {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+  @include text.HEADER_TINY;
+  font-weight: 600;
+  height: 20px;
+
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_ACCENT, 50%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
 }

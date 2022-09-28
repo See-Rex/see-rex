@@ -33,30 +33,46 @@ function AppCard(props: BadgeCardProps) {
   const features = (
     <>
       <Badge
-        color={colorScheme === "dark" ? "dark" : "gray"}
-        key={values[0]}
-        leftSection={<IconUsers />}
+        className={`${style.badge} ${style[colorScheme]}`}
+        leftSection={
+          <IconUsers
+            stroke={2}
+            className={`${style.icon} ${style[colorScheme]}`}
+          />
+        }
       >
         {values[0]}
       </Badge>
       <Badge
-        color={colorScheme === "dark" ? "dark" : "gray"}
-        key={values[1]}
-        leftSection={<IconRulerMeasure />}
+        className={`${style.badge} ${style[colorScheme]}`}
+        leftSection={
+          <IconRulerMeasure
+            stroke={2}
+            className={`${style.icon} ${style[colorScheme]}`}
+          />
+        }
       >
         {values[1]}
       </Badge>
       <Badge
-        color={colorScheme === "dark" ? "dark" : "gray"}
-        key={values[2]}
-        leftSection={<IconCar />}
+        className={`${style.badge} ${style[colorScheme]}`}
+        leftSection={
+          <IconCar
+            stroke={2}
+            className={`${style.icon} ${style[colorScheme]}`}
+          />
+        }
       >
         {values[2]}
       </Badge>
       <Badge
-        color={colorScheme === "dark" ? "dark" : "gray"}
-        key={values[3]}
-        leftSection={<IconHomeDollar />}
+        className={`${style.badge} ${style[colorScheme]}`}
+        leftSection={
+          <IconHomeDollar
+            stroke={2}
+            className={`${style.icon} ${style[colorScheme]}`}
+          />
+        }
       >
         {values[3]}
       </Badge>
@@ -73,21 +89,23 @@ function AppCard(props: BadgeCardProps) {
       <Card.Section>{image}</Card.Section>
       <Card.Section className={style.section} mt="md">
         <Group position="apart">
-          <Text size="lg" weight={500}>
+          <Text className={`${style.title} ${style[colorScheme]}`}>
             {title}
           </Text>
-          <Badge size="sm">{type}</Badge>
+          <Badge className={`${style.type} ${style[colorScheme]}`}>
+            {type}
+          </Badge>
         </Group>
-        <Text size="sm" mt="xs">
+        <Text mt="xs" className={`${style.description} ${style[colorScheme]}`}>
           {description}
         </Text>
       </Card.Section>
 
       <Card.Section className={style.section}>
-        <Text mt="md" className={style.label} color="dimmed">
+        <Text mb="md" className={`${style.label} ${style[colorScheme]}`}>
           Summary
         </Text>
-        <Group spacing={7} mt={5}>
+        <Group spacing={10} mt={5}>
           {features}
         </Group>
       </Card.Section>
