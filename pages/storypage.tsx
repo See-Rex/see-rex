@@ -47,7 +47,6 @@ function StoryPage() {
       <FeatureHero />
       <LandingBanner />
       <BasicHeader opened={false}>
-        .
         <Link href="/auth/login">
           <StyledButton types="sign-in">SIGN-IN</StyledButton>
         </Link>
