@@ -9,9 +9,11 @@ import {
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { AuthLayout } from "../../layouts/AuthLayout";
+import { useRouter } from "next/router";
 
 export function Login() {
     const { login } = useAuth();
+    const router = useRouter();
     const form = useForm({
         initialValues: {
             email: "",
@@ -30,7 +32,7 @@ export function Login() {
     const handleLogin = async () => {
         try {
             await login(form.values.email, form.values.password);
-            alert("You have successfully logged in!");
+            router.push("/dashboard");
         } catch (err) {
             alert(err);
         }

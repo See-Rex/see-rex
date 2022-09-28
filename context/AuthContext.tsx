@@ -2,10 +2,12 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup, 
-  signOut
+  signOut,
+  User
 } from 'firebase/auth';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '../config/firebase';
@@ -30,6 +32,7 @@ export const AuthContextProvider = ({
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
+          emailVerified: user.emailVerified,
         });
       } else {
         setUser(null);
@@ -43,6 +46,10 @@ export const AuthContextProvider = ({
 
   const register = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  const verify = (user: User) => {
+    return sendEmailVerification(user);
   }
 
   const login = (email: string, password: string) => {
@@ -62,7 +69,15 @@ export const AuthContextProvider = ({
     await signOut(auth);
   }
 
-  return <AuthContext.Provider value={{ user, login, loginWithGoogle, register, reset, logout }}>
+  return <AuthContext.Provider value={{ 
+    login, 
+    loginWithGoogle, 
+    logout,
+    register, 
+    reset, 
+    user, 
+    verify
+  }}>
     {loading ? null : children}
   </AuthContext.Provider>
 }
