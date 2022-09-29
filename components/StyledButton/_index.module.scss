@@ -116,6 +116,7 @@
 .card {
   @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
   border-radius: 10px;
+  flex: 1;
   color: constant.$COLOR_ACCENT;
   padding: 5px 10px;
   width: 300px;
@@ -129,6 +130,23 @@
 
   &:hover {
     color: constant.$COLOR_WHITE;
+    &.light {
+      @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 30%);
+    }
+    &.dark {
+      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 30%);
+    }
+  }
+
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.1s ease-in;
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.1s ease-in;
   }
 }
 
@@ -139,8 +157,6 @@
   padding: 8px 10px;
   border-radius: 5px;
   text-decoration: none;
-  color: constant.$COLOR_PRIMARY;
-  transition: all 0.2s ease-in;
 
   h1 {
     @include text.BUTTON_TEXT_SMALL;
@@ -157,7 +173,10 @@
     border-radius: 0;
     padding: 10px;
   }
-
+  &.light {
+    color: constant.$COLOR_PRIMARY;
+    transition: all 0.2s ease-in;
+  }
   &.dark {
     color: constant.$COLOR_GREY_DARK;
     transition: all 0.2s ease-in;

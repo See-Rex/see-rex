@@ -1,7 +1,6 @@
 import {
   ActionIcon,
   Badge,
-  Button,
   Card,
   Group,
   Text,
@@ -15,6 +14,7 @@ import {
   IconUsers,
 } from "@tabler/icons";
 import React from "react";
+import { StyledButton } from "..";
 
 import style from "./_index.module.scss";
 
@@ -105,17 +105,17 @@ function AppCard(props: BadgeCardProps) {
         <Text mb="md" className={`${style.label} ${style[colorScheme]}`}>
           Summary
         </Text>
-        <Group spacing={10} mt={5}>
+        <Group spacing={15} mt={5}>
           {features}
         </Group>
       </Card.Section>
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }}>
+        <StyledButton radius="md" types="card">
           Show details
-        </Button>
-        <ActionIcon variant="default" radius="md" size={36}>
-          <IconEdit size={18} className={style.edit} stroke={1.5} />
+        </StyledButton>
+        <ActionIcon className={style.edit} radius="md" size={36}>
+          <IconEdit size={18} stroke={1.5} />
         </ActionIcon>
       </Group>
     </Card>

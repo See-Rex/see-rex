@@ -16,6 +16,7 @@
 .badge {
   @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
   border-radius: 15px;
+  column-gap: 5px;
   height: 25px;
   &.light {
     color: constant.$COLOR_BLACK;
@@ -27,10 +28,18 @@
   }
 }
 
+.edit {
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 80%);
+  color: constant.$COLOR_PRIMARY_DARK;
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 90%);
+  }
+}
+
 .icon {
   display: flex;
   justify-content: center;
-  height: 20px;
+  width: 15px;
   &.light {
     color: constant.$COLOR_ACCENT;
     transition: all 0.2s ease-in;
