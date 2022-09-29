@@ -122,7 +122,7 @@
   width: 300px;
 
   h1 {
-    @include text.BUTTON_TEXT_SMALL;
+    @include text.BUTTON_TEXT_TINY;
     font-family: constant.$FONT_MAIN;
     font-style: normal;
     font-weight: 600;
