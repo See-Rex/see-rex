@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
-import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from "../routes/ProtectedRoute";
 
 const noAuthRequired = ['/', '/auth/login', '/auth/register', '/auth/resetpassword', '/test'];
 
