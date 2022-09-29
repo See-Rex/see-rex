@@ -5,7 +5,6 @@ import { LinkProps } from "next/link";
 
 type TypeParams = {
   children: React.ReactNode;
-  radius: MantineSize;
   types:
     | "sign-in"
     | "register"
@@ -18,11 +17,10 @@ type TypeParams = {
 
 const StyledButton = (params: TypeParams & Omit<LinkProps, "href">) => {
   const { colorScheme } = useMantineColorScheme();
-  const { children, onClick, radius, types } = params;
+  const { children, onClick, types } = params;
 
   return (
     <Button
-      radius={radius}
       className={`${style[types]} ${style[colorScheme]}`}
       onClick={onClick}
       type="submit"

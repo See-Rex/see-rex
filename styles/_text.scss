@@ -40,6 +40,11 @@
   line-height: constants.$BUTTON_TEXT_SMALL_LINE_HEIGHT;
 }
 
+@mixin BUTTON_TEXT_TINY {
+  font-size: constants.$BUTTON_TEXT_TINY_FONT_SIZE;
+  line-height: constants.$BUTTON_TEXT_TINY_LINE_HEIGHT;
+}
+
 @mixin BODY_SANS_1 {
   font-size: constants.$BODY_SANS_1_FONT_SIZE;
   line-height: constants.$BODY_SANS_1_LINE_HEIGHT;

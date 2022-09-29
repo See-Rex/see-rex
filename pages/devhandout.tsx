@@ -19,7 +19,7 @@ import {
 import { IconHolidayVillage } from "../public/Icons";
 import Link from "next/link";
 
-function StoryPage() {
+function DevHandout() {
   const { toggleColorScheme } = useMantineColorScheme();
   const data = [
     {
@@ -113,4 +113,4 @@ function StoryPage() {
   );
 }
 
-export default StoryPage;
+export default DevHandout;
