@@ -35,6 +35,7 @@
 
   &.dark {
     @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    transition: all 0.2s ease-in;
   }
 }
 

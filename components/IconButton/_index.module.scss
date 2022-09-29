@@ -4,72 +4,74 @@
 
 // Icon Button
 .iconButton {
-    padding: 5px 25px;
-    height: auto;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
-    font-size: 10px;
+  padding: 5px 25px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  font-size: 10px;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_SANS3;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_SANS3;
+    font-style: normal;
+    font-weight: 600;
+  }
 }
 
 .light {
-    h1 {
-        color: constant.$COLOR_PRIMARY;
-    }
-    
-    &-link {
-        filter: grayscale(100%);
+  transition: all 0.2s ease-in;
+  h1 {
+    color: constant.$COLOR_PRIMARY;
+  }
 
-        &:hover {
-            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
-        }
-    }
+  &-link {
+    filter: grayscale(100%);
 
-    &-active {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
-
-        &:hover {
-            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
-        }
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
     }
+  }
+
+  &-active {
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+    }
+  }
 }
 
 .dark {
-    h1 {
-        color: constant.$COLOR_WHITE_DARK;
-    }
-    &-link {
-        filter: grayscale(100%);
+  transition: all 0.2s ease-in;
+  h1 {
+    color: constant.$COLOR_WHITE_DARK;
+  }
+  &-link {
+    color: constant.$COLOR_SECONDARY_DARK;
 
-        &:hover {
-            @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
-        }
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 10%);
     }
+  }
 
-    &-active {
-        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
+  &-active {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
 
-        &:hover {
-            @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
-        }
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
     }
+  }
 }
 
 .back {
-    font-weight: 500;
-    color: constant.$COLOR_PRIMARY;
-    opacity: 0.75;
+  font-weight: 500;
+  color: constant.$COLOR_PRIMARY;
+  opacity: 0.75;
 
-    &:hover {
-        color: constant.$COLOR_PRIMARY;
-        opacity: 1;
-    }
+  &:hover {
+    color: constant.$COLOR_PRIMARY;
+    opacity: 1;
+  }
 }

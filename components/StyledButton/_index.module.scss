@@ -114,8 +114,10 @@
 }
 
 .card {
+  @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
   border-radius: 10px;
   flex: 1;
+  color: constant.$COLOR_ACCENT;
   padding: 5px 10px;
   width: 300px;
 
@@ -155,7 +157,6 @@
   padding: 8px 10px;
   border-radius: 5px;
   text-decoration: none;
-  color: constant.$COLOR_PRIMARY;
 
   h1 {
     @include text.BUTTON_TEXT_SMALL;
@@ -171,5 +172,13 @@
   @media only screen and (max-width: 600px) {
     border-radius: 0;
     padding: 10px;
+  }
+  &.light {
+    color: constant.$COLOR_PRIMARY;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
   }
 }
