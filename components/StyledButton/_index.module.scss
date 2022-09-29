@@ -114,7 +114,6 @@
 }
 
 .card {
-  @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
   border-radius: 10px;
   flex: 1;
   color: constant.$COLOR_ACCENT;
@@ -131,10 +130,10 @@
   &:hover {
     color: constant.$COLOR_WHITE;
     &.light {
-      @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 30%);
+      @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 25%);
     }
     &.dark {
-      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 30%);
+      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 25%);
     }
   }
 
