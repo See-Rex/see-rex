@@ -114,7 +114,11 @@ function AppCard(props: BadgeCardProps) {
 
       <Group mt="xs">
         <StyledButton types="card">Show details</StyledButton>
-        <ActionIcon className={style.edit} radius="md" size={36}>
+        <ActionIcon
+          className={`${style.edit} ${style[colorScheme]}`}
+          radius="md"
+          size={36}
+        >
           <IconEdit size={18} stroke={1.5} />
         </ActionIcon>
       </Group>

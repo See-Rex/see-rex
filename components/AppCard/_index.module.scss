@@ -29,10 +29,21 @@
 }
 
 .edit {
-  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 80%);
-  color: constant.$COLOR_PRIMARY_DARK;
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_GREY_DARK, 50%);
+    color: constant.$COLOR_ACCENT;
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 80%);
+    color: constant.$COLOR_PRIMARY_DARK;
+  }
   &:hover {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 90%);
+    &.light {
+      @include theme.SET_BACKGROUND(constant.$COLOR_GREY_DARK, 60%);
+    }
+    &.dark {
+      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 90%);
+    }
   }
 }
 
