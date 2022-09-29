@@ -50,6 +50,18 @@
   }
 }
 
+.image {
+  height: 180px;
+  &.light {
+    filter: brightness(60%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    filter: brightness(45%);
+    transition: all 0.2s ease-in;
+  }
+}
+
 .label {
   @include text.HEADER_5;
   font-family: constant.$FONT_MAIN;

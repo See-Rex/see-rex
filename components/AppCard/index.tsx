@@ -86,7 +86,9 @@ function AppCard(props: BadgeCardProps) {
       p="md"
       className={`${style.card} ${style[colorScheme]}`}
     >
-      <Card.Section>{image}</Card.Section>
+      <Card.Section className={`${style.image} ${style[colorScheme]}`}>
+        {image}
+      </Card.Section>
       <Card.Section className={style.section} mt="md">
         <Group position="apart">
           <Text className={`${style.title} ${style[colorScheme]}`}>
