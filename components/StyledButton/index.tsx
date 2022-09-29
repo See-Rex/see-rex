@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, useMantineColorScheme } from "@mantine/core";
+import { Button, MantineSize, useMantineColorScheme } from "@mantine/core";
 import style from "./_index.module.scss";
 import { LinkProps } from "next/link";
 
-type Button_Params = {
+type TypeParams = {
   children: React.ReactNode;
+  radius: MantineSize;
   types:
     | "sign-in"
     | "register"
@@ -15,12 +16,13 @@ type Button_Params = {
     | "navigation";
 };
 
-const StyledButton = (params: Omit<LinkProps, "href"> & Button_Params) => {
+const StyledButton = (params: TypeParams & Omit<LinkProps, "href">) => {
   const { colorScheme } = useMantineColorScheme();
-  const { children, onClick, types } = params;
+  const { children, onClick, radius, types } = params;
 
   return (
     <Button
+      radius={radius}
       className={`${style[types]} ${style[colorScheme]}`}
       onClick={onClick}
       type="submit"

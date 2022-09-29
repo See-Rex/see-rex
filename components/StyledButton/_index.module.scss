@@ -3,157 +3,173 @@
 @use "../../styles/theme" as theme;
 
 .sign-in {
-    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
-    border-radius: 5px;
-    color: constant.$COLOR_SECONDARY;
-    padding: 5px 10px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+  border-radius: 5px;
+  color: constant.$COLOR_SECONDARY;
+  padding: 5px 10px;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 50%);
-    }
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 50%);
+  }
 }
 
 .register {
-    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
-    border-radius: 5px;
-    color: constant.$COLOR_SECONDARY_DARK;
-    padding: 5px 10px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+  border-radius: 5px;
+  color: constant.$COLOR_SECONDARY_DARK;
+  padding: 5px 10px;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 50%);
-    }
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 50%);
+  }
 }
 
 .sign-up {
-    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
-    border-radius: 10px;
-    color: constant.$COLOR_SECONDARY;
-    padding: 5px 10px;
-    width: 230px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+  border-radius: 10px;
+  color: constant.$COLOR_SECONDARY;
+  padding: 5px 10px;
+  width: 230px;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    &:hover {
-        color: constant.$COLOR_WHITE;
-    }
+  &:hover {
+    color: constant.$COLOR_WHITE;
+  }
 }
 
 .banner {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-    border-radius: 10px;
-    color: constant.$COLOR_SECONDARY;
-    height: 50px;
-    width: 180px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  border-radius: 10px;
+  color: constant.$COLOR_SECONDARY;
+  height: 50px;
+  width: 180px;
 
-    h1 {
-        @include text.BUTTON_TEXT;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    &:hover {
-        color: constant.$COLOR_WHITE;
-    }
+  &:hover {
+    color: constant.$COLOR_WHITE;
+  }
 }
 
 .banner2 {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 50%);
-    border-radius: 10px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 50%);
+  border-radius: 10px;
+  color: constant.$COLOR_WHITE;
+  height: 50px;
+  width: 180px;
+
+  h1 {
+    @include text.BUTTON_TEXT;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &:hover {
     color: constant.$COLOR_WHITE;
-    height: 50px;
-    width: 180px;
-
-    h1 {
-        @include text.BUTTON_TEXT;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
-
-    &:hover {
-        color: constant.$COLOR_WHITE;
-    }
+  }
 }
 
 .submit {
-    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
-    border-radius: 10px;
-    color: constant.$COLOR_PRIMARY;
-    padding: 5px 10px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
+  border-radius: 10px;
+  color: constant.$COLOR_PRIMARY;
+  padding: 5px 10px;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-    &:hover {
-        color: constant.$COLOR_WHITE;
-    }
+  &:hover {
+    color: constant.$COLOR_WHITE;
+  }
 }
 
 .card {
+  border-radius: 10px;
+  flex: 1;
+  padding: 5px 10px;
+  width: 300px;
+
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &:hover {
+    color: constant.$COLOR_WHITE;
+    &.light {
+      @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 30%);
+    }
+    &.dark {
+      @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 30%);
+    }
+  }
+
+  &.light {
     @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 20%);
-    border-radius: 10px;
     color: constant.$COLOR_ACCENT;
-    padding: 5px 10px;
-    width: 300px;
-
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 600;
-    }
-
-    &:hover {
-        color: constant.$COLOR_WHITE;
-    }
+    transition: all 0.1s ease-in;
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
+    color: constant.$COLOR_WHITE_DARK;
+    transition: all 0.1s ease-in;
+  }
 }
 
 .navigation {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 0%);
-    display: block;
-    line-height: 1;
-    padding: 8px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: constant.$COLOR_PRIMARY;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 0%);
+  display: block;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: constant.$COLOR_PRIMARY;
 
-    h1 {
-        @include text.BUTTON_TEXT_SMALL;
-        font-family: constant.$FONT_MAIN;
-        font-style: normal;
-        font-weight: 500;
-    }
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 500;
+  }
 
-    &:hover {
-        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 10%);
-    }
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 10%);
+  }
 
-    @media only screen and (max-width: 600px) {
-        border-radius: 0;
-        padding: 10px;
-    }
+  @media only screen and (max-width: 600px) {
+    border-radius: 0;
+    padding: 10px;
+  }
 }
