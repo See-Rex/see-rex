@@ -18,6 +18,7 @@ const noAuthRequired = [
   "/test",
   "/story",
   "/dev",
+  "/error",
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
