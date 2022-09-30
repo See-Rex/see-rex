@@ -4,26 +4,27 @@
 
 // Mantine Footer
 .basic_footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 15px;
-    font-family: constant.$FONT_SANS1;
-    font-style: normal;
-    font-weight: 400;
-    font-size: constant.$HEADER_3_FONT_SIZE;
-    line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
-    letter-spacing: 0.03em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  font-family: constant.$FONT_SANS1;
+  font-style: normal;
+  font-weight: 400;
+  font-size: constant.$HEADER_3_FONT_SIZE;
+  line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
+  letter-spacing: 0.03em;
 }
 
 .light {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-    color: constant.$COLOR_ACCENT;
-    transition: all 0.2s ease-in;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  color: constant.$COLOR_ACCENT;
+  transition: all 0.2s ease-in;
 }
 
 .dark {
-    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
-    color: constant.$COLOR_WHITE_DARK;
-    transition: all 0.2s ease-in;
+  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+  color: constant.$COLOR_WHITE_DARK;
+  border: 1px solid constant.$COLOR_BACKGROUND_DARK;
+  transition: all 0.2s ease-in;
 }
