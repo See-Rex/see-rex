@@ -21,7 +21,12 @@ function StatisticCard(props: Props) {
   const { amount, category, description, icon } = props;
 
   return (
-    <Paper withBorder radius="md" p="xs" className={style[colorScheme]}>
+    <Paper
+      withBorder={colorScheme == "light"}
+      radius="md"
+      p="xs"
+      className={style[colorScheme]}
+    >
       <Container className={style.container} p={25} fluid>
         <Stack>
           <Group position="apart">

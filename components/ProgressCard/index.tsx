@@ -30,9 +30,10 @@ function ProgressCard(props: Props) {
   const colorRing = colorScheme === "light" ? color : "white";
   return (
     <Paper
-      withBorder
+      withBorder={colorScheme == "light"}
       radius="md"
-      p="xs"
+      py="xs"
+      px="xl"
       key={label}
       className={style[colorScheme]}
     >

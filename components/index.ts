@@ -12,6 +12,7 @@ import LandingBanner from "./LandingBanner";
 import MainFooter from "./MainFooter/index";
 import ProgressCard from "./ProgressCard/index";
 import StatisticCard from "./StatisticCard/index";
+import StoryBar from "./StoryBar/index";
 import StyledButton from "./StyledButton";
 
 export {
@@ -29,5 +30,6 @@ export {
   MainFooter,
   ProgressCard,
   StatisticCard,
+  StoryBar,
   StyledButton,
 };
