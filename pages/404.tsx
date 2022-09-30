@@ -1,6 +1,6 @@
 import { createStyles, Title, Text, Button, Container, Group, AppShell } from '@mantine/core';
 import { useRouter } from 'next/router';
-import { BasicFooter, BasicHeader } from '../../components';
+import { BasicFooter, BasicHeader } from '../components';
 
 const useStyles = createStyles((theme) => ({
   root: {

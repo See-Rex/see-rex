@@ -10,7 +10,7 @@ import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../routes/ProtectedRoute";
 
-const authRequired = [
+const authRequiredPaths = [
   "/dashboard",
 ];
 
@@ -19,8 +19,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   const router = useRouter();
-  
-  const renderPageComponent = authRequired.includes(router.pathname) ? (
+
+  const renderPageComponent = authRequiredPaths.includes(router.pathname) ? (
     <ProtectedRoute>
       <Component {...pageProps} />
     </ProtectedRoute>
