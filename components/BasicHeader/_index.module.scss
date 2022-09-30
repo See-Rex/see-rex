@@ -4,24 +4,25 @@
 
 // Mantine Header
 .inner {
-    height: 56px;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    flex-grow: 1;
-    align-items: center;
+  height: 56px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
 }
 
 .light {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-    transition: all 0.2s ease-in;
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  transition: all 0.2s ease-in;
 }
 
 .dark {
-    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
-    transition: all 0.2s ease-in;
-    &-code {
-        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 10%);
-        color: constant.$COLOR_WHITE_DARK;
-    }
+  @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+  border: 1px solid constant.$COLOR_BACKGROUND_DARK;
+  transition: all 0.2s ease-in;
+  &-code {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 10%);
+    color: constant.$COLOR_WHITE_DARK;
+  }
 }
