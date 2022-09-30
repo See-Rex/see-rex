@@ -14,6 +14,7 @@ function ProtectedRoute({children}: {children: React.ReactNode}) {
       alert("You have logged in successfully. Welcome to SeeRex!");
     } else {
       alert('Please login first.');
+      router.push('/auth/login');
     }
   }, [router, user])
   
