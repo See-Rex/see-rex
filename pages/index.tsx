@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
-
-import StoryPage from "./storypage";
-import DevHandout from "./devhandout";
+import StoryPage from "./story";
 
 const Home: NextPage = () => {
-  return <DevHandout />;
+  return <StoryPage />;
 };
 
 export default Home;

@@ -15,8 +15,8 @@ import {
   ProgressCard,
   StatisticCard,
   StyledButton,
-} from "../components";
-import { IconHolidayVillage } from "../public/Icons";
+} from "../../components";
+import { IconHolidayVillage } from "../../public/Icons";
 import Link from "next/link";
 
 function DevHandout() {
@@ -101,7 +101,9 @@ function DevHandout() {
         title="Centralized Database"
       />
       <AppCard
-        image={<Image src={"background2.png"} alt={"homePic"} height={180} />}
+        image={
+          <Image src={"../background2.png"} alt={"homePic"} height={180} />
+        }
         title={"Home Property #1"}
         type={"Residential"}
         description={
