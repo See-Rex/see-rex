@@ -60,6 +60,7 @@
 }
 
 .dark {
-  background: radial-gradient(110% 135% at 85% 135%, #153942 0%, #08171b 100%);
+  background: radial-gradient(110% 135% at 85% 135%, #2b3b3f 0%, #151d1f 100%);
+  border: 1px solid constant.$COLOR_BACKGROUND_DARK;
   transition: all 0.2s ease-in;
 }

@@ -10,6 +10,7 @@
 
   &.dark {
     @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    border: 1px solid constant.$COLOR_BACKGROUND_DARK;
   }
 }
 
