@@ -10,14 +10,8 @@ import { AuthContextProvider } from "../context/AuthContext";
 import { useRouter } from "next/router";
 import ProtectedRoute from "../routes/ProtectedRoute";
 
-const noAuthRequired = [
-  "/",
-  "/auth/login",
-  "/auth/register",
-  "/auth/resetpassword",
-  "/test",
-  "/story",
-  "/dev",
+const authRequiredPaths = [
+  "/dashboard",
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -26,6 +20,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   const router = useRouter();
 
+  const renderPageComponent = authRequiredPaths.includes(router.pathname) ? (
+    <ProtectedRoute>
+      <Component {...pageProps} />
+    </ProtectedRoute>
+  ) : (
+    <Component {...pageProps} />
+  );
+
   return (
     <AuthContextProvider>
       <ColorSchemeProvider
@@ -33,13 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider>
-          {noAuthRequired.includes(router.pathname) ? (
-            <Component {...pageProps} />
-          ) : (
-            <ProtectedRoute>
-              <Component {...pageProps} />
-            </ProtectedRoute>
-          )}
+          {renderPageComponent}
         </MantineProvider>
       </ColorSchemeProvider>
     </AuthContextProvider>
