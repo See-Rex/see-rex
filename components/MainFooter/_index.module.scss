@@ -12,6 +12,7 @@
   border: none;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   font-family: constant.$FONT_SANS1;
   font-style: normal;
   font-weight: 400;
@@ -19,6 +20,17 @@
   line-height: constant.$BODY_SANS_3_LINE_HEIGHT;
   letter-spacing: 0.03em;
   overflow: hidden;
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 450px) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }
 
 .circle {
@@ -26,7 +38,7 @@
   position: absolute;
   width: 110%;
   height: 400px;
-  left: -50px;
+  left: -5%;
   top: 10px;
   border-radius: 50%;
   z-index: -1;
