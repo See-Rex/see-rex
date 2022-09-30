@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, useMantineColorScheme } from "@mantine/core";
+import { Button, MantineSize, useMantineColorScheme } from "@mantine/core";
 import style from "./_index.module.scss";
 import { LinkProps } from "next/link";
 
 type TypeParams = {
   children: React.ReactNode;
+  spacing?: MantineSize;
+  fullWidth?: boolean;
   types:
     | "sign-in"
     | "register"
@@ -12,18 +14,21 @@ type TypeParams = {
     | "banner"
     | "submit"
     | "card"
-    | "navigation";
+    | "navigation"
+    | "active";
 };
 
 const StyledButton = (params: TypeParams & Omit<LinkProps, "href">) => {
   const { colorScheme } = useMantineColorScheme();
-  const { children, onClick, types } = params;
+  const { children, fullWidth, onClick, spacing, types } = params;
 
   return (
     <Button
       className={`${style[types]} ${style[colorScheme]}`}
       onClick={onClick}
       type="submit"
+      mb={spacing}
+      fullWidth={fullWidth}
     >
       <h1>{children}</h1>
     </Button>

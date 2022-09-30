@@ -2,6 +2,30 @@
 @use "../../styles/constants" as constant;
 @use "../../styles/theme" as theme;
 
+@mixin navigation-styling {
+  display: block;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 15%);
+  }
+
+  h1 {
+    @include text.BUTTON_TEXT_SMALL;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @media only screen and (max-width: 600px) {
+    border-radius: 0;
+    padding: 10px;
+  }
+}
+
 .sign-in {
   @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
   border-radius: 5px;
@@ -151,27 +175,22 @@
 
 .navigation {
   @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 0%);
-  display: block;
-  line-height: 1;
-  padding: 8px 10px;
-  border-radius: 5px;
-  text-decoration: none;
+  @include navigation-styling;
 
-  h1 {
-    @include text.BUTTON_TEXT_SMALL;
-    font-family: constant.$FONT_MAIN;
-    font-style: normal;
-    font-weight: 500;
+  &.light {
+    color: constant.$COLOR_PRIMARY;
+    transition: all 0.2s ease-in;
   }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
 
-  &:hover {
-    @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 10%);
-  }
+.active {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
+  @include navigation-styling;
 
-  @media only screen and (max-width: 600px) {
-    border-radius: 0;
-    padding: 10px;
-  }
   &.light {
     color: constant.$COLOR_PRIMARY;
     transition: all 0.2s ease-in;
