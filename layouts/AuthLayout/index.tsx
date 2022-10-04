@@ -1,11 +1,11 @@
-import { Paper, Group, Container } from "@mantine/core";
-import style from "./_index.module.scss";
+import { AppShell, Container, Group, Paper } from "@mantine/core";
+import React from "react";
 import {
-    BasicHeader,
     BasicFooter,
+    BasicHeader,
 } from "../../components";
 import SeeRexIcon from "../../public/Logo";
-import React from "react";
+import style from "./_index.module.scss";
 
 type Props = {
     children: React.ReactNode;
@@ -16,25 +16,29 @@ export function AuthLayout(props: Props) {
     const { children, isForgotPassword } = props;
 
     return (
-        <div className={style.pageContainer}>
-            <BasicHeader opened={false} />
-            <Container>
-                <Paper
-                    withBorder
-                    shadow="md"
-                    radius="md"
-                    className={ isForgotPassword ? style.forgotContainer : style.formContainer}
-                    p='xl'
-                    m='xl'
-                >
-                        <Group position="center" my='sm'>
-                            <SeeRexIcon />
-                        </Group>
-                        {children}
-                </Paper>
-            </Container>
-            <BasicFooter height={56} />
-        </div>
+        <AppShell
+            header={<BasicHeader opened={false} />}
+            footer={<BasicFooter height={56} />}
+            fixed
+        >
+            <div className={style.pageContainer}>
+                <Container>
+                    <Paper
+                        withBorder
+                        shadow="md"
+                        radius="md"
+                        className={ isForgotPassword ? style.forgotContainer : style.formContainer}
+                        p='xl'
+                        m='xl'
+                    >
+                            <Group position="center" my='sm'>
+                                <SeeRexIcon />
+                            </Group>
+                            {children}
+                    </Paper>
+                </Container>
+            </div>
+        </AppShell>
     );
 }
 
