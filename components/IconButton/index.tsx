@@ -13,7 +13,7 @@ type Props = {
 
 const IconButton = (props: Omit<LinkProps, "href"> & Props) => {
   const { colorScheme } = useMantineColorScheme();
-  const { icon, label, className, onClick, isFullWidth } = props;
+  const { className, icon, isFullWidth, label, onClick } = props;
   return (
     <Button
       className={`${style[colorScheme]} ${style[className || "link"]}`}

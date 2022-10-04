@@ -1,3 +1,4 @@
+import { FeatureCard } from "..";
 import { Button, Col, Grid, SimpleGrid, Text, Title } from "@mantine/core";
 import {
   IconActivity,
@@ -6,7 +7,6 @@ import {
   IconSearch,
 } from "@tabler/icons";
 import React from "react";
-import { FeatureCard } from "..";
 
 import style from "./_index.module.scss";
 
@@ -36,7 +36,7 @@ function FeatureHero() {
           <SimpleGrid
             cols={2}
             spacing={50}
-            breakpoints={[{ maxWidth: "md", cols: 1 }]}
+            breakpoints={[{ cols: 1, maxWidth: "md" }]}
           >
             <FeatureCard
               description="Access all your property’s information within a single website. Search through hundreds of data. Filter just what you need. "

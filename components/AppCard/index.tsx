@@ -1,3 +1,4 @@
+import { StyledButton } from "..";
 import {
   ActionIcon,
   Badge,
@@ -14,7 +15,6 @@ import {
   IconUsers,
 } from "@tabler/icons";
 import React from "react";
-import { StyledButton } from "..";
 
 import style from "./_index.module.scss";
 
@@ -28,7 +28,7 @@ type BadgeCardProps = {
 
 function AppCard(props: BadgeCardProps) {
   const { colorScheme } = useMantineColorScheme();
-  const { image, title, type, description, values } = props;
+  const { description, image, title, type, values } = props;
 
   const features = (
     <>

@@ -1,15 +1,15 @@
 import {
-  Header,
-  Group,
   Burger,
-  Container,
-  MediaQuery,
   BurgerProps,
-  useMantineColorScheme,
   Code,
+  Container,
+  Group,
+  Header,
+  MediaQuery,
+  useMantineColorScheme,
 } from "@mantine/core";
-import style from "./_index.module.scss";
 import Logo from "../../public/Logo";
+import style from "./_index.module.scss";
 
 type Props = {
   children?: React.ReactNode;
@@ -18,7 +18,7 @@ type Props = {
 
 const BasicHeader = (props: BurgerProps & Props) => {
   const { colorScheme } = useMantineColorScheme();
-  const { burger, children, opened, onClick } = props;
+  const { burger, children, onClick, opened } = props;
 
   return (
     <Header height={56} mb={50} className={style[colorScheme]}>

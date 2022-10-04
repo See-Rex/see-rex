@@ -1,20 +1,19 @@
 import { AppShell, BurgerProps, useMantineColorScheme } from "@mantine/core";
 import React from "react";
-import { BasicHeader } from "../../components";
-import { StoryBar } from "../../components";
-import ColorToggle from "./../../components/ColorToggle/index";
-
+import { BasicHeader, StoryBar } from "../../components";
 import style from "./_index.module.scss";
+
+import ColorToggle from "./../../components/ColorToggle/index";
 
 type Props = {
   children: React.ReactNode;
   activePage: number;
-  paginator: Function;
+  paginator: (val: number) => void;
 };
 
 function StoryLayout(props: BurgerProps & Props) {
   const { colorScheme } = useMantineColorScheme();
-  const { children, activePage, paginator, opened, onClick } = props;
+  const { activePage, children, onClick, opened, paginator } = props;
 
   return (
     <AppShell

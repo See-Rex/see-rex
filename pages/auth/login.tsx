@@ -1,15 +1,15 @@
+import { Anchor, Divider, Group, Stack } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Group, Divider, Anchor, Stack } from "@mantine/core";
-import style from "./_index.module.scss";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import {
+    GoogleButton,
     InputField,
     StyledButton,
-    GoogleButton,
 } from "../../components";
-import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
 import { AuthLayout } from "../../layouts/AuthLayout";
-import { useRouter } from "next/router";
+import style from "./_index.module.scss";
 
 export function Login() {
     const { login } = useAuth();

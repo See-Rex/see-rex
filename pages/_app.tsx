@@ -1,13 +1,13 @@
 import "../styles/global.scss";
-import type { AppProps } from "next/app";
 import {
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
 } from "@mantine/core";
+import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { AuthContextProvider } from "../context/AuthContext";
-import { useRouter } from "next/router";
 import ProtectedRoute from "../routes/ProtectedRoute";
 
 const authRequiredPaths = [

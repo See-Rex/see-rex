@@ -6,11 +6,11 @@ import CollapsedBar from "../../components/CollapsedBar";
 type Props = {
     children: React.ReactNode;
     activePage: number;
-    paginator: Function;
+    paginator: (page: number) => void;
 };
 
 function AdminLayout(props: BurgerProps & Props) {
-    const { children, activePage, paginator, opened, onClick } = props;
+    const { activePage, children, onClick, opened, paginator } = props;
 
     return (
         <AppShell
