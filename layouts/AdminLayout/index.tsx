@@ -1,32 +1,32 @@
-import { AppShell, BurgerProps } from "@mantine/core";
+import { AppShell, BurgerProps, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { BasicHeader } from "../../components";
 import CollapsedBar from "../../components/CollapsedBar";
 
+import style from "./_index.module.scss";
+
 type Props = {
-    children: React.ReactNode;
-    activePage: number;
-    paginator: Function;
+  children: React.ReactNode;
+  activePage: number;
+  paginator: Function;
 };
 
 function AdminLayout(props: BurgerProps & Props) {
-    const { children, activePage, paginator, opened, onClick } = props;
+  const { colorScheme } = useMantineColorScheme();
+  const { children, activePage, paginator, opened, onClick } = props;
 
-    return (
-        <AppShell
-            header={<BasicHeader opened={opened} onClick={onClick} burger />}
-            navbar={
-                <CollapsedBar
-                    hidden={!opened}
-                    page={activePage}
-                    setPage={paginator}
-                />
-            }
-            fixed
-        >
-            {children}
-        </AppShell>
-    );
+  return (
+    <AppShell
+      className={style[colorScheme]}
+      header={<BasicHeader opened={opened} onClick={onClick} burger />}
+      navbar={
+        <CollapsedBar hidden={!opened} page={activePage} setPage={paginator} />
+      }
+      fixed
+    >
+      {children}
+    </AppShell>
+  );
 }
 
 export default AdminLayout;
