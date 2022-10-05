@@ -19,11 +19,7 @@ function StoryLayout(props: BurgerProps & Props) {
   return (
     <AppShell
       className={style[colorScheme]}
-      header={
-        <BasicHeader opened={opened} onClick={onClick} burger>
-          <ColorToggle />
-        </BasicHeader>
-      }
+      header={<BasicHeader opened={opened} onClick={onClick} burger />}
       navbar={
         <StoryBar hidden={!opened} page={activePage} setPage={paginator} />
       }
