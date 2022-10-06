@@ -5,9 +5,7 @@ import {
   ScrollArea,
   useMantineColorScheme,
 } from "@mantine/core";
-import { useRouter } from "next/router";
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
 import IconButton from "../IconButton";
 import style from "./_index.module.scss";
 import {
