@@ -1,0 +1,71 @@
+@use "../styles/text" as text;
+@use "../styles/constants" as constant;
+@use "../styles/theme" as theme;
+
+.description {
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    max-width: 500px;
+}
+
+.label {
+    font-family: constant.$FONT_MAIN;
+    font-size: 220px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media only screen and (max-width: 760px) {
+        font-size: 120px;
+    }
+    
+    &.light {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+    }
+
+    &.dark {
+    color: constant.$COLOR_GREY;
+    transition: all 0.2s ease-in;
+    }
+}
+
+.root {
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+
+.title {
+    font-family: constant.$FONT_MAIN;
+    font-size: constant.$BANNER_HEADER_3_FONT_SIZE;
+    line-height: constant.$BANNER_HEADER_3_LINE_HEIGHT;
+    font-weight: 800;
+    text-align: center;
+
+    @media only screen and (max-width: 760px) {
+        font-size: 32px;
+    }
+
+    &.light {
+        color: constant.$COLOR_BLACK;
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        color: constant.$COLOR_WHITE_DARK;
+        transition: all 0.2s ease-in;
+    }
+}
+
+.shell {
+    &.light {
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 100%);
+        transition: all 0.1s ease-in;
+    }
+    &.dark {
+        @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+        transition: all 0.1s ease-in;
+    }
+}

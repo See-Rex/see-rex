@@ -1,4 +1,5 @@
 import { Button, Image, useMantineColorScheme } from "@mantine/core";
+import Link from "next/link";
 import React from "react";
 import {
   AppCard,
@@ -17,28 +18,27 @@ import {
   StyledButton,
 } from "../../components";
 import { IconHolidayVillage } from "../../public/Icons";
-import Link from "next/link";
 
 function DevHandout() {
   const { toggleColorScheme } = useMantineColorScheme();
   const data = [
     {
-      title: "Page views",
-      stats: "456,133",
       description:
         "24% more than in the same month last year, 33% more that two years ago",
+      stats: "456,133",
+      title: "Page views",
     },
     {
-      title: "New users",
-      stats: "2,175",
       description:
         "13% less compared to last month, new user engagement up by 6%",
+      stats: "2,175",
+      title: "New users",
     },
     {
-      title: "Completed orders",
-      stats: "1,994",
       description:
         "1994 orders were completed this month, 97% satisfaction rate",
+      stats: "1,994",
+      title: "Completed orders",
     },
   ];
 
@@ -81,7 +81,7 @@ function DevHandout() {
         label={"Link Active"}
         isFullWidth
       />
-      <CollapsedBar page={0} setPage={() => {}} />
+      <CollapsedBar page={0} setPage={() => null} />
       <StatisticCard
         amount={100}
         category="Testing"

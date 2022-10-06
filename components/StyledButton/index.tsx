@@ -1,7 +1,7 @@
-import React from "react";
 import { Button, MantineSize, useMantineColorScheme } from "@mantine/core";
-import style from "./_index.module.scss";
 import { LinkProps } from "next/link";
+import React from "react";
+import style from "./_index.module.scss";
 
 type TypeParams = {
   children: React.ReactNode;

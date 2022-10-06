@@ -1,20 +1,19 @@
+import { StyledButton } from "..";
 import {
-  Button,
   Navbar,
   NavbarProps,
   ScrollArea,
   useMantineColorScheme,
 } from "@mantine/core";
-import style from "./_index.module.scss";
+import { useRouter } from "next/router";
 import React from "react";
 import IconButton from "../IconButton";
+import style from "./_index.module.scss";
 import { IconLogout } from "./../../public/Icons";
-import { useRouter } from "next/router";
-import { StyledButton } from "..";
 
 type Props = {
   page: number;
-  setPage: Function;
+  setPage: (val: number) => void;
 };
 
 function StoryBar(props: Omit<NavbarProps, "children"> & Props) {

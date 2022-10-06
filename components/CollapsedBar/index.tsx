@@ -5,9 +5,9 @@ import {
   ScrollArea,
   useMantineColorScheme,
 } from "@mantine/core";
-import style from "./_index.module.scss";
 import React from "react";
 import IconButton from "../IconButton";
+import style from "./_index.module.scss";
 import {
   IconContacts,
   IconHolidayVillage,
@@ -16,13 +16,14 @@ import {
   IconLogout,
   IconSpaceDashboard,
 } from "./../../public/Icons";
+
 import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import { SegmentedToggle } from "../SegmentedToggle";
 
 type Props = {
   page: number;
-  setPage: Function;
+  setPage: (val: number) => void;
 };
 
 function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {

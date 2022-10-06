@@ -1,16 +1,16 @@
-import { useForm } from '@mantine/form';
 import {
   Group,
+  Stack,
   Text,
-  Title,
-  Stack
+  Title
 } from '@mantine/core';
-import style from "./_index.module.scss";
-import {  InputField, StyledButton, IconButton } from '../../components';
+import { useForm } from '@mantine/form';
 import Link from 'next/link';
-import { ArrowBack } from '../../public/Icons';
-import AuthLayout from '../../layouts/AuthLayout';
+import {  IconButton, InputField, StyledButton } from '../../components';
 import { useAuth } from '../../context/AuthContext';
+import AuthLayout from '../../layouts/AuthLayout';
+import { ArrowBack } from '../../public/Icons';
+import style from "./_index.module.scss";
 
 export function ResetPassword() {
   const { reset } = useAuth();

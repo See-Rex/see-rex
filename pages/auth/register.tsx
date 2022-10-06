@@ -1,16 +1,16 @@
+import { Anchor, Divider, Group, Stack, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Group, Divider, Anchor, Text, Stack } from "@mantine/core";
-import style from "./_index.module.scss";
-import {
-    InputField,
-    StyledButton,
-    GoogleButton,
-} from "../../components";
 import Link from "next/link";
-import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import {
+    GoogleButton,
+    InputField,
+    StyledButton,
+} from "../../components";
+import { useAuth } from "../../context/AuthContext";
 import AuthLayout from "../../layouts/AuthLayout";
+import style from "./_index.module.scss";
 
 function Register() {
     const { register, verify } = useAuth();
@@ -19,20 +19,20 @@ function Register() {
 
     const form = useForm({
         initialValues: {
+            cpassword: "",
             email: "",
             password: "",
-            cpassword: "",
         },
 
         validate: {
+            cpassword: (val) =>
+                val !== password
+                    ? "Please re-enter the correct password"
+                    : null,
             email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
             password: (val) =>
                 val.length <= 6
                     ? "Password should include at least 6 characters"
-                    : null,
-            cpassword: (val) =>
-                val !== password
-                    ? "Please re-enter the correct password"
                     : null,
         },
     });
@@ -112,7 +112,6 @@ function Register() {
                         </Text>
                         <Link href="/auth/login">
                             <Anchor<"a">
-                                onClick={() => {}}
                                 href="#"
                                 size="sm"
                                 className={style.forgotPass}

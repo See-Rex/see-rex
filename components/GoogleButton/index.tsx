@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '@mantine/core';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useAuth } from '../../context/AuthContext';
 
 function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {

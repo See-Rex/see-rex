@@ -8,12 +8,12 @@ import style from "./_index.module.scss";
 type Props = {
   children: React.ReactNode;
   activePage: number;
-  paginator: Function;
+  paginator: (page: number) => void;
 };
 
 function AdminLayout(props: BurgerProps & Props) {
+  const { activePage, children, onClick, opened, paginator } = props;
   const { colorScheme } = useMantineColorScheme();
-  const { children, activePage, paginator, opened, onClick } = props;
 
   return (
     <AppShell

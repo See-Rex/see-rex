@@ -19,13 +19,13 @@ interface Props {
 }
 
 const icons = {
-  up: IconArrowUpRight,
   down: IconArrowDownRight,
+  up: IconArrowUpRight,
 };
 
 function ProgressCard(props: Props) {
   const { colorScheme } = useMantineColorScheme();
-  const { label, stats, progress, color, icon } = props;
+  const { color, icon, label, progress, stats } = props;
   const Icon = icons[icon];
   const colorRing = colorScheme === "light" ? color : "white";
   return (
@@ -42,7 +42,7 @@ function ProgressCard(props: Props) {
           size={110}
           roundCaps
           thickness={3}
-          sections={[{ value: progress, color: colorRing }]}
+          sections={[{ color: colorRing, value: progress }]}
           label={
             <Center>
               <Icon size={25} stroke={2} className={style[colorScheme]} />

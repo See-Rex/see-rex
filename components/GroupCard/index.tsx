@@ -1,5 +1,5 @@
-import React from "react";
 import { Text, useMantineColorScheme } from "@mantine/core";
+import React from "react";
 import style from "./_index.module.scss";
 
 interface StatsGroupProps {

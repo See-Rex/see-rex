@@ -1,5 +1,5 @@
+import { Button, Container, Overlay, Text, Title } from "@mantine/core";
 import React from "react";
-import { Title, Text, Container, Button, Overlay } from "@mantine/core";
 import style from "./_index.module.scss";
 
 function LandingBanner() {
