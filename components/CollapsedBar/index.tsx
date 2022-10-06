@@ -1,4 +1,5 @@
 import {
+  MediaQuery,
   Navbar,
   NavbarProps,
   ScrollArea,
@@ -17,6 +18,10 @@ import {
   IconLogout,
   IconSpaceDashboard,
 } from "./../../public/Icons";
+
+import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/router";
+import { SegmentedToggle } from "../SegmentedToggle";
 
 type Props = {
   page: number;
@@ -74,6 +79,7 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
           isFullWidth
         />
       </Navbar.Section>
+      <SegmentedToggle />
       <Navbar.Section className={style.footer}>
         <IconButton
           className="link"
