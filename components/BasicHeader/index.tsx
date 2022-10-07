@@ -1,7 +1,6 @@
 import { Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
 import Logo from '../../public/Logo';
 import ColorToggle from '../ColorToggle';
-
 import style from './_index.module.scss';
 
 type Props = {
@@ -15,7 +14,7 @@ const BasicHeader = (props: BurgerProps & Props) => {
 
   return (
     <Header height={56} mb={50} className={style[colorScheme]}>
-      <Container fluid={!children} mx={children ? 0 : 'lg'}>
+      <Container fluid={!children} px={children ? 0 : 'lg'}>
         <div className={style.inner}>
           <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Burger
