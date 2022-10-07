@@ -1,0 +1,21 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.text {
+  &.light {
+    color: constant.$COLOR_PRIMARY_DARK;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.badge {
+  &.dark {
+    filter: grayscale(50%);
+    transition: all 0.2s ease-in;
+  }
+}

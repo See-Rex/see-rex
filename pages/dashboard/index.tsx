@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import AdminLayout from "../../layouts/AdminLayout/index";
-import Homepage from "../../pagination/Homepage";
+import React, { useState } from 'react';
+import AdminLayout from '../../layouts/AdminLayout/index';
+import Homepage from '../../pagination/Homepage';
+import Contacts from './../../pagination/Contacts/index';
+import ErrorPage from './../404';
 
 function Dashboard() {
   const [opened, setOpened] = useState(false);
@@ -15,7 +17,7 @@ function Dashboard() {
       case 1:
         return <Homepage />;
       case 2:
-        return <h1>Contacts</h1>;
+        return <Contacts />;
       case 3:
         return <h1>Residential Properties</h1>;
       case 4:
@@ -23,17 +25,12 @@ function Dashboard() {
       case 5:
         return <h1>Non-Residential Properties</h1>;
       default:
-        return <h1>Error 404: Page not found</h1>;
+        return <ErrorPage />;
     }
   };
 
   return (
-    <AdminLayout
-      opened={opened}
-      onClick={() => setOpened((o) => !o)}
-      activePage={activePage}
-      paginator={handlePage}
-    >
+    <AdminLayout opened={opened} onClick={() => setOpened((o) => !o)} activePage={activePage} paginator={handlePage}>
       <PageContent />
     </AdminLayout>
   );
