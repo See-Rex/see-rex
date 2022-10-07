@@ -19,6 +19,7 @@ function AdminLayout(props: BurgerProps & Props) {
     <AppShell
       className={style[colorScheme]}
       header={<BasicHeader opened={opened} onClick={onClick} burger />}
+      navbarOffsetBreakpoint="md"
       navbar={
         <CollapsedBar hidden={!opened} page={activePage} setPage={paginator} />
       }
