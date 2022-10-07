@@ -22,6 +22,7 @@ function StoryLayout(props: BurgerProps & Props) {
       navbar={
         <StoryBar hidden={!opened} page={activePage} setPage={paginator} />
       }
+      navbarOffsetBreakpoint="md"
       fixed
     >
       {children}
