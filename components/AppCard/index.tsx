@@ -18,12 +18,19 @@ import React from "react";
 
 import style from "./_index.module.scss";
 
+export type ValueType = {
+  area: string,
+  car: string,
+  people: string,
+  amount: string,
+}
+
 type BadgeCardProps = {
   image: React.ReactNode;
   title: string;
   type: string;
   description: string;
-  values: [string, string, string, string];
+  values: ValueType;
 };
 
 function AppCard(props: BadgeCardProps) {
@@ -41,7 +48,7 @@ function AppCard(props: BadgeCardProps) {
           />
         }
       >
-        {values[0]}
+        {values.people}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
@@ -52,7 +59,7 @@ function AppCard(props: BadgeCardProps) {
           />
         }
       >
-        {values[1]}
+        {values.area}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
@@ -63,7 +70,7 @@ function AppCard(props: BadgeCardProps) {
           />
         }
       >
-        {values[2]}
+        {values.car}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
@@ -74,7 +81,7 @@ function AppCard(props: BadgeCardProps) {
           />
         }
       >
-        {values[3]}
+        {values.amount}
       </Badge>
     </>
   );

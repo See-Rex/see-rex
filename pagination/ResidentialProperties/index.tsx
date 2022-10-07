@@ -5,6 +5,12 @@ import { AppCard } from "../../components";
 import ResidentialImage from "../../public/background1.png";
 
 function ResidentialProperties() {
+  const values = {
+    amount: '70',
+    area: '100',
+    car: '55',
+    people: '42',
+  };
   const data = [
     {
       description:
@@ -12,7 +18,7 @@ function ResidentialProperties() {
       imageSrc: ResidentialImage,
       title: "Orange Home",
       type: "Residential",
-      values: ["100", "25", "30", "10"],
+      values: values,
     },
     {
       description:
@@ -20,7 +26,7 @@ function ResidentialProperties() {
       imageSrc: ResidentialImage,
       title: "Norway Home",
       type: "Residential",
-      values: ["100", "25", "30", "10"],
+      values: values,
     },
     {
       description:
@@ -28,7 +34,7 @@ function ResidentialProperties() {
       imageSrc: ResidentialImage,
       title: "Tatay's House",
       type: "Residential",
-      values: ["100", "25", "30", "10"],
+      values: values,
     },
     {
       description:
@@ -36,7 +42,7 @@ function ResidentialProperties() {
       imageSrc: ResidentialImage,
       title: "Violet Home",
       type: "Residential",
-      values: ["100", "25", "30", "10"],
+      values: values,
     },
   ];
   
