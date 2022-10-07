@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import StoryPage from "./story";
+import type { NextPage } from 'next';
+import LandingLayout from '../layouts/LandingLayout';
 
 const Home: NextPage = () => {
-  return <StoryPage />;
+  return <LandingLayout />;
 };
 
 export default Home;
