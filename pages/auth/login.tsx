@@ -1,4 +1,4 @@
-import { Anchor, Divider, Group, Stack } from "@mantine/core";
+import { Anchor, Divider, Group, Stack, useMantineColorScheme } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +12,7 @@ import { AuthLayout } from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
 
 export function Login() {
+    const { colorScheme } = useMantineColorScheme();
     const { login } = useAuth();
     const router = useRouter();
     const form = useForm({
@@ -73,14 +74,15 @@ export function Login() {
                         type="password"
                     />
                     <Group position="right">
-                        <Anchor<"a">
-                            href="/auth/resetpassword"
-                            size="sm"
-                            className={style.forgotPass}
-                            type="button"
-                        >
-                            Forgot password?
-                        </Anchor>
+                        <Link href="/auth/resetpassword">
+                            <Anchor<"a">
+                                size="sm"
+                                className={style.forgotPass}
+                                type="button"
+                            >
+                                Forgot password?
+                            </Anchor>
+                        </Link>
                     </Group>
                     <Group position="center">
                         <Group position="center">
@@ -94,9 +96,9 @@ export function Login() {
                             </Link>
                         </Group>
                     </Group>
-                    <Divider label="OR" labelPosition="center" />
+                    <Divider className={style.divider} label="OR" labelPosition="center" />
                     <Group grow>
-                        <GoogleButton radius="sm" className={style.google}>
+                        <GoogleButton radius="sm" className={`${style.google} ${style[colorScheme]}`}>
                             Continue with Google
                         </GoogleButton>
                     </Group>

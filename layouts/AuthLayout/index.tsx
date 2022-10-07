@@ -1,4 +1,4 @@
-import { AppShell, Container, Group, Paper } from "@mantine/core";
+import { AppShell, Container, Group, Paper, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import {
     BasicFooter,
@@ -14,20 +14,26 @@ type Props = {
 
 export function AuthLayout(props: Props) {
     const { children, isForgotPassword } = props;
+    const { colorScheme } = useMantineColorScheme();
 
     return (
         <AppShell
+            className={style[colorScheme]}
             header={<BasicHeader opened={false} />}
             footer={<BasicFooter height={56} />}
             fixed
         >
-            <div className={style.pageContainer}>
+            <div className={`${style.pageContainer} ${style[colorScheme]}`}>
                 <Container>
                     <Paper
                         withBorder
                         shadow="md"
                         radius="md"
-                        className={ isForgotPassword ? style.forgotContainer : style.formContainer}
+                        className={
+                            `${isForgotPassword ? style.forgotContainer : style.formContainer} 
+                            ${style[colorScheme]}`
+                        }
+                           
                         p='xl'
                         m='xl'
                     >

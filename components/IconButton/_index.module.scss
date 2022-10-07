@@ -64,6 +64,12 @@
       @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 20%);
     }
   }
+
+  &.back {
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 20%);
+    }
+  }
 }
 
 .back {

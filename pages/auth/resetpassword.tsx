@@ -2,7 +2,8 @@ import {
   Group,
   Stack,
   Text,
-  Title
+  Title,
+  useMantineColorScheme
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Link from 'next/link';
@@ -13,6 +14,7 @@ import { ArrowBack } from '../../public/Icons';
 import style from "./_index.module.scss";
 
 export function ResetPassword() {
+  const { colorScheme } = useMantineColorScheme();
   const { reset } = useAuth();
 
   const form = useForm({
@@ -38,7 +40,7 @@ export function ResetPassword() {
     <AuthLayout isForgotPassword>
       <Group position='center' mb='md'> 
         <Stack>
-          <Title size={20} align="center" className={style.forgotPassTitle}>
+          <Title size={20} align="center" className={`${style.forgotPassTitle} ${style[colorScheme]}`}>
             Forgot your password?
           </Title>
           <Text color="dimmed" size="sm" align="center" mt={-10}>
