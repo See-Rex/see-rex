@@ -8,7 +8,7 @@ import {
     InputField,
     StyledButton,
 } from "../../components";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 import AuthLayout from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
 
@@ -18,36 +18,30 @@ function Register() {
     const router = useRouter();
     const [password, setPassword] = useState("");
 
-    const form = useForm({
-        initialValues: {
-            cpassword: "",
-            email: "",
-            password: "",
-        },
+  const form = useForm({
+    initialValues: {
+      cpassword: '',
+      email: '',
+      password: '',
+    },
 
-        validate: {
-            cpassword: (val) =>
-                val !== password
-                    ? "Please re-enter the correct password"
-                    : null,
-            email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
-            password: (val) =>
-                val.length <= 6
-                    ? "Password should include at least 6 characters"
-                    : null,
-        },
-    });
+    validate: {
+      cpassword: (val) => (val !== password ? 'Please re-enter the correct password' : null),
+      email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
+      password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
+    },
+  });
 
-    const handleRegister = async () => {
-        try {
-            const userCredentials = await register(form.values.email, form.values.password);
-            verify(userCredentials.user);
-            alert("We have sent a verification link to your email! Please open it to verify your account.");
-            router.push("/auth/login");
-        } catch (err) {
-            alert(err);
-        }
-    };
+  const handleRegister = async () => {
+    try {
+      const userCredentials = await register(form.values.email, form.values.password);
+      verify(userCredentials.user);
+      alert('We have sent a verification link to your email! Please open it to verify your account.');
+      router.push('/auth/login');
+    } catch (err) {
+      alert(err);
+    }
+  };
 
     return (
         <AuthLayout>

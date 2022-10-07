@@ -7,11 +7,11 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Link from 'next/link';
-import {  IconButton, InputField, StyledButton } from '../../components';
-import { useAuth } from '../../context/AuthContext';
+import { IconButton, InputField, StyledButton } from '../../components';
+import { useAuth } from '../../hooks/AuthContext';
 import AuthLayout from '../../layouts/AuthLayout';
 import { ArrowBack } from '../../public/Icons';
-import style from "./_index.module.scss";
+import style from './_index.module.scss';
 
 export function ResetPassword() {
   const { colorScheme } = useMantineColorScheme();
@@ -29,16 +29,16 @@ export function ResetPassword() {
 
   const handleReset = async () => {
     try {
-        await reset(form.values.email);
-        alert("A password reset email has been sent to your email address!");
+      await reset(form.values.email);
+      alert('A password reset email has been sent to your email address!');
     } catch (err) {
-        alert(err);
+      alert(err);
     }
   };
 
   return (
     <AuthLayout isForgotPassword>
-      <Group position='center' mb='md'> 
+      <Group position="center" mb="md">
         <Stack>
           <Title size={20} align="center" className={`${style.forgotPassTitle} ${style[colorScheme]}`}>
             Forgot your password?
@@ -49,10 +49,10 @@ export function ResetPassword() {
         </Stack>
       </Group>
       <form onSubmit={form.onSubmit(handleReset)}>
-        <Stack spacing='md'>
-          <InputField 
+        <Stack spacing="md">
+          <InputField
             required
-            label={'Email'} 
+            label={'Email'}
             placeholder={'lezzml.now@gmail.com'}
             error={form.errors.email && 'Invalid email'}
             value={form.values.email}
@@ -60,14 +60,9 @@ export function ResetPassword() {
           />
           <Group position="apart" className={style.resetButtonGroup}>
             <Link href="/auth/login">
-              <IconButton 
-                className={'back'}
-                icon={<ArrowBack />}
-                isFullWidth={false}
-                label={'Back to login page'}
-              />
+              <IconButton className={'back'} icon={<ArrowBack />} isFullWidth={false} label={'Back to login page'} />
             </Link>
-            <StyledButton types='submit'>RESET PASSWORD</StyledButton>
+            <StyledButton types="submit">RESET PASSWORD</StyledButton>
           </Group>
         </Stack>
       </form>

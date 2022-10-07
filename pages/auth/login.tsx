@@ -7,7 +7,7 @@ import {
     InputField,
     StyledButton,
 } from "../../components";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
 
@@ -21,23 +21,20 @@ export function Login() {
             password: "",
         },
 
-        validate: {
-            email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
-            password: (val) =>
-                val.length <= 6
-                    ? "Password should include at least 6 characters"
-                    : null,
-        },
-    });
+    validate: {
+      email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
+      password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
+    },
+  });
 
-    const handleLogin = async () => {
-        try {
-            await login(form.values.email, form.values.password);
-            router.push("/dashboard");
-        } catch (err) {
-            alert(err);
-        }
-    };
+  const handleLogin = async () => {
+    try {
+      await login(form.values.email, form.values.password);
+      router.push('/dashboard');
+    } catch (err) {
+      alert(err);
+    }
+  };
 
     return (
         <AuthLayout>

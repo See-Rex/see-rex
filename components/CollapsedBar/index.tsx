@@ -1,13 +1,7 @@
-import {
-  MediaQuery,
-  Navbar,
-  NavbarProps,
-  ScrollArea,
-  useMantineColorScheme,
-} from "@mantine/core";
-import React from "react";
-import IconButton from "../IconButton";
-import style from "./_index.module.scss";
+import { MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import React from 'react';
+import IconButton from '../IconButton';
+import style from './_index.module.scss';
 import {
   IconContacts,
   IconHolidayVillage,
@@ -15,18 +9,18 @@ import {
   IconLocationCity,
   IconLogout,
   IconSpaceDashboard,
-} from "./../../public/Icons";
+} from './../../public/Icons';
 
-import { useAuth } from "../../context/AuthContext";
-import { useRouter } from "next/router";
-import { SegmentedToggle } from "../SegmentedToggle";
+import { useAuth } from '../../hooks/AuthContext';
+import { useRouter } from 'next/router';
+import { SegmentedToggle } from '../SegmentedToggle';
 
 type Props = {
   page: number;
   setPage: (val: number) => void;
 };
 
-function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
+function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
   const { logout } = useAuth();
   const router = useRouter();
   const { colorScheme } = useMantineColorScheme();
@@ -34,45 +28,40 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
   const { hidden, page, setPage } = props;
 
   return (
-    <Navbar
-      hidden={hidden}
-      width={{ sm: 350 }}
-      p="md"
-      className={style[colorScheme]}
-    >
+    <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
       <Navbar.Section grow component={ScrollArea}>
         <IconButton
-          className={page == 1 ? "active" : "link"}
+          className={page == 1 ? 'active' : 'link'}
           icon={<IconSpaceDashboard />}
-          label={"Dashboard"}
+          label={'Dashboard'}
           onClick={() => setPage(1)}
           isFullWidth
         />
         <IconButton
-          className={page == 2 ? "active" : "link"}
+          className={page == 2 ? 'active' : 'link'}
           icon={<IconContacts />}
-          label={"Contacts"}
+          label={'Contacts'}
           onClick={() => setPage(2)}
           isFullWidth
         />
         <IconButton
-          className={page == 3 ? "active" : "link"}
+          className={page == 3 ? 'active' : 'link'}
           icon={<IconHolidayVillage />}
-          label={"Residential Properties"}
+          label={'Residential Properties'}
           onClick={() => setPage(3)}
           isFullWidth
         />
         <IconButton
-          className={page == 4 ? "active" : "link"}
+          className={page == 4 ? 'active' : 'link'}
           icon={<IconLandscape />}
-          label={"Land Properties"}
+          label={'Land Properties'}
           onClick={() => setPage(4)}
           isFullWidth
         />
         <IconButton
-          className={page == 5 ? "active" : "link"}
+          className={page == 5 ? 'active' : 'link'}
           icon={<IconLocationCity />}
-          label={"Non-Residential Properties"}
+          label={'Non-Residential Properties'}
           onClick={() => setPage(5)}
           isFullWidth
         />
@@ -82,11 +71,11 @@ function CollapsedBar(props: Omit<NavbarProps, "children"> & Props) {
         <IconButton
           className="link"
           icon={<IconLogout />}
-          label={"Logout"}
+          label={'Logout'}
           onClick={() => {
             logout();
-            router.push("/auth/login");
-            alert("Farewell! See you next time.");
+            router.push('/auth/login');
+            alert('Farewell! See you next time.');
           }}
           isFullWidth
         />
