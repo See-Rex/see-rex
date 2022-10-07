@@ -7,7 +7,7 @@ import {
     InputField,
     StyledButton,
 } from "../../components";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
 
