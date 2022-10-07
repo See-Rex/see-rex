@@ -1,0 +1,40 @@
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+.light {
+  input {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.1s ease-in;
+  }
+}
+
+.dark {
+  * {
+    border: none;
+    border-radius: 5px;
+  }
+
+  div {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+  }
+  
+  button {
+    &:hover{
+      @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    }
+  }
+
+  label {
+    color: constant.$COLOR_WHITE_DARK;
+  }
+
+  input {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    transition: all 0.1s ease-in;
+    color: constant.$COLOR_GREY;
+
+    &:focus {
+      color: constant.$COLOR_WHITE;
+    }
+  }
+}

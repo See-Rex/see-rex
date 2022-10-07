@@ -1,5 +1,6 @@
 @use "../../styles/text" as text;
 @use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
 
 .forgotPassTitle {
     font-family: constant.$FONT_MAIN;
@@ -8,16 +9,30 @@
     font-size: constant.$BANNER_HEADINGS_2_FONT_SIZE;
     line-height: constant.$BANNER_HEADINGS_LINE_HEIGHT;
     letter-spacing: 0.03em;
+
+    &.light {
+        color: constant.$COLOR_BLACK;
+        transition: all 0.1s ease-in;
+    }
+    
+    &.dark {
+        color: constant.$COLOR_GREY_DARK;
+        transition: all 0.1s ease-in;
+    }
 }
 
 .forgotPass {
-    color: constant.$COLOR_PRIMARY;
+    color: constant.$COLOR_SECONDARY;
     font-family: constant.$FONT_SANS2;
     font-style: normal;
     font-weight: 400;
     font-size: constant.$CAPTION_2_FONT_SIZE;
     line-height: constant.$CAPTION_2_LINE_HEIGHT;
     letter-spacing: 0.03em;
+}
+
+.divider {
+    color: constant.$COLOR_GREY_DARK;
 }
 
 .text{
@@ -30,13 +45,28 @@
     color: constant.$COLOR_SECONDARY_DARK;
 }
 
-.google{
-    background-color: constant.$COLOR_ACCENT;
-    color: constant.$COLOR_SECONDARY;
-}
-
 .resetButtonGroup {
     @media only screen and (max-width: 499px) {
         justify-content: center;
+    }
+}
+
+.google {
+    &.light {
+        @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 100%);
+        color: constant.$COLOR_SECONDARY;
+        transition: all 0.1s ease-in;
+    }
+
+    &.dark {
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 5%);
+        border: none;
+        color: constant.$COLOR_WHITE_DARK;
+        transition: all 0.1s ease-in;
+
+        &:hover{
+            @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
+            color: constant.$COLOR_SECONDARY;
+        }
     }
 }
