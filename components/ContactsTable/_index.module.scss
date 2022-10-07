@@ -15,7 +15,7 @@
 
 .badge {
   &.dark {
-    filter: grayscale(50%);
+    filter: opacity(50%);
     transition: all 0.2s ease-in;
   }
 }
