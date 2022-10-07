@@ -1,4 +1,4 @@
-import { Anchor, Divider, Group, Stack, Text } from "@mantine/core";
+import { Anchor, Divider, Group, Stack, Text, useMantineColorScheme } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -13,6 +13,7 @@ import AuthLayout from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
 
 function Register() {
+    const { colorScheme } = useMantineColorScheme();
     const { register, verify } = useAuth();
     const router = useRouter();
     const [password, setPassword] = useState("");
@@ -100,9 +101,9 @@ function Register() {
                     <Group position="center">
                         <StyledButton types="sign-up">SIGN-UP</StyledButton>
                     </Group>
-                    <Divider label="OR" labelPosition="center"/>
+                    <Divider className={style.divider} label="OR" labelPosition="center"/>
                     <Group grow>
-                        <GoogleButton radius="sm" className={style.google}>
+                        <GoogleButton radius="sm" className={`${style.google} ${style[colorScheme]}`}>
                             Continue with Google
                         </GoogleButton>
                     </Group>
@@ -112,7 +113,6 @@ function Register() {
                         </Text>
                         <Link href="/auth/login">
                             <Anchor<"a">
-                                href="#"
                                 size="sm"
                                 className={style.forgotPass}
                                 type="button"
