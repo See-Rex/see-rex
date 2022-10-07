@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
-import { useAuth } from '../../context/AuthContext';
+import React, { useEffect } from 'react';
+import { useAuth } from '../../hooks/AuthContext';
 
-function ProtectedRoute({children}: {children: React.ReactNode}) {
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const router = useRouter();
 
@@ -11,15 +11,14 @@ function ProtectedRoute({children}: {children: React.ReactNode}) {
       alert('Your account has not been verified yet. Please check your email.');
       router.push('/auth/login');
     } else if (user && user.emailVerified) {
-      alert("You have logged in successfully. Welcome to SeeRex!");
+      alert('You have logged in successfully. Welcome to SeeRex!');
     } else {
       alert('Please login first.');
       router.push('/auth/login');
     }
-  }, [router, user])
-  
+  }, [router, user]);
 
-  return <>{user && user.emailVerified? children : null}</>;
+  return <>{user && user.emailVerified ? children : null}</>;
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;
