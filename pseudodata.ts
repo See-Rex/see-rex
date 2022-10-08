@@ -105,3 +105,41 @@ export const residential_properties_data = [
     values: tempValues,
   },
 ];
+
+export const land_properties_data = [
+  {
+    description: "Land of orange people.",
+    imageSrc: ResidentialImage,
+    title: "Orange Land",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Land of Norway people.",
+    imageSrc: ResidentialImage,
+    title: "Norway Land",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Sisig is best served in Tatay's House",
+    imageSrc: ResidentialImage,
+    title: "Tatay's House",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Land of Violet people.",
+    imageSrc: ResidentialImage,
+    title: "Violet Land",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Land of Blue people.",
+    imageSrc: ResidentialImage,
+    title: "Blue Land",
+    type: "Residential",
+    values: tempValues,
+  },
+];

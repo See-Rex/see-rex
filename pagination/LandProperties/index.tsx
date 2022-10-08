@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import style from "../_index.module.scss";
 import { AppCard } from "../../components";
 import { useAuth } from "../../hooks/AuthContext";
-import { residential_properties_data } from "../../pseudodata";
+import { land_properties_data } from "../../pseudodata";
 
-type ResidentialProperty = {
+type LandProperty = {
   description: string;
   imageSrc: StaticImageData;
   title: string;
@@ -20,35 +20,35 @@ type ResidentialProperty = {
   };
 }
 
-function ResidentialProperties() {
+function LandProperties() {
   const { user } = useAuth();
-  const [residentialProperties, setResidentialProperties ] = useState<ResidentialProperty[]>();
+  const [landProperties, setLandProperties ] = useState<LandProperty[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    async function getResidentialProperties() {
+    async function getlandProperties() {
       setIsLoading(true);
-      const data = residential_properties_data;
+      const data = land_properties_data;
 
       if (data) {
-        setResidentialProperties(data);
+        setLandProperties(data);
       }
       
       setTimeout(()=>setIsLoading(false), 1000);
     }
 
     if (user) {
-      getResidentialProperties();
+      getlandProperties();
     }
-  }, [user, residentialProperties]);
+  }, [user, landProperties]);
   
-  const renderResidentialProperties = !isLoading && residentialProperties && (
+  const renderLandProperties = !isLoading && landProperties && (
     <>
-      {residentialProperties.map((property: ResidentialProperty) => 
+      {landProperties.map((property: LandProperty) => 
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard 
             description={property.description}
-            image={<Image src={property.imageSrc} alt="Residential Property" />}
+            image={<Image src={property.imageSrc} alt="Land Property" />}
             title={property.title}
             type={property.type}
             values={property.values}
@@ -61,7 +61,7 @@ function ResidentialProperties() {
   return (
     <Container my="md" fluid>
       <Title color="#b1b1b1" size={20} mb="md">
-        Residential Properties
+        Land Properties
       </Title>
       <LoadingOverlay
         loaderProps={{ color: "#2f90b0", size: "xl"}}
@@ -77,10 +77,10 @@ function ResidentialProperties() {
           { cols: 1, maxWidth: 470, spacing: 'sm' },
         ]}
       >
-        {renderResidentialProperties}
+        {renderLandProperties}
       </SimpleGrid>
     </Container>
   );
 }
 
-export default ResidentialProperties;
+export default LandProperties;

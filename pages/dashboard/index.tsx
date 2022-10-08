@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import AdminLayout from '../../layouts/AdminLayout/index';
-import Homepage from '../../pagination/Homepage';
-import ResidentialProperties from "../../pagination/ResidentialProperties";
-import Contacts from './../../pagination/Contacts/index';
+import { Contacts, Homepage, LandProperties, ResidentialProperties } from '../../pagination';
 import ErrorPage from './../404';
 
 function Dashboard() {
@@ -22,7 +20,7 @@ function Dashboard() {
       case 3:
         return <ResidentialProperties />;
       case 4:
-        return <h1>Land Properties</h1>;
+        return <LandProperties />;
       case 5:
         return <h1>Non-Residential Properties</h1>;
       default:
