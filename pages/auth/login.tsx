@@ -13,7 +13,7 @@ import style from "./_index.module.scss";
 
 export function Login() {
     const { colorScheme } = useMantineColorScheme();
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const router = useRouter();
     const form = useForm({
         initialValues: {
@@ -35,6 +35,10 @@ export function Login() {
       alert(err);
     }
   };
+
+  if (user) {
+    router.push('/auth');
+  }  
 
     return (
         <AuthLayout>

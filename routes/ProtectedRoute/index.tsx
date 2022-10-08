@@ -11,12 +11,13 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       alert('Your account has not been verified yet. Please check your email.');
       router.push('/auth/login');
     } else if (user && user.emailVerified) {
-      alert('You have logged in successfully. Welcome to SeeRex!');
+      return;
     } else {
       alert('Please login first.');
       router.push('/auth/login');
     }
-  }, [router, user]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return <>{user && user.emailVerified ? children : null}</>;
 }
