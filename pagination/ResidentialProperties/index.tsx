@@ -1,28 +1,16 @@
 import { Container, LoadingOverlay, Paper, SimpleGrid, Title } from "@mantine/core";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import style from "../_index.module.scss";
 import { AppCard } from "../../components";
 import { useAuth } from "../../hooks/AuthContext";
 import { residential_properties_data } from "../../pseudodata";
-
-type ResidentialProperty = {
-  description: string;
-  imageSrc: StaticImageData;
-  title: string;
-  type: string;
-  values: {
-      amount: string;
-      area: string;
-      car: string;
-      people: string;
-  };
-}
+import { Property } from "../../types";
 
 function ResidentialProperties() {
   const { user } = useAuth();
-  const [residentialProperties, setResidentialProperties ] = useState<ResidentialProperty[]>();
+  const [residentialProperties, setResidentialProperties ] = useState<Property[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -44,7 +32,7 @@ function ResidentialProperties() {
   
   const renderResidentialProperties = !isLoading && residentialProperties && (
     <>
-      {residentialProperties.map((property: ResidentialProperty) => 
+      {residentialProperties.map((property: Property) => 
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard 
             description={property.description}
