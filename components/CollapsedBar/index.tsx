@@ -74,7 +74,7 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
           label={'Logout'}
           onClick={() => {
             logout();
-            router.push('/auth/login');
+            router.push('/auth');
             alert('Farewell! See you next time.');
           }}
           isFullWidth

@@ -10,11 +10,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     if (user && user.emailVerified === false) {
       alert('Your account has not been verified yet. Please check your email.');
       router.push('/auth/login');
-    } else if (user && user.emailVerified) {
-      return;
-    } else {
-      alert('Please login first.');
-      router.push('/auth/login');
+    } else if (!user) {
+      router.push('/auth');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
