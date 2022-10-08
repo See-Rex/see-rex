@@ -1,82 +1,83 @@
-import { Container, Grid, Paper, Title } from "@mantine/core";
-import Image from "next/image";
-import React from "react";
+import { Container, LoadingOverlay, Paper, SimpleGrid, Title } from "@mantine/core";
+import Image, { StaticImageData } from "next/image";
+import React, { useEffect, useState } from "react";
 import { AppCard } from "../../components";
-import ResidentialImage from "../../public/background1.png";
+import { useAuth } from "../../hooks/AuthContext";
+import { residential_properties_data } from "../../pseudodata";
+import style from "./_index.module.scss";
+
+type ResidentialProperty = {
+  description: string;
+  imageSrc: StaticImageData;
+  title: string;
+  type: string;
+  values: {
+      amount: string;
+      area: string;
+      car: string;
+      people: string;
+  };
+}
 
 function ResidentialProperties() {
-  const values = {
-    amount: '70',
-    area: '100',
-    car: '55',
-    people: '42',
-  };
-  const data = [
-    {
-      description:
-        "Home of orange people.",
-      imageSrc: ResidentialImage,
-      title: "Orange Home",
-      type: "Residential",
-      values: values,
-    },
-    {
-      description:
-        "Home of Norway people.",
-      imageSrc: ResidentialImage,
-      title: "Norway Home",
-      type: "Residential",
-      values: values,
-    },
-    {
-      description:
-        "Sisig is best served in Tatay's House",
-      imageSrc: ResidentialImage,
-      title: "Tatay's House",
-      type: "Residential",
-      values: values,
-    },
-    {
-      description:
-        "Home of Violet people.",
-      imageSrc: ResidentialImage,
-      title: "Violet Home",
-      type: "Residential",
-      values: values,
-    },
-  ];
+  const { user } = useAuth();
+  const [residentialProperties, setResidentialProperties ] = useState<ResidentialProperty[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function getResidentialProperties() {
+      setIsLoading(true);
+      const data = residential_properties_data;
+
+      if (data) {
+        setResidentialProperties(data);
+      }
+      
+      setTimeout(()=>setIsLoading(false), 1000);
+    }
+
+    if (user) {
+      getResidentialProperties();
+    }
+  }, [user, residentialProperties]);
   
-  const renderResidentialProperties = (
-    <Grid.Col xs={4}>{data.map(({
-      description,
-      imageSrc,
-      title,
-      type,
-      values
-    }) => 
-      <Paper key={title} mx={0} my="sm">
-        <AppCard 
-          description={description}
-          image={<Image src={imageSrc} alt="Residential Property" />}
-          title={title}
-          type={type}
-          values={values}
-        />  
-      </Paper>
-    )}
-    </Grid.Col>
-    );
+  const renderResidentialProperties = !isLoading && residentialProperties && (
+    <>
+      {residentialProperties.map((property: ResidentialProperty) => 
+        <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
+          <AppCard 
+            description={property.description}
+            image={<Image src={property.imageSrc} alt="Residential Property" />}
+            title={property.title}
+            type={property.type}
+            values={property.values}
+          />  
+        </Paper>
+      )}
+    </>
+  );
 
   return (
     <Container my="md" fluid>
-      <Title size={20} mb="md">
+      <Title color="#b1b1b1" size={20} mb="md">
         Residential Properties
       </Title>
-      <Grid gutter={20}>
+      <LoadingOverlay
+        loaderProps={{ color: "#2f90b0", size: "xl"}}
+        overlayOpacity={0.3}
+        overlayColor="#c5c5c5"
+        visible={isLoading}
+      />
+      <SimpleGrid 
+        cols={3}
+        spacing="md"
+        breakpoints={[
+          { cols: 2, maxWidth: 900, spacing: 'md' },
+          { cols: 1, maxWidth: 470, spacing: 'sm' },
+        ]}
+      >
         {renderResidentialProperties}
-        {renderResidentialProperties}
-        {renderResidentialProperties}
-      </Grid>
+      </SimpleGrid>
     </Container>
   );
 }
