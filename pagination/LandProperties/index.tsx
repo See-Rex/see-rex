@@ -4,7 +4,6 @@ import React from "react";
 
 import style from "../_index.module.scss";
 import { AppCard, FilterPicker, Search } from "../../components";
-import PropertyInfo from "../../enums/PropertyInfo.enum";
 import PropertyType from "../../enums/PropertyType.enum";
 import { usePropertyContext } from "../../hooks/PropertyContext";
 import { Property } from "../../types";
@@ -36,7 +35,7 @@ function LandProperties() {
       </Title>
       <Group grow>
         <FilterPicker />
-        <Search filterPropertyByType={PropertyInfo.NAME} />
+        <Search />
       </Group>
       <SimpleGrid 
         cols={3}

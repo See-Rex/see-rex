@@ -1,6 +1,8 @@
 import { createStyles, Group, Menu, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { IconCar, IconChevronDown, IconHomeDollar, IconRulerMeasure, IconTextSize, IconUsers } from '@tabler/icons';
 import { useState } from 'react';
+import PropertyInfo from '../../enums/PropertyInfo.enum';
+import { usePropertyContext } from '../../hooks/PropertyContext';
 import style from "./_index.module.scss";
 
 
@@ -43,31 +45,33 @@ function FilterPicker() {
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles({ opened });
   const { colorScheme } = useMantineColorScheme();
+  const { setPropertyInfoFilterType } = usePropertyContext();
 
   const filterTypeData = [
     { 
       image: <IconTextSize stroke={2} className={`${style.icon} ${style[colorScheme]}`}/>, 
-      label: 'Name'
+      label: PropertyInfo.NAME
     },
     { 
       image: <IconUsers stroke={2} className={`${style.icon} ${style[colorScheme]}`} />, 
-      label: 'People' 
+      label: PropertyInfo.PEOPLE 
     },
     { 
       image: <IconCar  stroke={2} className={`${style.icon} ${style[colorScheme]}`}/>, 
-      label: 'Vehicle' 
+      label: PropertyInfo.VEHICLE 
     },
     { 
       image: <IconRulerMeasure  stroke={2} className={`${style.icon} ${style[colorScheme]}`}/>, 
-      label: 'Area' 
+      label: PropertyInfo.AREA
     },
     { 
       image: <IconHomeDollar stroke={2} className={`${style.icon} ${style[colorScheme]}`}/>, 
-      label: 'Value' 
+      label: PropertyInfo.AMOUNT 
     },
   ];
   
   const [selected, setSelected] = useState(filterTypeData[0]);
+  setPropertyInfoFilterType(selected.label);
 
   const items = filterTypeData.map((item) => (
     <Menu.Item

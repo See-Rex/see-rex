@@ -8,12 +8,9 @@ import { createGenericContext } from '../utils/Context';
 
 type PropertyContextType = {
   properties?: Property[];
-  filterProperties: (
-    currentProperties: Property[],
-    filterPropertyByType: PropertyInfo,
-    userInput: string,
-    ) => void;
+  filterProperties: (currentProperties: Property[], userInput: string) => void;
   refreshProperties: () => void;
+  setPropertyInfoFilterType: (type: PropertyInfo) => void;
   setPropertyType: (type: PropertyType) => void;
 }
 
@@ -28,10 +25,11 @@ const PropertyProvider = (props: Props) => {
   const [properties, setProperties] = useState<Property[]>();
   const [loading, setLoading] = useState(false);
   const [propertyType, setPropertyType] = useState<PropertyType>();
+  const [propertyInfoFilterType, setPropertyInfoFilterType] = useState<PropertyInfo>();
   
   useEffect(() => {
     getResidentialProperties();
-  }, [propertyType]);
+  }, [propertyType, propertyInfoFilterType]);
 
   async function getResidentialProperties() {
     setLoading(true);
@@ -54,13 +52,9 @@ const PropertyProvider = (props: Props) => {
     }
   }
 
-  function filterProperties(
-    currentProperties: Property[],
-    filterPropertyByType: PropertyInfo,
-    userInput: string, 
-    ) {
-    const filteredProperties = properties?.filter((property) => {
-      switch(filterPropertyByType) {
+  function filterProperties(currentProperties: Property[], userInput: string) {
+    const filteredProperties = currentProperties.filter((property) => {
+      switch(propertyInfoFilterType) {
         case PropertyInfo.NAME: return property.title.toLowerCase().includes(userInput.toLowerCase());
         case PropertyInfo.AREA: return property.values.area.includes(userInput);
         case PropertyInfo.VEHICLE: return property.values.car.includes(userInput);
@@ -84,6 +78,7 @@ const PropertyProvider = (props: Props) => {
     filterProperties,
     properties,
     refreshProperties,
+    setPropertyInfoFilterType,
     setPropertyType,
   }}>
     {loading ? <SeeRexLoader /> : children}
