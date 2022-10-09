@@ -17,6 +17,7 @@ import {
   StatisticCard,
   StyledButton,
 } from "../../components";
+import PropertyType from "../../enums/PropertyType.enum";
 import { tempValues } from "../../pseudodata";
 import { IconHolidayVillage } from "../../public/Icons";
 
@@ -106,7 +107,7 @@ function DevHandout() {
           <Image src={"../background2.png"} alt={"homePic"} height={180} />
         }
         title={"Home Property #1"}
-        type={"Residential"}
+        type={PropertyType.RESIDENTIAL}
         description={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         }

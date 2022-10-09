@@ -1,39 +1,21 @@
 import { Container, Paper, SimpleGrid, Title } from "@mantine/core";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import style from "../_index.module.scss";
-import { AppCard } from "../../components";
-import SeeRexLoader from "../../components/SeeRexLoader";
-import { useAuth } from "../../hooks/AuthContext";
-import { residential_properties_data } from "../../pseudodata";
+import { AppCard, Search } from "../../components";
+import PropertyInfo from "../../enums/PropertyInfo.enum";
+import PropertyType from "../../enums/PropertyType.enum";
+import { usePropertyContext } from "../../hooks/PropertyContext";
 import { Property } from "../../types";
 
 function ResidentialProperties() {
-  const { user } = useAuth();
-  const [residentialProperties, setResidentialProperties ] = useState<Property[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    async function getResidentialProperties() {
-      setIsLoading(true);
-      const data = residential_properties_data;
-
-      if (data) {
-        setResidentialProperties(data);
-      }
-      
-      setTimeout(()=>setIsLoading(false), 1000);
-    }
-
-    if (user) {
-      getResidentialProperties();
-    }
-  }, [user, residentialProperties]);
+  const { properties, setPropertyType } = usePropertyContext();
+  setPropertyType(PropertyType.RESIDENTIAL);
   
-  const renderResidentialProperties = !isLoading && residentialProperties && (
+  const renderResidentialProperties = properties && (
     <>
-      {residentialProperties.map((property: Property) => 
+      {properties.map((property: Property) => 
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard 
             description={property.description}
@@ -47,14 +29,12 @@ function ResidentialProperties() {
     </>
   );
 
-  const renderLoader = isLoading && <SeeRexLoader />;
-
   return (
     <Container my="md" fluid>
-      <Title color="#b1b1b1" size={20} mb="md">
+      <Title color="#08376B" size={20} mb="md">
         Residential Properties
       </Title>
-      {renderLoader}
+      <Search filterPropertyByType={PropertyInfo.NAME} />
       <SimpleGrid 
         cols={3}
         spacing="md"

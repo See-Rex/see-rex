@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons";
 import React from "react";
 
+import PropertyType from "../../enums/PropertyType.enum";
 import style from "./_index.module.scss";
 
 export type ValueType = {
@@ -28,7 +29,7 @@ export type ValueType = {
 type BadgeCardProps = {
   image: React.ReactNode;
   title: string;
-  type: string;
+  type?: PropertyType;
   description: string;
   values: ValueType;
 };

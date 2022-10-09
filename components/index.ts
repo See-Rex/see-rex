@@ -11,6 +11,7 @@ import InputField from "./InputField";
 import LandingBanner from "./LandingBanner";
 import MainFooter from "./MainFooter/index";
 import ProgressCard from "./ProgressCard/index";
+import Search from "./Search";
 import StatisticCard from "./StatisticCard/index";
 import StoryBar from "./StoryBar/index";
 import StyledButton from "./StyledButton";
@@ -29,6 +30,7 @@ export {
   LandingBanner,
   MainFooter,
   ProgressCard,
+  Search,
   StatisticCard,
   StoryBar,
   StyledButton,

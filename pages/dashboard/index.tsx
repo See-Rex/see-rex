@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PropertyProvider } from '../../hooks/PropertyContext';
 import AdminLayout from '../../layouts/AdminLayout/index';
 import { 
   Contacts, 
@@ -36,7 +37,9 @@ function Dashboard() {
 
   return (
     <AdminLayout opened={opened} onClick={() => setOpened((o) => !o)} activePage={activePage} paginator={handlePage}>
-      <PageContent />
+      <PropertyProvider>
+        <PageContent />
+      </PropertyProvider>
     </AdminLayout>
   );
 }
