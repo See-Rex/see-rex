@@ -14,7 +14,7 @@ import style from "./_index.module.scss";
 
 function Register() {
     const { colorScheme } = useMantineColorScheme();
-    const { register, verify } = useAuth();
+    const { register, user, verify } = useAuth();
     const router = useRouter();
     const [password, setPassword] = useState("");
 
@@ -42,6 +42,10 @@ function Register() {
       alert(err);
     }
   };
+
+  if (user) {
+    router.push('/auth');
+  }  
 
     return (
         <AuthLayout>

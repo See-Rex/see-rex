@@ -29,10 +29,10 @@ export const AuthContextProvider = ({
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser({
-          uid: user.uid,
-          email: user.email,
           displayName: user.displayName,
+          email: user.email,
           emailVerified: user.emailVerified,
+          uid: user.uid,
         });
       } else {
         setUser(null);
@@ -69,7 +69,7 @@ export const AuthContextProvider = ({
     await signOut(auth);
   }
 
-  return <AuthContext.Provider value={{ 
+  return <AuthContext.Provider value={{
     login, 
     loginWithGoogle, 
     logout,

@@ -1,9 +1,10 @@
-import { Container, LoadingOverlay, Paper, SimpleGrid, Title } from "@mantine/core";
+import { Container, Paper, SimpleGrid, Title } from "@mantine/core";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 import style from "../_index.module.scss";
 import { AppCard } from "../../components";
+import SeeRexLoader from "../../components/SeeRexLoader";
 import { useAuth } from "../../hooks/AuthContext";
 import { land_properties_data } from "../../pseudodata";
 import { Property } from "../../types";
@@ -46,17 +47,14 @@ function LandProperties() {
     </>
   );
 
+  const renderLoader = isLoading && <SeeRexLoader />;
+
   return (
     <Container my="md" fluid>
       <Title color="#b1b1b1" size={20} mb="md">
         Land Properties
       </Title>
-      <LoadingOverlay
-        loaderProps={{ color: "#2f90b0", size: "xl"}}
-        overlayOpacity={0.3}
-        overlayColor="#c5c5c5"
-        visible={isLoading}
-      />
+      {renderLoader}
       <SimpleGrid 
         cols={3}
         spacing="md"

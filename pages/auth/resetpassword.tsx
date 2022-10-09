@@ -7,6 +7,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { IconButton, InputField, StyledButton } from '../../components';
 import { useAuth } from '../../hooks/AuthContext';
 import AuthLayout from '../../layouts/AuthLayout';
@@ -15,7 +16,8 @@ import style from './_index.module.scss';
 
 export function ResetPassword() {
   const { colorScheme } = useMantineColorScheme();
-  const { reset } = useAuth();
+  const { reset, user } = useAuth();
+  const router = useRouter();
 
   const form = useForm({
     initialValues: {
@@ -35,6 +37,10 @@ export function ResetPassword() {
       alert(err);
     }
   };
+
+  if (user) {
+    router.push('/auth');
+  }  
 
   return (
     <AuthLayout isForgotPassword>
