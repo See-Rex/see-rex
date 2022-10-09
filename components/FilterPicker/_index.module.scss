@@ -1,0 +1,17 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.icon {
+  display: flex;
+  justify-content: center;
+  width: 15px;
+  &.light {
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}

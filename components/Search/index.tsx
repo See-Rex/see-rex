@@ -35,22 +35,22 @@ function Search(props: Props) {
   return (
     <TextInput
       className={`${style.searchContainer} ${style[colorScheme]}`}
-      icon={<IconSearch size={18} stroke={1.5} />}
-      radius="xl"
+      icon={<IconSearch size={18} stroke={2} />}
+      radius="md"
       size="md"
       onChange={handleUserInput}
       rightSection={
         <ActionIcon 
           size={32} 
-          radius="xl" 
+          radius="md" 
           color={theme.primaryColor} 
           variant="filled" 
           onClick={handleSearch}
         >
           {theme.dir === 'ltr' ? (
-            <IconArrowRight size={18} stroke={1.5} />
+            <IconArrowRight size={18} stroke={2} />
           ) : (
-            <IconArrowLeft size={18} stroke={1.5} />
+            <IconArrowLeft size={18} stroke={2} />
           )}
         </ActionIcon>
       }

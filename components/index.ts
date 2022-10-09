@@ -4,6 +4,7 @@ import BasicHeader from "./BasicHeader";
 import CollapsedBar from "./CollapsedBar/index";
 import FeatureCard from "./FeatureCard/index";
 import FeatureHero from "./FeatureHero/index";
+import FilterPicker from "./FilterPicker";
 import GoogleButton from "./GoogleButton";
 import GroupCard from "./GroupCard/index";
 import IconButton from "./IconButton/index";
@@ -23,6 +24,7 @@ export {
   CollapsedBar,
   FeatureCard,
   FeatureHero,
+  FilterPicker,
   GoogleButton,
   GroupCard,
   IconButton,

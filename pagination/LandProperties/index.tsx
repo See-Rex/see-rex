@@ -1,9 +1,9 @@
-import { Container, Paper, SimpleGrid, Title } from "@mantine/core";
+import { Container, Group, Paper, SimpleGrid, Title } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 
 import style from "../_index.module.scss";
-import { AppCard, Search } from "../../components";
+import { AppCard, FilterPicker, Search } from "../../components";
 import PropertyInfo from "../../enums/PropertyInfo.enum";
 import PropertyType from "../../enums/PropertyType.enum";
 import { usePropertyContext } from "../../hooks/PropertyContext";
@@ -34,7 +34,10 @@ function LandProperties() {
       <Title color="#08376B" size={20} mb="md">
         Land Properties
       </Title>
-      <Search filterPropertyByType={PropertyInfo.NAME} />
+      <Group grow>
+        <FilterPicker />
+        <Search filterPropertyByType={PropertyInfo.NAME} />
+      </Group>
       <SimpleGrid 
         cols={3}
         spacing="md"
