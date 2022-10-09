@@ -1,0 +1,20 @@
+@use "../../styles/constants" as constant;
+
+.searchContainer {
+  &.light {
+    input {
+      background: constant.$COLOR_WHITE;
+      color: constant.$COLOR_SECONDARY;
+      transition: all 0.1s ease-in;
+      border: none;
+    }
+  }
+  &.dark {
+    input {
+      background: constant.$COLOR_PRIMARY_DARK;
+      color: constant.$COLOR_SECONDARY;
+      transition: all 0.1s ease-in;
+      border: none;
+    }
+  }
+}

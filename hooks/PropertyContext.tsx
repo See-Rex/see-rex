@@ -28,6 +28,10 @@ const PropertyProvider = (props: Props) => {
   const [properties, setProperties] = useState<Property[]>();
   const [loading, setLoading] = useState(false);
   const [propertyType, setPropertyType] = useState<PropertyType>();
+  
+  useEffect(() => {
+    getResidentialProperties();
+  }, [propertyType]);
 
   async function getResidentialProperties() {
     setLoading(true);
@@ -40,10 +44,6 @@ const PropertyProvider = (props: Props) => {
 
     setLoading(false);
   }
-
-  useEffect(() => {
-    getResidentialProperties();
-  }, [propertyType]);
 
   function fetchPropertyByPropertyType(type: PropertyType | undefined) {
     switch(type) {
@@ -59,7 +59,6 @@ const PropertyProvider = (props: Props) => {
     filterPropertyByType: PropertyInfo,
     userInput: string, 
     ) {
-    console.log('Before Filtering: ', currentProperties);
     const filteredProperties = properties?.filter((property) => {
       switch(filterPropertyByType) {
         case PropertyInfo.NAME: return property.title.toLowerCase().includes(userInput.toLowerCase());
@@ -69,8 +68,6 @@ const PropertyProvider = (props: Props) => {
         case PropertyInfo.AMOUNT: return property.values.amount.includes(userInput);
       }
     });
-    
-    console.log('After Filtering: ', filteredProperties);
 
     if (filteredProperties) {
       setProperties(filteredProperties);

@@ -1,8 +1,9 @@
-import { ActionIcon, TextInput, useMantineTheme } from '@mantine/core';
+import { ActionIcon, TextInput, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons';
 import { ChangeEvent, useState } from 'react';
 import PropertyInfo from '../../enums/PropertyInfo.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
+import style from "./_index.module.scss";
 
 type Props = {
   filterPropertyByType: PropertyInfo;
@@ -11,8 +12,9 @@ type Props = {
 function Search(props: Props) {
   const { filterPropertyByType } = props;
   const { filterProperties, properties, refreshProperties } = usePropertyContext();
-  const [ userInput, setUserInput ] = useState<string>();
+  const { colorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
+  const [ userInput, setUserInput ] = useState<string>();
 
   function handleSearch() {
     if (userInput && properties) {
@@ -32,13 +34,19 @@ function Search(props: Props) {
    
   return (
     <TextInput
+      className={`${style.searchContainer} ${style[colorScheme]}`}
       icon={<IconSearch size={18} stroke={1.5} />}
-      type=""
       radius="xl"
       size="md"
       onChange={handleUserInput}
       rightSection={
-        <ActionIcon size={32} radius="xl" color={theme.primaryColor} variant="filled" onClick={handleSearch}>
+        <ActionIcon 
+          size={32} 
+          radius="xl" 
+          color={theme.primaryColor} 
+          variant="filled" 
+          onClick={handleSearch}
+        >
           {theme.dir === 'ltr' ? (
             <IconArrowRight size={18} stroke={1.5} />
           ) : (
