@@ -1,6 +1,10 @@
-import { MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { useRouter } from 'next/router';
 import React from 'react';
+import { useAuth } from '../../hooks/AuthContext';
 import IconButton from '../IconButton';
+
+import { SegmentedToggle } from '../SegmentedToggle';
 import style from './_index.module.scss';
 import {
   IconContacts,
@@ -10,10 +14,6 @@ import {
   IconLogout,
   IconSpaceDashboard,
 } from './../../public/Icons';
-
-import { useAuth } from '../../hooks/AuthContext';
-import { useRouter } from 'next/router';
-import { SegmentedToggle } from '../SegmentedToggle';
 
 type Props = {
   page: number;

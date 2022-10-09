@@ -67,7 +67,10 @@
 }
 
 .image {
-  height: 180px;
+  img {
+    width: 100%;
+  }
+
   &.light {
     filter: brightness(60%);
     transition: all 0.2s ease-in;

@@ -1,3 +1,5 @@
+import ResidentialImage from "./public/background1.png";
+
 export const contacts_data = [
   {
     avatar:
@@ -56,5 +58,50 @@ export const stat_data = [
     description: '1994 orders were completed this month, 97% satisfaction rate',
     stats: '1,994',
     title: 'Completed orders',
+  },
+];
+
+export const tempValues = {
+  amount: '70',
+  area: '100',
+  car: '55',
+  people: '42',
+};
+
+export const residential_properties_data = [
+  {
+    description: "Home of orange people.",
+    imageSrc: ResidentialImage,
+    title: "Orange Home",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Home of Norway people.",
+    imageSrc: ResidentialImage,
+    title: "Norway Home",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Sisig is best served in Tatay's House",
+    imageSrc: ResidentialImage,
+    title: "Tatay's House",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Home of Violet people.",
+    imageSrc: ResidentialImage,
+    title: "Violet Home",
+    type: "Residential",
+    values: tempValues,
+  },
+  {
+    description: "Home of Blue people.",
+    imageSrc: ResidentialImage,
+    title: "Blue Home",
+    type: "Residential",
+    values: tempValues,
   },
 ];
