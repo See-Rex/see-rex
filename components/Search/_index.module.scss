@@ -4,8 +4,8 @@
   &.light {
     input {
       background: constant.$COLOR_WHITE;
-      color: constant.$COLOR_BLACK;
       font-weight: 500;
+      color: constant.$COLOR_PRIMARY;
       transition: all 0.1s ease-in;
       border: none;
     }
