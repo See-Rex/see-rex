@@ -1,9 +1,9 @@
 enum PropertyInfo {
-  AMOUNT = 'amount',
-  AREA = 'area',
-  NAME = 'name',
-  PEOPLE = 'people',
-  VEHICLE = 'vehicle',
+  AMOUNT = 'Amount',
+  AREA = 'Area',
+  NAME = 'Name',
+  PEOPLE = 'People',
+  VEHICLE = 'Vehicle',
 }
 
 export default PropertyInfo;

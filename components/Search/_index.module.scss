@@ -4,6 +4,7 @@
   &.light {
     input {
       background: constant.$COLOR_WHITE;
+      font-weight: 500;
       color: constant.$COLOR_PRIMARY;
       transition: all 0.1s ease-in;
       border: none;
@@ -12,7 +13,8 @@
   &.dark {
     input {
       background: constant.$COLOR_PRIMARY_DARK;
-      color: constant.$COLOR_SECONDARY;
+      color: constant.$COLOR_GREY;
+      font-weight: 500;
       transition: all 0.1s ease-in;
       border: none;
     }

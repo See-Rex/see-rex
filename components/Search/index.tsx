@@ -1,23 +1,17 @@
 import { ActionIcon, TextInput, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { IconArrowRight, IconSearch } from '@tabler/icons';
 import { ChangeEvent, useState } from 'react';
-import PropertyInfo from '../../enums/PropertyInfo.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
 import style from "./_index.module.scss";
 
-type Props = {
-  filterPropertyByType: PropertyInfo;
-}
-
-function Search(props: Props) {
-  const { filterPropertyByType } = props;
+function Search() {
   const { filterProperties, properties, refreshProperties } = usePropertyContext();
   const { colorScheme } = useMantineColorScheme();
   const [ userInput, setUserInput ] = useState<string>();
 
   function handleSearch() {
     if (userInput && properties) {
-      filterProperties(properties, filterPropertyByType, userInput);
+      filterProperties(properties, userInput);
     } else {
       console.log("Please input a value");
     }
@@ -34,8 +28,8 @@ function Search(props: Props) {
   return (
     <TextInput
       className={`${style.searchContainer} ${style[colorScheme]}`}
-      icon={<IconSearch size={18} stroke={1.5} />}
-      radius="xl"
+      icon={<IconSearch size={18} stroke={2} />}
+      radius="md"
       size="md"
       onChange={handleUserInput}
       rightSection={

@@ -63,12 +63,38 @@ export const stat_data = [
   },
 ];
 
-export const tempValues = {
-  amount: '70',
-  area: '100',
-  car: '55',
-  people: '42',
-};
+export const tempValues = [
+  {
+    amount: '70',
+    area: '100',
+    car: '1',
+    people: '5',
+  },
+  {
+    amount: '33',
+    area: '2000',
+    car: '3',
+    people: '4',
+  },
+  {
+    amount: '12',
+    area: '1000',
+    car: '2',
+    people: '2',
+  },
+  {
+    amount: '46',
+    area: '500',
+    car: '0',
+    people: '1',
+  },
+  {
+    amount: '12',
+    area: '1000',
+    car: '5',
+    people: '2',
+  },
+];
 
 export const residential_properties_data: Property[] = [
   {
@@ -76,35 +102,35 @@ export const residential_properties_data: Property[] = [
     imageSrc: ResidentialImage,
     title: "Orange Home",
     type: PropertyType.RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[0],
   },
   {
     description: "Home of Norway people.",
     imageSrc: ResidentialImage,
     title: "Norway Home",
     type: PropertyType.RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[1],
   },
   {
     description: "Sisig is best served in Tatay's House",
     imageSrc: ResidentialImage,
     title: "Tatay's House",
     type: PropertyType.RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[2],
   },
   {
     description: "Home of Violet people.",
     imageSrc: ResidentialImage,
     title: "Violet Home",
     type: PropertyType.RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[3],
   },
   {
     description: "Home of Blue people.",
     imageSrc: ResidentialImage,
     title: "Blue Home",
     type: PropertyType.RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[4],
   },
 ];
 
@@ -114,35 +140,35 @@ export const land_properties_data: Property[] = [
     imageSrc: ResidentialImage,
     title: "Orange Land",
     type: PropertyType.LAND,
-    values: tempValues,
+    values: tempValues[0],
   },
   {
     description: "Land of Norway people.",
     imageSrc: ResidentialImage,
     title: "Norway Land",
     type: PropertyType.LAND,
-    values: tempValues,
+    values: tempValues[1],
   },
   {
     description: "Sisig is best served in Tatay's Land",
     imageSrc: ResidentialImage,
     title: "Tatay's Land",
     type: PropertyType.LAND,
-    values: tempValues,
+    values: tempValues[2],
   },
   {
     description: "Land of Violet people.",
     imageSrc: ResidentialImage,
     title: "Violet Land",
     type: PropertyType.LAND,
-    values: tempValues,
+    values: tempValues[3],
   },
   {
     description: "Land of Blue people.",
     imageSrc: ResidentialImage,
     title: "Blue Land",
     type: PropertyType.LAND,
-    values: tempValues,
+    values: tempValues[4],
   },
 ];
 
@@ -152,34 +178,34 @@ export const non_residential_properties_data: Property[] = [
     imageSrc: ResidentialImage,
     title: "Orange Park",
     type: PropertyType.NON_RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[0],
   },
   {
     description: "Park of Norway people.",
     imageSrc: ResidentialImage,
     title: "Norway Park",
     type: PropertyType.NON_RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[1],
   },
   {
     description: "Sisig is best served in Tatay's Park",
     imageSrc: ResidentialImage,
     title: "Tatay's Park",
     type: PropertyType.NON_RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[2],
   },
   {
     description: "Park of Violet people.",
     imageSrc: ResidentialImage,
     title: "Violet Park",
     type: PropertyType.NON_RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[3],
   },
   {
     description: "Park of Blue people.",
     imageSrc: ResidentialImage,
     title: "Blue Park",
     type: PropertyType.NON_RESIDENTIAL,
-    values: tempValues,
+    values: tempValues[4],
   },
 ];

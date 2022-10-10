@@ -1,0 +1,86 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.icon {
+  display: flex;
+  justify-content: center;
+  width: 15px;
+  &.light {
+    color: constant.$COLOR_ACCENT;
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.control {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  transition: background-color 150ms ease;
+  width: 200px;
+
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 10%);
+    }
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    color: constant.$COLOR_GREY;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 40%);
+    }
+  }
+}
+
+.dropDown {
+  transition: all 0.2s ease-in;
+
+  &.light {
+    button {
+      &:hover {
+        @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
+      }
+    }
+  }
+
+  &.dark {
+    background-color: constant.$COLOR_PRIMARY_DARK;
+    border: none;
+
+    button {
+      color: constant.$COLOR_GREY;
+      &:hover {
+        @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 40%);
+      }
+    }
+  }
+}
+
+.label {
+  margin-top: -2px;
+  font-size: constant.$BUTTON_TEXT_SMALL_FONT_SIZE;
+  font-weight: 500;
+}
+
+.iconUp {
+  transform: rotate(180deg);
+  transition: transform 150ms ease;
+}
+
+.iconDown {
+  transform: rotate(0deg);
+  transition: transform 150ms ease;
+}
