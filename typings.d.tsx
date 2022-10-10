@@ -1,46 +1,58 @@
 export interface Homeowner {
-  _id: string,
-  name: string,
-  slug: string,
+  _id: string;
+  name: string;
+  slug: string;
   image: {
     asset: {
       url: string;
-    }
-  },
-  contactDetails: string,
-  dateRegistered: string,
-  bio: [object]
+    };
+  };
+  contactDetails: string;
+  dateRegistered: string;
+  bio: [object];
 }
 
 export interface Property {
-  _id: string,
-  title: string,
-  slug: string,
+  _id: string;
+  title: string;
+  slug: string;
   homeowner: {
     name: string;
-    image: string;
-  },
-  mainImage: {
+    image: {
+      asset: {
+        url: string;
+      };
+    };
+  };
+  image: {
     asset: {
       url: string;
-    }
-  },
-  dateRegistered: string,
+    };
+  };
+  dateRegistered: string;
   categories: {
     title: string;
     description: string;
-  },
+  };
   homeownerHistory: {
     name: string;
-    image: string;
-  },
+    image: {
+      asset: {
+        url: string;
+      };
+    };
+  };
   vehicles: {
     name: string;
-    image: string;
+    image: {
+      asset: {
+        url: string;
+      };
+    };
     dateRegistered: string;
     proofOfOwnership: [object];
-  },
-  description: [object]
+  };
+  description: [object];
 }
 
 export interface Vehicle {
@@ -54,5 +66,5 @@ export interface Vehicle {
   },
   contactDetails: string,
   dateRegistered: string,
-  bio: [object]
+  bio: [object];
 }
