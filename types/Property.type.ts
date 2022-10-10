@@ -1,10 +1,11 @@
 import { StaticImageData } from "next/image";
+import PropertyType from "../enums/PropertyType.enum";
 
 type Property = {
   description: string;
   imageSrc: StaticImageData;
   title: string;
-  type: string;
+  type?: PropertyType;
   values: {
       amount: string;
       area: string;
