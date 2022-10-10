@@ -1,5 +1,5 @@
 import { ActionIcon, TextInput, useMantineColorScheme, useMantineTheme } from '@mantine/core';
-import { IconArrowLeft, IconArrowRight, IconSearch } from '@tabler/icons';
+import { IconArrowRight, IconSearch } from '@tabler/icons';
 import { ChangeEvent, useState } from 'react';
 import PropertyInfo from '../../enums/PropertyInfo.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
@@ -13,7 +13,6 @@ function Search(props: Props) {
   const { filterPropertyByType } = props;
   const { filterProperties, properties, refreshProperties } = usePropertyContext();
   const { colorScheme } = useMantineColorScheme();
-  const theme = useMantineTheme();
   const [ userInput, setUserInput ] = useState<string>();
 
   function handleSearch() {
@@ -43,15 +42,11 @@ function Search(props: Props) {
         <ActionIcon 
           size={32} 
           radius="xl" 
-          color={theme.primaryColor} 
+          color={colorScheme === 'light' ? 'blue' : 'cyan'} 
           variant="filled" 
           onClick={handleSearch}
         >
-          {theme.dir === 'ltr' ? (
-            <IconArrowRight size={18} stroke={1.5} />
-          ) : (
-            <IconArrowLeft size={18} stroke={1.5} />
-          )}
+          <IconArrowRight size={18} stroke={1.5} />
         </ActionIcon>
       }
       placeholder="Search a property"

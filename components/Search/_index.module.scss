@@ -4,7 +4,7 @@
   &.light {
     input {
       background: constant.$COLOR_WHITE;
-      color: constant.$COLOR_SECONDARY;
+      color: constant.$COLOR_PRIMARY;
       transition: all 0.1s ease-in;
       border: none;
     }
