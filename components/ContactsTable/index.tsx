@@ -12,7 +12,7 @@ const badgeColors: Record<string, string> = {
   residential: 'cyan',
 };
 
-export function ContactsTable({ data }: UsersTableProps) {
+export default function ContactsTable({ data }: UsersTableProps) {
   const { colorScheme } = useMantineColorScheme();
   const rows = data.map((item) => (
     <tr key={item.name}>

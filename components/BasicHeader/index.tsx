@@ -1,6 +1,6 @@
+import { ColorToggle } from '..';
 import { Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
 import Logo from '../../public/Logo';
-import ColorToggle from '../ColorToggle';
 import style from './_index.module.scss';
 
 type Props = {
