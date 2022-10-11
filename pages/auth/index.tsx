@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import React from 'react'
-import SeeRexLoader from '../../components/SeeRexLoader';
+import React from 'react';
+import { SeeRexLoader } from '../../components';
 import { useAuth } from '../../hooks/AuthContext';
 
 function Auth() {
@@ -14,9 +14,7 @@ function Auth() {
     router.push('/auth/login');
   }
 
-  return (
-    <SeeRexLoader />
-  )
+  return <SeeRexLoader />;
 }
 
 export default Auth;

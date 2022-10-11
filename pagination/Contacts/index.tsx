@@ -1,6 +1,6 @@
 import { Paper, useMantineColorScheme } from '@mantine/core';
 import React from 'react';
-import { ContactsTable } from './../../components/ContactsTable/index';
+import { ContactsTable } from '../../components';
 import { contacts_data } from './../../pseudodata';
 
 function Contacts() {
