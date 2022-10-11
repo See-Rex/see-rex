@@ -1,9 +1,9 @@
 import { ActionIcon, Anchor, Avatar, Badge, Group, ScrollArea, Table, Text, useMantineColorScheme } from '@mantine/core';
-import { IconPencil } from '@tabler/icons';
+import { IconInfoCircle } from '@tabler/icons';
 import style from './_index.module.scss';
 
 type UsersTableProps = {
-  data: { avatar: string; name: string; type: string; email: string; phone: string }[];
+  data: { address: string; avatar: string; name: string; type: string; email: string; phone: string }[];
 };
 
 const badgeColors: Record<string, string> = {
@@ -50,9 +50,14 @@ export function ContactsTable({ data }: UsersTableProps) {
         </Text>
       </td>
       <td>
+        <Text size="sm" color="dimmed" className={`${style.text} ${style[colorScheme]}`}>
+          {item.address}
+        </Text>
+      </td>
+      <td>
         <Group spacing={0} position="right">
           <ActionIcon>
-            <IconPencil size={16} stroke={1.5} />
+            <IconInfoCircle size={16} stroke={1.5} />
           </ActionIcon>
         </Group>
       </td>
@@ -68,6 +73,7 @@ export function ContactsTable({ data }: UsersTableProps) {
             <th className={`${style.text} ${style[colorScheme]}`}>Property Type</th>
             <th className={`${style.text} ${style[colorScheme]}`}>Email</th>
             <th className={`${style.text} ${style[colorScheme]}`}>Phone</th>
+            <th className={`${style.text} ${style[colorScheme]}`}>Address</th>
             <th />
           </tr>
         </thead>

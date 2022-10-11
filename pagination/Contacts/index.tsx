@@ -7,7 +7,7 @@ function Contacts() {
   const { colorScheme } = useMantineColorScheme();
   return (
     <div>
-      <Paper p={20} style={{ background: colorScheme == 'light' ? '#FFFFFF' : '#151d1f' }}>
+      <Paper px={20} py={15} style={{ background: colorScheme == 'light' ? '#FFFFFF' : '#151d1f' }}>
         <ContactsTable data={contacts_data} />
       </Paper>
     </div>
