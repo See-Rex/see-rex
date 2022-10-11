@@ -1,6 +1,5 @@
-@use "../../styles/text" as text;
-@use "../../styles/constants" as constant;
-@use "../../styles/theme" as theme;
+@use '../../styles/theme' as theme;
+@use '../../styles/constants' as constant;
 
 .pageContainer {
   height: 100%;
@@ -33,41 +32,24 @@
   @media screen and (max-width: 310px) {
     width: 240px;
   }
-
   &.light {
     @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-    transition: all 0.1s ease-in;
+    transition: all 0.2s ease-in;
   }
 
   &.dark {
     border: none;
     @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
-    transition: all 0.1s ease-in;
-  }
-}
-
-.forgotContainer {
-  margin: 0 auto;
-  max-width: 450px;
-
-  &.light {
-    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-    transition: all 0.1s ease-in;
-  }
-
-  &.dark {
-    border: none;
-    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
-    transition: all 0.1s ease-in;
+    transition: all 0.2s ease-in;
   }
 }
 
 .light {
   @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
-  transition: all 0.1s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .dark {
-    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
-    transition: all 0.1s ease-in;
+  @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+  transition: all 0.2s ease-in;
 }
