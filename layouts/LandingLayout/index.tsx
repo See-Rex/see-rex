@@ -1,6 +1,6 @@
-import { AppShell } from '@mantine/core';
+import { AppShell, Stack } from '@mantine/core';
 import React from 'react';
-import { BasicHeader, LandingBanner, MainFooter, StyledButton } from '../../components';
+import { BasicHeader, FeatureHero, LandingBanner, MainFooter, StyledButton } from '../../components';
 
 function LandingLayout() {
   const header = (
@@ -12,7 +12,10 @@ function LandingLayout() {
   );
   return (
     <AppShell header={header} footer={<MainFooter height={56} />} padding={0}>
-      <LandingBanner />
+      <Stack>
+        <LandingBanner />
+        <FeatureHero />
+      </Stack>
     </AppShell>
   );
 }
