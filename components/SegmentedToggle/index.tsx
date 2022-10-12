@@ -1,23 +1,16 @@
-import {
-  Box,
-  Center,
-  Group,
-  MediaQuery,
-  SegmentedControl,
-  useMantineColorScheme,
-} from "@mantine/core";
-import { IconMoon, IconSun } from "@tabler/icons";
+import { Box, Center, Group, MediaQuery, SegmentedControl, useMantineColorScheme } from '@mantine/core';
+import { IconMoon, IconSun } from '@tabler/icons';
 
-export function SegmentedToggle() {
+export default function SegmentedToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
-    <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+    <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
       <Group position="center" my="xl" grow>
         <SegmentedControl
           value={colorScheme}
-          onChange={(value: "light" | "dark") => toggleColorScheme(value)}
-          style={{ opacity: "0.8" }}
+          onChange={(value: 'light' | 'dark') => toggleColorScheme(value)}
+          style={{ opacity: '0.8' }}
           data={[
             {
               label: (
@@ -26,7 +19,7 @@ export function SegmentedToggle() {
                   <Box ml={10}>Light</Box>
                 </Center>
               ),
-              value: "light",
+              value: 'light',
             },
             {
               label: (
@@ -35,7 +28,7 @@ export function SegmentedToggle() {
                   <Box ml={10}>Dark</Box>
                 </Center>
               ),
-              value: "dark",
+              value: 'dark',
             },
           ]}
         />

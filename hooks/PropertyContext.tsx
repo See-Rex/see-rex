@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import SeeRexLoader from '../components/SeeRexLoader';
+import { SeeRexLoader } from '../components';
 import PropertyInfo from '../enums/PropertyInfo.enum';
 import PropertyType from '../enums/PropertyType.enum';
 import { land_properties_data, non_residential_properties_data, residential_properties_data } from '../pseudodata';
@@ -12,7 +12,7 @@ type PropertyContextType = {
   refreshProperties: () => void;
   setPropertyInfoFilterType: (type: PropertyInfo) => void;
   setPropertyType: (type: PropertyType) => void;
-}
+};
 
 interface Props {
   children: React.ReactNode;
@@ -26,14 +26,14 @@ const PropertyProvider = (props: Props) => {
   const [loading, setLoading] = useState(false);
   const [propertyType, setPropertyType] = useState<PropertyType>();
   const [propertyInfoFilterType, setPropertyInfoFilterType] = useState<PropertyInfo>();
-  
+
   useEffect(() => {
     getResidentialProperties();
   }, [propertyType, propertyInfoFilterType]);
 
   async function getResidentialProperties() {
     setLoading(true);
-    
+
     const data = await fetchPropertyByPropertyType(propertyType);
 
     if (data) {
@@ -44,22 +44,31 @@ const PropertyProvider = (props: Props) => {
   }
 
   function fetchPropertyByPropertyType(type: PropertyType | undefined) {
-    switch(type) {
-      case PropertyType.LAND: return land_properties_data;
-      case PropertyType.RESIDENTIAL: return residential_properties_data;
-      case PropertyType.NON_RESIDENTIAL: return non_residential_properties_data;
-      default: return null;
+    switch (type) {
+      case PropertyType.LAND:
+        return land_properties_data;
+      case PropertyType.RESIDENTIAL:
+        return residential_properties_data;
+      case PropertyType.NON_RESIDENTIAL:
+        return non_residential_properties_data;
+      default:
+        return null;
     }
   }
 
   function filterProperties(currentProperties: Property[], userInput: string) {
     const filteredProperties = currentProperties.filter((property) => {
-      switch(propertyInfoFilterType) {
-        case PropertyInfo.NAME: return property.title.toLowerCase().includes(userInput.toLowerCase());
-        case PropertyInfo.AREA: return property.values.area.includes(userInput);
-        case PropertyInfo.VEHICLE: return property.values.car.includes(userInput);
-        case PropertyInfo.PEOPLE: return property.values.people.includes(userInput);
-        case PropertyInfo.AMOUNT: return property.values.amount.includes(userInput);
+      switch (propertyInfoFilterType) {
+        case PropertyInfo.NAME:
+          return property.title.toLowerCase().includes(userInput.toLowerCase());
+        case PropertyInfo.AREA:
+          return property.values.area.includes(userInput);
+        case PropertyInfo.VEHICLE:
+          return property.values.car.includes(userInput);
+        case PropertyInfo.PEOPLE:
+          return property.values.people.includes(userInput);
+        case PropertyInfo.AMOUNT:
+          return property.values.amount.includes(userInput);
       }
     });
 
@@ -74,15 +83,19 @@ const PropertyProvider = (props: Props) => {
     getResidentialProperties();
   }
 
-  return <PropertyContextProvider value={{
-    filterProperties,
-    properties,
-    refreshProperties,
-    setPropertyInfoFilterType,
-    setPropertyType,
-  }}>
-    {loading ? <SeeRexLoader /> : children}
-  </PropertyContextProvider>
-}
+  return (
+    <PropertyContextProvider
+      value={{
+        filterProperties,
+        properties,
+        refreshProperties,
+        setPropertyInfoFilterType,
+        setPropertyType,
+      }}
+    >
+      {loading ? <SeeRexLoader /> : children}
+    </PropertyContextProvider>
+  );
+};
 
 export { PropertyProvider, usePropertyContext };
