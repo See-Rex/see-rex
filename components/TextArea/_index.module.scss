@@ -1,0 +1,34 @@
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.light {
+  textarea {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+  }
+}
+
+.dark {
+  * {
+    border: none;
+    border-radius: 5px;
+    transition: all 0.2s ease-in;
+  }
+
+  textarea {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 65%);
+    &:focus {
+      color: constant.$COLOR_WHITE;
+    }
+  }
+
+  button {
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 80%);
+    }
+  }
+
+  label {
+    color: constant.$COLOR_WHITE_DARK;
+  }
+}
