@@ -1,7 +1,9 @@
 export interface Homeowner {
   _id: string;
   name: string;
-  slug: string;
+  slug: {
+    current: string;
+  };
   image: {
     asset: {
       url: string;
@@ -15,7 +17,9 @@ export interface Homeowner {
 export interface Property {
   _id: string;
   title: string;
-  slug: string;
+  slug: {
+    current: string;
+  };
   homeowner: {
     name: string;
     image: {
@@ -58,7 +62,9 @@ export interface Property {
 export interface Vehicle {
   _id: string,
   name: string,
-  slug: string,
+  slug: {
+    current: string;
+  };
   image: {
     asset: {
       url: string;
