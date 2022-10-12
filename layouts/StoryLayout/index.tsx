@@ -1,9 +1,7 @@
-import { AppShell, BurgerProps, useMantineColorScheme } from "@mantine/core";
-import React from "react";
-import { BasicHeader, StoryBar } from "../../components";
-import style from "./_index.module.scss";
-
-import ColorToggle from "./../../components/ColorToggle/index";
+import { AppShell, BurgerProps, useMantineColorScheme } from '@mantine/core';
+import React from 'react';
+import { BasicHeader, StoryBar } from '../../components';
+import style from './_index.module.scss';
 
 type Props = {
   children: React.ReactNode;
@@ -19,9 +17,7 @@ function StoryLayout(props: BurgerProps & Props) {
     <AppShell
       className={style[colorScheme]}
       header={<BasicHeader opened={opened} onClick={onClick} burger />}
-      navbar={
-        <StoryBar hidden={!opened} page={activePage} setPage={paginator} />
-      }
+      navbar={<StoryBar hidden={!opened} page={activePage} setPage={paginator} />}
       navbarOffsetBreakpoint="md"
       fixed
     >

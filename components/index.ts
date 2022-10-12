@@ -20,6 +20,10 @@ import SegmentedToggle from './SegmentedToggle';
 import StatisticCard from './StatisticCard/index';
 import StoryBar from './StoryBar/index';
 import StyledButton from './StyledButton';
+import TextArea from './TextArea/index';
+import ContactIcon from './ContactIcon/index';
+import ContactIconsList from './ContactIconList/index';
+import ContactUsForm from './ContactUsForm/index';
 
 export {
   AppCard,
@@ -27,7 +31,10 @@ export {
   BasicHeader,
   CollapsedBar,
   ColorToggle,
+  ContactIcon,
+  ContactIconsList,
   ContactsTable,
+  ContactUsForm,
   FeatureCard,
   FeatureHero,
   FilterPicker,
@@ -44,4 +51,5 @@ export {
   StatisticCard,
   StoryBar,
   StyledButton,
+  TextArea,
 };

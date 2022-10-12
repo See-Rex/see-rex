@@ -1,0 +1,15 @@
+@use '../../styles/constants' as constant;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  color: constant.$COLOR_WHITE;
+}
+
+.title {
+  color: constant.$COLOR_WHITE;
+}
+
+.description {
+  color: constant.$COLOR_WHITE;
+}
