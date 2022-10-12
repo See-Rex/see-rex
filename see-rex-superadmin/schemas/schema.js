@@ -1,25 +1,21 @@
 // First, we must import the schema creator
-import createSchema from "part:@sanity/base/schema-creator";
+import createSchema from 'part:@sanity/base/schema-creator';
 
 // Then import schema types from any plugins that might expose them
-import schemaTypes from "all:part:@sanity/base/schema-type";
+import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // We import object and document schemas
-import blockContent from "./blockContent";
-import category from "./category";
-import homeowner from "./homeowner";
-import property from "./property";
-import vehicle from "./vehicle";
+import blockContent from './blockContent';
+import category from './category';
+import homeowner from './homeowner';
+import property from './property';
+import vehicle from './vehicle';
+import land from './land';
+import nonResidentialProperty from './nonResidentialProperty';
 
 export default createSchema({
-    name: "default",
-    types: schemaTypes.concat([
-        property,
-        homeowner,
-        category,
-        vehicle,
-        blockContent,
-    ]),
+  name: 'default',
+  types: schemaTypes.concat([property, land, nonResidentialProperty, homeowner, category, vehicle, blockContent]),
 });
 
 // // First, we must import the schema creator
