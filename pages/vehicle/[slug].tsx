@@ -8,6 +8,7 @@ interface VehicleProps {
 }
 
 function VehicleSlug({ vehicle }: VehicleProps) {
+  console.log(vehicle);
   return (
     <div><h1>Vehicle Name: {vehicle[0].name}</h1></div>
   )
@@ -59,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      vehicle
+      vehicle,
     },
     revalidate: 60,
   }
