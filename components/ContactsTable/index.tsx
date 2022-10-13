@@ -1,9 +1,13 @@
+import { ContactForm } from '..';
 import { ActionIcon, Anchor, Avatar, Badge, Group, ScrollArea, Table, Text, useMantineColorScheme } from '@mantine/core';
 import { IconInfoCircle } from '@tabler/icons';
+import { useState } from 'react';
 import style from './_index.module.scss';
 
+type ContactType = 'Land' | 'Commercial' | 'Residential';
+
 type UsersTableProps = {
-  data: { address: string; avatar: string; name: string; type: string; email: string; phone: string }[];
+  data: { avatar: string; name: string; type: ContactType; email: string; phone: string }[];
 };
 
 const badgeColors: Record<string, string> = {
@@ -14,6 +18,9 @@ const badgeColors: Record<string, string> = {
 
 export default function ContactsTable({ data }: UsersTableProps) {
   const { colorScheme } = useMantineColorScheme();
+  const [opened, setOpened] = useState(false);
+  const [contactData, setContactData] = useState({ email: '', name: '', phone: '', type: '' as ContactType });
+
   const rows = data.map((item) => (
     <tr key={item.name}>
       <td>
@@ -38,7 +45,10 @@ export default function ContactsTable({ data }: UsersTableProps) {
         <Anchor<'a'>
           size="sm"
           href="#"
-          onClick={(event) => event.preventDefault()}
+          onClick={() => {
+            setContactData({ email: item.email, name: item.name, phone: item.phone, type: item.type });
+            setOpened(true);
+          }}
           className={`${style.text} ${style[colorScheme]}`}
         >
           {item.email}
@@ -47,11 +57,6 @@ export default function ContactsTable({ data }: UsersTableProps) {
       <td>
         <Text size="sm" color="dimmed" className={`${style.text} ${style[colorScheme]}`}>
           {item.phone}
-        </Text>
-      </td>
-      <td>
-        <Text size="sm" color="dimmed" className={`${style.text} ${style[colorScheme]}`}>
-          {item.address}
         </Text>
       </td>
       <td>
@@ -65,20 +70,29 @@ export default function ContactsTable({ data }: UsersTableProps) {
   ));
 
   return (
-    <ScrollArea>
-      <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
-        <thead>
-          <tr>
-            <th className={`${style.text} ${style[colorScheme]}`}>Property Owner</th>
-            <th className={`${style.text} ${style[colorScheme]}`}>Property Type</th>
-            <th className={`${style.text} ${style[colorScheme]}`}>Email</th>
-            <th className={`${style.text} ${style[colorScheme]}`}>Phone</th>
-            <th className={`${style.text} ${style[colorScheme]}`}>Address</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </Table>
-    </ScrollArea>
+    <>
+      <ContactForm
+        opened={opened}
+        onClose={() => setOpened(false)}
+        email={contactData.email}
+        name={contactData.name}
+        phone={contactData.phone}
+        type={contactData.type}
+      />
+      <ScrollArea>
+        <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
+          <thead>
+            <tr>
+              <th className={`${style.text} ${style[colorScheme]}`}>Property Owner</th>
+              <th className={`${style.text} ${style[colorScheme]}`}>Property Type</th>
+              <th className={`${style.text} ${style[colorScheme]}`}>Email</th>
+              <th className={`${style.text} ${style[colorScheme]}`}>Phone</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </Table>
+      </ScrollArea>
+    </>
   );
 }

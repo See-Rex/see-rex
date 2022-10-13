@@ -16,7 +16,7 @@
   }
 
   textarea {
-    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 65%);
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 80%);
     &:focus {
       color: constant.$COLOR_WHITE;
     }

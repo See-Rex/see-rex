@@ -24,6 +24,7 @@ import TextArea from './TextArea/index';
 import ContactIcon from './ContactIcon/index';
 import ContactIconsList from './ContactIconList/index';
 import ContactUsForm from './ContactUsForm/index';
+import ContactForm from './ContactForm/index';
 
 export {
   AppCard,
@@ -31,6 +32,7 @@ export {
   BasicHeader,
   CollapsedBar,
   ColorToggle,
+  ContactForm,
   ContactIcon,
   ContactIconsList,
   ContactsTable,
