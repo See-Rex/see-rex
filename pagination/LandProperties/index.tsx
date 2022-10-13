@@ -1,4 +1,4 @@
-import { Container, Group, Paper, SimpleGrid, Title } from '@mantine/core';
+import { Center, Container, Group, Paper, SimpleGrid, Title } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 
@@ -44,16 +44,18 @@ function LandProperties() {
         <FilterPicker />
         <Search />
       </SimpleGrid>
-      <SimpleGrid
-        cols={3}
-        spacing="md"
-        breakpoints={[
-          { cols: 2, maxWidth: 'lg' },
-          { cols: 1, maxWidth: 'xs' },
-        ]}
-      >
-        {renderLandProperties}
-      </SimpleGrid>
+      <Center>
+        <SimpleGrid
+          cols={3}
+          spacing="md"
+          breakpoints={[
+            { cols: 2, maxWidth: 'lg' },
+            { cols: 1, maxWidth: 'xs' },
+          ]}
+        >
+          {renderLandProperties}
+        </SimpleGrid>
+      </Center>
     </Container>
   );
 }
