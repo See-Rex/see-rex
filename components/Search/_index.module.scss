@@ -1,6 +1,7 @@
-@use "../../styles/constants" as constant;
+@use '../../styles/constants' as constant;
 
 .searchContainer {
+  min-width: 225px;
   &.light {
     input {
       background: constant.$COLOR_WHITE;

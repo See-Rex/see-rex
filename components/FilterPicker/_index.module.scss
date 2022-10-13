@@ -23,7 +23,6 @@
   justify-content: space-between;
   padding: 10px 15px;
   transition: background-color 150ms ease;
-  width: 200px;
 
   &.light {
     @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
