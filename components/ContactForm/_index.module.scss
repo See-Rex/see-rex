@@ -1,0 +1,114 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.close {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.icon {
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_BLACK, 60%);
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 60%);
+    }
+  }
+  &.dark {
+    @include theme.SET_COLOR(constant.$COLOR_WHITE, 60%);
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_GREY_DARK, 40%);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  border-radius: 15px;
+  padding: 10px;
+
+  @media only screen and (max-width: 520px) {
+    flex-direction: column;
+  }
+
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    border: 1px solid constant.$COLOR_GREY_DARK;
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 95%);
+    border: 1px solid constant.$COLOR_PRIMARY_DARK;
+  }
+}
+
+.form {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 20px;
+  padding-left: 40px;
+  border-left: 0;
+
+  @media only screen and (max-width: 520px) {
+    padding: 15px;
+    padding-left: 15px;
+  }
+}
+
+.fields {
+  width: 250px;
+}
+
+.contacts {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  padding: 20px;
+
+  @media only screen and (max-width: 520px) {
+    margin-bottom: 10px;
+    padding-left: 15px;
+  }
+
+  &.light {
+    background: radial-gradient(110% 135% at 85% 135%, rgba(53, 192, 237, 0.5) 0%, rgba(47, 144, 176, 0.8) 100%);
+  }
+  &.dark {
+    background: radial-gradient(110% 135% at 85% 135%, #2b3b3f 0%, #151d1f 100%);
+  }
+}
+
+.title {
+  margin-bottom: 30px;
+  font-family: constant.$FONT_MAIN;
+
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_BLACK, 100%);
+  }
+  &.dark {
+    @include theme.SET_COLOR(constant.$COLOR_WHITE, 80%);
+  }
+
+  @media only screen and (max-width: 520px) {
+    margin-bottom: 20px;
+  }
+}
+
+.control {
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 80%);
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 75%);
+    }
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_GREY_DARK, 20%);
+    &:hover {
+      @include theme.SET_BACKGROUND(constant.$COLOR_GREY_DARK, 15%);
+    }
+  }
+  @media only screen and (max-width: 520px) {
+    flex: 1;
+  }
+}
