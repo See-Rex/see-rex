@@ -16,7 +16,7 @@ const BasicHeader = (props: BurgerProps & Props) => {
     <Header height={56} mb={50} className={style[colorScheme]}>
       <Container fluid px="lg">
         <div className={style.inner}>
-          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+          <MediaQuery largerThan="md" styles={{ display: 'none' }}>
             <Burger
               color={colorScheme == 'light' ? 'black' : 'white'}
               hidden={!burger}
@@ -27,13 +27,13 @@ const BasicHeader = (props: BurgerProps & Props) => {
             />
           </MediaQuery>
           <Logo size="lg" />
-          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+          <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
             <Group spacing={20} className={style.links}>
               {children}
               <ColorToggle />
             </Group>
           </MediaQuery>
-          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+          <MediaQuery largerThan="md" styles={{ display: 'none' }}>
             <Code className={style[`${colorScheme}-code`]} sx={{ fontWeight: 700 }}>
               v1.0.1
             </Code>
