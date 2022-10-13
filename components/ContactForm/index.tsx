@@ -1,6 +1,6 @@
 import { ContactIconsList, InputField, TextArea } from '..';
 import emailjs from '@emailjs/browser';
-import { ActionIcon, Button, Group, Modal, ModalProps, SimpleGrid, Text, useMantineColorScheme } from '@mantine/core';
+import { ActionIcon, Button, Group, Modal, ModalProps, SimpleGrid, Text, useMantineColorScheme, Stack } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconAddressBook, IconAt, IconHomeSearch, IconPhone, IconX } from '@tabler/icons';
 import React from 'react';
@@ -63,51 +63,53 @@ function ContactForm(props: Props & ModalProps) {
       size="auto"
       centered
     >
-      <div className={`${style.wrapper} ${style[colorScheme]}`}>
-        <div className={`${style.contacts} ${style[colorScheme]}`}>
-          <Text size="lg" weight={700} className={style.title} sx={{ color: '#fff' }}>
-            Contact information
-          </Text>
+      <Stack className={`${style.wrapper} ${style[colorScheme]}`}>
+        <SimpleGrid cols={1} className={style.close}>
+          <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
+        </SimpleGrid>
+        <SimpleGrid cols={2} breakpoints={[{ cols: 1, maxWidth: 'sm' }]}>
+          <div className={`${style.contacts} ${style[colorScheme]}`}>
+            <Text size="lg" weight={700} className={style.title} sx={{ color: '#fff' }}>
+              Contact information
+            </Text>
 
-          <ContactIconsList data={contactDetails} />
-        </div>
-
-        <form className={style.form} onSubmit={form.onSubmit(sendEmail)}>
-          <SimpleGrid cols={1} className={style.close}>
-            <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
-          </SimpleGrid>
-          <Text size="lg" weight={700} className={`${style.title} ${style[colorScheme]}`}>
-            Get in touch
-          </Text>
-
-          <div className={style.fields}>
-            <SimpleGrid cols={1} breakpoints={[{ cols: 1, maxWidth: 'sm' }]}>
-              <InputField
-                mt="md"
-                required
-                label={'Subject'}
-                placeholder={'Purpose of Email'}
-                value={form.values.subject}
-                onChange={(event) => form.setFieldValue('subject', event.currentTarget.value)}
-              />
-              <TextArea
-                mt="md"
-                required
-                label={'Message'}
-                placeholder={'Please include all relevant information'}
-                value={form.values.message}
-                onChange={(event) => form.setFieldValue('message', event.currentTarget.value)}
-                minRows={3}
-              />
-            </SimpleGrid>
-            <Group position="right" mt="md">
-              <Button type="submit" className={`${style.control} ${style[colorScheme]}`}>
-                Send message
-              </Button>
-            </Group>
+            <ContactIconsList data={contactDetails} />
           </div>
-        </form>
-      </div>
+
+          <form className={style.form} onSubmit={form.onSubmit(sendEmail)}>
+            <Text size="lg" weight={700} className={`${style.title} ${style[colorScheme]}`}>
+              Get in touch
+            </Text>
+
+            <div className={style.fields}>
+              <SimpleGrid cols={1} breakpoints={[{ cols: 1, maxWidth: 'sm' }]}>
+                <InputField
+                  mt="md"
+                  required
+                  label={'Subject'}
+                  placeholder={'Purpose of Email'}
+                  value={form.values.subject}
+                  onChange={(event) => form.setFieldValue('subject', event.currentTarget.value)}
+                />
+                <TextArea
+                  mt="md"
+                  required
+                  label={'Message'}
+                  placeholder={'Please include all relevant information'}
+                  value={form.values.message}
+                  onChange={(event) => form.setFieldValue('message', event.currentTarget.value)}
+                  minRows={3}
+                />
+              </SimpleGrid>
+              <Group position="right" mt="md">
+                <Button type="submit" className={`${style.control} ${style[colorScheme]}`}>
+                  Send message
+                </Button>
+              </Group>
+            </div>
+          </form>
+        </SimpleGrid>
+      </Stack>
     </Modal>
   );
 }
