@@ -1,6 +1,17 @@
 import { ContactIconsList, InputField, TextArea } from '..';
 import emailjs from '@emailjs/browser';
-import { ActionIcon, Button, Group, Modal, ModalProps, SimpleGrid, Text, useMantineColorScheme, Stack } from '@mantine/core';
+import {
+  ActionIcon,
+  Button,
+  Group,
+  Modal,
+  ModalProps,
+  SimpleGrid,
+  Text,
+  useMantineColorScheme,
+  Stack,
+  MediaQuery,
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconAddressBook, IconAt, IconHomeSearch, IconPhone, IconX } from '@tabler/icons';
 import React from 'react';
@@ -64,11 +75,13 @@ function ContactForm(props: Props & ModalProps) {
       centered
     >
       <Stack className={`${style.wrapper} ${style[colorScheme]}`}>
-        <SimpleGrid cols={1} className={style.close}>
-          <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
-        </SimpleGrid>
         <SimpleGrid cols={2} breakpoints={[{ cols: 1, maxWidth: 'sm' }]}>
           <div className={`${style.contacts} ${style[colorScheme]}`}>
+            <MediaQuery largerThan="sm" styles={{ display: 'none !important' }}>
+              <SimpleGrid cols={1} className={style.close}>
+                <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
+              </SimpleGrid>
+            </MediaQuery>
             <Text size="lg" weight={700} className={style.title} sx={{ color: '#fff' }}>
               Contact information
             </Text>
@@ -77,6 +90,11 @@ function ContactForm(props: Props & ModalProps) {
           </div>
 
           <form className={style.form} onSubmit={form.onSubmit(sendEmail)}>
+            <MediaQuery smallerThan="sm" styles={{ display: 'none !important' }}>
+              <SimpleGrid cols={1} className={style.close}>
+                <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
+              </SimpleGrid>
+            </MediaQuery>
             <Text size="lg" weight={700} className={`${style.title} ${style[colorScheme]}`}>
               Get in touch
             </Text>
