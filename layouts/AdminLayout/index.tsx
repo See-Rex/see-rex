@@ -13,7 +13,7 @@ type Props = {
 };
 
 function AdminLayout(props: BurgerProps & Props) {
-  const { activePage, children, setOpened, opened, paginator } = props;
+  const { activePage, children, opened, paginator, setOpened } = props;
   const { colorScheme } = useMantineColorScheme();
 
   return (
