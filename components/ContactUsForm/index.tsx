@@ -3,12 +3,21 @@ import emailjs from '@emailjs/browser';
 import { Button, Group, Modal, ModalProps, SimpleGrid, Text, Title, useMantineColorScheme } from '@mantine/core';
 import { ActionIcon } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { IconAt, IconMapPin, IconPhone, IconSun } from '@tabler/icons';
 import { IconX } from '@tabler/icons';
 import React from 'react';
 import style from './_index.module.scss';
 
+const ContactDetails = [
+  { description: 'seerex.info.system@gmail.com', icon: <IconAt size={24} />, title: 'Email' },
+  { description: '(032) 488 - 9119', icon: <IconPhone size={24} />, title: 'Phone' },
+  { description: 'N.Bacalso Street, Cebu City, Philippines', icon: <IconMapPin size={24} />, title: 'Address' },
+  { description: '8 a.m. – 11 p.m.', icon: <IconSun size={24} />, title: 'Working hours' },
+];
+
 function ContactUsForm(props: ModalProps) {
   const { colorScheme } = useMantineColorScheme();
+
   const form = useForm({
     initialValues: {
       from_email: '',
@@ -24,7 +33,7 @@ function ContactUsForm(props: ModalProps) {
 
   const sendEmail = () => {
     try {
-      emailjs.send('service_nzup63p', 'template_qm5qt2d', form.values, 'zGfkmEBnLMLx6m_Zd');
+      emailjs.send('service_deb5i4s', 'template_qm5qt2d', form.values, 'zGfkmEBnLMLx6m_Zd');
       props.onClose;
     } catch (err) {
       alert(err);
@@ -54,7 +63,7 @@ function ContactUsForm(props: ModalProps) {
             <Text className={style.description} mt="sm" mb={30}>
               Leave us an email and we will get back to you within 24 business hours
             </Text>
-            <ContactIconsList />
+            <ContactIconsList data={ContactDetails} />
           </div>
           <form className={`${style.form} ${style[colorScheme]}`} onSubmit={form.onSubmit(sendEmail)}>
             <InputField
