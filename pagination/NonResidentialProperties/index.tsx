@@ -37,12 +37,12 @@ function NonResidentialProperties() {
         <FilterPicker />
         <Search />
       </Group>
-      <SimpleGrid 
+      <SimpleGrid
         cols={3}
         spacing="md"
         breakpoints={[
-          { cols: 2, maxWidth: 900, spacing: 'md' },
-          { cols: 1, maxWidth: 470, spacing: 'sm' },
+          { cols: 2, maxWidth: 'lg' },
+          { cols: 1, maxWidth: 'xs' },
         ]}
       >
         {renderNonResidentialProperties}
