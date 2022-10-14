@@ -23,6 +23,10 @@
   }
 }
 
+.fields {
+  min-width: 300px;
+}
+
 .wrapper {
   display: flex;
   border-radius: 15px;
@@ -46,7 +50,7 @@
   box-sizing: border-box;
   flex: 1;
   padding: 20px;
-  padding-left: 40px;
+  padding-left: 30px;
   border-left: 0;
 
   @media only screen and (max-width: 520px) {

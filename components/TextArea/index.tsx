@@ -3,7 +3,7 @@ import React from 'react';
 import style from './_index.module.scss';
 
 function TextArea(props: TextareaProps) {
-  const { error, label, onChange, placeholder, required, value } = props;
+  const { error, label, minRows, onChange, placeholder, required, value } = props;
   const { colorScheme } = useMantineColorScheme();
 
   return (
@@ -15,7 +15,7 @@ function TextArea(props: TextareaProps) {
       placeholder={placeholder}
       required={required}
       value={value}
-      minRows={3}
+      minRows={minRows}
     />
   );
 }
