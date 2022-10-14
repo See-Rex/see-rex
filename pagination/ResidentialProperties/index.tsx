@@ -1,4 +1,4 @@
-import { Center, Container, Group, Paper, SimpleGrid, Title } from '@mantine/core';
+import { Center, Container, Paper, SimpleGrid, Title } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 
@@ -50,7 +50,7 @@ function ResidentialProperties() {
           spacing="md"
           breakpoints={[
             { cols: 2, maxWidth: 'lg' },
-            { cols: 1, maxWidth: 'xs' },
+            { cols: 1, maxWidth: 'sm' },
           ]}
         >
           {renderResidentialProperties}
