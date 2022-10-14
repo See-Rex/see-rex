@@ -44,24 +44,54 @@ export const AuthContextProvider = ({
     return () => unsubscribe();
   }, []);
 
-  const register = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const register = async (email: string, password: string) => {
+    try {
+      const createUserWithEmailResponse = await createUserWithEmailAndPassword(auth, email, password);
+
+      return createUserWithEmailResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  const verify = (user: User) => {
-    return sendEmailVerification(user);
+  const verify = async (user: User) => {
+    try {
+      const sendEmailVerificationResponse = await sendEmailVerification(user);
+
+      return sendEmailVerificationResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  const login = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const login = async (email: string, password: string) => {
+    try {
+      const signInWithEmailResponse = await signInWithEmailAndPassword(auth, email, password);
+
+      return signInWithEmailResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
   
-  const loginWithGoogle = () => {
-    return signInWithPopup(auth, provider);
+  const loginWithGoogle = async () => {
+    try {
+      const googleResponse = await signInWithPopup(auth, provider);
+
+      return googleResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
   
-  const reset = (email: string) => {
-    return sendPasswordResetEmail(auth, email);
+  const reset = async (email: string) => {
+    try {
+      const resetResponse = await sendPasswordResetEmail(auth, email);
+
+      return resetResponse;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   const logout = async () => {
