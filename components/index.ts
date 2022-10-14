@@ -25,6 +25,7 @@ import ContactIcon from './ContactIcon/index';
 import ContactIconsList from './ContactIconList/index';
 import ContactUsForm from './ContactUsForm/index';
 import ContactForm from './ContactForm/index';
+import LandingHeader from './LandingHeader/index';
 
 export {
   AppCard,
@@ -45,6 +46,7 @@ export {
   IconButton,
   InputField,
   LandingBanner,
+  LandingHeader,
   MainFooter,
   ProgressCard,
   Search,
