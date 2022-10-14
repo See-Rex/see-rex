@@ -1,5 +1,5 @@
 import { StyledButton } from '..';
-import { MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { Drawer, MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
 import IconButton from '../IconButton';
@@ -21,8 +21,8 @@ function StoryBar(props: Omit<NavbarProps, 'children'> & Props) {
   return (
     <>
       <MediaQuery largerThan="md" styles={{ display: 'none' }}>
-        <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
-          <Navbar.Section component={ScrollArea} grow>
+        <Drawer opened={!hidden} onClose={() => setOpened(false)} size={350} padding="md" className={style[colorScheme]}>
+          <ScrollArea.Autosize maxHeight={550}>
             <StyledButton
               spacing="xs"
               types={page == 1 ? 'active' : 'navigation'}
@@ -188,19 +188,20 @@ function StoryBar(props: Omit<NavbarProps, 'children'> & Props) {
             >
               Styled Button
             </StyledButton>
-          </Navbar.Section>
-          <Navbar.Section className={style.footer}>
+          </ScrollArea.Autosize>
+          <div className={style.bottom}>
             <IconButton
               className="link"
               icon={<IconLogout />}
               label={'Dev Handout'}
               onClick={() => {
+                setOpened(false);
                 router.push('/dev');
               }}
               isFullWidth
             />
-          </Navbar.Section>
-        </Navbar>
+          </div>
+        </Drawer>
       </MediaQuery>
       <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
         <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>

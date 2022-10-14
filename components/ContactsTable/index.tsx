@@ -44,7 +44,6 @@ export default function ContactsTable({ data }: UsersTableProps) {
       <td>
         <Anchor<'a'>
           size="sm"
-          href="#"
           onClick={() => {
             setContactData({ email: item.email, name: item.name, phone: item.phone, type: item.type });
             setOpened(true);
