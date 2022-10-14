@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { AuthContextProvider } from '../hooks/AuthContext';
 import ProtectedRoute from '../routes/ProtectedRoute';
+import SeeRexAlert from '../components/SeeRexAlert';
 const authRequiredPaths = ['/dashboard'];
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+          <SeeRexAlert />
         <MantineProvider>{renderPageComponent}</MantineProvider>
       </ColorSchemeProvider>
     </AuthContextProvider>

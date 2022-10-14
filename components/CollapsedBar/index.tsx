@@ -13,6 +13,7 @@ import {
   IconLogout,
   IconSpaceDashboard,
 } from './../../public/Icons';
+import toast from 'react-hot-toast';
 
 type Props = {
   page: number;
@@ -26,6 +27,12 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
   const { colorScheme } = useMantineColorScheme();
 
   const { hidden, page, setOpened, setPage } = props;
+
+  function handleLogout() {
+    logout();
+    router.push('/auth');
+    toast('Farewell! See you next time.');
+  }
 
   return (
     <>
@@ -90,9 +97,7 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
                 label={'Logout'}
                 onClick={() => {
                   setOpened(false);
-                  logout();
-                  router.push('/auth');
-                  alert('Farewell! See you next time.');
+                  handleLogout();
                 }}
                 isFullWidth
               />
@@ -147,11 +152,7 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
               className="link"
               icon={<IconLogout />}
               label={'Logout'}
-              onClick={() => {
-                logout();
-                router.push('/auth');
-                alert('Farewell! See you next time.');
-              }}
+              onClick={handleLogout}
               isFullWidth
             />
           </Navbar.Section>

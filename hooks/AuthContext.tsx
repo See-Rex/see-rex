@@ -10,6 +10,7 @@ import {
   User
 } from 'firebase/auth';
 import { createContext, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { auth } from '../config/firebase';
 
 const AuthContext = createContext<any>({});
@@ -50,7 +51,7 @@ export const AuthContextProvider = ({
 
       return createUserWithEmailResponse;
     } catch (e) {
-      console.log(e);
+      toast(e);
     }
   }
 
@@ -60,7 +61,7 @@ export const AuthContextProvider = ({
 
       return sendEmailVerificationResponse;
     } catch (e) {
-      console.log(e);
+      toast(e);
     }
   }
 
@@ -70,7 +71,7 @@ export const AuthContextProvider = ({
 
       return signInWithEmailResponse;
     } catch (e) {
-      console.log(e);
+      toast(e);
     }
   }
   
@@ -80,7 +81,7 @@ export const AuthContextProvider = ({
 
       return googleResponse;
     } catch (e) {
-      console.log(e);
+      toast(e);
     }
   }
   
@@ -90,7 +91,7 @@ export const AuthContextProvider = ({
 
       return resetResponse;
     } catch (e) {
-      console.log(e);
+      toast(e);
     }
   }
 
