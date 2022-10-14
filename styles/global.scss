@@ -1,9 +1,10 @@
+@use "./constants" as constant;
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: constant.$FONT_MAIN, constant.$FONT_SANS1, constant.$FONT_SANS2, constant.$FONT_SANS3, sans-serif;
 }
 
 a {
