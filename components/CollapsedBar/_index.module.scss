@@ -3,8 +3,8 @@
 @use '../../styles/theme' as theme;
 
 .bottom {
-  position: fixed;
-  padding-block: 0px 20px;
+  position: absolute;
+  padding-block: 12px 20px;
   padding-inline: 20px;
   left: 0;
   right: 0;

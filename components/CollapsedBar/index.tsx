@@ -1,5 +1,5 @@
 import { SegmentedToggle } from '..';
-import { Drawer, Group, MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { Drawer, MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useAuth } from '../../hooks/AuthContext';
@@ -31,58 +31,56 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
     <>
       <MediaQuery largerThan="md" styles={{ display: 'none' }}>
         <Drawer opened={!hidden} onClose={() => setOpened(false)} size={350} padding="md" className={style[colorScheme]}>
-          <ScrollArea>
-            <IconButton
-              className={page == 1 ? 'active' : 'link'}
-              icon={<IconSpaceDashboard />}
-              label={'Dashboard'}
-              onClick={() => {
-                setPage(1);
-                setOpened(false);
-              }}
-              isFullWidth
-            />
-            <IconButton
-              className={page == 2 ? 'active' : 'link'}
-              icon={<IconContacts />}
-              label={'Contacts'}
-              onClick={() => {
-                setPage(2);
-                setOpened(false);
-              }}
-              isFullWidth
-            />
-            <IconButton
-              className={page == 3 ? 'active' : 'link'}
-              icon={<IconHolidayVillage />}
-              label={'Residential Properties'}
-              onClick={() => {
-                setPage(3);
-                setOpened(false);
-              }}
-              isFullWidth
-            />
-            <IconButton
-              className={page == 4 ? 'active' : 'link'}
-              icon={<IconLandscape />}
-              label={'Land Properties'}
-              onClick={() => {
-                setPage(4);
-                setOpened(false);
-              }}
-              isFullWidth
-            />
-            <IconButton
-              className={page == 5 ? 'active' : 'link'}
-              icon={<IconLocationCity />}
-              label={'Non-Residential Properties'}
-              onClick={() => {
-                setPage(5);
-                setOpened(false);
-              }}
-              isFullWidth
-            />
-          </ScrollArea>
+          <IconButton
+            className={page == 1 ? 'active' : 'link'}
+            icon={<IconSpaceDashboard />}
+            label={'Dashboard'}
+            onClick={() => {
+              setPage(1);
+              setOpened(false);
+            }}
+            isFullWidth
+          />
+          <IconButton
+            className={page == 2 ? 'active' : 'link'}
+            icon={<IconContacts />}
+            label={'Contacts'}
+            onClick={() => {
+              setPage(2);
+              setOpened(false);
+            }}
+            isFullWidth
+          />
+          <IconButton
+            className={page == 3 ? 'active' : 'link'}
+            icon={<IconHolidayVillage />}
+            label={'Residential Properties'}
+            onClick={() => {
+              setPage(3);
+              setOpened(false);
+            }}
+            isFullWidth
+          />
+          <IconButton
+            className={page == 4 ? 'active' : 'link'}
+            icon={<IconLandscape />}
+            label={'Land Properties'}
+            onClick={() => {
+              setPage(4);
+              setOpened(false);
+            }}
+            isFullWidth
+          />
+          <IconButton
+            className={page == 5 ? 'active' : 'link'}
+            icon={<IconLocationCity />}
+            label={'Non-Residential Properties'}
+            onClick={() => {
+              setPage(5);
+              setOpened(false);
+            }}
+            isFullWidth
+          />
           <div className={style.bottom}>
             <SegmentedToggle />
             <div className={style.footer}>
@@ -91,6 +89,7 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
                 icon={<IconLogout />}
                 label={'Logout'}
                 onClick={() => {
+                  setOpened(false);
                   logout();
                   router.push('/auth');
                   alert('Farewell! See you next time.');

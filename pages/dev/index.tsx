@@ -1,6 +1,6 @@
-import { Button, Image, useMantineColorScheme } from '@mantine/core';
+import { Button, Image, MediaQuery, useMantineColorScheme } from '@mantine/core';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AppCard,
   BasicFooter,
@@ -22,7 +22,7 @@ import { tempValues } from '../../pseudodata';
 import { IconHolidayVillage } from '../../public/Icons';
 
 function DevHandout() {
-  const { toggleColorScheme } = useMantineColorScheme();
+  const [opened, setOpened] = useState(false);
   const data = [
     {
       description: '24% more than in the same month last year, 33% more that two years ago',
@@ -57,16 +57,18 @@ function DevHandout() {
         <StyledButton types="navigation">Sign-in</StyledButton>
         <StyledButton types="navigation">Register</StyledButton>
       </BasicHeader>
-      <Button mb={50} onClick={() => toggleColorScheme()}>
-        Change Theme
-      </Button>
       <InputField label={'Email'} placeholder={'lezzml.now@gmail.com'} />
       <InputField label={'Password'} placeholder={'Your password'} type="password" />
       <BasicFooter height={56} />
       <MainFooter height={56} />
       <IconButton className="link" icon={<IconHolidayVillage />} label={'Link Inactive'} isFullWidth />
       <IconButton className="active" icon={<IconHolidayVillage />} label={'Link Active'} isFullWidth />
-      <CollapsedBar setOpened={() => null} page={0} setPage={() => null} />
+      <CollapsedBar hidden={!opened} setOpened={setOpened} page={0} setPage={() => null} />
+      <MediaQuery largerThan="md" styles={{ display: 'none' }}>
+        <Button mb={50} onClick={() => setOpened(true)}>
+          Open Navbar
+        </Button>
+      </MediaQuery>
       <StatisticCard amount={100} category="Testing" description="This how your statistics are shown" />
       <ProgressCard label="Test" stats="3,450" progress={3450} color="#35C0ED" icon="up" />
       <GroupCard data={data} />

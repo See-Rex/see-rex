@@ -1,11 +1,22 @@
-@use "../../styles/text" as text;
-@use "../../styles/constants" as constant;
-@use "../../styles/theme" as theme;
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
 
 .header {
   padding-bottom: 12px;
   margin-bottom: 18px;
   border-bottom: 1px solid rgba(constant.$COLOR_GREY_DARK, 40%);
+}
+
+.bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-block: 12px 20px;
+  padding-inline: 20px;
+  margin-top: 18px;
+  border-top: 1px solid rgba(constant.$COLOR_GREY_DARK, 40%);
 }
 
 .footer {
