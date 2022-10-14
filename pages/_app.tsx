@@ -1,11 +1,15 @@
 import '../styles/global.scss';
+import "@fontsource/inter";
+import "@fontsource/montserrat";
+import "@fontsource/open-sans";
+import "@fontsource/tenor-sans";
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+
 import { useState } from 'react';
 import { AuthContextProvider } from '../hooks/AuthContext';
 import ProtectedRoute from '../routes/ProtectedRoute';
-
 const authRequiredPaths = ['/dashboard'];
 
 function MyApp({ Component, pageProps }: AppProps) {
