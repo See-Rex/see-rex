@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/see-rex-superadmin/node_modules
 /.pnp
 .pnp.js
 
