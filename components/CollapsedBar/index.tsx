@@ -1,5 +1,5 @@
 import { SegmentedToggle } from '..';
-import { MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { Drawer, Group, MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useAuth } from '../../hooks/AuthContext';
@@ -30,8 +30,8 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
   return (
     <>
       <MediaQuery largerThan="md" styles={{ display: 'none' }}>
-        <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
-          <Navbar.Section grow component={ScrollArea}>
+        <Drawer opened={!hidden} onClose={() => setOpened(false)} size={350} padding="md" className={style[colorScheme]}>
+          <ScrollArea>
             <IconButton
               className={page == 1 ? 'active' : 'link'}
               icon={<IconSpaceDashboard />}
@@ -82,22 +82,24 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
               }}
               isFullWidth
             />
-          </Navbar.Section>
-          <SegmentedToggle />
-          <Navbar.Section className={style.footer}>
-            <IconButton
-              className="link"
-              icon={<IconLogout />}
-              label={'Logout'}
-              onClick={() => {
-                logout();
-                router.push('/auth');
-                alert('Farewell! See you next time.');
-              }}
-              isFullWidth
-            />
-          </Navbar.Section>
-        </Navbar>
+          </ScrollArea>
+          <div className={style.bottom}>
+            <SegmentedToggle />
+            <div className={style.footer}>
+              <IconButton
+                className="link"
+                icon={<IconLogout />}
+                label={'Logout'}
+                onClick={() => {
+                  logout();
+                  router.push('/auth');
+                  alert('Farewell! See you next time.');
+                }}
+                isFullWidth
+              />
+            </div>
+          </div>
+        </Drawer>
       </MediaQuery>
       <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
         <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
