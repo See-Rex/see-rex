@@ -88,6 +88,7 @@ function ContactUsForm(props: ModalProps) {
               placeholder={'I would like to inquire for your service'}
               value={form.values.message}
               onChange={(event) => form.setFieldValue('message', event.currentTarget.value)}
+              minRows={3}
             />
             <Group position="right" mt="md">
               <Button className={`${style.control} ${style[colorScheme]}`} type="submit">

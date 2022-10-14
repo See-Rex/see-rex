@@ -116,7 +116,7 @@ function ContactForm(props: Props & ModalProps) {
                   placeholder={'Please include all relevant information'}
                   value={form.values.message}
                   onChange={(event) => form.setFieldValue('message', event.currentTarget.value)}
-                  minRows={3}
+                  minRows={5}
                 />
               </SimpleGrid>
               <Group position="right" mt="md">
