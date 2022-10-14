@@ -1,4 +1,4 @@
-import { Center, Container, Group, Paper, SimpleGrid, Title } from '@mantine/core';
+import { Center, Container, Paper, SimpleGrid, Title } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 
@@ -33,19 +33,16 @@ function NonResidentialProperties() {
       <Title color="#08376B" size={20} mb="md">
         Non - Residential Properties
       </Title>
-      <Group grow>
+      <SimpleGrid
+        cols={4}
+        breakpoints={[
+          { cols: 1, maxWidth: 'xs' },
+          { cols: 3, maxWidth: 'lg' },
+        ]}
+        spacing="xs"
+      >
         <FilterPicker />
         <Search />
-      </Group>
-      <SimpleGrid
-        cols={3}
-        spacing="md"
-        breakpoints={[
-          { cols: 2, maxWidth: 900, spacing: 'md' },
-          { cols: 1, maxWidth: 470, spacing: 'sm' },
-        ]}
-      >
-        {renderNonResidentialProperties}
       </SimpleGrid>
       <Center>
         <SimpleGrid

@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { PropertyProvider } from '../../hooks/PropertyContext';
 import AdminLayout from '../../layouts/AdminLayout/index';
-import { 
-  Contacts, 
-  Homepage, 
-  LandProperties, 
-  NonResidentialProperties, 
-  ResidentialProperties 
-} from '../../pagination';
+import { Contacts, Homepage, LandProperties, NonResidentialProperties, ResidentialProperties } from '../../pagination';
 import ErrorPage from './../404';
 
 function Dashboard() {
@@ -36,7 +30,7 @@ function Dashboard() {
   };
 
   return (
-    <AdminLayout opened={opened} onClick={() => setOpened((o) => !o)} activePage={activePage} paginator={handlePage}>
+    <AdminLayout opened={opened} setOpened={setOpened} activePage={activePage} paginator={handlePage}>
       <PropertyProvider>
         <PageContent />
       </PropertyProvider>

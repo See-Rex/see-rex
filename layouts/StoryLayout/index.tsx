@@ -7,17 +7,18 @@ type Props = {
   children: React.ReactNode;
   activePage: number;
   paginator: (val: number) => void;
+  setOpened: (val: boolean) => void;
 };
 
 function StoryLayout(props: BurgerProps & Props) {
   const { colorScheme } = useMantineColorScheme();
-  const { activePage, children, onClick, opened, paginator } = props;
+  const { activePage, children, onClick, opened, paginator, setOpened } = props;
 
   return (
     <AppShell
       className={style[colorScheme]}
       header={<BasicHeader opened={opened} onClick={onClick} burger />}
-      navbar={<StoryBar hidden={!opened} page={activePage} setPage={paginator} />}
+      navbar={<StoryBar hidden={!opened} page={activePage} setOpened={setOpened} setPage={paginator} />}
       navbarOffsetBreakpoint="md"
       fixed
     >

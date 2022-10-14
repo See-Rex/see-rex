@@ -189,6 +189,7 @@
 }
 
 .active {
+  height: 100%;
   @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
   @include navigation-styling;
 

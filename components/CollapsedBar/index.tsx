@@ -1,5 +1,5 @@
 import { SegmentedToggle } from '..';
-import { Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
+import { MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useAuth } from '../../hooks/AuthContext';
@@ -17,6 +17,7 @@ import {
 type Props = {
   page: number;
   setPage: (val: number) => void;
+  setOpened: (val: boolean) => void;
 };
 
 function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
@@ -24,62 +25,138 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
   const router = useRouter();
   const { colorScheme } = useMantineColorScheme();
 
-  const { hidden, page, setPage } = props;
+  const { hidden, page, setOpened, setPage } = props;
 
   return (
-    <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
-      <Navbar.Section grow component={ScrollArea}>
-        <IconButton
-          className={page == 1 ? 'active' : 'link'}
-          icon={<IconSpaceDashboard />}
-          label={'Dashboard'}
-          onClick={() => setPage(1)}
-          isFullWidth
-        />
-        <IconButton
-          className={page == 2 ? 'active' : 'link'}
-          icon={<IconContacts />}
-          label={'Contacts'}
-          onClick={() => setPage(2)}
-          isFullWidth
-        />
-        <IconButton
-          className={page == 3 ? 'active' : 'link'}
-          icon={<IconHolidayVillage />}
-          label={'Residential Properties'}
-          onClick={() => setPage(3)}
-          isFullWidth
-        />
-        <IconButton
-          className={page == 4 ? 'active' : 'link'}
-          icon={<IconLandscape />}
-          label={'Land Properties'}
-          onClick={() => setPage(4)}
-          isFullWidth
-        />
-        <IconButton
-          className={page == 5 ? 'active' : 'link'}
-          icon={<IconLocationCity />}
-          label={'Non-Residential Properties'}
-          onClick={() => setPage(5)}
-          isFullWidth
-        />
-      </Navbar.Section>
-      <SegmentedToggle />
-      <Navbar.Section className={style.footer}>
-        <IconButton
-          className="link"
-          icon={<IconLogout />}
-          label={'Logout'}
-          onClick={() => {
-            logout();
-            router.push('/auth');
-            alert('Farewell! See you next time.');
-          }}
-          isFullWidth
-        />
-      </Navbar.Section>
-    </Navbar>
+    <>
+      <MediaQuery largerThan="md" styles={{ display: 'none' }}>
+        <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
+          <Navbar.Section grow component={ScrollArea}>
+            <IconButton
+              className={page == 1 ? 'active' : 'link'}
+              icon={<IconSpaceDashboard />}
+              label={'Dashboard'}
+              onClick={() => {
+                setPage(1);
+                setOpened(false);
+              }}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 2 ? 'active' : 'link'}
+              icon={<IconContacts />}
+              label={'Contacts'}
+              onClick={() => {
+                setPage(2);
+                setOpened(false);
+              }}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 3 ? 'active' : 'link'}
+              icon={<IconHolidayVillage />}
+              label={'Residential Properties'}
+              onClick={() => {
+                setPage(3);
+                setOpened(false);
+              }}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 4 ? 'active' : 'link'}
+              icon={<IconLandscape />}
+              label={'Land Properties'}
+              onClick={() => {
+                setPage(4);
+                setOpened(false);
+              }}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 5 ? 'active' : 'link'}
+              icon={<IconLocationCity />}
+              label={'Non-Residential Properties'}
+              onClick={() => {
+                setPage(5);
+                setOpened(false);
+              }}
+              isFullWidth
+            />
+          </Navbar.Section>
+          <SegmentedToggle />
+          <Navbar.Section className={style.footer}>
+            <IconButton
+              className="link"
+              icon={<IconLogout />}
+              label={'Logout'}
+              onClick={() => {
+                logout();
+                router.push('/auth');
+                alert('Farewell! See you next time.');
+              }}
+              isFullWidth
+            />
+          </Navbar.Section>
+        </Navbar>
+      </MediaQuery>
+      <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
+        <Navbar hidden={hidden} width={{ sm: 350 }} p="md" className={style[colorScheme]}>
+          <Navbar.Section grow component={ScrollArea}>
+            <IconButton
+              className={page == 1 ? 'active' : 'link'}
+              icon={<IconSpaceDashboard />}
+              label={'Dashboard'}
+              onClick={() => {
+                setPage(1);
+              }}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 2 ? 'active' : 'link'}
+              icon={<IconContacts />}
+              label={'Contacts'}
+              onClick={() => setPage(2)}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 3 ? 'active' : 'link'}
+              icon={<IconHolidayVillage />}
+              label={'Residential Properties'}
+              onClick={() => setPage(3)}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 4 ? 'active' : 'link'}
+              icon={<IconLandscape />}
+              label={'Land Properties'}
+              onClick={() => setPage(4)}
+              isFullWidth
+            />
+            <IconButton
+              className={page == 5 ? 'active' : 'link'}
+              icon={<IconLocationCity />}
+              label={'Non-Residential Properties'}
+              onClick={() => setPage(5)}
+              isFullWidth
+            />
+          </Navbar.Section>
+          <SegmentedToggle />
+          <Navbar.Section className={style.footer}>
+            <IconButton
+              className="link"
+              icon={<IconLogout />}
+              label={'Logout'}
+              onClick={() => {
+                logout();
+                router.push('/auth');
+                alert('Farewell! See you next time.');
+              }}
+              isFullWidth
+            />
+          </Navbar.Section>
+        </Navbar>
+      </MediaQuery>
+    </>
   );
 }
 
