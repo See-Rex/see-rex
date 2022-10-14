@@ -3,6 +3,8 @@
 # dependencies
 /see-rex-superadmin/node_modules
 /node_modules
+/see-rex-superadmin/node_modules
+./node_modules/@sanity/base/types/**/*.ts", "./**/*.ts", "./**/*.tsx
 /.pnp
 .pnp.js
 
