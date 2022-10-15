@@ -9,7 +9,11 @@ import { usePropertyContext } from '../../hooks/PropertyContext';
 import { sanityClient } from '../../sanity';
 import { Property } from '../../types';
 
-function ResidentialProperties() {
+interface ResidentialProp {
+  residentialProp: Property[];
+}
+
+function ResidentialProperties({ residentialProp }: ResidentialProp) {
   const { properties, setPropertyType } = usePropertyContext();
   setPropertyType(PropertyType.RESIDENTIAL);
 
