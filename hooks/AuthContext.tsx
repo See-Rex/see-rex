@@ -96,6 +96,9 @@ export const AuthContextProvider = ({
         toast.success('Successfully signed in.');
 
         return signInWithEmailResponse;
+      } else if (signInWithEmailResponse && !signInWithEmailResponse.user.emailVerified) {
+        toast.error('Your account has not been verified yet. Please check your email.');
+        logout();
       }
     } catch (e) {
       toast.error('Invalid user credentials.');
