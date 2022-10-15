@@ -2,6 +2,7 @@ import { Anchor, Divider, Group, Stack, useMantineColorScheme } from "@mantine/c
 import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import {
     GoogleButton,
     InputField,
@@ -13,7 +14,7 @@ import style from "./_index.module.scss";
 
 export function Login() {
     const { colorScheme } = useMantineColorScheme();
-    const { login, user } = useAuth();
+    const authContext = useAuth();
     const router = useRouter();
     const form = useForm({
         initialValues: {
@@ -27,18 +28,13 @@ export function Login() {
     },
   });
 
-  const handleLogin = async () => {
-    try {
-      await login(form.values.email, form.values.password);
-      router.push('/dashboard');
-    } catch (err) {
-      alert(err);
-    }
-  };
+  function handleLogin() {
+    authContext?.login(form.values.email, form.values.password);
+  }
 
-  if (user) {
+  if (authContext?.user) {
     router.push('/auth');
-  }  
+  }
 
     return (
         <AuthLayout>
