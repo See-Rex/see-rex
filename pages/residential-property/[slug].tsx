@@ -14,8 +14,6 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
   )
 }
 
-export default ResidentialPropertySlug;
-
 export const getStaticPaths = async () => {
   const query = `*[_type == "property"] | order(dateRegistered desc) {
     _id,
@@ -32,8 +30,8 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: residentialPropertyPaths,
     fallback: "blocking",
+    paths: residentialPropertyPaths,
   }
 }
 
@@ -73,3 +71,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 60,
   }
 }
+
+export default ResidentialPropertySlug;
