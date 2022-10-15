@@ -14,8 +14,8 @@ export default function SeeRexAlert() {
       toastOptions={{
         duration: 5000,
         style: {
-          background: colorScheme === 'light'? '#08376b' : '#151d1f',
-          color: '#f5f5f5',
+          background: colorScheme === 'light'? '#f5f5f5' : '#121212',
+          color: colorScheme === 'light'? '#121212' : '#f5f5f5',
         },
 
         success: {
