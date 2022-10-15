@@ -26,6 +26,43 @@
   }
 }
 
+.landing {
+  border-radius: 10px;
+  background: none;
+  color: constant.$COLOR_SECONDARY;
+  padding: 5px 20px;
+
+  h1 {
+    @include text.BUTTON_TEXT;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &:hover {
+    @include theme.SET_COLOR(constant.$COLOR_PRIMARY, 95%);
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 15%);
+  }
+}
+
+.landing2 {
+  border-radius: 10px;
+  color: constant.$COLOR_WHITE;
+  padding: 5px 20px;
+  @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 65%);
+
+  h1 {
+    @include text.BUTTON_TEXT;
+    font-family: constant.$FONT_MAIN;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &:hover {
+    @include theme.SET_BACKGROUND(constant.$COLOR_ACCENT, 55%);
+  }
+}
+
 .sign-in {
   @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY, 20%);
   border-radius: 5px;

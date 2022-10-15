@@ -1,0 +1,62 @@
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.inner {
+  height: 80px;
+  padding: 0px 16px;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.backdrop {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    border: none;
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    border: none;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 0;
+  border-top-width: 0;
+  overflow: hidden;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 100%);
+    border: none;
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 80%);
+    border: none;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.header {
+  background: none;
+  border: none;
+}

@@ -1,25 +1,21 @@
-import { AppShell, Stack } from '@mantine/core';
+import { AppShell, Stack, useMantineColorScheme } from '@mantine/core';
 import React, { useState } from 'react';
-import { BasicHeader, FeatureHero, LandingBanner, MainFooter, StyledButton } from '../../components';
-import ContactUsForm from './../../components/ContactUsForm/index';
+import { ContactUsForm, LandingHeader, MainFooter } from '../../components';
+import style from './_index.module.scss';
 
 function LandingLayout() {
   const [opened, setOpened] = useState(false);
-  const header = (
-    <BasicHeader burger opened={false}>
-      <StyledButton types="navigation" onClick={() => setOpened(true)}>
-        Contact Us
-      </StyledButton>
-      <StyledButton types="navigation">Features</StyledButton>
-      <StyledButton types="navigation">About us</StyledButton>
-    </BasicHeader>
-  );
+  const { colorScheme } = useMantineColorScheme();
+
   return (
-    <AppShell header={header} footer={<MainFooter height={56} />} padding={0}>
-      <Stack>
+    <AppShell
+      className={style[colorScheme]}
+      header={<LandingHeader opened={opened} onClick={() => setOpened(!opened)} burger />}
+      footer={<MainFooter height={56} />}
+      padding={0}
+    >
+      <Stack align="center">
         <ContactUsForm opened={opened} onClose={() => setOpened(false)} />
-        <LandingBanner />
-        <FeatureHero />
       </Stack>
     </AppShell>
   );
