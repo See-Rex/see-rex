@@ -1,10 +1,10 @@
 import { FeatureCard } from '..';
 import { Button, Col, Grid, SimpleGrid, Text, Title } from '@mantine/core';
 import { IconActivity, IconAdjustments, IconBackpack, IconSearch } from '@tabler/icons';
-import React from 'react';
-
-import style from './_index.module.scss';
 import Link from 'next/link';
+
+import React from 'react';
+import style from './_index.module.scss';
 
 function FeatureHero() {
   return (

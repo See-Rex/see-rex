@@ -75,14 +75,14 @@ export const AuthContextProvider = ({
       }
     } catch (e) {
       toast.error('Failed to register account.');
+      console.log(e);
     }
   }
 
-  const verify = async (user: User) => {
+  const verify = (user: User) => {
     try {
-      const sendEmailVerificationResponse = await sendEmailVerification(user);
-
-      return sendEmailVerificationResponse;
+      sendEmailVerification(user);
+      toast('We have sent a verification link to your email! Please open it to verify your account.');
     } catch (e) {
       toast.error('Failed to send email verification.');
     }

@@ -8,9 +8,9 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
 import { useState } from 'react';
+import SeeRexAlert from '../components/SeeRexAlert';
 import { AuthContextProvider } from '../hooks/AuthContext';
 import ProtectedRoute from '../routes/ProtectedRoute';
-import SeeRexAlert from '../components/SeeRexAlert';
 const authRequiredPaths = ['/dashboard'];
 
 function MyApp({ Component, pageProps }: AppProps) {

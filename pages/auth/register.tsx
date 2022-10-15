@@ -14,7 +14,7 @@ import style from "./_index.module.scss";
 
 function Register() {
     const { colorScheme } = useMantineColorScheme();
-    const { register, user, verify } = useAuth();
+    const authContext = useAuth();
     const router = useRouter();
     const [password, setPassword] = useState("");
 
@@ -32,18 +32,17 @@ function Register() {
     },
   });
 
-  const handleRegister = async () => {
-    try {
-      const userCredentials = await register(form.values.email, form.values.password);
-      verify(userCredentials.user);
-      alert('We have sent a verification link to your email! Please open it to verify your account.');
-      router.push('/auth/login');
-    } catch (err) {
-      alert(err);
-    }
+  async function handleRegister() {
+    const userCredentials = await authContext?.register(form.values.email, form.values.password);
+      
+      if (userCredentials?.user) {
+        authContext?.verify(userCredentials.user);
+        authContext?.logout();
+        router.push('/auth');
+      }
   };
 
-  if (user) {
+  if (authContext?.user) {
     router.push('/auth');
   }  
 

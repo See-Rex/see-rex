@@ -2,7 +2,6 @@ import { Anchor, Divider, Group, Stack, useMantineColorScheme } from "@mantine/c
 import { useForm } from "@mantine/form";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
 import {
     GoogleButton,
     InputField,
@@ -32,7 +31,7 @@ export function Login() {
     authContext?.login(form.values.email, form.values.password);
   }
 
-  if (authContext?.user) {
+  if (authContext?.user?.emailVerified) {
     router.push('/auth');
   }
 

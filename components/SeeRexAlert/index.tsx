@@ -1,7 +1,7 @@
-import { Toaster } from 'react-hot-toast';
+import { useMantineColorScheme } from '@mantine/core';
 
 import React from 'react'
-import { useMantineColorScheme } from '@mantine/core';
+import { Toaster } from 'react-hot-toast';
 
 export default function SeeRexAlert() {
   const { colorScheme } = useMantineColorScheme();
