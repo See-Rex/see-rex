@@ -1,24 +1,16 @@
-import { Button, MantineSize, useMantineColorScheme } from "@mantine/core";
-import { LinkProps } from "next/link";
-import React from "react";
-import style from "./_index.module.scss";
+import { Button, MantineSize, useMantineColorScheme } from '@mantine/core';
+import { LinkProps } from 'next/link';
+import React from 'react';
+import style from './_index.module.scss';
 
 type TypeParams = {
   children: React.ReactNode;
   spacing?: MantineSize;
   fullWidth?: boolean;
-  types:
-    | "sign-in"
-    | "register"
-    | "sign-up"
-    | "banner"
-    | "submit"
-    | "card"
-    | "navigation"
-    | "active";
+  types: 'sign-in' | 'register' | 'landing' | "landing2" | 'sign-up' | 'banner' | 'submit' | 'card' | 'navigation' | 'active';
 };
 
-const StyledButton = (params: TypeParams & Omit<LinkProps, "href">) => {
+const StyledButton = (params: TypeParams & Omit<LinkProps, 'href'>) => {
   const { colorScheme } = useMantineColorScheme();
   const { children, fullWidth, onClick, spacing, types } = params;
 

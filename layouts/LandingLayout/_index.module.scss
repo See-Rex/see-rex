@@ -1,0 +1,14 @@
+@use '../../styles/theme' as theme;
+@use '../../styles/constants' as constant;
+
+.light {
+  @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+  transition: all 0.2s ease-in;
+}
+.dark {
+  @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+  transition: all 0.2s ease-in;
+  h1 {
+    color: constant.$COLOR_GREY_DARK;
+  }
+}
