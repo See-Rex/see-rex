@@ -1,20 +1,77 @@
+import { Group, MediaQuery, Overlay, Stack, Text, Title, useMantineColorScheme } from '@mantine/core';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
+
 import React from 'react'
-import { sanityClient } from '../../sanity';
+import SeeRexPageLayout from '../../layouts/SeeRexPageLayout';
+import Wave from '../../public/waves.png';
+import { sanityClient, urlFor } from '../../sanity';
 import { Vehicle } from '../../typings.d';
+
+import style from './_index.module.scss';
 
 interface VehicleProps {
   vehicle: Vehicle[]
 }
 
 function VehicleSlug({ vehicle }: VehicleProps) {
-  console.log(vehicle);
+  const { colorScheme } = useMantineColorScheme();
+  const currentVehicle = vehicle[0];
+  const { dateRegistered, image, name, proofOfOwnership} = currentVehicle;
+  const displayTextDescription = `This vehicle was registered on ${dateRegistered}.`;
+  const proofText = proofOfOwnership[0]?.children[0]?.text;
+
   return (
-    <div><h1>Vehicle Name: {vehicle[0].name}</h1></div>
+      <SeeRexPageLayout>
+        <div className={style.pageContainer}>
+          <Image className={style.underLayer} src={Wave} alt={'Wave underlayer'} />
+            <Overlay className={style.overlay}>
+            <MediaQuery smallerThan={1060} styles={{ display: 'none' }}>
+              <Group spacing={50}>
+                <Stack align={'flex-start'}>
+                  <Title className={`${style.title} ${style[colorScheme]}`} mb={'xl'}>
+                    {name}
+                  </Title>
+                  <Text className={`${style.proofOwnership} ${style[colorScheme]}`}>
+                    {proofText}
+                  </Text>
+                  <Text className={`${style.dateRegistered} ${style[colorScheme]}`}>
+                    {displayTextDescription}
+                  </Text>
+                </Stack>
+                <Image 
+                  alt='vehicle'
+                  className={style.vehicleImage}
+                  objectFit='cover'
+                  height={340} 
+                  src={urlFor(image).url()} 
+                  width={500}
+                />
+              </Group>
+            </MediaQuery>
+            <MediaQuery largerThan={1060} styles={{ display: 'none' }}>
+              <Stack align={'center'} justify={'center'}>
+                <Image 
+                  alt='vehicle'
+                  className={style.vehicleImage}
+                  objectFit='cover'
+                  height={340} 
+                  src={urlFor(image).url()} 
+                  width={500}
+                />
+                <Title className={`${style.title} ${style[colorScheme]}`} size={20} mt="sm">
+                  {name}
+                </Title>
+                <Text className={`${style.dateRegistered} ${style[colorScheme]}`}>
+                  {displayTextDescription}
+                </Text>
+              </Stack>
+            </MediaQuery>
+          </Overlay>
+        </div>
+      </SeeRexPageLayout>
   )
 }
-
-export default VehicleSlug;
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "vehicle"] | order(dateRegistered desc) {
@@ -32,8 +89,8 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: vehiclePaths,
     fallback: "blocking",
+    paths: vehiclePaths,
   }
 }
 
@@ -65,3 +122,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 60,
   }
 }
+
+export default VehicleSlug;

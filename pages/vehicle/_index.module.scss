@@ -1,0 +1,129 @@
+@use "../../styles/text" as text;
+@use "../../styles/constants" as constant;
+@use "../../styles/theme" as theme;
+
+.pageContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10vh;
+
+    &.light {
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+        transition: all 0.2s ease-in;
+    }
+}
+
+.detailContainer {
+    width: 50%;
+    height: min-content;
+    border: none;
+    
+    &.light {
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+        transition: all 0.2s ease-in;
+    }
+}
+
+.vehicleImage {
+    position: relative;
+    border-radius: 10px;
+    transition: all 0.2s ease-in;
+}
+
+.title {
+    font-family: constant.$FONT_MAIN;
+    font-size: constant.$BANNER_HEADER_3_FONT_SIZE;
+    line-height: constant.$BANNER_HEADER_3_LINE_HEIGHT;
+    font-weight: 800;
+    text-align: center;
+
+    @media only screen and (min-width: 1060px) {
+        font-size: 80px;
+    }
+
+    @media only screen and (max-width: 560px) {
+        font-size: 28px;
+    }
+
+    &.light {
+        color: constant.$COLOR_PRIMARY;
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        color: constant.$COLOR_WHITE_DARK;
+        transition: all 0.2s ease-in;
+    }
+}
+
+.proofOwnership {
+    font-family: constant.$FONT_MAIN;
+    font-size: constant.$BANNER_HEADINGS_1_FONT_SIZE;
+    line-height: constant.$BANNER_HEADINGS_LINE_HEIGHT;
+    font-weight: 400;
+    text-align: center;
+
+    @media only screen and (max-width: 560px) {
+        font-size: 16px;
+    }
+
+    &.light {
+        color: constant.$COLOR_PRIMARY_DARK;
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        color: constant.$COLOR_GREY_DARK;
+        transition: all 0.2s ease-in;
+    }    
+}
+
+.dateRegistered {
+    font-family: constant.$FONT_MAIN;
+    font-size: constant.$BANNER_HEADINGS_3_FONT_SIZE;
+    line-height: constant.$BANNER_HEADINGS_LINE_HEIGHT;
+    font-weight: 400;
+    text-align: center;
+
+    @media only screen and (max-width: 560px) {
+        font-size: 12px;
+    }
+
+    &.light {
+        color: constant.$COLOR_PRIMARY_DARK;
+        transition: all 0.2s ease-in;
+    }
+    
+    &.dark {
+        color: constant.$COLOR_GREY_DARK;
+        transition: all 0.2s ease-in;
+    }    
+}
+
+
+.overlay {
+    background: transparent;
+    z-index: 1;
+    opacity: 1;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+}
+
+.underLayer {
+    z-index: 0;
+    position: relative;
+}
+
