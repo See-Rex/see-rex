@@ -14,8 +14,6 @@ function NonResidentialPropertySlug({ nonResidentialProperty }: NonResidentialPr
   )
 }
 
-export default NonResidentialPropertySlug;
-
 export const getStaticPaths = async () => {
   const query = `*[_type == "lot"] | order(dateRegistered desc) {
     _id,
@@ -32,8 +30,8 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: nonResidentialPropertyPaths,
     fallback: "blocking",
+    paths: nonResidentialPropertyPaths,
   }
 }
 
@@ -66,3 +64,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 60,
   }
 }
+
+export default NonResidentialPropertySlug;

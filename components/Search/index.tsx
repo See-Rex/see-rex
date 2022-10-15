@@ -1,4 +1,4 @@
-import { ActionIcon, TextInput, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import { ActionIcon, TextInput, useMantineColorScheme } from '@mantine/core';
 import { IconArrowRight, IconSearch } from '@tabler/icons';
 import { ChangeEvent, useState } from 'react';
 import { usePropertyContext } from '../../hooks/PropertyContext';

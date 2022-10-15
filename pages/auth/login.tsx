@@ -13,7 +13,7 @@ import style from "./_index.module.scss";
 
 export function Login() {
     const { colorScheme } = useMantineColorScheme();
-    const { login, user } = useAuth();
+    const authContext = useAuth();
     const router = useRouter();
     const form = useForm({
         initialValues: {
@@ -27,18 +27,13 @@ export function Login() {
     },
   });
 
-  const handleLogin = async () => {
-    try {
-      await login(form.values.email, form.values.password);
-      router.push('/dashboard');
-    } catch (err) {
-      alert(err);
-    }
-  };
+  function handleLogin() {
+    authContext?.login(form.values.email, form.values.password);
+  }
 
-  if (user) {
+  if (authContext?.user?.emailVerified) {
     router.push('/auth');
-  }  
+  }
 
     return (
         <AuthLayout>

@@ -1,5 +1,4 @@
 import { Button, ButtonProps } from '@mantine/core';
-import { useRouter } from 'next/router';
 import { useAuth } from '../../hooks/AuthContext';
 
 function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -33,11 +32,10 @@ function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 const GoogleButton = (props: ButtonProps) => {
-  const { loginWithGoogle } = useAuth();
-  const router = useRouter();
-  const googleSignIn = async () => {
-    await loginWithGoogle();
-    router.push('/dashboard');
+  const authContext = useAuth();
+
+  function googleSignIn() {
+    authContext?.loginWithGoogle();
   };
 
   return <Button leftIcon={<GoogleIcon />} variant="default" color="gray" onClick={googleSignIn} {...props} />;

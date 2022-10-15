@@ -14,8 +14,6 @@ function VehicleSlug({ vehicle }: VehicleProps) {
   )
 }
 
-export default VehicleSlug;
-
 export const getStaticPaths = async () => {
   const query = `*[_type == "vehicle"] | order(dateRegistered desc) {
     _id,
@@ -32,8 +30,8 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: vehiclePaths,
     fallback: "blocking",
+    paths: vehiclePaths,
   }
 }
 
@@ -65,3 +63,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 60,
   }
 }
+
+export default VehicleSlug;

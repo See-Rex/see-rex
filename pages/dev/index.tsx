@@ -1,4 +1,4 @@
-import { Button, Image, MediaQuery, useMantineColorScheme } from '@mantine/core';
+import { Button, Image, MediaQuery } from '@mantine/core';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import {
