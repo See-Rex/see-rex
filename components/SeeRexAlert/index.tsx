@@ -1,32 +1,41 @@
-import { useMantineColorScheme } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
+import { IconCheck, IconX } from '@tabler/icons';
 
 import React from 'react'
-import { Toaster } from 'react-hot-toast';
 
-export default function SeeRexAlert() {
-  const { colorScheme } = useMantineColorScheme();
+type Props = {
+  loading?: boolean,
+  message: string,
+  title: string,
+  type: 'success' | 'error' | 'default'
+}
 
-  return (
-    <Toaster
-      position="top-center"
-      reverseOrder={false}
-      gutter={8}
-      toastOptions={{
-        duration: 5000,
-        style: {
-          background: colorScheme === 'light'? '#08376b' : '#151d1f',
-          color: '#f5f5f5',
-        },
+export default function SeeRexAlert(props: Props) {
+  const { loading, message, title, type } = props;
+  const icon = getIcon(type);
 
-        success: {
-          duration: 3000,
-          theme: {
-            primary: 'green',
-            secondary: 'black',
-          },
-        },
-      }}
-    />
-  );
+  function getIcon(alertType: 'success' | 'error' | 'default' ) {
+    switch(alertType) {
+      case 'success': return <IconCheck/>;
+      case 'error': return <IconX />;
+      default: return;
+    }
+  }
+  
+  if (icon) {
+    showNotification({
+      icon: icon,
+      loading: loading,
+      message: message,
+      title: title,
+    });
+  } else {
+    showNotification({
+      loading: loading,
+      message: message,
+      title: title,
+    });
+  }
+  
 }
 

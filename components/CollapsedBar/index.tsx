@@ -2,9 +2,9 @@ import { SegmentedToggle } from '..';
 import { Drawer, MediaQuery, Navbar, NavbarProps, ScrollArea, useMantineColorScheme } from '@mantine/core';
 import { useRouter } from 'next/router';
 import React from 'react';
-import toast from 'react-hot-toast';
 import { useAuth } from '../../hooks/AuthContext';
 import IconButton from '../IconButton';
+import SeeRexAlert from '../SeeRexAlert';
 import style from './_index.module.scss';
 import {
   IconContacts,
@@ -28,10 +28,14 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
 
   const { hidden, page, setOpened, setPage } = props;
 
-  function handleLogout() {
-    authContext?.logout();
+  async function handleLogout() {
+    await authContext?.logout();
+    SeeRexAlert({
+      message: 'Farewell, see you next time 👋',
+      title: 'Logged Out',
+      type: 'default',
+    });
     router.push('/auth');
-    toast('Farewell! See you next time.');
   }
 
   return (

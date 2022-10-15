@@ -1,5 +1,6 @@
 import { Anchor, Divider, Group, Stack, Text, useMantineColorScheme } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { User } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -8,6 +9,7 @@ import {
     InputField,
     StyledButton,
 } from "../../components";
+import SeeRexAlert from "../../components/SeeRexAlert";
 import { useAuth } from "../../hooks/AuthContext";
 import AuthLayout from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
@@ -33,14 +35,45 @@ function Register() {
   });
 
   async function handleRegister() {
-    const userCredentials = await authContext?.register(form.values.email, form.values.password);
-      
-      if (userCredentials?.user) {
-        authContext?.verify(userCredentials.user);
-        authContext?.logout();
-        router.push('/auth');
+    try {
+        const userCredentials = await authContext?.register(form.values.email, form.values.password);
+  
+        
+        if (userCredentials?.user) {
+            SeeRexAlert({
+                message: 'Successfully created an account!',
+                title: 'Created Account',
+                type: 'success',
+            });
+            handleVerify(userCredentials.user);
+            await authContext?.logout();
+            router.push('/auth');
+        }
+      } catch (err) {
+        SeeRexAlert({
+          message: 'Failed to register account. ' + err.code,
+          title: 'Created Account',
+          type: 'error',
+        });
       }
   };
+
+  async function handleVerify(user: User) {
+    try {
+        await authContext?.verify(user);
+        SeeRexAlert({
+          message: 'We have sent a verification link to your email! Please open it to verify your account.',
+          title: 'Email Verification Sent',
+          type: 'success',
+        });
+      } catch (e) {
+        SeeRexAlert({
+          message: 'Failed to send email verification.',
+          title: 'Email Verification Failed',
+          type: 'error',
+        });
+      }
+  }
 
   if (authContext?.user) {
     router.push('/auth');

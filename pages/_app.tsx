@@ -4,11 +4,11 @@ import "@fontsource/montserrat";
 import "@fontsource/open-sans";
 import "@fontsource/tenor-sans";
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 
+import { useRouter } from 'next/router';
 import { useState } from 'react';
-import SeeRexAlert from '../components/SeeRexAlert';
 import { AuthContextProvider } from '../hooks/AuthContext';
 import ProtectedRoute from '../routes/ProtectedRoute';
 const authRequiredPaths = ['/dashboard'];
@@ -29,8 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthContextProvider>
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-          <SeeRexAlert />
-        <MantineProvider>{renderPageComponent}</MantineProvider>
+        <NotificationsProvider>
+          <MantineProvider>{renderPageComponent}</MantineProvider>
+        </NotificationsProvider>
       </ColorSchemeProvider>
     </AuthContextProvider>
   );

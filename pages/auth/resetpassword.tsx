@@ -9,6 +9,7 @@ import { useForm } from '@mantine/form';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconButton, InputField, StyledButton } from '../../components';
+import SeeRexAlert from '../../components/SeeRexAlert';
 import { useAuth } from '../../hooks/AuthContext';
 import AuthLayout from '../../layouts/AuthLayout';
 import { ArrowBack } from '../../public/Icons';
@@ -31,10 +32,20 @@ export function ResetPassword() {
 
   const handleReset = async () => {
     try {
-      authContext?.reset(form.values.email);
-      alert('A password reset email has been sent to your email address!');
+      await authContext?.reset(form.values.email);
+
+      SeeRexAlert({
+        message: 'A password reset email has been sent to your email address!',
+        title: 'Reset Password Email Sent',
+        type: 'success',
+      });
+    
     } catch (err) {
-      alert(err);
+      SeeRexAlert({
+        message: 'Failed to send reset password to email. ' + err.code,
+        title: 'Reset Password Failed',
+        type: 'error',
+      });
     }
   };
 

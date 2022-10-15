@@ -11,7 +11,6 @@ import {
   UserCredential
 } from 'firebase/auth';
 import { createContext, useContext, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import { auth } from '../config/firebase';
 
 type SeeRexUser = {
@@ -22,6 +21,7 @@ type SeeRexUser = {
 }
 
 type UserContextType = {
+  loading: boolean,
   user: SeeRexUser | null,
   login: (email: string, password: string) => Promise<UserCredential | undefined>, 
   loginWithGoogle: () => Promise<UserCredential | undefined>, 
@@ -64,70 +64,32 @@ export const AuthContextProvider = ({
   }, []);
 
   const register = async (email: string, password: string): Promise<UserCredential | undefined> => {
-    try {
-      const createUserWithEmailResponse = await createUserWithEmailAndPassword(auth, email, password);
+    const createUserWithEmailResponse = await createUserWithEmailAndPassword(auth, email, password);
 
-      
-      if (createUserWithEmailResponse.user) {
-        toast.success('Successfully created an account!');
-        
-        return createUserWithEmailResponse;
-      }
-    } catch (e) {
-      toast.error('Failed to register account.');
-      console.log(e);
+    if (createUserWithEmailResponse.user) {
+      return createUserWithEmailResponse;
     }
   }
 
-  const verify = (user: User) => {
-    try {
-      sendEmailVerification(user);
-      toast('We have sent a verification link to your email! Please open it to verify your account.');
-    } catch (e) {
-      toast.error('Failed to send email verification.');
-    }
-  }
+  const verify = (user: User) =>  sendEmailVerification(user);
 
   const login = async (email: string, password: string): Promise<UserCredential | undefined> => {
-    try {
-      const signInWithEmailResponse = await signInWithEmailAndPassword(auth, email, password);
+    const signInWithEmailResponse = await signInWithEmailAndPassword(auth, email, password);
 
-      if (signInWithEmailResponse && signInWithEmailResponse.user.emailVerified) {
-        toast.success('Successfully signed in.');
-
-        return signInWithEmailResponse;
-      } else if (signInWithEmailResponse && !signInWithEmailResponse.user.emailVerified) {
-        toast.error('Your account has not been verified yet. Please check your email.');
-        logout();
-      }
-    } catch (e) {
-      toast.error('Invalid user credentials.');
+    if (signInWithEmailResponse) {
+      return signInWithEmailResponse;
     }
   }
   
   const loginWithGoogle = async (): Promise<UserCredential | undefined> => {
-    try {
-      const googleResponse = await signInWithPopup(auth, provider);
+    const googleResponse = await signInWithPopup(auth, provider);
 
-      if (googleResponse) {
-        toast.success('Successfully signed in');
-
-        return googleResponse;
-      }
-    } catch (e) {
-      toast.error('Failed to sign in with Google.');
+    if (googleResponse) {
+      return googleResponse;
     }
   }
   
-  const reset = async (email: string) => {
-    try {
-      const resetResponse = await sendPasswordResetEmail(auth, email);
-
-      return resetResponse;
-    } catch (e) {
-      toast.error('Failed to send reset password to email.');
-    }
-  }
+  const reset = (email: string) => sendPasswordResetEmail(auth, email);
 
   const logout = async () => {
     setUser(null);
@@ -135,6 +97,7 @@ export const AuthContextProvider = ({
   }
 
   return <AuthContext.Provider value={{
+    loading,
     login, 
     loginWithGoogle, 
     logout,

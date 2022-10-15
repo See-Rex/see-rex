@@ -1,5 +1,6 @@
 import { Button, ButtonProps } from '@mantine/core';
 import { useAuth } from '../../hooks/AuthContext';
+import SeeRexAlert from '../SeeRexAlert';
 
 function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -34,8 +35,24 @@ function GoogleIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 const GoogleButton = (props: ButtonProps) => {
   const authContext = useAuth();
 
-  function googleSignIn() {
-    authContext?.loginWithGoogle();
+  async function googleSignIn() {
+    try {
+      const googleResponse = await authContext?.loginWithGoogle();
+    
+      if (googleResponse) {
+        SeeRexAlert({
+          message: 'Successfully signed in with Google.',
+          title: 'Signed In',
+          type: 'success',
+        });
+      }
+    } catch(err) {
+      SeeRexAlert({
+        message: 'Failed to sign in with Google. ' + err.code,
+        title: 'Sign In Failed',
+        type: 'error',
+      });
+    }
   };
 
   return <Button leftIcon={<GoogleIcon />} variant="default" color="gray" onClick={googleSignIn} {...props} />;

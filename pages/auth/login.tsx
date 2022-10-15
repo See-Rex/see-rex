@@ -7,6 +7,7 @@ import {
     InputField,
     StyledButton,
 } from "../../components";
+import SeeRexAlert from "../../components/SeeRexAlert";
 import { useAuth } from "../../hooks/AuthContext";
 import { AuthLayout } from "../../layouts/AuthLayout";
 import style from "./_index.module.scss";
@@ -27,8 +28,31 @@ export function Login() {
     },
   });
 
-  function handleLogin() {
-    authContext?.login(form.values.email, form.values.password);
+  async function handleLogin() {
+    try {
+        const signInWithEmailResponse = await authContext?.login(form.values.email, form.values.password);
+  
+        if (signInWithEmailResponse?.user.emailVerified) {
+          SeeRexAlert({
+            message: 'Successfully signed in.',
+            title: 'Signed In',
+            type: 'success',
+          });
+        } else if (!signInWithEmailResponse?.user.emailVerified) {
+          SeeRexAlert({
+            message: 'Your account has not been verified yet. Please check your email.',
+            title: 'User Not Verified',
+            type: 'error',
+          });
+          await authContext?.logout();
+        }
+      } catch (err) {
+        SeeRexAlert({
+            message: 'Invalid user credentials. ' + err.code,
+            title: 'Sign In Failed',
+            type: 'error',
+        });
+      }
   }
 
   if (authContext?.user?.emailVerified) {
