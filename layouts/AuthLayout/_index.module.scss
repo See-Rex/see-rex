@@ -9,6 +9,19 @@
   justify-content: center;
 }
 
+.forgotContainer {
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    border: none;
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 100%);
+    transition: all 0.2s ease-in;
+  }
+}
+
 .formContainer {
   width: 370px;
   margin: 0 auto;
