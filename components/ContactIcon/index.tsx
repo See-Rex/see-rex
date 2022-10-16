@@ -10,12 +10,14 @@ type ContactIconProps = {
 const ContactIcon = (props: ContactIconProps) => {
   return (
     <div className={style.wrapper}>
-      <Box mr="md">{props.icon}</Box>
+      <Box mr="md" className={style.text}>
+        {props.icon}
+      </Box>
       <div>
-        <Text size="xs" className={style.title}>
+        <Text size="xs" className={style.text}>
           {props.title}
         </Text>
-        <Text className={style.description}>{props.description}</Text>
+        <Text className={style.text}>{props.description}</Text>
       </div>
     </div>
   );
