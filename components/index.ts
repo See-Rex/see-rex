@@ -17,8 +17,8 @@ import GroupCard from './GroupCard/index';
 import IconButton from './IconButton/index';
 import InputField from './InputField';
 import LandingBanner from './LandingBanner';
-import LandingHeader from './LandingHeader/index';
 import MainFooter from './MainFooter/index';
+import MainHeader from './MainHeader/index';
 import ProgressCard from './ProgressCard/index';
 import Search from './Search';
 import SeeRexLoader from './SeeRexLoader';
@@ -48,8 +48,8 @@ export {
   IconButton,
   InputField,
   LandingBanner,
-  LandingHeader,
   MainFooter,
+  MainHeader,
   ProgressCard,
   Search,
   SeeRexLoader,
