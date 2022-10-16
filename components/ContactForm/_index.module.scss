@@ -10,9 +10,9 @@
 
 .icon {
   &.light {
-    @include theme.SET_COLOR(constant.$COLOR_BLACK, 60%);
+    @include theme.SET_COLOR(constant.$COLOR_PRIMARY, 90%);
     &:hover {
-      @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 60%);
+      @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY, 20%);
     }
   }
   &.dark {
@@ -29,7 +29,7 @@
 
 .wrapper {
   display: flex;
-  border-radius: 15px;
+  border-radius: 12px;
   padding: 5px;
 
   @media only screen and (max-width: 520px) {
@@ -66,9 +66,9 @@
 .contacts {
   box-sizing: border-box;
   position: relative;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid transparent;
-  padding: 20px;
+  padding: 25px;
 
   @media only screen and (max-width: 520px) {
     margin-bottom: 10px;
@@ -84,14 +84,15 @@
 }
 
 .title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  @include text.BANNER_HEADINGS_1;
   font-family: constant.$FONT_MAIN;
 
   &.light {
-    @include theme.SET_COLOR(constant.$COLOR_BLACK, 100%);
+    @include theme.SET_COLOR(constant.$COLOR_PRIMARY, 100%);
   }
   &.dark {
-    @include theme.SET_COLOR(constant.$COLOR_WHITE, 80%);
+    @include theme.SET_COLOR(constant.$COLOR_WHITE, 85%);
   }
 
   @media only screen and (max-width: 520px) {
