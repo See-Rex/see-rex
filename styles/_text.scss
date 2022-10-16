@@ -1,5 +1,10 @@
 @use "./constants" as constants;
 
+@mixin BANNER_HIGHLIGHT {
+  font-size: constants.$BANNER_HIGHLIGHT_FONT_SIZE;
+  line-height: constants.$BANNER_HIGHLIGHT_LINE_HEIGHT;
+}
+
 @mixin BANNER_HEADER {
   font-size: constants.$BANNER_HEADER_FONT_SIZE;
   line-height: constants.$BANNER_HEADER_LINE_HEIGHT;
