@@ -6,6 +6,7 @@ import { useForm } from '@mantine/form';
 import { IconAt, IconMapPin, IconPhone, IconSun } from '@tabler/icons';
 import { IconX } from '@tabler/icons';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import style from './_index.module.scss';
 
 const ContactDetails = [
@@ -31,12 +32,14 @@ function ContactUsForm(props: ModalProps) {
     },
   });
 
-  const sendEmail = () => {
+  const sendEmail = async () => {
     try {
-      emailjs.send('service_deb5i4s', 'template_qm5qt2d', form.values, 'zGfkmEBnLMLx6m_Zd');
-      props.onClose;
+      await emailjs
+        .send('service_deb5i4s', 'template_qm5qt2d', form.values, 'zGfkmEBnLMLx6m_Zd')
+        .then(props.onClose)
+        .finally(() => toast.success('Email sent successfully'));
     } catch (err) {
-      alert(err);
+      toast.error('Sorry, please try again.');
     }
   };
 
