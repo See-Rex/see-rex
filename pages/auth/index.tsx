@@ -13,7 +13,7 @@ function Auth() {
     router.push('/auth/login');
   }
 
-  return <SeeRexLoader opacity={1} />;
+  return <SeeRexLoader />;
 }
 
 export default Auth;
