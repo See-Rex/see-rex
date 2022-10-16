@@ -22,7 +22,7 @@ type Props = {
   burger?: boolean;
 };
 
-function LandingHeader(props: BurgerProps & Props) {
+function MainHeader(props: BurgerProps & Props) {
   const { colorScheme } = useMantineColorScheme();
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.1, 0.2], [0, 0, 1]);
@@ -80,4 +80,4 @@ function LandingHeader(props: BurgerProps & Props) {
   );
 }
 
-export default LandingHeader;
+export default MainHeader;
