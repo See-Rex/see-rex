@@ -6,6 +6,7 @@ import ColorToggle from './ColorToggle';
 import ContactForm from './ContactForm/index';
 import ContactIcon from './ContactIcon/index';
 import ContactIconsList from './ContactIconList/index';
+import ContactInfo from './ContactInfo/index';
 import ContactsTable from './ContactsTable';
 import ContactUsForm from './ContactUsForm/index';
 import FeatureCard from './FeatureCard/index';
@@ -36,6 +37,7 @@ export {
   ContactForm,
   ContactIcon,
   ContactIconsList,
+  ContactInfo,
   ContactsTable,
   ContactUsForm,
   FeatureCard,
