@@ -9,7 +9,6 @@ type Props = {
 
 function SeeRexLoader({ opacity }: Props) {
   const { colorScheme } = useMantineColorScheme();
-
   const customLoader = colorScheme === 'light' ? <LoadingLight height={50} /> : <LoadingDark height={50} />;
   const color = colorScheme === 'light' ? '#f5f5f5' : '#121212';
 
