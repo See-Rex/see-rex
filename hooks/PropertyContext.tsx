@@ -93,7 +93,7 @@ const PropertyProvider = (props: Props) => {
         setPropertyType,
       }}
     >
-      {loading ? <SeeRexLoader /> : children}
+      {loading ? <SeeRexLoader opacity={0.5} /> : children}
     </PropertyContextProvider>
   );
 };
