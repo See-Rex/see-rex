@@ -1,0 +1,47 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.avatar {
+  &.dark {
+    filter: brightness(70%);
+  }
+}
+
+.icon {
+  &.light {
+    color: constant.$COLOR_BLACK;
+  }
+  &.dark {
+    color: constant.$COLOR_WHITE_DARK;
+  }
+}
+
+.wrapper {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    border: 1px solid constant.$COLOR_SECONDARY;
+  }
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_PRIMARY_DARK, 98%);
+    border: 1px solid constant.$COLOR_PRIMARY_DARK;
+  }
+}
+
+.name {
+  font-family: constant.$FONT_MAIN;
+  &.dark {
+    color: constant.$COLOR_GREY;
+  }
+}
+
+.text {
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+  }
+}

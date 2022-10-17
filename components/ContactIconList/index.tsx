@@ -12,7 +12,6 @@ type ContactIconsListProps = {
   data: ContactIconProps[];
 };
 
-
 export default function ContactIcons({ data }: ContactIconsListProps) {
   const items = data.map((item, index) => <ContactIcon key={index} {...item} />);
   return <Stack>{items}</Stack>;

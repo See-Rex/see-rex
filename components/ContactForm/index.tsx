@@ -15,6 +15,7 @@ import {
 import { useForm } from '@mantine/form';
 import { IconAddressBook, IconAt, IconHomeSearch, IconPhone, IconX } from '@tabler/icons';
 import React from 'react';
+import toast from 'react-hot-toast';
 import style from './_index.module.scss';
 
 type Props = {
@@ -43,21 +44,23 @@ function ContactForm(props: Props & ModalProps) {
 
   const sendEmail = async () => {
     try {
-      await emailjs.send(
-        'service_nzup63p',
-        'template_gg4u1zj',
-        {
-          message: form.values.message,
-          subject: form.values.subject,
-          to_email: props.email,
-          to_name: props.name,
-          type: props.type,
-        },
-        'zGfkmEBnLMLx6m_Zd'
-      );
-      props.onClose();
+      await emailjs
+        .send(
+          'service_nzup63p',
+          'template_gg4u1zj',
+          {
+            message: form.values.message,
+            subject: form.values.subject,
+            to_email: props.email,
+            to_name: props.name,
+            type: props.type,
+          },
+          'zGfkmEBnLMLx6m_Zd'
+        )
+        .then(props.onClose)
+        .finally(() => toast.success('Email sent successfully!'));
     } catch (err) {
-      alert(err);
+      toast.error('Sorry, please try again');
     }
   };
 
@@ -82,7 +85,7 @@ function ContactForm(props: Props & ModalProps) {
                 <ActionIcon component={IconX} className={`${style.icon} ${style[colorScheme]}`} onClick={props.onClose} />
               </SimpleGrid>
             </MediaQuery>
-            <Text size="lg" weight={700} className={style.title} sx={{ color: '#fff' }}>
+            <Text size="lg" weight={700} color="#f1f1f1" pb="lg">
               Contact information
             </Text>
 

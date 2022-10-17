@@ -1,4 +1,5 @@
 @use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
 
 .wrapper {
   display: flex;
@@ -6,10 +7,11 @@
   color: constant.$COLOR_WHITE;
 }
 
-.title {
-  color: constant.$COLOR_WHITE;
-}
-
-.description {
-  color: constant.$COLOR_WHITE;
+.text {
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_BLACK, 100%);
+  }
+  &.dark {
+    @include theme.SET_COLOR(constant.$COLOR_WHITE, 80%);
+  }
 }

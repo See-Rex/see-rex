@@ -1,4 +1,4 @@
-import { ContactForm } from '..';
+import { ContactForm, ContactInfo } from '..';
 import { ActionIcon, Anchor, Avatar, Badge, Group, ScrollArea, Table, Text, useMantineColorScheme } from '@mantine/core';
 import { IconInfoCircle } from '@tabler/icons';
 import { useState } from 'react';
@@ -19,19 +19,19 @@ const badgeColors: Record<string, string> = {
 export default function ContactsTable({ data }: UsersTableProps) {
   const { colorScheme } = useMantineColorScheme();
   const [opened, setOpened] = useState(false);
-  const [contactData, setContactData] = useState({ email: '', name: '', phone: '', type: '' as ContactType });
+  const [popup, setPopup] = useState(false);
+  const [contactData, setContactData] = useState({ avatar: '', email: '', name: '', phone: '', type: '' as ContactType });
 
   const rows = data.map((item) => (
     <tr key={item.name}>
       <td>
         <Group spacing="sm">
-          <Avatar size={30} src={item.avatar} radius={30} />
+          <Avatar size={30} src={item.avatar} radius={30} className={`${style.avatar} ${style[colorScheme]}`} />
           <Text size="sm" weight={500} className={`${style.text} ${style[colorScheme]}`}>
             {item.name}
           </Text>
         </Group>
       </td>
-
       <td>
         <Badge
           color={badgeColors[item.type.toLowerCase()]}
@@ -45,7 +45,7 @@ export default function ContactsTable({ data }: UsersTableProps) {
         <Anchor<'a'>
           size="sm"
           onClick={() => {
-            setContactData({ email: item.email, name: item.name, phone: item.phone, type: item.type });
+            setContactData({ avatar: item.avatar, email: item.email, name: item.name, phone: item.phone, type: item.type });
             setOpened(true);
           }}
           className={`${style.text} ${style[colorScheme]}`}
@@ -60,7 +60,18 @@ export default function ContactsTable({ data }: UsersTableProps) {
       </td>
       <td>
         <Group spacing={0} position="right">
-          <ActionIcon>
+          <ActionIcon
+            onClick={() => {
+              setContactData({
+                avatar: item.avatar,
+                email: item.email,
+                name: item.name,
+                phone: item.phone,
+                type: item.type,
+              });
+              setPopup(true);
+            }}
+          >
             <IconInfoCircle size={16} stroke={1.5} />
           </ActionIcon>
         </Group>
@@ -78,8 +89,18 @@ export default function ContactsTable({ data }: UsersTableProps) {
         phone={contactData.phone}
         type={contactData.type}
       />
+      <ContactInfo
+        opened={popup}
+        onClose={() => setPopup(false)}
+        avatar={contactData.avatar}
+        email={contactData.email}
+        name={contactData.name}
+        phone={contactData.phone}
+        showForm={() => setOpened(true)}
+        type={contactData.type}
+      />
       <ScrollArea>
-        <Table sx={{ minWidth: 800 }} verticalSpacing="sm">
+        <Table sx={{ minWidth: 800 }} verticalSpacing="md">
           <thead>
             <tr>
               <th className={`${style.text} ${style[colorScheme]}`}>Property Owner</th>

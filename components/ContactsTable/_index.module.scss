@@ -2,6 +2,13 @@
 @use '../../styles/constants' as constant;
 @use '../../styles/theme' as theme;
 
+.avatar {
+  &.dark {
+    filter: brightness(70%);
+    transition: all 0.2s ease-in;
+  }
+}
+
 .text {
   &.light {
     color: constant.$COLOR_PRIMARY_DARK;
@@ -15,7 +22,7 @@
 
 .badge {
   &.dark {
-    filter: opacity(50%);
+    filter: brightness(60%);
     transition: all 0.2s ease-in;
   }
 }
