@@ -3,17 +3,15 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../hooks/AuthContext';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
+  const authContext = useAuth();
+  const user = authContext?.user;
   const router = useRouter();
 
   useEffect(() => {
-    if (user && user.emailVerified === false) {
-      alert('Your account has not been verified yet. Please check your email.');
-      router.push('/auth/login');
-    } else if (!user) {
+    if (user && user.emailVerified === false || !user) {
       router.push('/auth');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [user]);
 
   return <>{user && user.emailVerified ? children : null}</>;

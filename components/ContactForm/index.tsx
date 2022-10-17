@@ -4,13 +4,13 @@ import {
   ActionIcon,
   Button,
   Group,
+  MediaQuery,
   Modal,
   ModalProps,
   SimpleGrid,
+  Stack,
   Text,
   useMantineColorScheme,
-  Stack,
-  MediaQuery,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconAddressBook, IconAt, IconHomeSearch, IconPhone, IconX } from '@tabler/icons';
@@ -41,9 +41,9 @@ function ContactForm(props: Props & ModalProps) {
     },
   });
 
-  const sendEmail = () => {
+  const sendEmail = async () => {
     try {
-      emailjs.send(
+      await emailjs.send(
         'service_nzup63p',
         'template_gg4u1zj',
         {
@@ -55,7 +55,7 @@ function ContactForm(props: Props & ModalProps) {
         },
         'zGfkmEBnLMLx6m_Zd'
       );
-      props.onClose;
+      props.onClose();
     } catch (err) {
       alert(err);
     }

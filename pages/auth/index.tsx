@@ -4,17 +4,16 @@ import { SeeRexLoader } from '../../components';
 import { useAuth } from '../../hooks/AuthContext';
 
 function Auth() {
-  const { user } = useAuth();
+  const authContext = useAuth();
   const router = useRouter();
 
-  if (user) {
+  if (authContext?.user?.emailVerified) {
     router.push('/dashboard');
   } else {
-    alert('Please login first.');
     router.push('/auth/login');
   }
 
-  return <SeeRexLoader />;
+  return <SeeRexLoader opacity={1} />;
 }
 
 export default Auth;

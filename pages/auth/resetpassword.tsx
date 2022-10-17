@@ -16,7 +16,7 @@ import style from './_index.module.scss';
 
 export function ResetPassword() {
   const { colorScheme } = useMantineColorScheme();
-  const { reset, user } = useAuth();
+  const authContext = useAuth();
   const router = useRouter();
 
   const form = useForm({
@@ -31,16 +31,16 @@ export function ResetPassword() {
 
   const handleReset = async () => {
     try {
-      await reset(form.values.email);
+      authContext?.reset(form.values.email);
       alert('A password reset email has been sent to your email address!');
     } catch (err) {
       alert(err);
     }
   };
 
-  if (user) {
+  if (authContext?.user) {
     router.push('/auth');
-  }  
+  } 
 
   return (
     <AuthLayout isForgotPassword>
