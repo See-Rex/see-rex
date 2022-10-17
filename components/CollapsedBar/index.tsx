@@ -31,7 +31,7 @@ function CollapsedBar(props: Omit<NavbarProps, 'children'> & Props) {
   function handleLogout() {
     authContext?.logout();
     router.push('/auth');
-    toast('Farewell! See you next time.');
+    toast('👋 Farewell, see you next time!');
   }
 
   return (
