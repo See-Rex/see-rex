@@ -1,8 +1,7 @@
 import { ColorToggle } from '..';
-import { Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
+import { Anchor, Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
 import Logo from '../../public/Logo';
 import style from './_index.module.scss';
-import { Anchor } from '@mantine/core';
 
 type Props = {
   children?: React.ReactNode;
