@@ -17,9 +17,9 @@ interface VehicleProps {
 function VehicleSlug({ vehicle }: VehicleProps) {
   const { colorScheme } = useMantineColorScheme();
   const currentVehicle = vehicle[0];
-  const { dateRegistered, image, name, proofOfOwnership} = currentVehicle;
+  const { dateRegistered, image, name } = currentVehicle;
   const displayTextDescription = `This vehicle was registered on ${dateRegistered}.`;
-  const proofText = proofOfOwnership[0]?.children[0]?.text;
+  const proofText = 'Place proof of ownership here.';
 
   return (
       <SeeRexPageLayout>
