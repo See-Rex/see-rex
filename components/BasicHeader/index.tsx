@@ -1,5 +1,5 @@
 import { ColorToggle } from '..';
-import { Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
+import { Anchor, Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
 import Logo from '../../public/Logo';
 import style from './_index.module.scss';
 
@@ -26,7 +26,9 @@ const BasicHeader = (props: BurgerProps & Props) => {
               mr="xl"
             />
           </MediaQuery>
-          <Logo size="lg" />
+          <Anchor<'a'> href="/">
+            <Logo size="lg" />
+          </Anchor>
           <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
             <Group spacing={20} className={style.links}>
               {children}
