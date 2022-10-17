@@ -28,7 +28,7 @@ export interface Property {
       };
     };
   };
-  image: {
+  mainImage: {
     asset: {
       url: string;
     };
