@@ -112,16 +112,6 @@
     }    
 }
 
-
-.overlay {
-    background: transparent;
-    z-index: 1;
-    opacity: 1;
-    position: absolute;
-    top: 25%;
-    left: 10%;
-}
-
 .underLayer {
     z-index: 0;
     position: relative;

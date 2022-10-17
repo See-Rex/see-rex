@@ -1,5 +1,6 @@
 import { ColorToggle } from '..';
-import { Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
+import { Anchor, Burger, BurgerProps, Code, Container, Group, Header, MediaQuery, useMantineColorScheme } from '@mantine/core';
+import { useRouter } from 'next/router';
 import Logo from '../../public/Logo';
 import style from './_index.module.scss';
 
@@ -11,6 +12,11 @@ type Props = {
 const PageHeader = (props: BurgerProps & Props) => {
   const { colorScheme } = useMantineColorScheme();
   const { burger, children, onClick, opened } = props;
+  const router = useRouter();
+
+  function handleGoBack() {
+    router.push('/dashboard');
+  }
 
   return (
     <Header height={56} my={25} className={`${style.header} ${style[colorScheme]}`}>
@@ -25,8 +31,10 @@ const PageHeader = (props: BurgerProps & Props) => {
               size="sm"
               mr="xl"
             />
-          </MediaQuery>
-          <Logo size="lg" />
+          </MediaQuery>  
+          <Anchor onClick={handleGoBack}>
+            <Logo size="lg" />
+          </Anchor>
           <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
             <Group spacing={20} className={style.links}>
               {children}

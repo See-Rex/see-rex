@@ -1,4 +1,4 @@
-import { Group, MediaQuery, Overlay, Stack, Text, Title, useMantineColorScheme } from '@mantine/core';
+import { Group, MediaQuery, Stack, Text, Title, useMantineColorScheme } from '@mantine/core';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 
@@ -24,8 +24,7 @@ function VehicleSlug({ vehicle }: VehicleProps) {
   return (
       <SeeRexPageLayout>
         <div className={style.pageContainer}>
-          <Image className={style.underLayer} src={Wave} alt={'Wave underlayer'} />
-            <Overlay className={style.overlay}>
+          <Image className={style.underLayer} src={Wave} alt={'Wave underlayer'} layout='fill' />
             <MediaQuery smallerThan={1060} styles={{ display: 'none' }}>
               <Group spacing={50}>
                 <Stack align={'flex-start'}>
@@ -39,14 +38,15 @@ function VehicleSlug({ vehicle }: VehicleProps) {
                     {displayTextDescription}
                   </Text>
                 </Stack>
-                <Image 
-                  alt='vehicle'
-                  className={style.vehicleImage}
-                  objectFit='cover'
-                  height={340} 
-                  src={urlFor(image).url()} 
-                  width={500}
-                />
+                <div style={{height: '300px', position: 'relative', width: '500px'}}>
+                  <Image 
+                    alt={name}
+                    className={style.vehicleImage}
+                    layout='fill'
+                    objectFit='contain'
+                    src={urlFor(image).url()}
+                  />
+                </div>
               </Group>
             </MediaQuery>
             <MediaQuery largerThan={1060} styles={{ display: 'none' }}>
@@ -67,7 +67,6 @@ function VehicleSlug({ vehicle }: VehicleProps) {
                 </Text>
               </Stack>
             </MediaQuery>
-          </Overlay>
         </div>
       </SeeRexPageLayout>
   )
