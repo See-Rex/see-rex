@@ -6,9 +6,14 @@ import style from '../_index.module.scss';
 import { AppCard, FilterPicker, Search } from '../../components';
 import PropertyType from '../../enums/PropertyType.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
+import { sanityClient } from '../../sanity';
 import { Property } from '../../types';
 
-function ResidentialProperties() {
+interface ResidentialProp {
+  residentialProp: Property[];
+}
+
+function ResidentialProperties({ residentialProp }: ResidentialProp) {
   const { properties, setPropertyType } = usePropertyContext();
   setPropertyType(PropertyType.RESIDENTIAL);
 
@@ -61,3 +66,30 @@ function ResidentialProperties() {
 }
 
 export default ResidentialProperties;
+
+export const serverSideProps = async () => {
+  const query = `*[_type == "property"] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    slug,
+    homeowner-> {
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
+    categories,
+    vehicles,
+    description,
+    mainImage
+  }`;
+
+  const residentialProperties = sanityClient.fetch(query);
+
+  return {
+    props: {
+      residentialProperties,
+    }
+  }
+}

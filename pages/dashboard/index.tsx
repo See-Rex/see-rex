@@ -19,7 +19,7 @@ function Dashboard() {
       case 2:
         return <Contacts />;
       case 3:
-        return <ResidentialProperties />;
+        return <ResidentialProperties residentialProp={[]} />;
       case 4:
         return <LandProperties />;
       case 5:
