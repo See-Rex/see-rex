@@ -1,18 +1,18 @@
-import { 
+import {
   AppShell,
-  Avatar, 
-  Badge, 
-  Card, 
-  Container, 
-  Divider, 
-  Grid, 
-  Group, 
-  Image, 
-  MediaQuery, 
+  Avatar,
+  Badge,
+  Card,
+  Container,
+  Divider,
+  Grid,
+  Group,
+  Image,
+  MediaQuery,
   Paper,
-  Stack, 
-  Text, 
-  Title, 
+  Stack,
+  Text,
+  Title,
   useMantineColorScheme
 } from '@mantine/core';
 import { IconCalendar, IconPhoneCall } from '@tabler/icons';
@@ -66,18 +66,18 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       </Group>
     </Card.Section>
     <Group spacing={100} align={'flex-start'}>
-          <Stack my={'lg'}>
-            <Text size={26} weight={500}>
-              Vehicles
-            </Text>
-            <Container>
-              <Group>
-                <Avatar src={urlFor(homeowner.image).url()} size={50} radius={'md'} />
-                <Text>Name of vehicle</Text>
-              </Group>
-            </Container>
-          </Stack>
-        </Group>
+      <Stack my={'lg'}>
+        <Text size={26} weight={500}>
+          Vehicles
+        </Text>
+        <Container>
+          <Group>
+            <Avatar src={urlFor(vehicles[0].image).url()} size={50} radius={'md'} />
+            <Text>{vehicles[0].name}</Text>
+          </Group>
+        </Container>
+      </Stack>
+    </Group>
   </Container>;
 
   const renderColumnRight = <Container pt={32} fluid>
@@ -107,8 +107,16 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       <Text size={20} weight={500}>
         Home Owner History
       </Text>
+      <Container>
+        {homeownerHistory.map((owner) =>
+          <Group key={owner._id}>
+            <Avatar src={urlFor(owner.image).url()} size={50} radius={'md'} />
+            <Text>{owner.name}</Text>
+          </Group>
+        )}
+      </Container>
     </Stack>
-</Container>;
+  </Container>;
 
   return (
     <AppShell
@@ -116,11 +124,11 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       footer={<BasicFooter height={56} />}
       fixed
     >
-      <Paper className={style.residentialPage}>   
+      <Paper className={style.residentialPage}>
         <Grid columns={12}>
           <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
           <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
-        </Grid> 
+        </Grid>
       </Paper>
     </AppShell>
   )
@@ -158,12 +166,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       contactDetails,
       dateRegistered
     },
-    homeownerHistory,
+    homeownerHistory[]->{
+      _id,
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
     categories,
-    vehicles,
     description,
-    mainImage
-  }`;
+    mainImage,
+    vehicles[]->{
+      name,
+      image,
+      dateRegistered,
+      proofOfOwnership,
+    },
+ }`;
 
   const residentialProperty = await sanityClient.fetch(query, {
     slug: params?.slug
