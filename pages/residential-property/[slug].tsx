@@ -42,40 +42,40 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
   const { colorScheme } = useMantineColorScheme();
   const showCarouselControls = vehicles.length > 0;
 
-  const renderVehiclesCarousel = <Carousel 
-        my={'xl'}
-        sx={{ maxWidth: 800 }}
-        height={200}
-        withControls={showCarouselControls}
-      >
-      {vehicles.map((vehicle) => (
-        <Carousel.Slide key={vehicle._id}>
-          <Group>
-            <Image 
-              alt={vehicle.name}
-              fit={'cover'} 
-              height={200} 
-              src={urlFor(vehicle.image).url()} 
-              width={300} 
-              withPlaceholder
-            />
-            <Stack spacing={2}>
-              <Text size={26} weight={500}>{vehicle.name}</Text>
-              <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
-              <Paper>
-                <Text align={'justify'} sx={{ maxWidth: 400 }}>
-                  <PortableText
-                    dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                    projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                    content={vehicle.proofOfOwnership}
-                  />
-                </Text>
-              </Paper>
-            </Stack>
-          </Group>
-        </Carousel.Slide>
-      ))}
-    </Carousel>;
+  const renderVehiclesCarousel = <Carousel
+    my={'xl'}
+    sx={{ maxWidth: 800 }}
+    height={200}
+    withControls={showCarouselControls}
+  >
+    {vehicles.map((vehicle) => (
+      <Carousel.Slide key={vehicle._id}>
+        <Group>
+          <Image
+            alt={vehicle.name}
+            fit={'cover'}
+            height={200}
+            src={urlFor(vehicle.image).url()}
+            width={300}
+            withPlaceholder
+          />
+          <Stack spacing={2}>
+            <Text size={26} weight={500}>{vehicle.name}</Text>
+            <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
+            <Paper>
+              <Text align={'justify'} sx={{ maxWidth: 400 }}>
+                <PortableText
+                  dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                  projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                  content={vehicle.proofOfOwnership}
+                />
+              </Text>
+            </Paper>
+          </Stack>
+        </Group>
+      </Carousel.Slide>
+    ))}
+  </Carousel>;
 
   const renderColumnLeft = <Container>
     <Card.Section>
@@ -87,7 +87,7 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
           <Text size={26} weight={500}>
             {title}
           </Text>
-          <Badge className={`${style.type} ${style[colorScheme]}`}>Residential</Badge>
+          <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title}</Badge>
         </Stack>
         <div className={style.richText}>
           <Text align={'justify'}>
@@ -104,27 +104,27 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
   </Container>;
 
   const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={340} sx={{ maxWidth: 400 }} mx="auto">
-      {homeownerHistory.map((owner) =>
-        <Card key={owner._id} mb={5} withBorder>
-          <Group>
-            <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
-            <Stack spacing={2}>
-              <Text size={'md'} weight={500}>{owner.name}</Text>
-              <Group>
-                <Group noWrap spacing={10} mt={10}>
-                  <IconPhoneCall stroke={1.5} size={20} />
-                  <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
-                </Group>
-                <Group noWrap spacing={10} mt={10}>
-                  <IconCalendar stroke={1.5} size={20} />
-                  <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
-                </Group>
+    {homeownerHistory.map((owner) =>
+      <Card key={owner._id} mb={5} withBorder>
+        <Group>
+          <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
+          <Stack spacing={2}>
+            <Text size={'md'} weight={500}>{owner.name}</Text>
+            <Group>
+              <Group noWrap spacing={10} mt={10}>
+                <IconPhoneCall stroke={1.5} size={20} />
+                <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
               </Group>
-            </Stack>
-          </Group>
-        </Card>
-      )}
-    </ScrollArea.Autosize>;
+              <Group noWrap spacing={10} mt={10}>
+                <IconCalendar stroke={1.5} size={20} />
+                <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
+              </Group>
+            </Group>
+          </Stack>
+        </Group>
+      </Card>
+    )}
+  </ScrollArea.Autosize>;
 
   const renderColumnRight = <Container pt={32} fluid>
     <Stack align={'center'}>
@@ -210,7 +210,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       contactDetails,
       dateRegistered
     },
-    categories,
+    categories[]->{
+      title,
+    },
     description,
     mainImage,
     vehicles[]->{
