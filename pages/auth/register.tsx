@@ -6,6 +6,7 @@ import { useState } from "react";
 import {
     GoogleButton,
     InputField,
+    SanityButton,
     StyledButton,
 } from "../../components";
 import { useAuth } from "../../hooks/AuthContext";
@@ -103,6 +104,11 @@ function Register() {
                         <GoogleButton radius="sm" className={`${style.google} ${style[colorScheme]}`}>
                             Continue with Google
                         </GoogleButton>
+                    </Group>
+                    <Group grow>
+                        <SanityButton className={`${style.sanity} ${style[colorScheme]}`}>
+                            Continue with Sanity
+                        </SanityButton>
                     </Group>
                     <Group position="center">
                         <Text className={style.text}>
