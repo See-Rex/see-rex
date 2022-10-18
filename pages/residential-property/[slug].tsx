@@ -1,4 +1,5 @@
 import { AppShell, AspectRatio, Avatar, Card, Container, Divider, Group, Image, MediaQuery, SimpleGrid, Stack, Text, Title } from '@mantine/core';
+import PortableText from 'react-portable-text';
 import { IconAt, IconPhoneCall } from '@tabler/icons';
 import { GetStaticProps } from 'next';
 import React from 'react'
@@ -12,16 +13,18 @@ interface ResidentialPropertyProps {
 }
 
 function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyProps) {
-  const { 
-    categories, 
-    dateRegistered, 
-    description, 
+  const {
+    categories,
+    dateRegistered,
+    description,
     homeowner,
     homeownerHistory,
-    mainImage, 
+    mainImage,
     title,
     vehicles
-  } = residentialProperty[1];
+  } = residentialProperty[2];
+
+  // console.log(residentialProperty);
 
   return (
     <AppShell
@@ -36,39 +39,39 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
               <Image src={urlFor(mainImage).url()} alt={title} radius={'md'} />
             </AspectRatio>
             <div>
-            <Group noWrap>
-              <Avatar src={urlFor(homeowner.image).url()} size={96} radius={'md'} />
-              <div>
-                <Text size="xs" sx={{ textTransform: 'uppercase' }} weight={700} color="dimmed">
-                  {title}
-                </Text>
-
-                <Text size="lg" weight={500}>
-                  {homeowner.name}
-                </Text>
-
-                <Group noWrap spacing={10} mt={3}>
-                  <IconAt stroke={1.5} size={16} />
-                  <Text size="xs" color="dimmed">
-                    {dateRegistered}
-                  </Text>
-                </Group>
-
-                <Group noWrap spacing={10} mt={5}>
-                  <IconPhoneCall stroke={1.5} size={16} />
-                  <Text size="xs" color="dimmed">
+              <Group noWrap>
+                <Avatar src={urlFor(homeowner.image).url()} size={96} radius={'md'} />
+                <div>
+                  <Text size="xs" sx={{ textTransform: 'uppercase' }} weight={700} color="dimmed">
                     {title}
                   </Text>
-                </Group>
-              </div>
-            </Group>
-          </div>
+
+                  <Text size="lg" weight={500}>
+                    {homeowner.name}
+                  </Text>
+
+                  <Group noWrap spacing={10} mt={3}>
+                    <IconAt stroke={1.5} size={16} />
+                    <Text size="xs" color="dimmed">
+                      {dateRegistered}
+                    </Text>
+                  </Group>
+
+                  <Group noWrap spacing={10} mt={5}>
+                    <IconPhoneCall stroke={1.5} size={16} />
+                    <Text size="xs" color="dimmed">
+                      {title}
+                    </Text>
+                  </Group>
+                </div>
+              </Group>
+            </div>
           </Stack>
-          <MediaQuery largerThan={'sm'} styles={{display: 'none'}} >
+          <MediaQuery largerThan={'sm'} styles={{ display: 'none' }} >
             <Divider />
           </MediaQuery>
           <Group align={'flex-start'}>
-            <MediaQuery smallerThan={'sm'} styles={{display: 'none'}} >
+            <MediaQuery smallerThan={'sm'} styles={{ display: 'none' }} >
               <Divider orientation='vertical' />
             </MediaQuery>
             <Stack ml={'sm'}>
@@ -81,6 +84,23 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
             </Stack>
           </Group>
         </SimpleGrid>
+        <MediaQuery smallerThan={'sm'} styles={{ display: 'none' }} >
+          <Divider orientation='horizontal' />
+        </MediaQuery>
+        <Group align={"flex-start"}>
+          <Stack ml={'sm'}>
+            <Title weight={700}>
+              Description
+            </Title>
+            <Text mt={5}>
+              <PortableText
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                content={description}
+              />
+            </Text>
+          </Stack>
+        </Group>
       </Container>
     </AppShell>
   )
