@@ -20,6 +20,7 @@ import LandingBanner from './LandingBanner';
 import MainFooter from './MainFooter/index';
 import MainHeader from './MainHeader/index';
 import ProgressCard from './ProgressCard/index';
+import SanityButton from './SanityButton';
 import Search from './Search';
 import SeeRexLoader from './SeeRexLoader';
 import SegmentedToggle from './SegmentedToggle';
@@ -51,6 +52,7 @@ export {
   MainFooter,
   MainHeader,
   ProgressCard,
+  SanityButton,
   Search,
   SeeRexLoader,
   SegmentedToggle,
