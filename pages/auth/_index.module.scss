@@ -70,3 +70,30 @@
         }
     }
 }
+
+.sanity {
+    &.light {
+        @include theme.SET_BACKGROUND(#F04939, 100%);
+        color: constant.$COLOR_WHITE;
+        transition: all 0.1s ease-in;
+
+        img {
+            background: constant.$COLOR_WHITE;
+            border-radius: 5px;
+            object-fit: contain;
+            transition: all 0.1s ease-in;
+        }
+    }
+
+    &.dark {
+        @include theme.SET_BACKGROUND(constant.$COLOR_WHITE_DARK, 5%);
+        border: none;
+        color: constant.$COLOR_WHITE_DARK;
+        transition: all 0.1s ease-in;
+
+        &:hover{
+            @include theme.SET_BACKGROUND(#FF6556, 20%);
+            color: #F04939;
+        }
+    }
+}
