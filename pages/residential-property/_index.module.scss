@@ -3,7 +3,8 @@
 @use '../../styles/theme' as theme;
 
 .residentialPage {
-    margin: 0 auto;
+  margin: 0 auto;
+  max-width: constant.$LARGE_SCREEN;
 }
 
 .type {

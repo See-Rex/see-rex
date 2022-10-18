@@ -10,7 +10,6 @@ import {
   Image, 
   MediaQuery, 
   Paper,
-  SimpleGrid, 
   Stack, 
   Text, 
   Title, 
@@ -43,7 +42,7 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
   } = residentialProperty[2];
   const { colorScheme } = useMantineColorScheme();
 
-  const renderPropertyHeader = <Container>
+  const renderColumnLeft = <Container>
     <Card.Section>
       <Image src={urlFor(mainImage).url()} height={392} alt={title} />
     </Card.Section>
@@ -66,14 +65,27 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         </div>
       </Group>
     </Card.Section>
+    <Group spacing={100} align={'flex-start'}>
+          <Stack my={'lg'}>
+            <Text size={26} weight={500}>
+              Vehicles
+            </Text>
+            <Container>
+              <Group>
+                <Avatar src={urlFor(homeowner.image).url()} size={50} radius={'md'} />
+                <Text>Name of vehicle</Text>
+              </Group>
+            </Container>
+          </Stack>
+        </Group>
   </Container>;
 
-  const renderProfileCard = <Container pt={32} fluid>
+  const renderColumnRight = <Container pt={32} fluid>
     <Stack align={'center'}>
-    <Avatar src={urlFor(homeowner.image).url()} size={166} radius={100} />
+      <Avatar src={urlFor(homeowner.image).url()} size={166} radius={100} />
       <Group>
         <div>
-          <Text size={30} weight={500}>
+          <Text size={24} weight={500}>
             {homeowner.name}
           </Text>
           <Group noWrap spacing={10} mt={10}>
@@ -91,6 +103,11 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         </div>
       </Group>
     </Stack>
+    <Stack mt={95}>
+      <Text size={20} weight={500}>
+        Home Owner History
+      </Text>
+    </Stack>
 </Container>;
 
   return (
@@ -99,32 +116,11 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       footer={<BasicFooter height={56} />}
       fixed
     >
-      <Paper className={style.residentialPage} p="xl">   
-      <Grid columns={12}>
-        <Grid.Col span={8}>{renderPropertyHeader}</Grid.Col>
-        <Grid.Col span={4}>{renderProfileCard}</Grid.Col>
-      </Grid> 
-        <MediaQuery smallerThan={'sm'} styles={{ display: 'none' }} >
-          <Divider mt={35} orientation='horizontal' />
-        </MediaQuery>
-        <Group spacing={100} align={'flex-start'}>
-          <Stack my={'lg'}>
-            <Title size={24} weight={700}>
-              Vehicles
-            </Title>
-            <Container>
-              <Group>
-                <Avatar src={urlFor(homeowner.image).url()} size={50} radius={'md'} />
-                <Text>Name of vehicle</Text>
-              </Group>
-            </Container>
-          </Stack>
-          <Stack my={'lg'}>
-            <Title size={24} weight={700}>
-              Home Owner History
-            </Title>
-          </Stack>
-        </Group>
+      <Paper className={style.residentialPage}>   
+        <Grid columns={12}>
+          <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
+          <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
+        </Grid> 
       </Paper>
     </AppShell>
   )
