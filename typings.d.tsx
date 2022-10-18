@@ -52,6 +52,7 @@ export interface Property {
     };
   }];
   vehicles: [{
+    _id: string;
     name: string;
     image: {
       asset: {

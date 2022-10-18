@@ -1,3 +1,4 @@
+import { Carousel } from '@mantine/carousel';
 import {
   AppShell,
   Avatar,
@@ -39,17 +40,46 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     vehicles
   } = residentialProperty[2];
   const { colorScheme } = useMantineColorScheme();
+  const showCarouselControls = vehicles.length > 0;
 
-  const renderVehiclesCarousel = <Container>
-    <Group>
-      <Avatar src={urlFor(vehicles[0].image).url()} size={50} radius={'md'} />
-      <Text>{vehicles[0].name}</Text>
-    </Group>
-  </Container>;
+  const renderVehiclesCarousel = <Carousel 
+        my={'xl'}
+        sx={{ maxWidth: 800 }}
+        height={200}
+        withControls={showCarouselControls}
+      >
+      {vehicles.map((vehicle) => (
+        <Carousel.Slide key={vehicle._id}>
+          <Group>
+            <Image 
+              alt={vehicle.name}
+              fit={'cover'} 
+              height={200} 
+              src={urlFor(vehicle.image).url()} 
+              width={300} 
+              withPlaceholder
+            />
+            <Stack spacing={2}>
+              <Text size={26} weight={500}>{vehicle.name}</Text>
+              <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
+              <Paper>
+                <Text align={'justify'} sx={{ maxWidth: 400 }}>
+                  <PortableText
+                    dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                    projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                    content={vehicle.proofOfOwnership}
+                  />
+                </Text>
+              </Paper>
+            </Stack>
+          </Group>
+        </Carousel.Slide>
+      ))}
+    </Carousel>;
 
   const renderColumnLeft = <Container>
     <Card.Section>
-      <Image src={urlFor(mainImage).url()} height={392} alt={title} />
+      <Image src={urlFor(mainImage).url()} height={392} alt={title} withPlaceholder />
     </Card.Section>
     <Card.Section mt="md">
       <Group position="right">
@@ -70,17 +100,10 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         </div>
       </Group>
     </Card.Section>
-    <Group spacing={100} align={'flex-start'}>
-      <Stack my={'lg'}>
-        <Text size={26} weight={500}>
-          Vehicles
-        </Text>
-        {renderVehiclesCarousel}
-      </Stack>
-    </Group>
+    {renderVehiclesCarousel}
   </Container>;
 
-  const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={400} sx={{ maxWidth: 400 }} mx="auto">
+  const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={340} sx={{ maxWidth: 400 }} mx="auto">
       {homeownerHistory.map((owner) =>
         <Card key={owner._id} mb={5} withBorder>
           <Group>
@@ -138,7 +161,7 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       footer={<BasicFooter height={56} />}
       fixed
     >
-      <Paper className={style.residentialPage}>
+      <Paper className={style.residentialPage} py={40}>
         <Grid columns={12}>
           <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
           <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
@@ -191,6 +214,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     description,
     mainImage,
     vehicles[]->{
+      _id,
       name,
       image,
       dateRegistered,
