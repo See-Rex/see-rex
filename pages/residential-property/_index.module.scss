@@ -5,21 +5,25 @@
 .residentialPage {
   margin: 0 auto;
   max-width: constant.$LARGE_SCREEN;
-}
-
-.type {
-  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
-  @include text.HEADER_TINY;
-  max-width: 100px;
-  font-weight: 600;
-  height: 20px;
-
   &.light {
-    @include theme.SET_COLOR(constant.$COLOR_ACCENT, 50%);
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
     transition: all 0.2s ease-in;
   }
+
   &.dark {
-    color: constant.$COLOR_GREY_DARK;
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    transition: all 0.2s ease-in;
+  }
+}
+
+.appShell {
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
     transition: all 0.2s ease-in;
   }
 }
@@ -39,4 +43,57 @@
 
 .richText {
   max-width: 700px;
+}
+
+.portableText {
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    transition: all 0.2s ease-in;
+  }
+}
+
+.type {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+  max-width: 200px;
+  font-weight: 600;
+  height: 20px;
+
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_ACCENT, 50%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.vehicleText {
+  &.light {
+    color: constant.$COLOR_BLACK;
+    transition: all 0.1s ease-in;
+  }
+
+  &.dark {
+      color: constant.$COLOR_GREY_DARK;
+      transition: all 0.1s ease-in;
+  }
+}
+
+.history {
+  &.light {
+    @include theme.SET_BACKGROUND(constant.$COLOR_WHITE, 100%);
+    transition: all 0.2s ease-in;
+  }
+
+  &.dark {
+    @include theme.SET_BACKGROUND(constant.$COLOR_BACKGROUND_DARK, 100%);
+    transition: all 0.2s ease-in;
+    border: none;
+  }
 }

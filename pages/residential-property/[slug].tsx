@@ -40,42 +40,43 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     vehicles
   } = residentialProperty[2];
   const { colorScheme } = useMantineColorScheme();
-  const showCarouselControls = vehicles.length > 0;
+  const showCarouselControls = vehicles.length > 1;
 
-  const renderVehiclesCarousel = <Carousel
-    my={'xl'}
-    sx={{ maxWidth: 800 }}
-    height={200}
-    withControls={showCarouselControls}
-  >
-    {vehicles.map((vehicle) => (
-      <Carousel.Slide key={vehicle._id}>
-        <Group>
-          <Image
-            alt={vehicle.name}
-            fit={'cover'}
-            height={200}
-            src={urlFor(vehicle.image).url()}
-            width={300}
-            withPlaceholder
-          />
-          <Stack spacing={2}>
-            <Text size={26} weight={500}>{vehicle.name}</Text>
-            <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
-            <Paper>
-              <Text align={'justify'} sx={{ maxWidth: 400 }}>
-                <PortableText
-                  dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                  projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                  content={vehicle.proofOfOwnership}
-                />
-              </Text>
-            </Paper>
-          </Stack>
-        </Group>
-      </Carousel.Slide>
-    ))}
-  </Carousel>;
+  const renderVehiclesCarousel = <Carousel 
+        className={`${style.vehicleCarousel} ${style[colorScheme]}`} 
+        my={'xl'}
+        sx={{ maxWidth: 800 }}
+        height={200}
+        withControls={showCarouselControls}
+      >
+      {vehicles.map((vehicle) => (
+        <Carousel.Slide key={vehicle._id}>
+          <Group>
+            <Image 
+              alt={vehicle.name}
+              fit={'cover'} 
+              height={200} 
+              src={urlFor(vehicle.image).url()} 
+              width={300} 
+              withPlaceholder
+            />
+            <Stack spacing={2}>
+              <Text size={26} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{vehicle.name}</Text>
+              <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
+              <Paper className={`${style.portableText} ${style[colorScheme]}`}>
+                <Text align={'justify'} sx={{ maxWidth: 400 }} color={colorScheme === 'light' ? 'black' : 'dimmed'}>
+                  <PortableText
+                    dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                    projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                    content={vehicle.proofOfOwnership}
+                  />
+                </Text>
+              </Paper>
+            </Stack>
+          </Group>
+        </Carousel.Slide>
+      ))}
+    </Carousel>;
 
   const renderColumnLeft = <Container>
     <Card.Section>
@@ -83,43 +84,46 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     </Card.Section>
     <Card.Section mt="md">
       <Group position="right">
-        <Stack align={'flex-end'}>
-          <Text size={26} weight={500}>
+        <Stack align={'flex-end'} spacing={3}>
+          <Text className={`${style.vehicleText} ${style[colorScheme]}`} size={26} weight={500}>
             {title}
           </Text>
           <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title}</Badge>
-        </Stack>
-        <div className={style.richText}>
-          <Text align={'justify'}>
-            <PortableText
-              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-              content={description}
-            />
+          <Text size={'sm'} color='dimmed' weight={500} my={'sm'}>
+            {dateRegistered}
           </Text>
-        </div>
+          <div className={style.richText}>
+            <Text className={`${style.vehicleText} ${style[colorScheme]}`} align={'justify'}>
+              <PortableText
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                content={description}
+              />
+            </Text>
+          </div>
+        </Stack>
       </Group>
     </Card.Section>
     {renderVehiclesCarousel}
   </Container>;
 
   const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={340} sx={{ maxWidth: 400 }} mx="auto">
-    {homeownerHistory.map((owner) =>
-      <Card key={owner._id} mb={5} withBorder>
-        <Group>
-          <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
-          <Stack spacing={2}>
-            <Text size={'md'} weight={500}>{owner.name}</Text>
-            <Group>
-              <Group noWrap spacing={10} mt={10}>
-                <IconPhoneCall stroke={1.5} size={20} />
-                <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
+      {homeownerHistory.map((owner) =>
+        <Card className={`${style.history} ${style[colorScheme]}`} key={owner._id} mb={5} withBorder>
+          <Group>
+            <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
+            <Stack spacing={2}>
+              <Text size={'md'} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{owner.name}</Text>
+              <Group>
+                <Group noWrap spacing={10} mt={10}>
+                  <IconPhoneCall color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={16} />
+                  <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
+                </Group>
+                <Group noWrap spacing={10} mt={10}>
+                  <IconCalendar color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={16} />
+                  <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
+                </Group>
               </Group>
-              <Group noWrap spacing={10} mt={10}>
-                <IconCalendar stroke={1.5} size={20} />
-                <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
-              </Group>
-            </Group>
           </Stack>
         </Group>
       </Card>
@@ -130,17 +134,17 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     <Stack align={'center'}>
       <Avatar src={urlFor(homeowner.image).url()} size={166} radius={100} />
       <Stack align={'center'} spacing={2}>
-        <Text size={24} weight={500}>
+        <Text size={24} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>
           {homeowner.name}
         </Text>
         <Group noWrap spacing={10} mt={10}>
-          <IconPhoneCall stroke={1.5} size={20} />
+          <IconPhoneCall color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={20} />
           <Text size="sm" color="dimmed">
             {homeowner.contactDetails}
           </Text>
         </Group>
         <Group noWrap spacing={10} mt={10}>
-          <IconCalendar stroke={1.5} size={20} />
+          <IconCalendar color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={20} />
           <Text size="sm" color="dimmed">
             {homeowner.dateRegistered}
           </Text>
@@ -148,7 +152,7 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       </Stack>
     </Stack>
     <Stack mt={88}>
-      <Text size={26} weight={500}>
+      <Text size={26} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>
         Home Owner History
       </Text>
       {renderHomeOwnerHistory}
@@ -157,11 +161,12 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
 
   return (
     <AppShell
+      className={`${style.appShell} ${style[colorScheme]}`}
       header={<BasicHeader opened={false} />}
       footer={<BasicFooter height={56} />}
       fixed
     >
-      <Paper className={style.residentialPage} py={40}>
+      <Paper className={`${style.residentialPage} ${style[colorScheme]}`} py={40}>
         <Grid columns={12}>
           <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
           <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
