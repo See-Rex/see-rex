@@ -8,6 +8,7 @@ import {
   Grid,
   Group,
   Image,
+  MediaQuery,
   Paper,
   ScrollArea,
   Stack,
@@ -46,7 +47,6 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         className={`${style.vehicleCarousel} ${style[colorScheme]}`} 
         my={'xl'}
         sx={{ maxWidth: 800 }}
-        height={200}
         withControls={showCarouselControls}
       >
       {vehicles.map((vehicle) => (
@@ -78,33 +78,46 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       ))}
     </Carousel>;
 
+  const renderPropertyDetails = <>
+    <Text className={`${style.vehicleText} ${style[colorScheme]}`} size={26} weight={500}>
+      {title}
+    </Text>
+    <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title}</Badge>
+    <Text size={'sm'} color='dimmed' weight={500} my={'sm'}>
+      {dateRegistered}
+    </Text>
+    <div className={style.richText}>
+      <Text className={`${style.vehicleText} ${style[colorScheme]}`} align={'justify'}>
+        <PortableText
+          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+          content={description}
+        />
+      </Text>
+    </div>
+  </>;
+
   const renderColumnLeft = <Container>
     <Card.Section>
       <Image src={urlFor(mainImage).url()} height={392} alt={title} withPlaceholder />
     </Card.Section>
     <Card.Section mt="md">
       <Group position="right">
-        <Stack align={'flex-end'} spacing={3}>
-          <Text className={`${style.vehicleText} ${style[colorScheme]}`} size={26} weight={500}>
-            {title}
-          </Text>
-          <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title}</Badge>
-          <Text size={'sm'} color='dimmed' weight={500} my={'sm'}>
-            {dateRegistered}
-          </Text>
-          <div className={style.richText}>
-            <Text className={`${style.vehicleText} ${style[colorScheme]}`} align={'justify'}>
-              <PortableText
-                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                content={description}
-              />
-            </Text>
-          </div>
-        </Stack>
+        <MediaQuery smallerThan={900} styles={{ display: 'none'}}>
+          <Stack align={'flex-end'}>
+            {renderPropertyDetails}
+          </Stack>
+        </MediaQuery>
+        <MediaQuery largerThan={900} styles={{ display: 'none'}}>
+          <Stack align={'center'}>
+            {renderPropertyDetails}
+          </Stack>
+        </MediaQuery>
       </Group>
     </Card.Section>
-    {renderVehiclesCarousel}
+    <MediaQuery smallerThan={900} styles={{ display: 'none'}}>
+      {renderVehiclesCarousel}
+    </MediaQuery>
   </Container>;
 
   const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={340} sx={{ maxWidth: 400 }} mx="auto">
@@ -167,10 +180,21 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
       fixed
     >
       <Paper className={`${style.residentialPage} ${style[colorScheme]}`} py={40}>
-        <Grid columns={12}>
-          <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
-          <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
-        </Grid>
+        <MediaQuery smallerThan={900} styles={{ display: 'none' }}>
+          <Grid columns={12}>
+            <Grid.Col span={8}>{renderColumnLeft}</Grid.Col>
+            <Grid.Col span={4}>{renderColumnRight}</Grid.Col>
+          </Grid>
+        </MediaQuery>
+        <MediaQuery largerThan={900} styles={{ display: 'none' }}>
+          <Grid columns={1}>
+            {renderColumnLeft}
+            {renderColumnRight}
+            <Container>
+              {renderVehiclesCarousel}
+            </Container>
+          </Grid>
+        </MediaQuery>
       </Paper>
     </AppShell>
   )
