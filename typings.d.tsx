@@ -40,14 +40,17 @@ export interface Property {
     title: string;
     description: string;
   };
-  homeownerHistory: {
+  homeownerHistory: [{
+    _id: string;
     name: string;
+    contactDetails: string;
+    dateRegistered: string;
     image: {
       asset: {
         url: string;
       };
     };
-  };
+  }];
   vehicles: [{
     name: string;
     image: {
