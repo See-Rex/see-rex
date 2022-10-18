@@ -4,15 +4,13 @@ import {
   Badge,
   Card,
   Container,
-  Divider,
   Grid,
   Group,
   Image,
-  MediaQuery,
   Paper,
+  ScrollArea,
   Stack,
   Text,
-  Title,
   useMantineColorScheme
 } from '@mantine/core';
 import { IconCalendar, IconPhoneCall } from '@tabler/icons';
@@ -42,6 +40,13 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
   } = residentialProperty[2];
   const { colorScheme } = useMantineColorScheme();
 
+  const renderVehiclesCarousel = <Container>
+    <Group>
+      <Avatar src={urlFor(vehicles[0].image).url()} size={50} radius={'md'} />
+      <Text>{vehicles[0].name}</Text>
+    </Group>
+  </Container>;
+
   const renderColumnLeft = <Container>
     <Card.Section>
       <Image src={urlFor(mainImage).url()} height={392} alt={title} />
@@ -70,51 +75,60 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         <Text size={26} weight={500}>
           Vehicles
         </Text>
-        <Container>
-          <Group>
-            <Avatar src={urlFor(vehicles[0].image).url()} size={50} radius={'md'} />
-            <Text>{vehicles[0].name}</Text>
-          </Group>
-        </Container>
+        {renderVehiclesCarousel}
       </Stack>
     </Group>
   </Container>;
 
+  const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={400} sx={{ maxWidth: 400 }} mx="auto">
+      {homeownerHistory.map((owner) =>
+        <Card key={owner._id} mb={5} withBorder>
+          <Group>
+            <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
+            <Stack spacing={2}>
+              <Text size={'md'} weight={500}>{owner.name}</Text>
+              <Group>
+                <Group noWrap spacing={10} mt={10}>
+                  <IconPhoneCall stroke={1.5} size={20} />
+                  <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
+                </Group>
+                <Group noWrap spacing={10} mt={10}>
+                  <IconCalendar stroke={1.5} size={20} />
+                  <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
+                </Group>
+              </Group>
+            </Stack>
+          </Group>
+        </Card>
+      )}
+    </ScrollArea.Autosize>;
+
   const renderColumnRight = <Container pt={32} fluid>
     <Stack align={'center'}>
       <Avatar src={urlFor(homeowner.image).url()} size={166} radius={100} />
-      <Group>
-        <div>
-          <Text size={24} weight={500}>
-            {homeowner.name}
+      <Stack align={'center'} spacing={2}>
+        <Text size={24} weight={500}>
+          {homeowner.name}
+        </Text>
+        <Group noWrap spacing={10} mt={10}>
+          <IconPhoneCall stroke={1.5} size={20} />
+          <Text size="sm" color="dimmed">
+            {homeowner.contactDetails}
           </Text>
-          <Group noWrap spacing={10} mt={10}>
-            <IconPhoneCall stroke={1.5} size={20} />
-            <Text size="sm" color="dimmed">
-              {homeowner.contactDetails}
-            </Text>
-          </Group>
-          <Group noWrap spacing={10} mt={10}>
-            <IconCalendar stroke={1.5} size={20} />
-            <Text size="sm" color="dimmed">
-              {homeowner.dateRegistered}
-            </Text>
-          </Group>
-        </div>
-      </Group>
+        </Group>
+        <Group noWrap spacing={10} mt={10}>
+          <IconCalendar stroke={1.5} size={20} />
+          <Text size="sm" color="dimmed">
+            {homeowner.dateRegistered}
+          </Text>
+        </Group>
+      </Stack>
     </Stack>
-    <Stack mt={95}>
-      <Text size={20} weight={500}>
+    <Stack mt={88}>
+      <Text size={26} weight={500}>
         Home Owner History
       </Text>
-      <Container>
-        {homeownerHistory.map((owner) =>
-          <Group key={owner._id}>
-            <Avatar src={urlFor(owner.image).url()} size={50} radius={'md'} />
-            <Text>{owner.name}</Text>
-          </Group>
-        )}
-      </Container>
+      {renderHomeOwnerHistory}
     </Stack>
   </Container>;
 
