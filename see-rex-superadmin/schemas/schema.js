@@ -10,12 +10,11 @@ import category from './category';
 import homeowner from './homeowner';
 import property from './property';
 import vehicle from './vehicle';
-import land from './land';
-import nonResidentialProperty from './nonResidentialProperty';
+import imageSlides from './imageSlides';
 
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat([property, land, nonResidentialProperty, homeowner, category, vehicle, blockContent]),
+  types: schemaTypes.concat([property, imageSlides, homeowner, category, vehicle, blockContent]),
 });
 
 // // First, we must import the schema creator

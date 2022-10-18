@@ -65,8 +65,6 @@ function ResidentialProperties({ residentialProp }: ResidentialProp) {
   );
 }
 
-export default ResidentialProperties;
-
 export const serverSideProps = async () => {
   const query = `*[_type == "property"] | order(dateRegistered desc) {
     _id,
@@ -93,3 +91,5 @@ export const serverSideProps = async () => {
     }
   }
 }
+
+export default ResidentialProperties;

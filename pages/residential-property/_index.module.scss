@@ -1,0 +1,42 @@
+@use '../../styles/text' as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/theme' as theme;
+
+.residentialPage {
+  margin: 0 auto;
+  max-width: constant.$LARGE_SCREEN;
+}
+
+.type {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+  @include text.HEADER_TINY;
+  max-width: 100px;
+  font-weight: 600;
+  height: 20px;
+
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_ACCENT, 50%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.container {
+  @include theme.SET_BACKGROUND(constant.$COLOR_SECONDARY_DARK, 20%);
+
+  &.light {
+    @include theme.SET_COLOR(constant.$COLOR_ACCENT, 50%);
+    transition: all 0.2s ease-in;
+  }
+  &.dark {
+    color: constant.$COLOR_GREY_DARK;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.richText {
+  max-width: 700px;
+}

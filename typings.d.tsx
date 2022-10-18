@@ -22,13 +22,15 @@ export interface Property {
   };
   homeowner: {
     name: string;
+    contactDetails: string;
+    dateRegistered: string;
     image: {
       asset: {
         url: string;
       };
     };
   };
-  image: {
+  mainImage: {
     asset: {
       url: string;
     };
@@ -38,15 +40,18 @@ export interface Property {
     title: string;
     description: string;
   };
-  homeownerHistory: {
+  homeownerHistory: [{
+    _id: string;
     name: string;
+    contactDetails: string;
+    dateRegistered: string;
     image: {
       asset: {
         url: string;
       };
     };
-  };
-  vehicles: {
+  }];
+  vehicles: [{
     name: string;
     image: {
       asset: {
@@ -55,7 +60,7 @@ export interface Property {
     };
     dateRegistered: string;
     proofOfOwnership: [object];
-  };
+  }];
   description: [object];
 }
 
