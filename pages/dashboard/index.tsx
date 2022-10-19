@@ -36,7 +36,7 @@ function Dashboard({ land, nonResidential, people, residential }: DataProps) {
       case 4:
         return <LandProperties />;
       case 5:
-        return <NonResidentialProperties />;
+        return <NonResidentialProperties nonResidentialProperties={nonResidential} />;
       default:
         return <ErrorPage />;
     }

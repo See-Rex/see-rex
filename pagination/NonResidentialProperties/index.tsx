@@ -6,24 +6,31 @@ import style from '../_index.module.scss';
 import { AppCard, FilterPicker, Search } from '../../components';
 import PropertyType from '../../enums/PropertyType.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
+import { sanityClient, urlFor } from '../../sanity';
 import { Property } from '../../typings.d';
 // import { Property } from '../../types';
 
-function NonResidentialProperties() {
+interface NonResidentialProp {
+  nonResidentialProperties: Property[];
+}
+
+function NonResidentialProperties({ nonResidentialProperties }: NonResidentialProp) {
   const { properties, setPropertyType } = usePropertyContext();
   setPropertyType(PropertyType.NON_RESIDENTIAL);
 
   const renderNonResidentialProperties = properties && (
     <>
-      {properties.map((property: Property) => (
+      {nonResidentialProperties.map((property: Property) => (
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard
-          // description={property.description}
-          // image={<Image src={property.imageSrc} alt="Residential Property" />}
-          // title={property.title}
-          // type={property.type}
-          // values={property.values}
-          // onClick={location.href={`/${property.slug.current}`}}
+            description={property.title}
+            // image={<Image src={urlFor(property.mainImage).url} alt="Residential Property" />}
+            title={property.title}
+            // type={property.type}
+            // values={property.values}
+            onClick={() => {
+              location.href = `nonresidential-property/${property.slug.current}`
+            }}
           />
         </Paper>
       ))}
@@ -43,8 +50,8 @@ function NonResidentialProperties() {
         ]}
         spacing="xs"
       >
-        <FilterPicker />
-        <Search />
+        {/* <FilterPicker />
+        <Search /> */}
       </SimpleGrid>
       <Center>
         <SimpleGrid
@@ -63,3 +70,42 @@ function NonResidentialProperties() {
 }
 
 export default NonResidentialProperties;
+
+export const serverSideProps = async () => {
+  const nonResidentialQuery = `*[_type == "property" && "NONRESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    slug,
+    homeowner-> {
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
+    description,
+    mainImage
+  }`;
+
+  const nonResidentialProperties = sanityClient.fetch(nonResidentialQuery);
+
+  return {
+    props: {
+      nonResidentialProperties: await nonResidentialProperties,
+    }
+  }
+}
