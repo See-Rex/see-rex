@@ -25,12 +25,12 @@ import { sanityClient, urlFor } from '../../sanity';
 import { Property } from '../../typings.d';
 import style from "./_index.module.scss";
 
-interface NonResidentialPropertyProps {
-  nonResidentialProperty: Property
+interface landPropertyProps {
+  landProperty: Property
 }
 
-function NonResidentialPropertySlug({ nonResidentialProperty }: NonResidentialPropertyProps) {
-  console.log(nonResidentialProperty);
+function LandPropertySlug({ landProperty }: landPropertyProps) {
+  console.log(landProperty);
   const {
     categories,
     dateRegistered,
@@ -40,11 +40,11 @@ function NonResidentialPropertySlug({ nonResidentialProperty }: NonResidentialPr
     mainImage,
     title,
     vehicles
-  } = nonResidentialProperty;
+  } = landProperty;
   const { colorScheme } = useMantineColorScheme();
   const showCarouselControls = vehicles && vehicles.length > 1;
 
-  console.log(nonResidentialProperty);
+  console.log(landProperty);
   console.log("Categories");
   console.log(categories);
 
@@ -211,23 +211,23 @@ export const getStaticPaths = async () => {
     slug,
   }`;
 
-  const nonResidentialProperty = await sanityClient.fetch(query);
-  console.log(nonResidentialProperty);
+  const landProperty = await sanityClient.fetch(query);
+  console.log(landProperty);
 
-  const nonResidentialPropertyPaths = nonResidentialProperty.map((nonResidentialProperty: Property) => ({
+  const landPropertyPaths = landProperty.map((landProperty: Property) => ({
     params: {
-      slug: nonResidentialProperty.slug.current
+      slug: landProperty.slug.current
     }
   }));
 
   return {
     fallback: "blocking",
-    paths: nonResidentialPropertyPaths,
+    paths: landPropertyPaths,
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "property" && "NONRESIDENTIAL" in (categories[]->title)][0] {
+  const query = `*[_type == "property" && "LAND" in (categories[]->title)][0] {
     _id,
     title,
     dateRegistered,
@@ -259,12 +259,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
  }`;
 
-  const nonResidentialProperty = await sanityClient.fetch(query, {
+  const landProperty = await sanityClient.fetch(query, {
     slug: params?.slug
   });
-  console.log(nonResidentialProperty);
+  console.log(landProperty);
 
-  if (!nonResidentialProperty) {
+  if (!landProperty) {
     return {
       notFound: true,
     }
@@ -272,11 +272,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      nonResidentialProperty,
+      landProperty,
     },
     revalidate: 60,
   }
 }
 
-export default NonResidentialPropertySlug;
+export default LandPropertySlug;
 
