@@ -19,11 +19,12 @@ type BadgeCardProps = {
   type?: PropertyType;
   description?: string;
   values?: ValueType;
+  onClick?: (val: string) => void;
 };
 
 function AppCard(props: BadgeCardProps) {
   const { colorScheme } = useMantineColorScheme();
-  const { description, image, title, type, values } = props;
+  const { description, image, title, type, values, onClick } = props;
 
   const features = (
     <>
@@ -77,7 +78,7 @@ function AppCard(props: BadgeCardProps) {
       </Card.Section>
 
       <Group mt="xs">
-        <StyledButton types="card">Show details</StyledButton>
+        <StyledButton types="card" onClick={onClick}>Show details</StyledButton>
         <ActionIcon className={`${style.edit} ${style[colorScheme]}`} radius="md" size={36}>
           <IconEdit size={18} stroke={1.5} />
         </ActionIcon>

@@ -26,8 +26,11 @@ function ResidentialProperties({ residentialProperties }: ResidentialProp) {
             description={property.title}
             // image={<Image src={urlFor(property.mainImage).url} alt="Residential Property" />}
             title={property.title}
-          // type={property.type}
-          // values={property.values}
+            // type={property.type}
+            // values={property.values}
+            onClick={() => {
+              location.href = `residential-property/${property.slug.current}`
+            }}
           />
         </Paper>
       ))}
@@ -67,23 +70,6 @@ function ResidentialProperties({ residentialProperties }: ResidentialProp) {
 }
 
 export const serverSideProps = async () => {
-  // const query = `*[_type == "property"] | order(dateRegistered desc) {
-  //   _id,
-  //   title,
-  //   dateRegistered,
-  //   slug,
-  //   homeowner-> {
-  //     name,
-  //     image,
-  //     contactDetails,
-  //     dateRegistered
-  //   },
-  //   categories,
-  //   vehicles,
-  //   description,
-  //   mainImage
-  // }`;
-
   const residentialQuery = `*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
     _id,
     title,

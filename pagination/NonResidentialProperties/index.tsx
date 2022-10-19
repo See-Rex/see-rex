@@ -6,7 +6,8 @@ import style from '../_index.module.scss';
 import { AppCard, FilterPicker, Search } from '../../components';
 import PropertyType from '../../enums/PropertyType.enum';
 import { usePropertyContext } from '../../hooks/PropertyContext';
-import { Property } from '../../types';
+import { Property } from '../../typings.d';
+// import { Property } from '../../types';
 
 function NonResidentialProperties() {
   const { properties, setPropertyType } = usePropertyContext();
@@ -17,11 +18,12 @@ function NonResidentialProperties() {
       {properties.map((property: Property) => (
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard
-            description={property.description}
-            image={<Image src={property.imageSrc} alt="Residential Property" />}
-            title={property.title}
-            type={property.type}
-            values={property.values}
+          // description={property.description}
+          // image={<Image src={property.imageSrc} alt="Residential Property" />}
+          // title={property.title}
+          // type={property.type}
+          // values={property.values}
+          // onClick={location.href={`/${property.slug.current}`}}
           />
         </Paper>
       ))}
