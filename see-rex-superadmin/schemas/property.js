@@ -41,6 +41,16 @@ export default {
       },
     },
     {
+      name: 'inhabitants',
+      title: 'Inhabitants',
+      type: 'string',
+    },
+    {
+      name: 'amount',
+      title: 'Amount',
+      type: 'string',
+    },
+    {
       name: 'imageCarousel',
       title: 'Image Carousel',
       type: 'array',
