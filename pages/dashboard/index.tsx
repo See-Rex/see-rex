@@ -39,7 +39,7 @@ function Dashboard({ residential, people }: DataProps) {
 
   return (
     <AdminLayout opened={opened} setOpened={setOpened} activePage={activePage} paginator={handlePage}>
-      <PropertyProvider>
+      <PropertyProvider >
         <PageContent />
       </PropertyProvider>
     </AdminLayout>
@@ -49,7 +49,7 @@ function Dashboard({ residential, people }: DataProps) {
 export default Dashboard;
 
 export const getServerSideProps = async () => {
-  const queryProperty = `*[_type == "property"] | order(dateRegistered desc) {
+  const queryProperty = `*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
     _id,
     title,
     dateRegistered,
@@ -60,8 +60,20 @@ export const getServerSideProps = async () => {
       contactDetails,
       dateRegistered
     },
-    categories,
-    vehicles,
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
     description,
     mainImage
   }`;
