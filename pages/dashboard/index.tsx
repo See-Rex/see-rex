@@ -23,18 +23,18 @@ function Dashboard({ land, nonResidential, people, residential }: DataProps) {
   const PageContent = () => {
     switch (activePage) {
       case 1:
-        return <Homepage 
-        residentialProperties={residential} 
-        nonResidentialProperties={residential} 
-        landProperties={land}
-        people={people}
-      />;
+        return <Homepage
+          residentialProperties={residential}
+          nonResidentialProperties={residential}
+          landProperties={land}
+          people={people}
+        />;
       case 2:
         return <Contacts />;
       case 3:
         return <ResidentialProperties residentialProperties={residential} />;
       case 4:
-        return <LandProperties />;
+        return <LandProperties landProperties={land} />;
       case 5:
         return <NonResidentialProperties nonResidentialProperties={nonResidential} />;
       default:
@@ -44,7 +44,7 @@ function Dashboard({ land, nonResidential, people, residential }: DataProps) {
 
   return (
     <AdminLayout opened={opened} setOpened={setOpened} activePage={activePage} paginator={handlePage}>
-        <PageContent />
+      <PageContent />
     </AdminLayout>
   );
 }
