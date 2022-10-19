@@ -26,7 +26,7 @@ import { Property } from '../../typings.d';
 import style from "./_index.module.scss";
 
 interface ResidentialPropertyProps {
-  residentialProperty: Property[]
+  residentialProperty: Property
 }
 
 function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyProps) {
@@ -39,50 +39,54 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     mainImage,
     title,
     vehicles
-  } = residentialProperty[2];
+  } = residentialProperty;
   const { colorScheme } = useMantineColorScheme();
-  const showCarouselControls = vehicles.length > 1;
+  const showCarouselControls = vehicles && vehicles.length > 1;
 
-  const renderVehiclesCarousel = <Carousel 
-        className={`${style.vehicleCarousel} ${style[colorScheme]}`} 
-        my={'xl'}
-        sx={{ maxWidth: 800 }}
-        withControls={showCarouselControls}
-      >
-      {vehicles.map((vehicle) => (
-        <Carousel.Slide key={vehicle._id}>
-          <Group>
-            <Image 
-              alt={vehicle.name}
-              fit={'cover'} 
-              height={200} 
-              src={urlFor(vehicle.image).url()} 
-              width={300} 
-              withPlaceholder
-            />
-            <Stack spacing={2}>
-              <Text size={26} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{vehicle.name}</Text>
-              <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
-              <Paper className={`${style.portableText} ${style[colorScheme]}`}>
-                <Text align={'justify'} sx={{ maxWidth: 400 }} color={colorScheme === 'light' ? 'black' : 'dimmed'}>
-                  <PortableText
-                    dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                    projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                    content={vehicle.proofOfOwnership}
-                  />
-                </Text>
-              </Paper>
-            </Stack>
-          </Group>
-        </Carousel.Slide>
-      ))}
-    </Carousel>;
+  console.log(residentialProperty);
+  console.log("Categories");
+  console.log(categories);
+
+  const renderVehiclesCarousel = <Carousel
+    className={`${style.vehicleCarousel} ${style[colorScheme]}`}
+    my={'xl'}
+    sx={{ maxWidth: 800 }}
+    withControls={showCarouselControls}
+  >
+    {vehicles && vehicles.length > 0 && vehicles.map((vehicle) => (
+      <Carousel.Slide key={vehicle._id}>
+        <Group>
+          <Image
+            alt={vehicle.name}
+            fit={'cover'}
+            height={200}
+            src={urlFor(vehicle.image).url()}
+            width={300}
+            withPlaceholder
+          />
+          <Stack spacing={2}>
+            <Text size={26} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{vehicle.name}</Text>
+            <Text size={'sm'} color={'dimmed'} weight={500}>{vehicle.dateRegistered}</Text>
+            <Paper className={`${style.portableText} ${style[colorScheme]}`}>
+              <Text align={'justify'} sx={{ maxWidth: 400 }} color={colorScheme === 'light' ? 'black' : 'dimmed'}>
+                <PortableText
+                  dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                  projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                  content={vehicle.proofOfOwnership}
+                />
+              </Text>
+            </Paper>
+          </Stack>
+        </Group>
+      </Carousel.Slide>
+    ))}
+  </Carousel>;
 
   const renderPropertyDetails = <>
     <Text className={`${style.vehicleText} ${style[colorScheme]}`} size={26} weight={500}>
       {title}
     </Text>
-    <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title}</Badge>
+    <Badge className={`${style.type} ${style[colorScheme]}`}>{categories[0].title.toString()}</Badge>
     <Text size={'sm'} color='dimmed' weight={500} my={'sm'}>
       {dateRegistered}
     </Text>
@@ -103,40 +107,40 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     </Card.Section>
     <Card.Section mt="md">
       <Group position="right">
-        <MediaQuery smallerThan={900} styles={{ display: 'none'}}>
+        <MediaQuery smallerThan={900} styles={{ display: 'none' }}>
           <Stack align={'flex-end'}>
             {renderPropertyDetails}
           </Stack>
         </MediaQuery>
-        <MediaQuery largerThan={900} styles={{ display: 'none'}}>
+        <MediaQuery largerThan={900} styles={{ display: 'none' }}>
           <Stack align={'center'}>
             {renderPropertyDetails}
           </Stack>
         </MediaQuery>
       </Group>
     </Card.Section>
-    <MediaQuery smallerThan={900} styles={{ display: 'none'}}>
+    <MediaQuery smallerThan={900} styles={{ display: 'none' }}>
       {renderVehiclesCarousel}
     </MediaQuery>
   </Container>;
 
   const renderHomeOwnerHistory = <ScrollArea.Autosize maxHeight={340} sx={{ maxWidth: 400 }} mx="auto">
-      {homeownerHistory.map((owner) =>
-        <Card className={`${style.history} ${style[colorScheme]}`} key={owner._id} mb={5} withBorder>
-          <Group>
-            <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
-            <Stack spacing={2}>
-              <Text size={'md'} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{owner.name}</Text>
-              <Group>
-                <Group noWrap spacing={10} mt={10}>
-                  <IconPhoneCall color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={16} />
-                  <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
-                </Group>
-                <Group noWrap spacing={10} mt={10}>
-                  <IconCalendar color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={16} />
-                  <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
-                </Group>
+    {homeownerHistory.map((owner) =>
+      <Card className={`${style.history} ${style[colorScheme]}`} key={owner._id} mb={5} withBorder>
+        <Group>
+          <Avatar src={urlFor(owner.image).url()} size={70} radius={50} />
+          <Stack spacing={2}>
+            <Text size={'md'} weight={500} className={`${style.vehicleText} ${style[colorScheme]}`}>{owner.name}</Text>
+            <Group>
+              <Group noWrap spacing={10} mt={10}>
+                <IconPhoneCall color={colorScheme === 'light' ? 'black' : 'gray'} stroke={1.5} size={16} />
+                <Text size="sm" color="dimmed">{owner.contactDetails}</Text>
               </Group>
+              <Group noWrap spacing={10} mt={10}>
+                <IconCalendar color={colorScheme === 'light' ? 'black' : 'gray'} stroke={1.5} size={16} />
+                <Text size="sm" color="dimmed">{owner.dateRegistered}</Text>
+              </Group>
+            </Group>
           </Stack>
         </Group>
       </Card>
@@ -151,13 +155,13 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
           {homeowner.name}
         </Text>
         <Group noWrap spacing={10} mt={10}>
-          <IconPhoneCall color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={20} />
+          <IconPhoneCall color={colorScheme === 'light' ? 'black' : 'gray'} stroke={1.5} size={20} />
           <Text size="sm" color="dimmed">
             {homeowner.contactDetails}
           </Text>
         </Group>
         <Group noWrap spacing={10} mt={10}>
-          <IconCalendar color={colorScheme ==='light' ? 'black' : 'gray'} stroke={1.5} size={20} />
+          <IconCalendar color={colorScheme === 'light' ? 'black' : 'gray'} stroke={1.5} size={20} />
           <Text size="sm" color="dimmed">
             {homeowner.dateRegistered}
           </Text>
@@ -221,7 +225,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "property"] | order(dateRegistered desc) {
+  const query = `*[_type == "property"][0] {
     _id,
     title,
     dateRegistered,

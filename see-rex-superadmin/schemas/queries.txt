@@ -39,3 +39,33 @@ For vehicle GET:
     proofOfOwnership,
     mainImage
   }
+
+For RESIDENTIAL GET:
+*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    slug,
+    homeowner-> {
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
+    description,
+    mainImage
+  }

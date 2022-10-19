@@ -14,16 +14,17 @@ export type ValueType = {
 };
 
 type BadgeCardProps = {
-  image: React.ReactNode;
+  image?: React.ReactNode;
   title: string;
   type?: PropertyType;
-  description: string;
-  values: ValueType;
+  description?: string;
+  values?: ValueType;
+  onClick?: (val: string) => void;
 };
 
 function AppCard(props: BadgeCardProps) {
   const { colorScheme } = useMantineColorScheme();
-  const { description, image, title, type, values } = props;
+  const { description, image, title, type, values, onClick } = props;
 
   const features = (
     <>
@@ -31,25 +32,25 @@ function AppCard(props: BadgeCardProps) {
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconUsers stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.people}
+        {/* {values.people} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconRulerMeasure stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.area}
+        {/* {values.area} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconCar stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.car}
+        {/* {values.car} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconHomeDollar stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.amount}
+        {/* {values.amount} */}
       </Badge>
     </>
   );
@@ -77,7 +78,7 @@ function AppCard(props: BadgeCardProps) {
       </Card.Section>
 
       <Group mt="xs">
-        <StyledButton types="card">Show details</StyledButton>
+        <StyledButton types="card" onClick={onClick}>Show details</StyledButton>
         <ActionIcon className={`${style.edit} ${style[colorScheme]}`} radius="md" size={36}>
           <IconEdit size={18} stroke={1.5} />
         </ActionIcon>
