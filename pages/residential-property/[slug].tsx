@@ -39,9 +39,11 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
     mainImage,
     title,
     vehicles
-  } = residentialProperty[2];
+  } = residentialProperty[8];
   const { colorScheme } = useMantineColorScheme();
   const showCarouselControls = vehicles.length > 1;
+
+  console.log(residentialProperty);
 
   const renderVehiclesCarousel = <Carousel 
         className={`${style.vehicleCarousel} ${style[colorScheme]}`} 
@@ -49,7 +51,7 @@ function ResidentialPropertySlug({ residentialProperty }: ResidentialPropertyPro
         sx={{ maxWidth: 800 }}
         withControls={showCarouselControls}
       >
-      {vehicles.map((vehicle) => (
+      {vehicles.length > 0 && vehicles.map((vehicle) => (
         <Carousel.Slide key={vehicle._id}>
           <Group>
             <Image 
