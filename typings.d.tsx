@@ -36,10 +36,10 @@ export interface Property {
     };
   };
   dateRegistered: string;
-  categories: {
+  categories: [{
     title: string;
     description: string;
-  };
+  }];
   homeownerHistory: [{
     _id: string;
     name: string;
@@ -52,6 +52,7 @@ export interface Property {
     };
   }];
   vehicles: [{
+    _id: string;
     name: string;
     image: {
       asset: {
