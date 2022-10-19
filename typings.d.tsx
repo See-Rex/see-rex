@@ -76,7 +76,6 @@ export interface Vehicle {
       url: string;
     }
   },
-  contactDetails: string,
   dateRegistered: string,
-  bio: [object];
+  proofOfOwnership: [object],
 }
