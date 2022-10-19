@@ -14,11 +14,11 @@ export type ValueType = {
 };
 
 type BadgeCardProps = {
-  image: React.ReactNode;
+  image?: React.ReactNode;
   title: string;
   type?: PropertyType;
-  description: string;
-  values: ValueType;
+  description?: string;
+  values?: ValueType;
 };
 
 function AppCard(props: BadgeCardProps) {
@@ -31,25 +31,25 @@ function AppCard(props: BadgeCardProps) {
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconUsers stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.people}
+        {/* {values.people} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconRulerMeasure stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.area}
+        {/* {values.area} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconCar stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.car}
+        {/* {values.car} */}
       </Badge>
       <Badge
         className={`${style.badge} ${style[colorScheme]}`}
         leftSection={<IconHomeDollar stroke={2} className={`${style.icon} ${style[colorScheme]}`} />}
       >
-        {values.amount}
+        {/* {values.amount} */}
       </Badge>
     </>
   );
