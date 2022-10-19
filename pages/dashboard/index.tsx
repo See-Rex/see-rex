@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { PropertyProvider } from '../../hooks/PropertyContext';
 import AdminLayout from '../../layouts/AdminLayout/index';
 import { Contacts, Homepage, LandProperties, NonResidentialProperties, ResidentialProperties } from '../../pagination';
 import { sanityClient } from '../../sanity';
@@ -14,14 +13,6 @@ interface DataProps {
 }
 
 function Dashboard({ land, nonResidential, people, residential }: DataProps) {
-  console.log("residential");
-  console.log(residential);
-  console.log("nonResidential");
-  console.log(nonResidential);
-  console.log("land");
-  console.log(land);
-  console.log("people");
-  console.log(people);
   const [opened, setOpened] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
@@ -32,7 +23,12 @@ function Dashboard({ land, nonResidential, people, residential }: DataProps) {
   const PageContent = () => {
     switch (activePage) {
       case 1:
-        return <Homepage />;
+        return <Homepage 
+        residentialProperties={residential} 
+        nonResidentialProperties={residential} 
+        landProperties={land}
+        people={people}
+      />;
       case 2:
         return <Contacts />;
       case 3:
@@ -48,14 +44,10 @@ function Dashboard({ land, nonResidential, people, residential }: DataProps) {
 
   return (
     <AdminLayout opened={opened} setOpened={setOpened} activePage={activePage} paginator={handlePage}>
-      <PropertyProvider >
         <PageContent />
-      </PropertyProvider>
     </AdminLayout>
   );
 }
-
-export default Dashboard;
 
 export const getServerSideProps = async () => {
   const queryProperty = `*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
@@ -169,3 +161,5 @@ export const getServerSideProps = async () => {
     }
   }
 }
+
+export default Dashboard;
