@@ -50,8 +50,8 @@ function ResidentialProperties({ residentialProperties }: ResidentialProp) {
         ]}
         spacing="xs"
       >
-        <FilterPicker />
-        <Search />
+        {/* <FilterPicker />
+        <Search /> */}
       </SimpleGrid>
       <Center>
         <SimpleGrid
