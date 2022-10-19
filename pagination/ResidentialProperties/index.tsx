@@ -4,29 +4,33 @@ import React from 'react';
 
 import style from '../_index.module.scss';
 import { AppCard, FilterPicker, Search } from '../../components';
-import PropertyType from '../../enums/PropertyType.enum';
-import { usePropertyContext } from '../../hooks/PropertyContext';
-import { sanityClient } from '../../sanity';
-import { Property } from '../../types';
+import { sanityClient, urlFor } from '../../sanity';
+import { Property } from '../../typings.d';
+// import { Property } from '../../typings.d';
 
 interface ResidentialProp {
-  residentialProp: Property[];
+  residentialProperties: Property[];
 }
 
-function ResidentialProperties({ residentialProp }: ResidentialProp) {
-  const { properties, setPropertyType } = usePropertyContext();
-  setPropertyType(PropertyType.RESIDENTIAL);
+function ResidentialProperties({ residentialProperties }: ResidentialProp) {
+  // const { properties, setPropertyType } = usePropertyContext();
+  // setPropertyType(PropertyType.RESIDENTIAL);
+  console.log("Residential Prop:");
+  console.log(residentialProperties);
 
-  const renderResidentialProperties = properties && (
+  const renderResidentialProperties = residentialProperties && (
     <>
-      {properties.map((property: Property) => (
+      {residentialProperties.map((property: Property) => (
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard
-            description={property.description}
-            image={<Image src={property.imageSrc} alt="Residential Property" />}
+            description={property.title}
+            // image={<Image src={urlFor(property.mainImage).url} alt="Residential Property" />}
             title={property.title}
-            type={property.type}
-            values={property.values}
+            // type={property.type}
+            // values={property.values}
+            onClick={() => {
+              location.href = `residential-property/${property.slug.current}`
+            }}
           />
         </Paper>
       ))}
@@ -46,8 +50,8 @@ function ResidentialProperties({ residentialProp }: ResidentialProp) {
         ]}
         spacing="xs"
       >
-        <FilterPicker />
-        <Search />
+        {/* <FilterPicker />
+        <Search /> */}
       </SimpleGrid>
       <Center>
         <SimpleGrid
@@ -65,10 +69,8 @@ function ResidentialProperties({ residentialProp }: ResidentialProp) {
   );
 }
 
-export default ResidentialProperties;
-
 export const serverSideProps = async () => {
-  const query = `*[_type == "property"] | order(dateRegistered desc) {
+  const residentialQuery = `*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
     _id,
     title,
     dateRegistered,
@@ -79,17 +81,31 @@ export const serverSideProps = async () => {
       contactDetails,
       dateRegistered
     },
-    categories,
-    vehicles,
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
     description,
     mainImage
   }`;
 
-  const residentialProperties = sanityClient.fetch(query);
+  const residentialProperties = sanityClient.fetch(residentialQuery);
 
   return {
     props: {
-      residentialProperties,
+      residentialProperties: await residentialProperties,
     }
   }
 }
+
+export default ResidentialProperties;

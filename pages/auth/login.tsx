@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import {
     GoogleButton,
     InputField,
+    SanityButton,
     StyledButton,
 } from "../../components";
 import { useAuth } from "../../hooks/AuthContext";
@@ -97,6 +98,11 @@ export function Login() {
                         <GoogleButton radius="sm" className={`${style.google} ${style[colorScheme]}`}>
                             Continue with Google
                         </GoogleButton>
+                    </Group>
+                    <Group grow>
+                        <SanityButton className={`${style.sanity} ${style[colorScheme]}`}>
+                            Continue with Sanity
+                        </SanityButton>
                     </Group>
                 </Stack>
             </form>

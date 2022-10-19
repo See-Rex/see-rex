@@ -22,31 +22,37 @@ export interface Property {
   };
   homeowner: {
     name: string;
+    contactDetails: string;
+    dateRegistered: string;
     image: {
       asset: {
         url: string;
       };
     };
   };
-  image: {
+  mainImage: {
     asset: {
       url: string;
     };
   };
   dateRegistered: string;
-  categories: {
+  categories: [{
     title: string;
     description: string;
-  };
-  homeownerHistory: {
+  }];
+  homeownerHistory: [{
+    _id: string;
     name: string;
+    contactDetails: string;
+    dateRegistered: string;
     image: {
       asset: {
         url: string;
       };
     };
-  };
-  vehicles: {
+  }];
+  vehicles: [{
+    _id: string;
     name: string;
     image: {
       asset: {
@@ -55,7 +61,7 @@ export interface Property {
     };
     dateRegistered: string;
     proofOfOwnership: [object];
-  };
+  }];
   description: [object];
 }
 
