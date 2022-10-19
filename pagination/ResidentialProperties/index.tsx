@@ -67,7 +67,24 @@ function ResidentialProperties({ residentialProperties }: ResidentialProp) {
 }
 
 export const serverSideProps = async () => {
-  const query = `*[_type == "property"] | order(dateRegistered desc) {
+  // const query = `*[_type == "property"] | order(dateRegistered desc) {
+  //   _id,
+  //   title,
+  //   dateRegistered,
+  //   slug,
+  //   homeowner-> {
+  //     name,
+  //     image,
+  //     contactDetails,
+  //     dateRegistered
+  //   },
+  //   categories,
+  //   vehicles,
+  //   description,
+  //   mainImage
+  // }`;
+
+  const residentialQuery = `*[_type == "property" && "RESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
     _id,
     title,
     dateRegistered,
@@ -78,13 +95,25 @@ export const serverSideProps = async () => {
       contactDetails,
       dateRegistered
     },
-    categories,
-    vehicles,
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
     description,
     mainImage
   }`;
 
-  const residentialProperties = sanityClient.fetch(query);
+  const residentialProperties = sanityClient.fetch(residentialQuery);
 
   return {
     props: {
