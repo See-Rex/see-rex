@@ -7,7 +7,6 @@ import {
   Container,
   Group,
   MediaQuery,
-  Paper,
   SimpleGrid,
   Stack,
   useMantineColorScheme,
@@ -118,7 +117,7 @@ function LandingLayout() {
                   <Carousel.Slide>
                     <FeatureCard
                       description="Send and Receive emails and concerns directly from and to your land and property owners contact. "
-                      icon={<IconSearch />}
+                      icon={<IconMail />}
                       title="Email Integration"
                     />
                   </Carousel.Slide>
