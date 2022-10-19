@@ -1,8 +1,8 @@
-@use "../../styles/constants" as constant;
-@use "../../styles/text" as text;
+@use '../../styles/constants' as constant;
+@use '../../styles/text' as text;
 
 .description {
-  @include text.HEADER_5;
+  @include text.HEADER_3;
   font-family: constant.$FONT_MAIN;
   font-style: normal;
   font-weight: 400;
@@ -12,10 +12,14 @@
 }
 
 .title {
-  @include text.HEADER_2;
+  @include text.BANNER_HEADER_3;
   font-family: constant.$FONT_MAIN;
   font-style: normal;
   font-weight: 600;
   color: constant.$COLOR_WHITE;
   text-shadow: 0px 4px 4px rgba(constant.$COLOR_BLACK, 20%);
+}
+
+.icon {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }

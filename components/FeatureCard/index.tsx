@@ -1,7 +1,7 @@
-import { Group, Stack, Text, ThemeIcon } from "@mantine/core";
-import React from "react";
+import { Group, Stack, Text, ThemeIcon } from '@mantine/core';
+import React from 'react';
 
-import style from "./_index.module.scss";
+import style from './_index.module.scss';
 
 type Props = {
   description: string;
@@ -17,7 +17,8 @@ function FeatureCard(props: Props) {
         size={60}
         radius="md"
         variant="gradient"
-        gradient={{ deg: 133, from: "#2F90B0", to: "#2F90B0" }}
+        gradient={{ deg: 133, from: '#2F90B0', to: '#2F90B0' }}
+        className={style.icon}
       >
         {icon}
       </ThemeIcon>
