@@ -1,7 +1,7 @@
 import FilterBy from "./FilterBy.type";
-import Property from "./Property.type";
+import Propertyy from "./Property.type";
 
 export type {
   FilterBy,
-  Property,
+  Propertyy,
 };

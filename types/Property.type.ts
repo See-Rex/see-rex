@@ -1,17 +1,17 @@
 import { StaticImageData } from "next/image";
 import PropertyType from "../enums/PropertyType.enum";
 
-type Property = {
+type Propertyy = {
   description: string;
   imageSrc: StaticImageData;
   title: string;
   type?: PropertyType;
   values: {
-      amount: string;
-      area: string;
-      car: string;
-      people: string;
+    amount: string;
+    area: string;
+    car: string;
+    people: string;
   };
 }
 
-export default Property;
+export default Propertyy;
