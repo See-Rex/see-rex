@@ -3,14 +3,15 @@ import { PropertyProvider } from '../../hooks/PropertyContext';
 import AdminLayout from '../../layouts/AdminLayout/index';
 import { Contacts, Homepage, LandProperties, NonResidentialProperties, ResidentialProperties } from '../../pagination';
 import { sanityClient } from '../../sanity';
-import { Property } from '../../typings.d';
+import { Homeowner, Property } from '../../typings.d';
 import ErrorPage from './../404';
 
 interface DataProps {
   residential: Property[];
+  people: Homeowner[];
 }
 
-function Dashboard({ residential }: DataProps) {
+function Dashboard({ residential, people }: DataProps) {
   // console.log(residential);
   const [opened, setOpened] = useState(false);
   const [activePage, setActivePage] = useState(1);
@@ -48,7 +49,7 @@ function Dashboard({ residential }: DataProps) {
 export default Dashboard;
 
 export const getServerSideProps = async () => {
-  const query = `*[_type == "property"] | order(dateRegistered desc) {
+  const queryProperty = `*[_type == "property"] | order(dateRegistered desc) {
     _id,
     title,
     dateRegistered,
@@ -65,10 +66,22 @@ export const getServerSideProps = async () => {
     mainImage
   }`;
 
-  const residential = sanityClient.fetch(query);
+  const queryPeople = `*[_type == "homeowner"] | order(dateRegistered desc) {
+    _id,
+    name,
+    slug,
+    dateRegistered,
+    contactDetails,
+    bio,
+    mainImage
+  }`;
+
+  const residential = sanityClient.fetch(queryProperty);
+  const people = sanityClient.fetch(queryPeople);
 
   return {
     props: {
+      people: await people,
       residential: await residential,
     }
   }
