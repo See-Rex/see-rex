@@ -51,6 +51,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'area',
+      title: 'Area',
+      type: 'string',
+    },
+    {
       name: 'imageCarousel',
       title: 'Image Carousel',
       type: 'array',
