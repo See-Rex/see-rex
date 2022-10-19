@@ -12,7 +12,7 @@ import {
   Stack,
   useMantineColorScheme,
 } from '@mantine/core';
-import { IconCheck, IconMail, IconSearch } from '@tabler/icons';
+import { IconAnalyze, IconCheck, IconMail, IconSearch } from '@tabler/icons';
 import Autoplay from 'embla-carousel-autoplay';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import Link from 'next/link';
@@ -119,13 +119,13 @@ function LandingLayout() {
                     <FeatureCard
                       description="Send and Receive emails and concerns directly from and to your land and property owners contact. "
                       icon={<IconSearch />}
-                      title="Centralized Database"
+                      title="Email Integration"
                     />
                   </Carousel.Slide>
                   <Carousel.Slide>
                     <FeatureCard
                       description="Generate trends and statistics of your real estate. Know how your bussiness is doing. "
-                      icon={<IconMail />}
+                      icon={<IconAnalyze />}
                       title="Smart Statistics"
                     />
                   </Carousel.Slide>
