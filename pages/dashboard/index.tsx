@@ -8,11 +8,20 @@ import ErrorPage from './../404';
 
 interface DataProps {
   residential: Property[];
+  nonResidential: Property[];
+  land: Property[];
   people: Homeowner[];
 }
 
-function Dashboard({ residential, people }: DataProps) {
-  // console.log(residential);
+function Dashboard({ land, nonResidential, people, residential }: DataProps) {
+  console.log("residential");
+  console.log(residential);
+  console.log("nonResidential");
+  console.log(nonResidential);
+  console.log("land");
+  console.log(land);
+  console.log("people");
+  console.log(people);
   const [opened, setOpened] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
@@ -78,6 +87,64 @@ export const getServerSideProps = async () => {
     mainImage
   }`;
 
+  const queryNonResiProperty = `*[_type == "property" && "NONRESIDENTIAL" in (categories[]->title)] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    slug,
+    homeowner-> {
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
+    description,
+    mainImage
+  }`;
+
+  const queryLandProperty = `*[_type == "property" && "LAND" in (categories[]->title)] | order(dateRegistered desc) {
+    _id,
+    title,
+    dateRegistered,
+    slug,
+    homeowner-> {
+      name,
+      image,
+      contactDetails,
+      dateRegistered
+    },
+    categories[]->{
+      title
+    },
+    vehicles[]->{
+      _id,
+      name,
+      slug,
+      dateRegistered,
+      proofOfOwnership,
+      mainImage
+    },
+    inhabitants,
+    area,
+    amount,
+    description,
+    mainImage
+  }`;
+
   const queryPeople = `*[_type == "homeowner"] | order(dateRegistered desc) {
     _id,
     name,
@@ -89,10 +156,14 @@ export const getServerSideProps = async () => {
   }`;
 
   const residential = sanityClient.fetch(queryProperty);
+  const nonResidential = sanityClient.fetch(queryNonResiProperty);
+  const land = sanityClient.fetch(queryLandProperty);
   const people = sanityClient.fetch(queryPeople);
 
   return {
     props: {
+      land: await land,
+      nonResidential: await nonResidential,
       people: await people,
       residential: await residential,
     }
