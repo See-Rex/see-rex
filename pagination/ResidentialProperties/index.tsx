@@ -4,29 +4,30 @@ import React from 'react';
 
 import style from '../_index.module.scss';
 import { AppCard, FilterPicker, Search } from '../../components';
-import PropertyType from '../../enums/PropertyType.enum';
-import { usePropertyContext } from '../../hooks/PropertyContext';
-import { sanityClient } from '../../sanity';
-import { Property } from '../../types';
+import { sanityClient, urlFor } from '../../sanity';
+import { Property } from '../../typings.d';
+// import { Property } from '../../typings.d';
 
 interface ResidentialProp {
-  residentialProp: Property[];
+  residentialProperties: Property[];
 }
 
-function ResidentialProperties({ residentialProp }: ResidentialProp) {
-  const { properties, setPropertyType } = usePropertyContext();
-  setPropertyType(PropertyType.RESIDENTIAL);
+function ResidentialProperties({ residentialProperties }: ResidentialProp) {
+  // const { properties, setPropertyType } = usePropertyContext();
+  // setPropertyType(PropertyType.RESIDENTIAL);
+  console.log("Residential Prop:");
+  console.log(residentialProperties);
 
-  const renderResidentialProperties = properties && (
+  const renderResidentialProperties = residentialProperties && (
     <>
-      {properties.map((property: Property) => (
+      {residentialProperties.map((property: Property) => (
         <Paper key={property.title} mx={0} my="sm" className={style.appCardContainer}>
           <AppCard
-            description={property.description}
-            image={<Image src={property.imageSrc} alt="Residential Property" />}
+            description={property.title}
+            // image={<Image src={urlFor(property.mainImage).url} alt="Residential Property" />}
             title={property.title}
-            type={property.type}
-            values={property.values}
+          // type={property.type}
+          // values={property.values}
           />
         </Paper>
       ))}
@@ -87,7 +88,7 @@ export const serverSideProps = async () => {
 
   return {
     props: {
-      residentialProperties,
+      residentialProperties: await residentialProperties,
     }
   }
 }
